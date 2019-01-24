@@ -11,9 +11,9 @@
 
 <%@include file="Header.jsp" %>
 
-<div id="join_content">
+<div id="join_content2">
 
-	<div class="btitle">
+	<div class="btitle" style="margin-top:150px;">
 		<p style="text-align: center;">
 			<a href=""><img src="http://img.bikeselling.ipmidc.net/files/boardconf/32/1419573685_0.jpg" class="txc-image" usemap="#event_on.jpg"></a>
 			<map name="event_on.jpg">
@@ -853,6 +853,6 @@
 </div>
 
 
-<%@include file="Footer.jsp" %>
+<%@include file="MainFooter.jsp" %>
 </body>
 </html>

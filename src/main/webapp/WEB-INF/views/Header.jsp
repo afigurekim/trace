@@ -4,40 +4,115 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" type="text/css" href="../../resources/css/style.css" /></head>
+<style>
+@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+.jh{font-family: 'Jeju Hallasan', cursive;}
+</style>
+<link rel="stylesheet" type="text/css" href="../../resources/css/style.css" />
+<style>
+
+
+.zeta-menu { margin: 0; padding: 0; }
+.zeta-menu li {
+  float: left;
+  list-style:none;
+  position: relative;
+}
+.zeta-menu li:hover { background: white; }
+.zeta-menu a {
+  color: white;
+  display: block;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+.zeta-menu ul {
+  background: #eee;
+  display: none;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 33px;
+  width: 200px;
+}
+.zeta-menu ul li { float: none; }
+.zeta-menu ul li:hover { background: #ddd; }
+.zeta-menu ul li:hover a { color: black; }
+.zeta-menu ul a { color: black; }
+.zeta-menu ul ul { left: 100%; top: 0; }
+.zeta-menu ul ul li {float:left; margin-right:10px;}
+</style>
+<script type="text/javascript">
+$(function(){
+	  $("#menu2 li").hover(function(){
+	    $('ul:first',this).show();
+	  }, function(){
+	    $('ul:first',this).hide();
+	  });
+	  $("#menu2 li:has(ul)>a").each( function() {
+	    $(this).html( $(this).html() );
+	  });
+	 
+	});
+</script>
+</head>
+
 <body>
 
 	<div id="header">
 		 <div id="inner1">
-			 <div id="menu">
-			 <a href="/"><img src="../../resources/imgs/logo.png"></a>
+			 <div id="menu" class="jh">
 				 <ul>
+				 	<li><a href="/join">회원가입</a></li>
 					<li><a href="/login">로그인</a></li>
-					<li><a href="/join">회원가입</a></li>
-					<li><a href="/mypage">마이페이지</a></li>
-					<li><a href="/order_deliver">주문배송조회</a></li>
-					<li><a href="/cart">장바구니</a></li>
-					<li><a href="/interest">관심상품</a></li>
-					<li><a href="/notice">공지사항</a></li>
+				 	<li><a href="/mypage">마이리스트</a></li>
+				 	<li><a href="/notice">공지사항</a></li>
+			 	
 				 </ul>
 			 </div>
 		 </div>
+		
+		 
 		 <div id="inner2">
-		 	<div id="menu2">
-			 <ul>
-			 	<li><a href="/fixed">FIXED</a></li>
-			 	<li><a href="#">HYBRID</a></li>
-			 	<li><a href="#">ROAD</a></li>
-			 	<li><a href="#">MTB</a></li>
-			 	<li><a href="#">CLASSIC</a></li>
-			 	<li><a href="#">MINI</a></li>
-			 	<li><a href="#">FATBIKE</a></li>
-			 	<li><a href="#">KIDS</a></li>
-			 	<li><a href="#">E-BIKE</a></li>
-			 	<li><a href="#">ACC / PARTS</a></li>
-			 	<li><a href="/qna">QNA</a></li>
-			 	<li><a href="/review">REVIEW</a></li>
-			 	<li><a href="/brand">BRAND</a></li>
+		 
+		 	<div id="menu2" class="jh">
+			 <ul class="zeta-menu">
+			 	<li><a href="/#">소개</a></li>
+			 	<li><a href="/fixed">시대별</a>
+			 		<ul>
+			 			<li><a href="#" style="background-color:white;"></a><li>
+			 			<li><a href="#">선사시대</a></li>
+			 			<li><a href="#">삼국시대</a></li>
+						<li><a href="#">고려시대</a></li>
+			 			<li><a href="#">조선시대</a></li>
+						<li><a href="#">현대</a></li>			 			
+			 					 		
+			 		</ul>
+			 	</li>
+			 	
+			 	<li><a href="#">테마별</a>
+			 		<ul>
+			 			<li><a href="#" style="background-color:white;"></a><li>
+			 			<li><a href="#">교육</a></li>
+			 			<li><a href="#">데이트</a></li>
+			 			<li><a href="#">가족</a></li>
+			 		</ul>
+			 	</li>
+			 		
+			 	<li><a href="#">지역별</a>
+			 		<ul>
+			 			<li><a href="#" style="background-color:white;"></a><li>	
+			 			<li><a href="#">서울</a></li>
+			 			<li><a href="#">인천</a></li>
+			 			<li><a href="#">경기도</a></li>
+			 			<li><a href="#">강원도</a></li>
+			 			<li><a href="#">충청도</a></li>
+			 			<li><a href="#">경상도</a></li>
+			 			<li><a href="#">전라도</a></li>
+			 			<li><a href="#">제주도</a></li>
+			 		</ul>
+			 	</li>
+			 	<li><a href="#">에디터 추천코스</a></li>
+			 	
 			 </ul>
 			</div>
 		 </div>

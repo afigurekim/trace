@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bit.mapper.HistoricMapper">
+
+<insert id="history">
+insert into HISTORIC_SITE(SITE_NAME,LATITUDE,LONGITUDE,ADDRESS) values(#{site_name},#{latitude},#{longitude},#{address})
+<selectKey resultType="int" keyProperty="bno" order="AFTER">
+select LAST_INSERT_ID()
+</selectKey>
+</insert>
+
+<insert id="history_detail">
+insert into HISTORIC_SITE_DETAIL(BNO,DETAIL,CARRIAGE,INFO_CENTER,REST_DAY,CREDIT_CARD,PET,EXP_GUIDE,EXPAGE_RANGE,PARK,USE_TIME)
+values(#{bno},#{detail},#{carriage},#{info_center},#{rest_day},#{credit_card},#{pet},#{exp_guide},#{expage_range},#{park},#{use_time})
+</insert>
+
+<insert id="history_image">
+insert into HISTORIC_SITE_IMAGE(BNO,IMAGE_NUM,FULLNAME,SITE_TYPE) values(#{bno},#{image_num},#{fullname},#{site_type})
+</insert>
+
+
+<insert id="food">
+insert into NEARBY_ATTRACTION(BNO,ATTRACTION_TYPE,ATTRACTION_NAME,ADDRESS,HOMEPAGE,LATITUDE,LONGITUDE,ATTRACTION_DETAIL) values(#{bno},#{attraction_type},#{attraction_name},#{address},#{homepage},#{latitude},#{longitude},#{attraction_detail})
+<selectKey resultType="int" keyProperty="rno" order="AFTER">
+select LAST_INSERT_ID()
+</selectKey>
+
+</insert>
+
+<insert id="food_detail">
+<![CDATA[
+insert into NEARBY_ATTRACTION_FOOD_DETAIL values(#{rno},#{attraction_detail},#{latitude},#{longitude},#{tel},#{homepage},#{chkcredit_card},#{first_menu},#{info_center},#{packing},#{parking},#{reservation},#{smoking},#{rest_date},#{treat_menu})
+]]>
+</insert>
+
+
+</mapper>

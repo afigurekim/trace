@@ -66,7 +66,7 @@ $(function(){
 					<li><a href="/login">로그인</a></li>
 				 	<li><a href="/mypage">마이리스트</a></li>
 				 	<li><a href="/notice">공지사항</a></li>
-			 	
+			 		<li><a href="/write">글쓰기</a></li>
 				 </ul>
 			 </div>
 		 </div>
@@ -76,29 +76,29 @@ $(function(){
 		 
 		 	<div id="menu2" class="jh">
 			 <ul class="zeta-menu">
-			 	<li><a href="/#">소개</a></li>
-			 	<li><a href="/fixed">시대별</a>
+			 	<li><a href="/intro">소개</a></li>
+			 	<li><a href="/period">시대별</a>
 			 		<ul>
 			 			<li><a href="#" style="background-color:white;"></a><li>
-			 			<li><a href="#">선사시대</a></li>
-			 			<li><a href="#">삼국시대</a></li>
-						<li><a href="#">고려시대</a></li>
-			 			<li><a href="#">조선시대</a></li>
-						<li><a href="#">현대</a></li>			 			
+			 			<li><a href="/period/sunsa">선사시대</a></li>
+			 			<li><a href="/period/samgook">삼국시대</a></li>
+						<li><a href="/period/korea">고려시대</a></li>
+			 			<li><a href="/period/josun">조선시대</a></li>
+						<li><a href="/period/hyundae">근현대</a></li>			 			
 			 					 		
 			 		</ul>
 			 	</li>
 			 	
-			 	<li><a href="#">테마별</a>
+			 	<li><a href="/thema">테마별</a>
 			 		<ul>
 			 			<li><a href="#" style="background-color:white;"></a><li>
-			 			<li><a href="#">교육</a></li>
-			 			<li><a href="#">데이트</a></li>
-			 			<li><a href="#">가족</a></li>
+			 			<li><a href="/thema/study">교육</a></li>
+			 			<li><a href="/thema/date">데이트</a></li>
+			 			<li><a href="/thema/family">가족</a></li>
 			 		</ul>
 			 	</li>
 			 		
-			 	<li><a href="#">지역별</a>
+			 	<li><a href="/region">지역별</a>
 			 		<ul>
 			 			<li><a href="#" style="background-color:white;"></a><li>	
 			 			<li><a href="#">서울</a></li>

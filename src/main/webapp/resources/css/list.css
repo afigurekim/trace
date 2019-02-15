@@ -99,3 +99,31 @@
 	height:170px;
 
 }
+.text-center{
+	text-align:center;
+}
+.pagination{
+	list-style-type:none;
+}
+.pagination>li{
+	display:inline-block;
+}
+.pagination>li>a{
+	text-decoration: none;
+    margin-bottom: 5px;
+    width: 30px;
+    height: 30px;
+    color: #4e4e4e;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #cdd6dd;
+    font-size: 18px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+.active>a{
+	background-color:wheat;
+}
+

@@ -1,9 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page session="true" %>
+
+    
 <!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="/resources/js/upload.js"></script>
+
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
@@ -46,6 +53,12 @@ stroke-width:1.5px;}
 cursor:pointer;
 font-size:12px;
 font-family:'Nanum Gothic';}
+
+#inner1{
+padding-top:4px;
+padding-bottom:4px;
+}
+
 </style>
 <script type="text/javascript">
 
@@ -358,133 +371,54 @@ $(function(){
 		
 		<div id="index1" style="margin-top:210px;">
 			<p class="jh"><strong>시대별</strong></p>
-		
-			<ul>
+			 
+		<!-- 	<ul>	
+				<c:forEach items="${periodlist}" var="boardVO" varStatus="status">
 				<li>
 					<div class="listimg">
 						<a href="#">
-            				<img src="../resources/imgs/dj_01_01.jpg" class="limg">
+            				<img src="/displayFile?fileName=${boardVO.fullName}" class="limg">
             			</a>
             			
 					</div>
 					<div class="additem">
-						<p class="gname">원주 법천사지 지광국사탑</p>			
-						<p class="gname_pre" style="text-overflow:elipsis;">고려시대</p>
+						<p class="gname">${boardVO.history_name }</p>			
+						<p class="gname_pre" style="text-overflow:elipsis;">${boardVO.period }</p>
 						<p class="account">
-						★ 3.9				
+						★ ${boardVO.star}			
             			</p>
 					</div>
 					
 				</li>
-				<li>
-            		<div class="listimg">
-            			<a href="#">
-            				<img src="../resources/imgs/dj_01_02.jpg" class="limg">
-            			</a>
-            		</div>
-            		<div class="additem">
-            			<p class="gname">창경궁 자격루</p>
-            			<p class="gname_pre">조선시대</p>
-            			<p class="account">
-						★ 0				
-            			</p>
-            		</div> 
-            	</li>
-        	    <li>
-            		<div class="listimg">
-            			<a href="#">
-            				<img src="../resources/imgs/dj_01_03.jpg" class="limg">
-            			</a>
-            		</div>
-            		<div class="additem">
-            			<p class="gname">대전 회덕 동춘당</p>
-            			<p class="gname_pre">조선시대</p>
-            			<p class="account">
-						★ 4.4		
-            			</p>
-            		</div>
-
-        	    </li>
-        	    <li>
-            		<div class="listimg">
-            			<a href="#">
-            				<img src="../resources/imgs/dj_01_04.jpg" class="limg">
-            			</a>
-            		</div>
-            		<div class="additem">
-            			<p class="gname">대전 소대헌·호연재 고택</p>
-            			<p class="gname_pre">조선시대</p>
-            			<p class="account">
-							★ 4.4				
-            			</p>
-            		</div>
-            		
-        	    </li>
-			</ul>
+				</c:forEach>
+				
+        
+			</ul> -->
 		</div>
 	</div>
 	<div id="mainrow2">
 		<p class="jh"><strong>테마별</strong></p>
-		<div id="index1">
+		<!-- <div id="index1">
 			<ul>
+				<c:forEach items="${themalist}" var="boardVO">
 				<li>
             		<div class="listimg">
             			<a href="/shop/view.php?index_no=6547&amp;main_idx=4">
-            				<img src="../resources/imgs/경주_01_1.jpg" class="limg">
+            				<img src="/displayFile?fileName=${boardVO.fullName}" class="limg">
             			</a>
             		</div>
             		<div class="additem">
-            			<p class="gname">경주 불국사</p>
-            			<p class="gname_pre">교육</p>
+            			<p class="gname">${boardVO.history_name}</p>
+            			<p class="gname_pre">${boardVO.thema}</p>
             			<p class="account">
-							★ 4.5			
+							★ ${boardVO.star}			
             			</p>
             		</div>
         	    </li>
-        	  <li>
-            		<div class="listimg">
-            			<a href="/shop/view.php?index_no=6094&amp;main_idx=4">
-            				<img src="../resources/imgs/경주_02_1.jpg" class="limg">
-            			</a>
-            		</div>
-            		<div class="additem">
-            			<p class="gname">경주 첨성대</p>
-            			<p class="gname_pre">교육</p>            			
-            			<p class="account">
-							★ 4.4			
-            			</p>
-            		</div>
-        	    </li>
-        	    <li>
-            		<div class="listimg">
-            			<a href="/shop/view.php?index_no=6217&amp;main_idx=4">
-            				<img src="../resources/imgs/경주_03_1.jpg" class="limg">
-            			</a>
-            		</div>
-            		<div class="additem">
-            			<p class="gname">경주 안압지</p>
-            			<p class="gname_pre">데이트</p>
-            			<p class="account">
-							★ 4.4			
-            			</p>
-            		</div>
-        	    </li>
-        	    <li>
-            		<div class="listimg">
-            			<a href="/shop/view.php?index_no=6216&amp;main_idx=4">
-            				<img src="../resources/imgs/포항_01_1.jpg" class="limg">
-            			</a>
-            		</div>
-            		<div class="additem">
-            			<p class="gname">포항 보경사</p>
-            			<p class="gname_pre">가족</p>
-            			<p class="account">
-							★ 4
-            			</p>
-            		</div>
-        	    </li>
+        	    </c:forEach>
+        	
 			</ul>
-		</div>
+		</div> -->
 	</div>
 </div>
 
@@ -499,66 +433,26 @@ $(function(){
 			<p class="jh"><strong>지역별</strong></p>
 		
 			<ul>
+		
+			
+			<c:forEach items="${locationlist}" var="Historic_siteVO">
 				<li>
 					<div class="listimg">
 						<a href="#">
-            				<img src="../resources/imgs/항파두리항몽유적_01.jpg" class="limg">
+            				<img src="${Historic_siteVO.fullname}" class="limg">
             			</a>
             			
 					</div>
 					<div class="additem">
-						<p class="gname">제주 항다푸리 항몽</p>			
-						<p class="gname_pre">제주도</p>
-						<p class="account">
-							★ 3.9				
-            			</p>
+						<p class="gname">${Historic_siteVO.site_name}</p>			
+						<p class="gname_pre">${Historic_siteVO.address}</p>
+						
 					</div>
 					
 				</li>
-				<li>
-            		<div class="listimg">
-            			<a href="#">
-            				<img src="../resources/imgs/도갑사대웅보전_04.JPG" class="limg">
-            			</a>
-            		</div>
-            		<div class="additem">
-            			<p class="gname">도갑사 대웅보전</p>
-            			<p class="gname_pre">전라남도 영암군</p>
-            			<p class="account">
-							★ 4.5
-            			</p>
-            		</div> 
-            	</li>
-        	    <li>
-            		<div class="listimg">
-            			<a href="#">
-            				<img src="../resources/imgs/군산발산리석등_01.jpg" class="limg">
-            			</a>
-            		</div>
-            		<div class="additem">
-            			<p class="gname">발산리석등</p>
-            			<p class="gname_pre">전라북도 군산시</p>
-            			<p class="account">
-							★ 5.0
-            			</p>
-            		</div>
-
-        	    </li>
-        	    <li>
-            		<div class="listimg">
-            			<a href="#">
-            				<img src="../resources/imgs/도갑사해탈문_01.jpg" class="limg">
-            			</a>
-            		</div>
-            		<div class="additem">
-            			<p class="gname">도갑사 해탈문</p>
-            			<p class="gname_pre">전라남도 영암군</p>
-            			<p class="account">
-							★ 4.5			
-            			</p>
-            		</div>
-            		
-        	    </li>
+				</c:forEach>
+				 
+        	   
 			</ul>
 		</div>
 	</div>

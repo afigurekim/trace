@@ -1,42 +1,66 @@
-package com.yj.shop.Controller;
+package com.bit.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+
+import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.bit.service.BoardService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class MainController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
+	@Inject
+	private BoardService service;
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String main(Locale locale, Model model) {
+		try {
+			//model.addAttribute("periodlist",service.MainPeriod());
+			//model.addAttribute("themalist",service.MainThema());
+			model.addAttribute("locationlist",service.MainLocation());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		return "Main";
 	}
-	@RequestMapping(value = "/fixed", method = RequestMethod.GET)
-	public String fixed(Locale locale, Model model) {
+	
+	
+	@RequestMapping(value = "/intro", method = RequestMethod.GET)
+	public String intro(Locale locale, Model model) {
 		
-		return "/bike/fixed_list";
+		return "intro";
 	}
-	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String join(Locale locale, Model model) {
-		
-		return "join";
+	
+	
+	@RequestMapping(value="/getAttach")
+		@ResponseBody
+		public List<String> getAttach()throws Exception{
+		return service.getAttach();
 	}
+	
+	
+	
+
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(Locale locale, Model model) {
 		
@@ -78,4 +102,9 @@ public class HomeController {
 	public String event(Locale locale, Model model) {
 		return "event";
 	}
+	@RequestMapping(value = "/PostSearch", method = RequestMethod.GET)
+	public String PostSearch(Locale locale, Model model) {
+		return "PostSearch";
+	}
+	
 }

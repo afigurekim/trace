@@ -3,7 +3,7 @@
 <mapper namespace="com.bit.mapper.HistoricMapper">
 
 <insert id="history">
-insert into HISTORIC_SITE(SITE_NAME,LATITUDE,LONGITUDE,ADDRESS) values(#{site_name},#{latitude},#{longitude},#{address})
+insert into HISTORIC_SITE(SITE_NAME,LATITUDE,LONGITUDE,ADDRESS,CONTENT_ID,CONTENT_TYPEID,FIRST_IMAGE) values(#{site_name},#{latitude},#{longitude},#{address},#{content_id},#{content_typeid},#{first_image})
 <selectKey resultType="int" keyProperty="bno" order="AFTER">
 select LAST_INSERT_ID()
 </selectKey>
@@ -20,10 +20,7 @@ insert into HISTORIC_SITE_IMAGE(BNO,IMAGE_NUM,FULLNAME,SITE_TYPE) values(#{bno},
 
 
 <insert id="food">
-insert into NEARBY_ATTRACTION(BNO,ATTRACTION_TYPE,ATTRACTION_NAME,ADDRESS,HOMEPAGE,LATITUDE,LONGITUDE,ATTRACTION_DETAIL) values(#{bno},#{attraction_type},#{attraction_name},#{address},#{homepage},#{latitude},#{longitude},#{attraction_detail})
-<selectKey resultType="int" keyProperty="rno" order="AFTER">
-select LAST_INSERT_ID()
-</selectKey>
+insert into NEARBY_ATTRACTION(BNO,CONTENT_ID,ATTRACTION_TYPE,ATTRACTION_NAME,ADDRESS,HOMEPAGE,LATITUDE,LONGITUDE,ATTRACTION_DETAIL,TEL,FIRST_IMAGE) values(#{bno},#{content_id},#{attraction_type},#{attraction_name},#{address},#{homepage},#{latitude},#{longitude},#{attraction_detail},#{tel},#{first_image})
 
 </insert>
 
@@ -33,5 +30,21 @@ insert into NEARBY_ATTRACTION_FOOD_DETAIL values(#{rno},#{attraction_detail},#{l
 ]]>
 </insert>
 
+<select id="history_list" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+select * from HISTORIC_SITE 
+]]>
+</select>
 
+<select id="food_list" resultType="com.bit.domain.Nearby_attractionVO">
+<![CDATA[
+select * from NEARBY_ATTRACTION where attraction_type="음식"
+]]>
+</select>
+
+<select id="room_list" resultType="com.bit.domain.Nearby_attractionVO">
+<![CDATA[
+select * from NEARBY_ATTRACTION where attraction_type="숙박"
+]]>
+</select>
 </mapper>

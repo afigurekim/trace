@@ -2,6 +2,9 @@ package com.bit.domain;
 
 public class Historic_siteVO {
 	private Integer bno;
+	private String content_id;
+	private String content_typeid;
+	private String first_image;
 	private String site_name;
 	private String latitude;
 	private String longitude;
@@ -11,17 +14,31 @@ public class Historic_siteVO {
 	private int view_cnt;
 	private String fullname;
 	
-	public String getFullname() {
-		return fullname;
+	
+	public String getFirst_image() {
+		return first_image;
 	}
-	public void setFullname(String fullname) {
-		this.fullname = fullname;
+	public void setFirst_image(String first_image) {
+		this.first_image = first_image;
 	}
 	public Integer getBno() {
+
 		return bno;
 	}
 	public void setBno(Integer bno) {
 		this.bno = bno;
+	}
+	public String getContent_id() {
+		return content_id;
+	}
+	public void setContent_id(String content_id) {
+		this.content_id = content_id;
+	}
+	public String getContent_typeid() {
+		return content_typeid;
+	}
+	public void setContent_typeid(String content_typeid) {
+		this.content_typeid = content_typeid;
 	}
 	public String getSite_name() {
 		return site_name;
@@ -65,6 +82,13 @@ public class Historic_siteVO {
 	public void setView_cnt(int view_cnt) {
 		this.view_cnt = view_cnt;
 	}
+	public String getFullname() {
+		return fullname;
+	}
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
 	
+
 	
 }

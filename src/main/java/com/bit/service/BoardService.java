@@ -6,6 +6,7 @@ import com.bit.domain.BoardVO;
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
 import com.bit.domain.Historic_site_detailVO;
+import com.bit.domain.Nearby_attractionVO;
 
 public interface BoardService {
 	
@@ -129,4 +130,22 @@ public interface BoardService {
 	public int jejucount() throws Exception;
 
 	
-}
+	//음식점
+	
+	public List<Nearby_attractionVO> foodlist(Criteria cri,int bno)throws Exception;
+	
+	public int foodcount(Integer bno) throws Exception;
+	
+	
+	
+	//숙박
+		
+	public List<Nearby_attractionVO> roomlist(Criteria cri)throws Exception;
+	
+	public int roomcount() throws Exception;
+	
+	public Nearby_attractionVO read_attraction(int bno,int rno) throws Exception;
+	
+	public List<Nearby_attractionVO> attraction_image(int bno,int rno) throws Exception;
+	
+}	

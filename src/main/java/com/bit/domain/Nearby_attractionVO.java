@@ -4,6 +4,8 @@ public class Nearby_attractionVO {
 	
 	private Integer bno;
 	private Integer rno;
+	private String content_id;
+	private String first_image;
 	private String attraction_type;
 	private String attraction_name;
 	private String address;
@@ -12,17 +14,34 @@ public class Nearby_attractionVO {
 	private String longitude;
 	private String attraction_detail;
 	private String tel;
+	private String fullname;
+	
+	
+	
+	public Integer getRno() {
+		return rno;
+	}
+	public void setRno(Integer rno) {
+		this.rno = rno;
+	}
+	public String getFirst_image() {
+		return first_image;
+	}
+	public void setFirst_image(String first_image) {
+		this.first_image = first_image;
+	}
 	public Integer getBno() {
 		return bno;
 	}
 	public void setBno(Integer bno) {
 		this.bno = bno;
 	}
-	public Integer getRno() {
-		return rno;
+
+	public String getContent_id() {
+		return content_id;
 	}
-	public void setRno(Integer rno) {
-		this.rno = rno;
+	public void setContent_id(String content_id) {
+		this.content_id = content_id;
 	}
 	public String getAttraction_type() {
 		return attraction_type;
@@ -72,6 +91,14 @@ public class Nearby_attractionVO {
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
+	public String getFullname() {
+		return fullname;
+	}
+	public void setFullname(String fullname) {
+		this.fullname = fullname;
+	}
+	
+	
 	
 	
 	

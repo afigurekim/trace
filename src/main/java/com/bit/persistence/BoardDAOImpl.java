@@ -13,6 +13,7 @@ import com.bit.domain.BoardVO;
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
 import com.bit.domain.Historic_site_detailVO;
+import com.bit.domain.Nearby_attractionVO;
 
 @Repository	
 public class BoardDAOImpl implements BoardDAO {
@@ -393,6 +394,60 @@ public class BoardDAOImpl implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".jejucount");
 	}
+
+
+	@Override
+	public List<Nearby_attractionVO> foodlist(Criteria cri,int bno) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("Criteria", cri);
+		map.put("bno", bno);
+		return sqlSession.selectList(namespace+".foodlist",map);
+	}
+
+
+	@Override
+	public int foodcount(Integer bno) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".foodcount",bno);
+	}
+
+
+	@Override
+	public List<Nearby_attractionVO> roomlist(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".roomlist",cri);
+	}
+
+
+	@Override
+	public int roomcount() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".roomcount");
+	}
+
+
+	@Override
+	public Nearby_attractionVO read_attraction(int bno, int rno) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("bno", bno);
+		map.put("rno", rno);
+		return sqlSession.selectOne(namespace+".read_attraction",map);
+	}
+
+
+	@Override
+	public List<Nearby_attractionVO> attraction_image(int bno, int rno) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("bno", bno);
+		map.put("rno", rno);
+		return sqlSession.selectList(namespace+".attraction_image",map);
+	}
+
+
+
 
 
 	

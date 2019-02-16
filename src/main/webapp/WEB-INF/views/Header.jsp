@@ -60,6 +60,7 @@ $(function(){
 
 	<div id="header">
 		 <div id="inner1">
+		
 			 <div id="menu" class="jh">
 				 <ul>
 				 	<li><a href="/join">회원가입</a></li>
@@ -71,10 +72,13 @@ $(function(){
 			 </div>
 		 </div>
 		
-		 
+		
 		 <div id="inner2">
 		 
 		 	<div id="menu2" class="jh">
+		 	 <div id="logo" style="float:left; margin-left:-150px;">
+		 	<a href="/"><img src="../resources/imgs/로고.png" style="height:69px"></a>
+		 </div>
 			 <ul class="zeta-menu">
 			 	<li><a href="/intro">소개</a></li>
 			 	<li><a href="/period">시대별</a>

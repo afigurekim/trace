@@ -2,11 +2,18 @@ package com.bit.domain;
 
 public class Historic_site_imageVO {
 	private Integer bno;
+	private Integer rno;
 	private Integer image_num;
 	private String fullname;
 	private String site_type;
 	
 	
+	public Integer getRno() {
+		return rno;
+	}
+	public void setRno(Integer rno) {
+		this.rno = rno;
+	}
 	public String getSite_type() {
 		return site_type;
 	}

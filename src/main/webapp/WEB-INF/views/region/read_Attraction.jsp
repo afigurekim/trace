@@ -136,7 +136,9 @@ padding: 31px 10px 31px 2px;
 </style>
  
 <script type="text/javascript">
-$(function(){
+
+function abc(){
+
 	var ctx = document.getElementById("myChart");
 	var myChart = new Chart(ctx, {
 	  type: 'bar',
@@ -199,78 +201,20 @@ $(function(){
 	  }
 	});
 
-});
-
-
-$(function(){
-
-getPageList(1);
-	
-function getPageList(foodpage){
-	
-	var bno=${read.bno};
-	$.getJSON("/food/"+${read.bno}+"/"+foodpage,function(data){
-		console.log(data.list.length);
-		
-		var str="";
-	/*	$(data).each(function(i,e){
-			alert(i);
-			alert(e.list.bno);
-str+="<li><div class='listimg'><a href='/region/attraction_read?bno="+bno+"&rno="+e.rno+"'><img src="+e.first_image+"></a></div><div class='additem'><p class='gname'>"+e.attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+e.address+"</p></div></li>";
-		
-		});*/
-		for(var i=0;i<data.list.length;i++){
-			str+="<li><div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
-
-		}
-		$(".listman").html(str);
-		printPaging(data.pageMaker);
-		
-	});
-
-
-	
-	$(".pagination").on("click","li a",function(event){
-		event.preventDefault();
-		foodpage=$(this).attr("href");
-		getPageList(foodpage);
-		
-	});
-	
 }
 
-
-
-function printPaging(pageMaker){
-	var str="";
-	
-	if(pageMaker.prev){
-		str += "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
-	}
-	
-	for(var i=pageMaker.startPage, len =pageMaker.endPage; i<=len;i++){
-		var strClass=pageMaker.cri.page == i?'class=active':'';
-		str += "<li "+strClass+"><a href='"+i+"'>"+i+"</a></li>";
-	}
-	
-	if(pageMaker.next){
-		str+= "<li><a href='"+(pageMaker.endPage+1)+"'> >> </a></li>";
-	}
-	$('.pagination').html(str);
-}
-
-});
-
+var latitude=0;
+var longitude=0;
 
 </script>
 </head>
-<body>
+<body onload="abc()">
 <%@include file="../Header.jsp" %>
 
 <div id="wrap">
 	<div class="content">
 		<div class="hschDetail_tit">
-		<strong>${read.site_name}</strong>
+		<strong>${read_attraction.attraction_name}</strong>
 		</div>
 		
 		<div class="hschDetail_info">
@@ -281,20 +225,21 @@ function printPaging(pageMaker){
 				    <ol class="carousel-indicators">
 				   		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				    
-				      <c:forEach items="${region_image}" var="img_list" begin="0" varStatus="status">
+				      <c:forEach items="${food_image}" var="img_list" begin="1" varStatus="status">
 					      <li data-target="#myCarousel" data-slide-to="${status.index}"></li>
 					      
 				      </c:forEach>
+				       
 				    </ol>
 				
 				    <!-- Wrapper for slides -->
 				    <div class="carousel-inner">
 				      <div class="item active">
 							<a href="#" onclick="dirImg('1636095');" title="사진을 클릭하시면 크게 확인하실 수 있습니다." style="line-height: 301px;">
-							 <img  src="${read.first_image}" style="width:100%;height:397px;">                
+							 <img  src="${read_attraction.first_image}" style="width:100%;height:397px;">                
 							</a>				     
 						</div>
-						<c:forEach items="${region_image}"  var="img_list" begin="0" varStatus="status">
+						<c:forEach items="${food_image}"  var="img_list" begin="1" varStatus="status">
 						 	<div class="item">
 									<a href="#" onclick="dirImg('1636095');" title="사진을 클릭하시면 크게 확인하실 수 있습니다." style="line-height: 301px;">
 									 <img  src="${img_list.fullname}" style="width:100%;height:397px;">                
@@ -303,7 +248,7 @@ function printPaging(pageMaker){
 						</c:forEach>
 						
 				     
-				    </div>
+				    </div> 
 				
 				    <!-- Left and right controls -->
 				    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -326,23 +271,22 @@ function printPaging(pageMaker){
 				       </colgroup>
 				       <tbody>
 				       <tr>
-					       <th scope="row">유적지 이름</th>
-					       <td>${read.site_name}</td>
+					       <th scope="row">음식점 이름</th>
+					       <td>${read_attraction.attraction_name}</td>
 				       </tr>                             
 				       <tr>
 				           <th scope="row">소재지</th>
-				           <td>${read.address}</td>
+				           <td>${read_attraction.address}</td>
 				       </tr>
-				       
-				      
 				       <tr>
-				       		<th>사용자 별점</th>
-				       		<td>
-				       		<div id="canvas" style="width:1280px; margin:auto;">
-								<canvas id="myChart"style="float:left; margin-top:10px;margin-left:21px; width:400px;height:200px;"></canvas>
-							</div>
-				       		</td>
-				       </tr>      
+				       		<th scope="row">홈페이지</th>
+				       		<td>${read_attraction.homepage}</td>
+				       </tr>
+				      
+				        <tr>
+				       		<th scope="row">전화번호</th>
+				       		<td>${read_attraction.tel}</td>
+				       </tr>
 				      </tbody>
 				</table>
 						
@@ -363,61 +307,15 @@ function printPaging(pageMaker){
 		</p>
 		</div>
 			<div class="hschDetail_con" id="expDiv">
-              	<p>${read_detail.detail}</p>
+              	<p>${read_attraction.attraction_detail}</p>
                 
               </div>
-           <div class="hschDetail_con" id="expDiv">
-           
-                <script type="text/javascript">
-                if("${read_detail.info_center}"!=""){
-					document.write("<p>문의 및 안내 : ${read_detail.info_center} </p>");				
-                }
-				if("${read_detail.exp_guide}"!=""){
-					document.write("<p>체험 안내 : ${read_detail.exp_guide} </p>");
-				}
-				if("${read_detail.expage_range}"!=""){
-					document.write("<p>체험 연령 : ${read_detail.expage_range} </p>");
-				}
-				if("${read_detail.rest_day}"!=""){
-					document.write("<p>쉬는 날 : ${read_detail.rest_day} </p>");
-				}
-				if("${read_detail.use_time}"!=""){
-					document.write("<p>이용시간 : ${read_detail.use_time} </p>");
-				}
-				if("${read_detail.park}"!=""){
-					document.write("<p>주차 시설 : ${read_detail.park} </p>");
-				}
-				if("${read_detail.carriage}"!=""){
-					document.write("<p>유모차 대여 여부 : ${read_detail.carriage} </p>");
-				}
-				if("${read_detail.pet}"!=""){
-					document.write("<p>애완동물 동반 가능 여부 : ${read_detail.pet} </p>");
-				}
-				if("${read_detail.credit_card}"!=""){
-					document.write("<p>신용카드 가능 여부 : ${read_detail.credit_card} </p>");
-				}
-					
-                </script>
-	 </div>
+       
                 
          <div style="border-bottom: 1px solid #535a75; margin-top:30px;"></div>
-         	<div>
-         		<a href="#"><img src="../resources/imgs/문화재청.png"></a>
-         		<a href="#"><img src="../resources/imgs/길찾기.png"></a>
-         	</div>
-		
-	<div class="glist" style="margin-top:20px;">
-		<ul class="listman">
+         
 
-	</ul>
-	
-		
-	</div>
-	<ul class="pagination" style="margin-top:-20px">
-		
-		</ul>
-		
-	
+
 
 	</div>
 </div>

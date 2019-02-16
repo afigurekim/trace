@@ -1,5 +1,7 @@
 package com.bit.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
@@ -8,11 +10,10 @@ import org.springframework.stereotype.Repository;
 import com.bit.domain.Historic_site_detailVO;
 import com.bit.domain.Historic_site_imageVO;
 import com.bit.domain.Historic_siteVO;
-import com.bit.domain.Nearby_attraction_foodVO;
 import com.bit.domain.Nearby_attractionVO;
 
 @Repository
-public class HISTORIC_SITE_DAOImpl implements HISTORIC_SITE_DAO {
+public class Historic_siteDAOImpl implements Historic_siteDAO {
 
 	@Inject
 	private SqlSession sqlSession;
@@ -41,6 +42,18 @@ public class HISTORIC_SITE_DAOImpl implements HISTORIC_SITE_DAO {
 	@Override
 	public void food(Nearby_attractionVO vo)throws Exception{
 		sqlSession.insert(namespace+".food",vo);
+	}
+
+	@Override
+	public List<Historic_siteVO> history_list() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".history_list");
+	}
+
+	@Override
+	public List<Nearby_attractionVO> food_list() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".food_list");
 	}
 
 	

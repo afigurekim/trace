@@ -222,15 +222,15 @@ select count(*) from tbl_board where thema like '%가족%'
 </select>
 
 
-
+<!-- 지역별  -->
 
 <select id="regionlistAll" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
 	select
 		*
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -240,8 +240,8 @@ select count(*) from tbl_board where thema like '%가족%'
 	select
 		count(*)
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME);
+		HISTORIC_SITE 
+	where FIRST_IMAGE != ""
 	
 ]]>
 </select>
@@ -261,10 +261,7 @@ select count(*) from tbl_board where thema like '%가족%'
 <select id="readRegionImage" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
 
-select historic_site_image.FULLNAME
-from historic_site,historic_site_image
-where historic_site.bno=historic_site_image.BNO and historic_site.bno=#{bno} and historic_site_image.SITE_TYPE="유적지";
-
+select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_TYPE="유적지"
 ]]>
 </select>
 
@@ -321,27 +318,42 @@ where historic_site.bno=historic_site_image.BNO and historic_site.bno=#{bno} and
 	select
 		*
 	from
-		tbl_board,tbl_attach
-	where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and address1 like '%경기%' order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE,HISTORIC_SITE_IMAGE
+	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경기도%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+	
 ]]>
 </select>
 
 <select id="kyunggicount" resultType="int">
-select count(*) from tbl_board where address1 like '%경기%'
-</select>
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE,HISTORIC_SITE_IMAGE
+	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경기도%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+	
+]]></select>
 
 <select id="kangwonlist" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
 	select
 		*
 	from
-		tbl_board,tbl_attach
-	where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and address1 like '%강원%' order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE,HISTORIC_SITE_IMAGE
+	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%강원도%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+	
 ]]>
 </select>
 
 <select id="kangwoncount" resultType="int">
-select count(*) from tbl_board where address1 like '%강원%'
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE,HISTORIC_SITE_IMAGE
+	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%강원도%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+	
+]]>
 </select>
 
 <select id="chungchunglist" resultType="com.bit.domain.Historic_siteVO">
@@ -372,7 +384,7 @@ select count(*) from tbl_board where address1 like '%강원%'
 		*
 	from
 		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경상%' or HISTORIC_SITE.ADDRESS like '%대구%' or HISTORIC_SITE.ADDRESS like '%부산%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경상%' or HISTORIC_SITE.ADDRESS like '%대구%' or HISTORIC_SITE.ADDRESS like '%부산%' or HISTORIC_SITE.ADDRESS like '%울산%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -383,7 +395,7 @@ select count(*) from tbl_board where address1 like '%강원%'
 		count(*)
 	from
 		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경상%' or HISTORIC_SITE.ADDRESS like '%대구%' or HISTORIC_SITE.ADDRESS like '%부산%')  and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경상%' or HISTORIC_SITE.ADDRESS like '%대구%' or HISTORIC_SITE.ADDRESS like '%부산%' or HISTORIC_SITE.ADDRESS like '%울산%')   and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
 	
 ]]>
 </select>
@@ -431,4 +443,34 @@ select count(*) from tbl_board where address1 like '%강원%'
 ]]>
 </select>
 
+
+<!-- 음식 -->
+
+<select id="foodlist" resultType="com.bit.domain.Nearby_attractionVO">
+<![CDATA[
+select * from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="음식" and first_image!="" limit #{Criteria.pageStart},#{Criteria.perPageNum}
+]]>
+
+</select>
+
+<select id="foodcount" resultType="int">
+<![CDATA[
+select count(*) from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="음식" and first_image!="" 
+]]>
+
+</select>
+<!-- 숙소 -->
+
+<select id="read_attraction" resultType="com.bit.domain.Nearby_attractionVO">
+<![CDATA[
+select * from nearby_attraction where bno=#{bno} and rno=#{rno}
+]]>
+</select>
+
+<select id="attraction_image" resultType="com.bit.domain.Nearby_attractionVO">
+<![CDATA[
+select * from historic_site_image,nearby_attraction where fullname like concat('%',nearby_attraction.attraction_name,'%') and historic_site_image.bno=#{bno} and nearby_attraction.rno=#{rno};
+
+]]>
+</select>
 </mapper>

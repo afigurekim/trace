@@ -11,6 +11,7 @@ import com.bit.domain.BoardVO;
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
 import com.bit.domain.Historic_site_detailVO;
+import com.bit.domain.Nearby_attractionVO;
 import com.bit.persistence.BoardDAO;
 
 @Service
@@ -356,19 +357,53 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 
-
-	
-	
-
-
-	
-	
-
+	//음식점
+	@Override
+	public List<Nearby_attractionVO> foodlist(Criteria cri,int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.foodlist(cri,bno);
+	}
 
 
 
+	@Override
+	public int foodcount(Integer bno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.foodcount(bno);
+	}
+
+	//숙박
+
+	@Override
+	public List<Nearby_attractionVO> roomlist(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.roomlist(cri);
+	}
 
 
-	
+
+	@Override
+	public int roomcount() throws Exception {
+		// TODO Auto-generated method stub
+		return dao.roomcount();
+	}
+
+
+
+	@Override
+	public Nearby_attractionVO read_attraction(int bno, int rno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.read_attraction(bno,rno);
+	}
+
+
+
+	@Override
+	public List<Nearby_attractionVO> attraction_image(int bno, int rno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.attraction_image(bno,rno);
+	}
+
+
 
 }

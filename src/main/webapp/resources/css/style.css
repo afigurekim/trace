@@ -63,9 +63,10 @@ body{
 	text-align:center;
 }
 #menu2>ul>li{
+		margin-left:92.7px;
+	
 	margin-top:15px;
 	display:inline-block;
-	width:200px;
 }
 #menu2>ul>li>a{
 	color:black;

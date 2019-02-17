@@ -375,17 +375,17 @@ public class BoardServiceImpl implements BoardService {
 	//숙박
 
 	@Override
-	public List<Nearby_attractionVO> roomlist(Criteria cri) throws Exception {
+	public List<Nearby_attractionVO> roomlist(Criteria cri,int bno) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.roomlist(cri);
+		return dao.roomlist(cri,bno);
 	}
 
 
 
 	@Override
-	public int roomcount() throws Exception {
+	public int roomcount(Integer bno) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.roomcount();
+		return dao.roomcount(bno);
 	}
 
 

@@ -19,6 +19,8 @@
 <style>
 body{
     font-family: 'Noto Sans Kr','Nanum Gothic','Malgun gothic',Dotum,arial,sans-serif;
+}ul{
+margin-bottom:-5px;
 }
 #inner1{
 	padding-top:6px;
@@ -95,6 +97,39 @@ padding: 31px 10px 31px 2px;
 	text-align:justify;
 	font-size:15px;
 	line-height:30px;
+	
+}
+.pagination2{
+    padding-left: 0;
+    border-radius: 4px;
+   list-style-type: none;
+    
+}
+.pagination2>li:first-child>a{
+	margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    
+}
+.pagination2>li>a{
+	position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top:-30px;
+    margin-bottom:30px;
+}
+.pagination2>.active>a{
+	z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
 }
 
 .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
@@ -204,14 +239,14 @@ $(function(){
 
 $(function(){
 
-getPageList(1);
-	
-function getPageList(foodpage){
+getfoodList(1);
+getroomList(1);	
+function getfoodList(foodpage){
 	
 	var bno=${read.bno};
 	$.getJSON("/food/"+${read.bno}+"/"+foodpage,function(data){
 		console.log(data.list.length);
-		
+
 		var str="";
 	/*	$(data).each(function(i,e){
 			alert(i);
@@ -224,26 +259,52 @@ str+="<li><div class='listimg'><a href='/region/attraction_read?bno="+bno+"&rno=
 
 		}
 		$(".listman").html(str);
-		printPaging(data.pageMaker);
+		if(data.list.length>=1){
+			printPaging(data.pageMaker);
+		}
 		
 	});
 
-
 	
-	$(".pagination").on("click","li a",function(event){
+	$("#food").on("click","li a",function(event){
 		event.preventDefault();
 		foodpage=$(this).attr("href");
-		getPageList(foodpage);
+		getfoodList(foodpage);
 		
 	});
 	
 }
+function getroomList(roompage){
+	var bno=${read.bno};
+	$.getJSON("/room/"+${read.bno}+"/"+roompage,function(data){
+		console.log(data.list.length);
+		var str="";
 
+		for(var i=0;i<data.list.length;i++){
+			str+="<li><div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+
+		}
+		$(".listman2").html(str);
+		if(data.list.length>=1){
+			printPaging2(data.pageMaker);
+		}
+		
+	});
+
+
+	$("#room").on("click","li a",function(event){
+		event.preventDefault();
+		roompage=$(this).attr("href");
+		getroomList(roompage);
+		
+	});
+	
+	
+}
 
 
 function printPaging(pageMaker){
 	var str="";
-	
 	if(pageMaker.prev){
 		str += "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
 	}
@@ -256,7 +317,26 @@ function printPaging(pageMaker){
 	if(pageMaker.next){
 		str+= "<li><a href='"+(pageMaker.endPage+1)+"'> >> </a></li>";
 	}
-	$('.pagination').html(str);
+	$('#food').html(str);
+
+}
+
+function printPaging2(pageMaker){
+	var str="";
+	if(pageMaker.prev){
+		str += "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
+	}
+	
+	for(var i=pageMaker.startPage, len =pageMaker.endPage; i<=len;i++){
+		var strClass=pageMaker.cri.page == i?'class=active':'';
+		str += "<li "+strClass+"><a href='"+i+"'>"+i+"</a></li>";
+	}
+	
+	if(pageMaker.next){
+		str+= "<li><a href='"+(pageMaker.endPage+1)+"'> >> </a></li>";
+	}
+	$('#room').html(str);
+
 }
 
 });
@@ -401,23 +481,34 @@ function printPaging(pageMaker){
 	 </div>
                 
          <div style="border-bottom: 1px solid #535a75; margin-top:30px;"></div>
-         	<div>
+         	<div style="margin-top:30px">
          		<a href="#"><img src="../resources/imgs/문화재청.png"></a>
          		<a href="#"><img src="../resources/imgs/길찾기.png"></a>
          	</div>
-		
+		   <div style="border-bottom: 1px solid #535a75; margin-top:30px;"></div>
 	<div class="glist" style="margin-top:20px;">
+	<p>주변 음식점</p>
 		<ul class="listman">
 
-	</ul>
+		</ul>
 	
 		
 	</div>
-	<ul class="pagination" style="margin-top:-20px">
+	<ul class="pagination2" id="food" style="margin-top:-20px">
 		
 		</ul>
-		
+	<div class="glist" style="margin-top:20px;">
+		<p>주변 숙소</p>
+		<ul class="listman2">
+
+		</ul>
 	
+		
+	</div>		
+		
+	<ul class="pagination2" id="room" style="margin-top:-20px">
+		
+		</ul>
 
 	</div>
 </div>

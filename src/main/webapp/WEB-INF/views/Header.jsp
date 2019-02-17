@@ -62,6 +62,9 @@ $(function(){
 		 <div id="inner1">
 		
 			 <div id="menu" class="jh">
+				 <img src="../resources/imgs/한국어.png" style="width:50px;height:50px;float:right; margin-top:-15px;">
+				 <img src="../resources/imgs/영어.png" style="width:50px;height:50px;float:right; margin-top:-15px;">
+				 <img src="../resources/imgs/중국어.png" style="width:50px;height:50px;float:right;margin-top:-15px;">
 				 <ul>
 				 	<li><a href="/join">회원가입</a></li>
 					<li><a href="/login">로그인</a></li>

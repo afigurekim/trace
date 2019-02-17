@@ -7,9 +7,15 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <link rel="stylesheet" type="text/css" href="../../resources/css/join.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
 <style>
 #join_content{
 margin-top:-250px;
+}
+#inner1{
+padding-top:4px;
+padding-bottom:4px;
 }
 </style>
 </head>

@@ -272,8 +272,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		*
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and HISTORIC_SITE.ADDRESS like '%서울%' and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and address like '%서울%' limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -283,8 +283,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		count(*)
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and HISTORIC_SITE.ADDRESS like '%서울%' and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and address like '%서울%'
 	
 ]]>
 </select>
@@ -295,8 +295,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		*
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and HISTORIC_SITE.ADDRESS like '%인천%' and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and address like '%인천%' limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -306,8 +306,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		count(*)
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and HISTORIC_SITE.ADDRESS like '%인천%' and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and address like '%인천%'
 	
 ]]>
 </select>
@@ -318,8 +318,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		*
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경기도%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and address like '%경기도%' limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -329,18 +329,19 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		count(*)
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경기도%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and address like '%경기도%' 
 	
-]]></select>
+]]>
+</select>
 
 <select id="kangwonlist" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
 	select
 		*
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%강원도%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and address like '%강원도%' limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -350,8 +351,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		count(*)
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%강원도%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and address like '%강원도%' 
 	
 ]]>
 </select>
@@ -361,8 +362,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		*
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%대전%' or HISTORIC_SITE.ADDRESS like '%충청%' or HISTORIC_SITE.ADDRESS like '%세종시%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and (address like '%대전%' or address like '%충청%' or address like '%세종시%') limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -372,8 +373,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		count(*)
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%대전%' or HISTORIC_SITE.ADDRESS like '%충청%' or HISTORIC_SITE.ADDRESS like '%세종시%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and (address like '%대전%' or address like '%충청%' or address like '%세종시%')
 	
 ]]>
 </select>
@@ -383,8 +384,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		*
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경상%' or HISTORIC_SITE.ADDRESS like '%대구%' or HISTORIC_SITE.ADDRESS like '%부산%' or HISTORIC_SITE.ADDRESS like '%울산%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and (address like '%경상%' or address like '%대구%' or address like '%울산%' or address like '%부산%') limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -394,8 +395,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		count(*)
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%경상%' or HISTORIC_SITE.ADDRESS like '%대구%' or HISTORIC_SITE.ADDRESS like '%부산%' or HISTORIC_SITE.ADDRESS like '%울산%')   and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and (address like '%경상%' or address like '%대구%' or address like '%울산%' or address like '%부산%')
 	
 ]]>
 </select>
@@ -405,8 +406,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		*
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%전라%' or HISTORIC_SITE.ADDRESS like '%광주%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and (address like '%전라%' or address like '%광주%') limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -416,8 +417,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		count(*)
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and (HISTORIC_SITE.ADDRESS like '%전라%' or HISTORIC_SITE.ADDRESS like '%광주%') and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and (address like '%전라%' or address like '%광주%') 
 	
 ]]>
 </select>
@@ -426,8 +427,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		*
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and HISTORIC_SITE.ADDRESS like '%제주%' and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and (address like '%제주%') limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -437,8 +438,8 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	select
 		count(*)
 	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and HISTORIC_SITE.ADDRESS like '%제주%' and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME)
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and (address like '%제주%')
 	
 ]]>
 </select>
@@ -450,14 +451,24 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 <![CDATA[
 select * from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="음식" and first_image!="" limit #{Criteria.pageStart},#{Criteria.perPageNum}
 ]]>
-
 </select>
 
 <select id="foodcount" resultType="int">
 <![CDATA[
 select count(*) from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="음식" and first_image!="" 
 ]]>
+</select>
 
+<select id="roomlist" resultType="com.bit.domain.Nearby_attractionVO">
+<![CDATA[
+select * from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="숙박" and first_image!="" limit #{Criteria.pageStart},#{Criteria.perPageNum}
+]]>
+</select>
+
+<select id="roomcount" resultType="int">
+<![CDATA[
+select count(*) from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="숙박" and first_image!="" 
+]]>
 </select>
 <!-- 숙소 -->
 

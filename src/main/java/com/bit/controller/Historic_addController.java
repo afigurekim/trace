@@ -28,7 +28,7 @@ public class Historic_addController {
 	
 	@RequestMapping("/historic/{sido}/{pagenum}/{national}/{start}")
 	@Transactional
-	public void historic(@PathVariable int sido,@PathVariable int pagenum,@PathVariable String national,@PathVariable String start) throws Exception{
+	public void historic(@PathVariable int sido,@PathVariable int pagenum,@PathVariable String national,@PathVariable int start) throws Exception{
 		
 		
 		String history_name;
@@ -42,7 +42,7 @@ public class Historic_addController {
 
     	int index;
     	int index2;
-        StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/"+national+"Service/areaBasedList?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo="+pagenum); /*URL*/
+        StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/"+national+"Service/areaBasedList?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo="+pagenum); /*URL*/
         URL url = new URL(urlBuilder.toString());
         
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -58,7 +58,13 @@ public class Historic_addController {
         } else {
             rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
         }
-        
+        List<Historic_siteVO> list= dao.history_list();
+ 	   List<Nearby_attractionVO> list4=dao.food_list();
+ 	   List<Nearby_attractionVO> list5=dao.room_list();
+
+ 	   int vocount2=list4.size();
+ 	   int vocount3=list5.size();
+        vocount=list.size();
       
         StringBuilder sb = new StringBuilder();
         String line;
@@ -124,9 +130,10 @@ public class Historic_addController {
 	    	        vo.setLatitude(latitude);
 	    	        vo.setLongitude(longitude);
 	    	        vo.setAddress(address);
-	    	        List<Historic_siteVO> list= dao.history_list();
-	    	        vocount=list.size();
-	    	        dao.history(vo);
+	    	       
+	    	        if(firstimage!="") {
+	    	        	dao.history(vo);
+	    	        }
 	    	        
 	    			
 			} catch (Exception e1) {
@@ -138,7 +145,7 @@ public class Historic_addController {
         System.out.println(vocount+"vo카운트에염");
        List<Historic_siteVO> list2= dao.history_list();
        System.out.println(start);
-       if(start=="start") {
+       if(start==1) {
 	      for(int i=0;i<list2.size();i++) {
 	    	   System.out.println("여기는 history detail  데이터 작업중");
 	    	   System.out.println(list2.get(i).getBno());
@@ -171,24 +178,69 @@ public class Historic_addController {
 	
 	       }
        }
-	   System.out.println("여기는 history detail  데이터 작업끝");
-	 /* for(int i=0;i<list.size();i++) {
-		   food_list(list.get(i).getLatitude(),list.get(i).getLongitude(),list.get(i).getBno());
+	   if(start==1) {
+		   for(int i=0;i<list2.size();i++) {
+			   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
+		   }
+	   }else {
+		   for(int i=vocount+1;i<list2.size();i++) {
+			   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
+		   }
+	   }
+       
+	     if(start==1){
+	     	for(int i=0;i<list2.size();i++) {
+    	   		room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
+       		}
+       	}else{
+	       	 for(int i=vocount+1;i<list2.size();i++) {
+				   room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
+			   }
+       	}
+      
+	   if(start==1) {
+		   for(int i=0;i<list2.size();i++) {
+			   
+			   history_image(list2.get(i).getBno(),list2.get(i).getContent_id(),list2.get(i).getContent_typeid());
+		   }
+	   }else {
+		   for(int i=vocount+1;i<list2.size();i++) {
+			   history_image(list2.get(i).getBno(),list2.get(i).getContent_id(),list2.get(i).getContent_typeid());
+		   }
 	   }
 	   
-	   for(int i=0;i<list.size();i++) {
-		   history_image(list.get(i).getBno(),list.get(i).getContent_id(),list.get(i).getContent_typeid());
+	   List<Nearby_attractionVO> list3=dao.food_list();
+	   if(start==1){
+		   for(int i=0;i<list3.size();i++) {
+			   food_image(list3.get(i).getContent_id(),list3.get(i).getBno(),list3.get(i).getAttraction_name());
+		   }
+	   }else{
+	   		 for(int i=vocount2+1;i<list3.size();i++) {
+			   food_image(list3.get(i).getContent_id(),list3.get(i).getBno(),list3.get(i).getAttraction_name());
+		   }
 	   }
-	   	
-	   List<Nearby_attractionVO> list2=dao.food_list();
-	   for(int i=0;i<list2.size();i++) {
-		   food_image(list2.get(i).getContent_id(),list2.get(i).getBno(),list2.get(i).getAttraction_name());
-	   }
-		*/
 	   
-     /*  for(int i=0;i<list.size();i++) {
-    	   room_list(list.get(i).getLatitude(),list.get(i).getLongitude(),list.get(i).getBno());
-       }*/
+	   List<Nearby_attractionVO> list6=dao.room_list();
+
+	   if(start==1){
+		   System.out.println("룸이미지 왜안되닝;;");
+	      for(int i=0;i<list6.size();i++) {
+	    	  System.out.println("룸이미지 작업들어간다");
+	    	  room_image(list6.get(i).getContent_id(),list6.get(i).getBno(),list6.get(i).getAttraction_name());
+	      }
+	   }else{
+		  
+	    	  System.out.println("룸이미지 작업들어간다");
+
+	   	  for(int i=vocount3+1;i<list6.size();i++) {
+	    	  room_image(list6.get(i).getContent_id(),list6.get(i).getBno(),list6.get(i).getAttraction_name());
+	      }
+	   }
+		
+	  
+
+    
+    
        
 	}
 	String detail;
@@ -224,8 +276,8 @@ public class Historic_addController {
       
         System.out.println("--------------------------------------공통정보---------------------------------------디테일");
         
-        StringBuilder urlBuilder2= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId="+contenttypeid+"&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y");
-        StringBuilder urlBuilder4= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId="+contenttypeid+"&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&listYN=Y");
+        StringBuilder urlBuilder2= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId="+contenttypeid+"&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y");
+        StringBuilder urlBuilder4= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId="+contenttypeid+"&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&listYN=Y");
        
         URL url2= new URL(urlBuilder2.toString());
         URL url4= new URL(urlBuilder4.toString());
@@ -350,7 +402,7 @@ public class Historic_addController {
 	
 	
 	public void history_image(Integer bno,String contentid,String contenttypeid) throws Exception {
-		StringBuilder urlBuilder3= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId="+contenttypeid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId="+contentid+"&imageYN=Y");
+		StringBuilder urlBuilder3= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId="+contenttypeid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId="+contentid+"&imageYN=Y");
 
 	       URL url3= new URL(urlBuilder3.toString());
 	       
@@ -387,7 +439,9 @@ public class Historic_addController {
 	            im.setImage_num(j);
 	            im.setBno(bno);
 	            im.setSite_type("유적지");          
-	            dao.history_image(im);
+	            if(img[j]!="") {
+	            	dao.history_image(im);
+	            }
 	        }
 	        
 	        
@@ -396,7 +450,7 @@ public class Historic_addController {
 	}
 	
 	public void food_detail(String contentid,Nearby_attractionVO vo,Integer bno)throws Exception{
-		StringBuilder urlBuilder6= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId=39&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y\n");
+		StringBuilder urlBuilder6= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId=39&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y\n");
 
         URL url6= new URL(urlBuilder6.toString());
         BufferedReader rd6;
@@ -462,7 +516,9 @@ public class Historic_addController {
         System.out.println(vo.getAttraction_detail());
         System.out.println(vo.getTel());
         System.out.println(vo.getHomepage());
-        dao.food(vo);
+        if(firstimage!="") {
+        	dao.food(vo);
+        }
         
         List<Nearby_attractionVO> list=dao.food_list();
       
@@ -484,7 +540,7 @@ public class Historic_addController {
         
 	}
 	public void food_image(String contentid,Integer bno,String name)throws Exception{
-		 StringBuilder urlBuilder8= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId=39&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId="+contentid+"&imageYN=N\n");
+		 StringBuilder urlBuilder8= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId=39&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId="+contentid+"&imageYN=N\n");
 	        URL url8= new URL(urlBuilder8.toString());
 	        BufferedReader rd8;
 
@@ -515,7 +571,10 @@ public class Historic_addController {
 			        im.setFullname(name+foodimage);
 			        im.setImage_num(k);
 			        im.setSite_type("음식");
-			        dao.history_image(im);
+			        if(foodimage!="") {
+			        	dao.history_image(im);	
+			        }
+			        
 		        }
 	        }
 	}
@@ -524,7 +583,7 @@ public class Historic_addController {
     	
 		String contentid="";
         System.out.println("-------------------------------------------------------------------------------음식점");
-        StringBuilder urlBuilder5= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId=39&mapX="+latitude+"&mapY="+longitude+"&radius=3000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1\n");
+        StringBuilder urlBuilder5= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId=39&mapX="+latitude+"&mapY="+longitude+"&radius=3000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1\n");
         URL url5= new URL(urlBuilder5.toString());
         BufferedReader rd5;
 
@@ -576,7 +635,7 @@ public class Historic_addController {
        }
 	@Transactional
     public void room_list(String latitude,String longitude,Integer bno) throws Exception{
-    	StringBuilder urlBuilder9= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId=32&mapX="+latitude+"&mapY="+longitude+"&radius=3000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo=1");
+    	StringBuilder urlBuilder9= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId=32&mapX="+latitude+"&mapY="+longitude+"&radius=3000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1");
         URL url9= new URL(urlBuilder9.toString());
         BufferedReader rd9;
 
@@ -643,11 +702,12 @@ public class Historic_addController {
            conn9.disconnect();
     	}
 	}
-    public void room_image() throws Exception{
-    	/*StringBuilder urlBuilder8= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId=32&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId="+contenntid+"&imageYN=Y");
+    public void room_image(String contentid,int bno,String name) throws Exception{
+    	StringBuilder urlBuilder8= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailImage?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId=32&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&contentId="+contentid+"&imageYN=Y");
         URL url8= new URL(urlBuilder8.toString());
         BufferedReader rd8;
 
+        System.out.println("룸이미지 작업중..............................................");
         HttpURLConnection conn8 = (HttpURLConnection) url8.openConnection();
         
         if(conn8.getResponseCode() >= 200 && conn8.getResponseCode() <= 300) {
@@ -662,28 +722,107 @@ public class Historic_addController {
         	sb8.append(line8);
         }
         
-       
+
         
         if(sb8.toString().indexOf("<originimgurl>")!=-1) {
 	        String arr6[]=sb8.toString().split("<originimgurl>");
 	        for(int k=1;k<arr6.length;k++) {
 		        index=arr6[k].indexOf("</originimgurl>");
-		        String foodimage=arr6[k].substring(0, index);
-		        System.out.println(foodimage);
+		        String roomimage=arr6[k].substring(0, index);
+		        System.out.println(roomimage);
 		        Historic_site_imageVO im=new Historic_site_imageVO();
 		        im.setBno(bno);
-		        im.setFullname(name+foodimage);
+		        im.setFullname(name+roomimage);
 		        im.setImage_num(k);
-		        im.setSite_type("음식");
-		        dao.history_image(im);
+		        im.setSite_type("숙박");
+		        System.out.println(bno);
+		        System.out.println(name+roomimage);
+		        System.out.println(k);
+		        System.out.println("숙박");
+		        if(roomimage!="") {
+		        	dao.history_image(im);
+		        }
+	        }
+        }else {
+        
+        
+	        StringBuilder urlBuilder9= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailInfo?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId=32&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&listYN=Y");
+	        URL url9= new URL(urlBuilder9.toString());
+	        BufferedReader rd9;
+	
+	        HttpURLConnection conn9 = (HttpURLConnection) url9.openConnection();
+	        
+	        if(conn9.getResponseCode() >= 200 && conn9.getResponseCode() <= 300) {
+	            rd9 = new BufferedReader(new InputStreamReader(conn9.getInputStream()));
+	        } else {
+	            rd9= new BufferedReader(new InputStreamReader(conn9.getErrorStream()));
+	        }
+	        
+	        StringBuilder sb9= new StringBuilder();
+	        String line9;
+	        while((line9=rd9.readLine())!=null) {
+	        	sb9.append(line9);
+	        }
+	        String arr7[]=sb9.toString().split("<item>");
+	        for(int i=1;i<arr7.length;i++) {
+		        Historic_site_imageVO im=new Historic_site_imageVO();
+
+	        	if(arr7[i].indexOf("<roomimg1>")!=-1) {
+	        		index=arr7[i].indexOf("<roomimg1>");
+	        		index2=arr7[i].indexOf("</roomimg1>");
+	        		String roomimage=arr7[i].substring(index+10,index2);
+	        		im.setBno(bno);
+	        		im.setFullname(name+roomimage);
+	        		im.setImage_num(i);
+	        		im.setSite_type("숙박");
+	        		 System.out.println(bno);
+	  		        System.out.println(name+roomimage);
+	  		        System.out.println(i);
+	  		        System.out.println("숙박");
+			        if(roomimage!="") {
+			        	dao.history_image(im);
+			        }
+
+	        	}else if(arr7[i].indexOf("<roomimg2>")!=-1) {
+	        		index=arr7[i].indexOf("<roomimg2>");
+	        		index2=arr7[i].indexOf("</roomimg2>");
+	        		String roomimage=arr7[i].substring(index+10,index2);
+	        		im.setBno(bno);
+	        		im.setFullname(name+roomimage);
+	        		im.setImage_num(i);
+	        		im.setSite_type("숙박");
+	        		
+	        		System.out.println(bno);
+	  		        System.out.println(name+roomimage);
+	  		        System.out.println(i);
+	  		        System.out.println("숙박");
+		  		      if(roomimage!="") {
+				        	dao.history_image(im);
+				        }
+	        	}else if(arr7[i].indexOf("<roomimg3>")!=-1) {
+	        		index=arr7[i].indexOf("<roomimg3>");
+	        		index2=arr7[i].indexOf("</roomimg3>");
+	        		String roomimage=arr7[i].substring(index+10,index2);
+	        		im.setBno(bno);
+	        		im.setFullname(name+roomimage);
+	        		im.setImage_num(i);
+	        		im.setSite_type("숙박");
+	        		  System.out.println(bno);
+	  		        System.out.println(name+roomimage);
+	  		        System.out.println(i);
+	  		        System.out.println("숙박");
+		  		      if(roomimage!="") {
+				        	dao.history_image(im);
+				        }
+	        	}
 	        }
         }
-            */
-    	}
+            
+   }
     public void room_detail(String contentid,Nearby_attractionVO vo)throws Exception{
      
 
-    	StringBuilder urlBuilder11= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D&contentTypeId=32&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y");
+    	StringBuilder urlBuilder11= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey=nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D&contentTypeId=32&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y");
         URL url11= new URL(urlBuilder11.toString());
         BufferedReader rd11;
 
@@ -729,6 +868,7 @@ public class Historic_addController {
             vo.setAttraction_detail(overview);
             vo.setTel(tel);
             vo.setHomepage(homepage);
+            System.out.println(vo.getFirst_image());
             System.out.println(vo.getAttraction_name());
             System.out.println(vo.getAttraction_type());
             System.out.println(vo.getBno());
@@ -738,12 +878,14 @@ public class Historic_addController {
             System.out.println(vo.getAttraction_detail());
             System.out.println(vo.getTel());
             System.out.println(vo.getHomepage());
-            dao.food(vo);
+            if(vo.getFirst_image()!="") {
+            	dao.food(vo);
+            }
             
             List<Nearby_attractionVO> list=dao.food_list();
           
             for(int j=0;j<list.size();j++) {
-            	System.out.println("여기는 음식점 데이터 작업중입니다");
+            	System.out.println("여기는 숙소 데이터 작업중입니다");
             	System.out.println(list.get(j).getBno());
             	System.out.println(list.get(j).getContent_id());
             	System.out.println(list.get(j).getAttraction_type());

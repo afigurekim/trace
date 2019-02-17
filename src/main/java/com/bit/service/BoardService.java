@@ -140,9 +140,9 @@ public interface BoardService {
 	
 	//숙박
 		
-	public List<Nearby_attractionVO> roomlist(Criteria cri)throws Exception;
+	public List<Nearby_attractionVO> roomlist(Criteria cri,int bno)throws Exception;
 	
-	public int roomcount() throws Exception;
+	public int roomcount(Integer bno) throws Exception;
 	
 	public Nearby_attractionVO read_attraction(int bno,int rno) throws Exception;
 	

@@ -56,6 +56,12 @@ public class Historic_siteDAOImpl implements Historic_siteDAO {
 		return sqlSession.selectList(namespace+".food_list");
 	}
 
+	@Override
+	public List<Nearby_attractionVO> room_list() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".room_list");
+	}
+
 	
 	
 }

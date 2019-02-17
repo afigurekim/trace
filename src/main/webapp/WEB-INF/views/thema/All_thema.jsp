@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../../resources/css/list.css" /></head>
   <script type="text/javascript" src="/resources/js/upload.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -17,7 +18,15 @@
 #jh{font-family: 'Jeju Hallasan', cursive;}
 #footer2{
 margin-top:30px;}
-
+#inner1{
+padding-top:4px;
+padding-bottom:4px;
+margin-left:-8px;
+}
+#inner2{
+width:120%;
+margin-left:-8px;
+}
 </style>
 <script type="text/javascript">
 $(function(){

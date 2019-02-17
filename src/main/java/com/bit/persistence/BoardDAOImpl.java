@@ -414,16 +414,19 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	@Override
-	public List<Nearby_attractionVO> roomlist(Criteria cri) throws Exception {
+	public List<Nearby_attractionVO> roomlist(Criteria cri,int bno) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList(namespace+".roomlist",cri);
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("Criteria", cri);
+		map.put("bno", bno);
+		return sqlSession.selectList(namespace+".roomlist",map);
 	}
 
 
 	@Override
-	public int roomcount() throws Exception {
+	public int roomcount(Integer bno) throws Exception {
 		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace+".roomcount");
+		return sqlSession.selectOne(namespace+".roomcount",bno);
 	}
 
 

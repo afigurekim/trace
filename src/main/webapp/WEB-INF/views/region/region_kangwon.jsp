@@ -78,20 +78,18 @@ $(function(){
 	
 	<div class="glist">
 		<ul class="listman">
-		<c:forEach items="${list}" var="boardVO" varStatus="status">
+		<c:forEach items="${list}" var="Historic_siteVO" varStatus="status">
 		<li>
 			<div class="listimg">
-				<a href="/region/read?bno=${boardVO.bno}">
-				<img src="/displayFile?fileName=${boardVO.fullName}">
+				<a href="/region/read?bno=${Historic_siteVO.bno}">
+				<img src="${Historic_siteVO.first_image}">
 				
             	</a>		
 			</div>
 			<div class="additem">
-				<p class="gname">${boardVO.history_name}</p>			
-				<p class="gname_pre" style="text-overflow:elipsis;">${boardVO.address1}</p>
-				<p class="account">
-				★ ${boardVO.star}				
-            	</p>
+				<p class="gname">${Historic_siteVO.site_name}</p>			
+				<p class="gname_pre" style="text-overflow:elipsis;">${Historic_siteVO.address}</p>
+				
 			</div>
 		</li>
 		</c:forEach>
@@ -105,18 +103,18 @@ $(function(){
 	<div class="text-center">
 		<ul class="pagination">
 			<c:if test="${pageMaker.prev}">
-				<li><a href="/region/incheon?page=${pageMaker.startPage-1}">&laquo;</a></li>
+				<li><a href="/region/kangwon?page=${pageMaker.startPage-1}">&laquo;</a></li>
 			</c:if>
 			
 			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 				<li 
 					<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
-				<a href="/region/incheon?page=${idx}">${idx}</a>
+				<a href="/region/kangwon?page=${idx}">${idx}</a>
 				</li>
 			</c:forEach>
 			
 			<c:if test="${pageMaker.next && pageMaker.endPage>0 }">
-				<li><a href="/region/incheon?page=${pageMaker.endPage +1}">&raquo;</a></li>
+				<li><a href="/region/kangwon?page=${pageMaker.endPage +1}">&raquo;</a></li>
 			</c:if>
 			
 		</ul>

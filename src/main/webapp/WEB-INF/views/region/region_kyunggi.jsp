@@ -78,20 +78,18 @@ $(function(){
 	
 	<div class="glist">
 		<ul class="listman">
-		<c:forEach items="${list}" var="boardVO" varStatus="status">
+		<c:forEach items="${list}" var="Historic_siteVO" varStatus="status">
 		<li>
 			<div class="listimg">
-				<a href="/region/read?bno=${boardVO.bno}">
-				<img src="/displayFile?fileName=${boardVO.fullName}">
+				<a href="/region/read?bno=${Historic_siteVO.bno}">
+				<img src="${Historic_siteVO.first_image}">
 				
             	</a>		
 			</div>
 			<div class="additem">
-				<p class="gname">${boardVO.history_name}</p>			
-				<p class="gname_pre" style="text-overflow:elipsis;">${boardVO.address1}</p>
-				<p class="account">
-				★ ${boardVO.star}				
-            	</p>
+				<p class="gname">${Historic_siteVO.site_name}</p>			
+				<p class="gname_pre" style="text-overflow:elipsis;">${Historic_siteVO.address}</p>
+			
 			</div>
 		</li>
 		</c:forEach>

@@ -10,11 +10,11 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
   <script type="text/javascript" src="/resources/js/upload.js"></script>
+<link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
 <link rel="stylesheet" type="text/css" href="../../resources/css/weather-icons.css">
 
 
@@ -58,7 +58,9 @@ font-family:'Nanum Gothic';}
 padding-top:4px;
 padding-bottom:4px;
 }
-
+#menu2>ul>li{
+margin-top:150px;
+}
 </style>
 <script type="text/javascript">
 

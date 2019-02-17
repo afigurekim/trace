@@ -82,7 +82,7 @@ $(function(){
 		<li>
 			<div class="listimg">
 				<a href="/region/read?bno=${Historic_siteVO.bno}">
-				<img src="${Historic_siteVO.fullname}">
+				<img src="${Historic_siteVO.first_image}">
 				
             	</a>		
 			</div>
@@ -103,18 +103,18 @@ $(function(){
 	<div class="text-center">
 		<ul class="pagination">
 			<c:if test="${pageMaker.prev}">
-				<li><a href="/region/incheon?page=${pageMaker.startPage-1}">&laquo;</a></li>
+				<li><a href="/region/kyungsang?page=${pageMaker.startPage-1}">&laquo;</a></li>
 			</c:if>
 			
 			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 				<li 
 					<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
-				<a href="/region/incheon?page=${idx}">${idx}</a>
+				<a href="/region/kyungsang?page=${idx}">${idx}</a>
 				</li>
 			</c:forEach>
 			
 			<c:if test="${pageMaker.next && pageMaker.endPage>0 }">
-				<li><a href="/region/incheon?page=${pageMaker.endPage +1}">&raquo;</a></li>
+				<li><a href="/region/kyungsang?page=${pageMaker.endPage +1}">&raquo;</a></li>
 			</c:if>
 			
 		</ul>

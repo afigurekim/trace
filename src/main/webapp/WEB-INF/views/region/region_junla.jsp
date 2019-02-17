@@ -82,7 +82,7 @@ $(function(){
 		<li>
 			<div class="listimg">
 				<a href="/region/read?bno=${Historic_siteVO.bno}">
-				<img src="${Historic_siteVO.fullname}">
+				<img src="${Historic_siteVO.first_image}">
 				
             	</a>		
 			</div>

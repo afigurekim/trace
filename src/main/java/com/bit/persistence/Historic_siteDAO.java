@@ -22,6 +22,8 @@ public interface Historic_siteDAO {
 	
 	public List<Nearby_attractionVO> food_list() throws Exception;
 	
+	public List<Nearby_attractionVO> room_list() throws Exception;
+
 }
 
 

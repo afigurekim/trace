@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../../resources/css/list.css" /></head>
   <script type="text/javascript" src="/resources/js/upload.js"></script>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -18,10 +19,16 @@
 
 #footer2{
 margin-top:30px;}
-
-.plc-list>li>a{
+#inner1{
+padding-top:4px;
+padding-bottom:4px;
+}
+#inner2{
+}
+.plc-list>li{
 width:85.4px;
 }
+
 </style>
 <script type="text/javascript">
 $(function(){
@@ -43,14 +50,14 @@ $(function(){
 <div id="wrap">
 	<div class="content">
 	
-	<div >
+		<div style="margin-bottom:30px;">
             <img src="../resources/imgs/mainregion.jpg">
             
       	</div>
       	<div class="pl-cate" id="jh">
 			
-			<ul class="plc-list" id="sub_category">
-				<li><a href="/region" id="allregion" style="margin-left: -40px;">전체보기</a></li>
+			<ul class="plc-list" id="sub_category" style="margin-top:15px;">
+				<li style="margin-left: -40px;"><a href="/region" id="allregion">전체보기</a></li>
 				<li><a href="/region/seoul" id="seoul">서울</a></li>
 				<li><a href="/region/incheon" id="incheon">인천</a></li>
 				<li><a href="/region/kyunggi" id='kyunggi'>경기도</a></li>
@@ -82,7 +89,7 @@ $(function(){
 		<li>
 			<div class="listimg">
 				<a href="/region/read?bno=${Historic_siteVO.bno}">
-				<img src="${Historic_siteVO.fullname}">
+				<img src="${Historic_siteVO.first_image}">
 				
             	</a>		
 			</div>

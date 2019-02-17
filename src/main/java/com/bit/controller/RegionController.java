@@ -1,5 +1,11 @@
 package com.bit.controller;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -33,8 +39,90 @@ public class RegionController {
 		try {
 			
 			
-			
-			model.addAttribute("list",service.regionlistAll(cri));
+			List<Historic_siteVO> list=service.regionlistAll(cri);
+
+				for(int i=0;i<list.size();i++) {
+				 	String clientId = "l39_4PYuXcUlZNncALoX";//애플리케이션 클라이언트 아이디값";
+			        String clientSecret = "G5LASR9tjF";//애플리케이션 클라이언트 시크릿값";
+			        try {
+			            String text = URLEncoder.encode(list.get(i).getSite_name(), "UTF-8");
+
+			            String apiURL = "https://openapi.naver.com/v1/papago/n2mt";
+			            URL url = new URL(apiURL);
+			            HttpURLConnection con = (HttpURLConnection)url.openConnection();
+			            con.setRequestMethod("POST");
+			            con.setRequestProperty("X-Naver-Client-Id", clientId);
+			            con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+			            // post request
+			            String postParams = "source=ko&target=en&text=" + text;
+
+
+			            con.setDoOutput(true);
+			            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+			            wr.writeBytes(postParams);
+			            wr.flush();
+			            wr.close();
+			            int responseCode = con.getResponseCode();
+			            BufferedReader br;
+			            if(responseCode==200) { // 정상 호출
+			                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			            } else {  // 에러 발생
+			                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
+			            }
+			            String inputLine;
+			            StringBuffer response = new StringBuffer();
+			            while ((inputLine = br.readLine()) != null) {
+			                response.append(inputLine);
+			            }
+			            br.close();
+			            
+			            
+			            System.out.println(response.toString());
+			            String a=response.substring(response.indexOf("translatedText")+16,response.length()-3);
+			            String b[]=a.split(",");
+			            
+			            list.get(i).setSite_name(b[0].substring(1,b[0].length()-1));
+			            
+			            
+			            String text2= URLEncoder.encode(list.get(i).getAddress(), "UTF-8");
+
+			            HttpURLConnection con2 = (HttpURLConnection)url.openConnection();
+			            con2.setRequestMethod("POST");
+			            con2.setRequestProperty("X-Naver-Client-Id", clientId);
+			            con2.setRequestProperty("X-Naver-Client-Secret", clientSecret);
+			            // post request
+			            String postParams2 = "source=ko&target=en&text=" + text2;
+
+
+			            con2.setDoOutput(true);
+			            DataOutputStream wr2 = new DataOutputStream(con2.getOutputStream());
+			            wr2.writeBytes(postParams2);
+			            wr2.flush();
+			            wr2.close();
+			            int responseCode2 = con2.getResponseCode();
+			            BufferedReader br2;
+			            if(responseCode2==200) { // 정상 호출
+			                br2 = new BufferedReader(new InputStreamReader(con2.getInputStream()));
+			            } else {  // 에러 발생
+			                br2 = new BufferedReader(new InputStreamReader(con2.getErrorStream()));
+			            }
+			            String inputLine2;
+			            StringBuffer response2 = new StringBuffer();
+			            while ((inputLine2 = br2.readLine()) != null) {
+			                response2.append(inputLine2);
+			            }
+			            System.out.println(response2.toString());
+			            br2.close();
+			            a=response2.substring(response2.indexOf("translatedText")+17,response2.length()-4);
+			    
+			            
+			            list.get(i).setAddress(a);
+			           
+			        } catch  (Exception e) {
+			            System.out.println(e);
+			        }
+				}
+		        model.addAttribute("list",list);
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
 			pageMaker.setTotalCount(service.regionAllcount());
@@ -75,7 +163,7 @@ public class RegionController {
 	
 	@ResponseBody
 	@RequestMapping(value="/food/{bno}/{page}")
-	public ResponseEntity<Map<String,Object>> detail(@PathVariable int bno,@PathVariable int page) throws Exception
+	public ResponseEntity<Map<String,Object>> food_list(@PathVariable int bno,@PathVariable int page) throws Exception
 	{
 		ResponseEntity<Map<String,Object>> entity= null;
 		try {
@@ -90,6 +178,35 @@ public class RegionController {
 			int foodCount = service.foodcount(bno);
 			pageMaker.setTotalCount(foodCount);
 			System.out.println(foodCount);
+			map.put("list", list);
+			map.put("pageMaker", pageMaker);
+			
+			//return service.foodlist(cri,bno);
+			
+			entity= new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	@ResponseBody
+	@RequestMapping(value="/room/{bno}/{page}")
+	public ResponseEntity<Map<String,Object>> room_list(@PathVariable int bno,@PathVariable int page) throws Exception
+	{
+		ResponseEntity<Map<String,Object>> entity= null;
+		try {
+			System.out.println("bno"+bno);
+			System.out.println("page"+page);
+			Criteria cri = new Criteria();
+			cri.setPage(page);
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			Map<String,Object> map = new HashMap<String,Object>();
+			List<Nearby_attractionVO> list = service.roomlist(cri, bno);
+			int roomCount = service.roomcount(bno);
+			pageMaker.setTotalCount(roomCount);
+			System.out.println(roomCount);
 			map.put("list", list);
 			map.put("pageMaker", pageMaker);
 			

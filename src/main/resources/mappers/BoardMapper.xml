@@ -449,7 +449,7 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 
 <select id="foodlist" resultType="com.bit.domain.Nearby_attractionVO">
 <![CDATA[
-select * from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="음식" and first_image!="" limit #{Criteria.pageStart},#{Criteria.perPageNum}
+select * from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="음식" and first_image!="" 
 ]]>
 </select>
 
@@ -461,7 +461,7 @@ select count(*) from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="음
 
 <select id="roomlist" resultType="com.bit.domain.Nearby_attractionVO">
 <![CDATA[
-select * from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="숙박" and first_image!="" limit #{Criteria.pageStart},#{Criteria.perPageNum}
+select * from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="숙박" and first_image!=""
 ]]>
 </select>
 

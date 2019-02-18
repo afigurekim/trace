@@ -11,10 +11,10 @@
 <link rel="stylesheet" type='text/css' href="../resources/css/list.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
-<script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ac75ebf7-25c5-474a-be2a-b845ccf8e3bb"></script>
   <script type="text/javascript" src="/resources/js/upload.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=85e0cc19a20ba6c0287ea1beb32633e7"></script>
 
 <style>
 body{
@@ -130,44 +130,28 @@ padding: 31px 10px 31px 2px;
     cursor: default;
     background-color: #337ab7;
     border-color: #337ab7;
+    
 }
+#mapwrap{position:relative;overflow:hidden;}
+.category, .category *{margin:0;padding:0;color:#000;}   
+.category {position:absolute;overflow:hidden;top:10px;left:10px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
+.category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
+.category li{list-style:none;float:left;width:50px;height:50px;padding-top:5px;cursor:pointer;} 
+.category .ico_coffee {background-position:-10px 0;}  
+.category .ico_store {background-position:-10px -36px;}   
+.category .ico_carpark {background-position:-10px -72px;} 
 
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
-.bg_white {background:#fff;}
-#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
-#menu_wrap .option{text-align: center;}
-#menu_wrap .option p {margin:10px 0;}  
-#menu_wrap .option button {margin-left:5px;}
-#placesList li {list-style: none;}
-#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
-#placesList .item span {display: block;margin-top:4px;}
-#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-#placesList .item .info{padding:10px 0 10px 55px;}
-#placesList .info .gray {color:#8a8a8a;}
-#placesList .info .jibun {padding-left:26px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
-#placesList .info .tel {color:#009900;}
-#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
-#placesList .item .marker_1 {background-position: 0 -10px;}
-#placesList .item .marker_2 {background-position: 0 -56px;}
-#placesList .item .marker_3 {background-position: 0 -102px}
-#placesList .item .marker_4 {background-position: 0 -148px;}
-#placesList .item .marker_5 {background-position: 0 -194px;}
-#placesList .item .marker_6 {background-position: 0 -240px;}
-#placesList .item .marker_7 {background-position: 0 -286px;}
-#placesList .item .marker_8 {background-position: 0 -332px;}
-#placesList .item .marker_9 {background-position: 0 -378px;}
-#placesList .item .marker_10 {background-position: 0 -423px;}
-#placesList .item .marker_11 {background-position: 0 -470px;}
-#placesList .item .marker_12 {background-position: 0 -516px;}
-#placesList .item .marker_13 {background-position: 0 -562px;}
-#placesList .item .marker_14 {background-position: 0 -608px;}
-#placesList .item .marker_15 {background-position: 0 -654px;}
-#pagination {margin:10px auto;text-align: center;}
-#pagination a {display:inline-block;margin-right:10px;}
-#pagination .on {font-weight: bold; cursor: default;color:#777;}
+.wrap {left: 0;bottom: 40px;width: 288px;height: 132px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+   
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
 </style>
  
 <script type="text/javascript">
@@ -237,7 +221,7 @@ $(function(){
 });
 
 
-$(function(){
+/*$(function(){
 
 getfoodList(1);
 getroomList(1);	
@@ -248,12 +232,7 @@ function getfoodList(foodpage){
 		console.log(data.list.length);
 
 		var str="";
-	/*	$(data).each(function(i,e){
-			alert(i);
-			alert(e.list.bno);
-str+="<li><div class='listimg'><a href='/region/attraction_read?bno="+bno+"&rno="+e.rno+"'><img src="+e.first_image+"></a></div><div class='additem'><p class='gname'>"+e.attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+e.address+"</p></div></li>";
-		
-		});*/
+
 		for(var i=0;i<data.list.length;i++){
 			str+="<li><div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
 
@@ -340,7 +319,7 @@ function printPaging2(pageMaker){
 }
 
 });
-
+*/
 
 </script>
 </head>
@@ -486,32 +465,265 @@ function printPaging2(pageMaker){
          		<a href="#"><img src="../resources/imgs/길찾기.png"></a>
          	</div>
 		   <div style="border-bottom: 1px solid #535a75; margin-top:30px;"></div>
-	<div class="glist" style="margin-top:20px;">
-	<p>주변 음식점</p>
-		<ul class="listman">
-
-		</ul>
 	
-		
-	</div>
-	<ul class="pagination2" id="food" style="margin-top:-20px">
-		
-		</ul>
-	<div class="glist" style="margin-top:20px;">
-		<p>주변 숙소</p>
-		<ul class="listman2">
-
-		</ul>
-	
-		
-	</div>		
-		
-	<ul class="pagination2" id="room" style="margin-top:-20px">
-		
-		</ul>
+<div id="mapwrap"> 
+    <!-- 지도가 표시될 div -->
+    <div id="map" style="width:100%;height:500px;"></div>
+    <!-- 지도 위에 표시될 마커 카테고리 -->
+    <div class="category">
+        <ul>
+            <li id="coffeeMenu" onclick="changeMarker('coffee')">
+            <img src="../resources/imgs/음식.png" style="width:50px;height:25px;">
+                <span class="ico_comm ico_coffee"></span>
+                음식점
+            </li>
+            <li id="storeMenu" onclick="changeMarker('store')">
+             <img src="../resources/imgs/숙소.png" style="width:50px;height:25px;">
+            
+                <span class="ico_comm ico_store"></span>
+          숙박
+            </li>
+            
+        </ul>
+    </div>
+</div>
 
 	</div>
 </div>
+
+<script type="text/javascript">
+
+
+
+var coffeePositions2=new Array();
+var storePositions2=new Array();
+var str="";
+var i=0;
+
+
+$.ajax({
+	url:"/food/"+"${read.bno}",
+	async: false,
+	success:function(data){
+		console.log(data.list.length);
+		var str="";
+		for(var i=0;i<data.list.length;i++){
+			str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+			coffeePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+			str="";
+		}
+	}
+});
+
+$.ajax({
+	url:"/room/"+"${read.bno}",
+	async: false,
+	success:function(data){
+		console.log(data.list.length);
+		var str="";
+		for(var i=0;i<data.list.length;i++){
+			str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+			storePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+			str="";
+		}
+	}
+});
+/*
+$.getJSON("/food/"+${read.bno}+"/",function(data){
+	console.log(data.list.length);
+
+	var str="";
+
+	for(var i=0;i<data.list.length;i++){
+		str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+		coffeePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+		str="";
+	}
+	
+});	*/
+
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: coffeePositions2[0].latlng, // 지도의 중심좌표 
+        level: 8 // 지도의 확대 레벨 
+    }; 
+
+var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+// 편의점 마커가 표시될 좌표 배열입니다
+var storePositions = [
+	{
+		content:'<div>앙무띠</div>',
+	    latlng:new daum.maps.LatLng(37.497535461505684, 127.02948149502778),
+
+	}
+    
+];
+
+// 주차장 마커가 표시될 좌표 배열입니다
+
+var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+var foodimage="../resources/imgs/음식.png";
+var roomimage="../resources/imgs/숙소.png";
+    coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
+    storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
+
+    
+createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
+createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
+
+changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
+
+
+// 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
+function createMarkerImage(src, size,imageOption) {
+    var markerImage = new daum.maps.MarkerImage(src, size,imageOption);
+    return markerImage;            
+}
+
+// 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
+function createMarker(position, image) {
+    var marker = new daum.maps.Marker({
+        position: position,
+        image: image,
+    });
+    
+    return marker;  
+}   
+   
+// 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
+function createCoffeeMarkers() {
+    
+    for (var i = 0; i < coffeePositions2.length; i++) {  
+        
+        var imageSize = new daum.maps.Size(40, 40),
+        imageOption = {offset: new daum.maps.Point(10,0)};
+          /*  imageOptions = {  
+                spriteOrigin: new daum.maps.Point(10, 0),    
+                spriteSize: new daum.maps.Size(36, 98)  
+            }; */    
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(foodimage, imageSize,imageOption),   
+            marker = createMarker(coffeePositions2[i].latlng, markerImage);  
+        var infowindow=new daum.maps.InfoWindow({
+        	content:coffeePositions2[i].content,
+        });
+        content2=coffeePositions2[i].content;
+        // 생성된 마커를 커피숍 마커 배열에 추가합니다
+       
+        coffeeMarkers.push(marker);
+       
+        daum.maps.event.addListener(marker,'mouseover',makeOverListener(map,marker,infowindow));
+        daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+        daum.maps.event.addListener(marker, 'click', makeClickListener(map,marker,content2));
+        
+  
+        
+    }   
+ 
+}
+function makeClickListener(map, marker, content2) {
+    return function() {
+        var str=content2.indexOf("<a");
+        var str2=content2.indexOf("<img");
+        var str3=content2.substring(str+9,str2-2);
+        window.location.href="http://localhost:8181"+str3;
+    };
+}
+
+
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
+
+// 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setCoffeeMarkers(map) {        
+    for (var i = 0; i < coffeeMarkers.length; i++) {  
+        coffeeMarkers[i].setMap(map);
+    }        
+}
+
+// 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
+function createStoreMarkers() {
+    for (var i = 0; i < storePositions2.length; i++) {
+        
+        var imageSize = new daum.maps.Size(40, 40),
+        imageOption = {offset: new daum.maps.Point(10,36)};
+
+           /* imageOptions = {   
+                spriteOrigin: new daum.maps.Point(10, 36),    
+                spriteSize: new daum.maps.Size(36, 98)  
+            };       
+     */
+        var markerImage = createMarkerImage(roomimage, imageSize, imageOption),    
+            marker = createMarker(storePositions2[i].latlng, markerImage);  
+        
+        var infowindow=new daum.maps.InfoWindow({
+        	content:storePositions2[i].content
+        });
+        content3=storePositions2[i].content;
+        // 생성된 마커를 커피숍 마커 배열에 추가합니다
+        storeMarkers.push(marker);
+        daum.maps.event.addListener(marker,'mouseover',makeOverListener(map,marker,infowindow));
+        daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+        daum.maps.event.addListener(marker, 'click', makeClickListener(map,marker,content3));
+
+    }        
+}
+
+// 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setStoreMarkers(map) {        
+    for (var i = 0; i < storeMarkers.length; i++) {  
+        storeMarkers[i].setMap(map);
+    }        
+}
+
+
+// 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
+function changeMarker(type){
+    var coffeeMenu = document.getElementById('coffeeMenu');
+    var storeMenu = document.getElementById('storeMenu');
+    
+    // 커피숍 카테고리가 클릭됐을 때
+    if (type === 'coffee') {
+    
+        // 커피숍 카테고리를 선택된 스타일로 변경하고
+        coffeeMenu.className = 'menu_selected';
+        
+        // 편의점과 주차장 카테고리는 선택되지 않은 스타일로 바꿉니다
+        storeMenu.className = '';
+        
+        // 커피숍 마커들만 지도에 표시하도록 설정합니다
+        setCoffeeMarkers(map);
+        setStoreMarkers(null);
+        
+    } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
+    
+        // 편의점 카테고리를 선택된 스타일로 변경하고
+        coffeeMenu.className = '';
+        storeMenu.className = 'menu_selected';
+        
+        // 편의점 마커들만 지도에 표시하도록 설정합니다
+        setCoffeeMarkers(null);
+        setStoreMarkers(map);
+        
+    }   
+} 
+
+
+
+
+</script>
 <%@include file="../MainFooter.jsp" %>
 </body>
 </html>

@@ -359,9 +359,9 @@ public class BoardServiceImpl implements BoardService {
 
 	//음식점
 	@Override
-	public List<Nearby_attractionVO> foodlist(Criteria cri,int bno) throws Exception {
+	public List<Nearby_attractionVO> foodlist(int bno) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.foodlist(cri,bno);
+		return dao.foodlist(bno);
 	}
 
 
@@ -375,9 +375,9 @@ public class BoardServiceImpl implements BoardService {
 	//숙박
 
 	@Override
-	public List<Nearby_attractionVO> roomlist(Criteria cri,int bno) throws Exception {
+	public List<Nearby_attractionVO> roomlist(int bno) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.roomlist(cri,bno);
+		return dao.roomlist(bno);
 	}
 
 

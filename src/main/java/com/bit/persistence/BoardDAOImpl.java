@@ -397,12 +397,9 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	@Override
-	public List<Nearby_attractionVO> foodlist(Criteria cri,int bno) throws Exception {
+	public List<Nearby_attractionVO> foodlist(int bno) throws Exception {
 		// TODO Auto-generated method stub
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("Criteria", cri);
-		map.put("bno", bno);
-		return sqlSession.selectList(namespace+".foodlist",map);
+		return sqlSession.selectList(namespace+".foodlist",bno);
 	}
 
 
@@ -414,12 +411,10 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	@Override
-	public List<Nearby_attractionVO> roomlist(Criteria cri,int bno) throws Exception {
+	public List<Nearby_attractionVO> roomlist(int bno) throws Exception {
 		// TODO Auto-generated method stub
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("Criteria", cri);
-		map.put("bno", bno);
-		return sqlSession.selectList(namespace+".roomlist",map);
+		
+		return sqlSession.selectList(namespace+".roomlist",bno);
 	}
 
 

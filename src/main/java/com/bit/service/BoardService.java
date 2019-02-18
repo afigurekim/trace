@@ -132,7 +132,7 @@ public interface BoardService {
 	
 	//음식점
 	
-	public List<Nearby_attractionVO> foodlist(Criteria cri,int bno)throws Exception;
+	public List<Nearby_attractionVO> foodlist(int bno)throws Exception;
 	
 	public int foodcount(Integer bno) throws Exception;
 	
@@ -140,7 +140,7 @@ public interface BoardService {
 	
 	//숙박
 		
-	public List<Nearby_attractionVO> roomlist(Criteria cri,int bno)throws Exception;
+	public List<Nearby_attractionVO> roomlist(int bno)throws Exception;
 	
 	public int roomcount(Integer bno) throws Exception;
 	

@@ -143,7 +143,10 @@ public class RegionController {
 				model.addAttribute("read_detail",service.readRegion_detail(bno));
 				List<Historic_siteVO> imglist=service.readRegionImage(bno);
 				model.addAttribute("region_image",imglist);
-				
+				List<Nearby_attractionVO> list = service.foodlist(bno);
+				model.addAttribute("food_list",list);
+				int foodCount = service.foodcount(bno);
+				model.addAttribute("food_count",foodCount);
 				//cri.setPage(foodpage);
 				//model.addAttribute("foodlist",service.foodlist(cri,bno));
 				
@@ -162,24 +165,19 @@ public class RegionController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value="/food/{bno}/{page}")
-	public ResponseEntity<Map<String,Object>> food_list(@PathVariable int bno,@PathVariable int page) throws Exception
+	@RequestMapping(value="/food/{bno}")
+	public ResponseEntity<Map<String,Object>> food_list(@PathVariable int bno) throws Exception
 	{
+		System.out.println("컴온");
 		ResponseEntity<Map<String,Object>> entity= null;
 		try {
 			System.out.println("bno"+bno);
-			System.out.println("page"+page);
-			Criteria cri = new Criteria();
-			cri.setPage(page);
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(cri);
+			
 			Map<String,Object> map = new HashMap<String,Object>();
-			List<Nearby_attractionVO> list = service.foodlist(cri, bno);
+			List<Nearby_attractionVO> list = service.foodlist(bno);
 			int foodCount = service.foodcount(bno);
-			pageMaker.setTotalCount(foodCount);
 			System.out.println(foodCount);
 			map.put("list", list);
-			map.put("pageMaker", pageMaker);
 			
 			//return service.foodlist(cri,bno);
 			
@@ -191,24 +189,19 @@ public class RegionController {
 		return entity;
 	}
 	@ResponseBody
-	@RequestMapping(value="/room/{bno}/{page}")
-	public ResponseEntity<Map<String,Object>> room_list(@PathVariable int bno,@PathVariable int page) throws Exception
+	@RequestMapping(value="/room/{bno}")
+	public ResponseEntity<Map<String,Object>> room_list(@PathVariable int bno) throws Exception
 	{
+		System.out.println("컴다운");
 		ResponseEntity<Map<String,Object>> entity= null;
 		try {
 			System.out.println("bno"+bno);
-			System.out.println("page"+page);
-			Criteria cri = new Criteria();
-			cri.setPage(page);
-			PageMaker pageMaker = new PageMaker();
-			pageMaker.setCri(cri);
+			
 			Map<String,Object> map = new HashMap<String,Object>();
-			List<Nearby_attractionVO> list = service.roomlist(cri, bno);
+			List<Nearby_attractionVO> list = service.roomlist(bno);
 			int roomCount = service.roomcount(bno);
-			pageMaker.setTotalCount(roomCount);
 			System.out.println(roomCount);
 			map.put("list", list);
-			map.put("pageMaker", pageMaker);
 			
 			//return service.foodlist(cri,bno);
 			

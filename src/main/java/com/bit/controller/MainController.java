@@ -1,19 +1,25 @@
 package com.bit.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.bit.domain.Criteria;
+import com.bit.domain.Historic_siteVO;
+import com.bit.domain.Nearby_attractionVO;
 import com.bit.service.BoardService;
 
 /**
@@ -42,6 +48,32 @@ public class MainController {
 		}
 		
 		return "Main";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/mainimage", method = RequestMethod.GET)
+	public ResponseEntity<Map<String,Object>> mainimage(Locale locale, Model model) {
+		
+		ResponseEntity<Map<String,Object>> entity= null;
+		try {
+			
+			Map<String,Object> map = new HashMap<String,Object>();
+			Criteria cri = new Criteria();
+			cri.setPerPageNum(89);
+			
+			List<Historic_siteVO> list=service.periodlistAll(cri);
+
+			map.put("list", list);
+			
+			//return service.foodlist(cri,bno);
+			
+			entity= new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+		
 	}
 	
 	

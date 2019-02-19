@@ -58,28 +58,48 @@ where bno=#{bno}
 ]]>
 </select>
 
-<select id="periodlistAll" resultType="com.bit.domain.BoardVO">
+<select id="periodlistAll" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
 	select
 		*
 	from
-		tbl_board,tbl_attach
-	where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" limit #{pageStart},#{perPageNum}
+	
 ]]>
 </select>
 
 <select id="periodAllcount" resultType="int">
-select count(*) from tbl_board
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" 
+	
+]]>
 </select>
 
 
-<select id="readPeriod" resultType="com.bit.domain.BoardVO">
-select * from tbl_board where bno=#{bno}
+<select id="readPeriod" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+	select * from historic_site where bno=#{bno}
+]]>
 </select>
 
-<select id="readPeriodImage" resultType="com.bit.domain.BoardVO">
-select fullName from tbl_attach where bno=#{bno}
+<select id="readPeriodImage" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+
+select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_TYPE="유적지"
+]]>
 </select>
+
+<select id="readPeriod_detail" resultType="com.bit.domain.Historic_site_detailVO">
+<![CDATA[
+	select * from historic_site_detail where bno=#{bno}
+]]>
+</select>
+
 <insert id="addAttach">
 	insert into tbl_attach(fullName,attach_num,bno) values (#{fullName},#{attach_num},#{bno})
 </insert>
@@ -91,136 +111,227 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 
 
 
-<select id="sunsalist" resultType="com.bit.domain.BoardVO">
-
-
+<select id="sunsalist" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
-select 
-	*
-    from tbl_board,tbl_attach
-    where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and (period like '%선사%')order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+	select
+		*
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%선사%' limit #{pageStart},#{perPageNum}
+	
 ]]>
-
-
 </select>
 
 <select id="sunsacount" resultType="int">
-select count(*) from tbl_board where period like '%선사%'
-</select>
-
-<select id="josunlist" resultType="com.bit.domain.BoardVO">
 <![CDATA[
-select 
-	*
-    from tbl_board,tbl_attach
-    where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and period like '%조선%' order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%선사%'
+	
 ]]>
 </select>
-
-<select id="josuncount" resultType="int">
-select count(*) from tbl_board where period like '%조선%'
-</select>
-<select id="korealist" resultType="com.bit.domain.BoardVO">
+<select id="samgooklist" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
-select 
-	*
-    from tbl_board,tbl_attach
-    where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and period like '%고려%' order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
-]]>
-</select>
-
-<select id="koreacount" resultType="int">
-select count(*) from tbl_board where period like '%조선%'
-</select>
-<select id="hyundaelist" resultType="com.bit.domain.BoardVO">
-<![CDATA[
-select 
-	*
-    from tbl_board,tbl_attach
-    where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and (period like '%대한%' or period like '%근현대%' or period like '%일제%' )order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
-]]>
-</select>
-
-<select id="hyundaecount" resultType="int">
-select count(*) from tbl_board where (period like '%대한%' or period like '%근현대%' or period like '%일제%')
-</select>
-<select id="samgooklist" resultType="com.bit.domain.BoardVO">
-<![CDATA[
-select 
-	*
-    from tbl_board,tbl_attach
-    where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and (period like '%삼국%' or period like '%통일%' or period like '%백제%' )order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+	select
+		*
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%삼국%' limit #{pageStart},#{perPageNum}
+	
 ]]>
 </select>
 
 <select id="samgookcount" resultType="int">
-select count(*) from tbl_board where (period like '%신라%' or period like '%백제%' or period like '%고구려%' or period like '%발해%')
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%삼국%'
+	
+]]>
 </select>
 
-
-<select id="themalistAll" resultType="com.bit.domain.BoardVO">
+<select id="korealist" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
 	select
 		*
 	from
-		tbl_board,tbl_attach
-	where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%고려%' limit #{pageStart},#{perPageNum}
+	
+]]>
+</select>
+
+<select id="koreacount" resultType="int">
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%고려%'
+	
 ]]>
 </select>
 
 
-<select id="readThema" resultType="com.bit.domain.BoardVO">
-select * from tbl_board where bno=#{bno}
-</select>
-
-<select id="readThemaImage" resultType="com.bit.domain.BoardVO">
-select fullName from tbl_attach where bno=#{bno}
-</select>
-
-<select id="studylist" resultType="com.bit.domain.BoardVO">
+<select id="josunlist" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
 	select
 		*
 	from
-		tbl_board,tbl_attach
-	where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and thema like '%교육%' order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%조선%' limit #{pageStart},#{perPageNum}
+	
+]]>
+</select>
+
+<select id="josuncount" resultType="int">
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%조선%'
+	
+]]>
+</select>
+
+<select id="hyundaelist" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+	select
+		*
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%근현대%' limit #{pageStart},#{perPageNum}
+	
+]]>
+</select>
+
+<select id="hyundaecount" resultType="int">
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and period='%근현대%'
+	
+]]>
+</select>
+
+
+<select id="themalistAll" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+	select
+		*
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" limit #{pageStart},#{perPageNum}
+	
+]]>
+</select>
+
+<select id="themaAllcount" resultType="int">
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" 
+	
+]]>
+</select>
+
+<select id="readThema" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+	select * from historic_site where bno=#{bno}
+]]>
+</select>
+
+<select id="readThema_detail" resultType="com.bit.domain.Historic_site_detailVO">
+<![CDATA[
+	select * from historic_site_detail where bno=#{bno}
+]]>
+</select>
+
+<select id="readThemaImage" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_TYPE="유적지"
+]]>
+</select>
+
+
+
+
+
+
+<select id="studylist" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+	select
+		*
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and thema like '%교육%' limit #{pageStart},#{perPageNum}
+	
 ]]>
 </select>
 
 <select id="studycount" resultType="int">
-select count(*) from tbl_board where thema like '%교육%'
-</select>
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and thema like '%교육%' 
+	
+]]></select>
 
-<select id="datelist" resultType="com.bit.domain.BoardVO">
+
+<select id="datelist" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
 	select
 		*
 	from
-		tbl_board,tbl_attach
-	where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and thema like '%데이트%' order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and thema like '%데이트%' limit #{pageStart},#{perPageNum}
+	
 ]]>
 </select>
 
 <select id="datecount" resultType="int">
-select count(*) from tbl_board where thema like '%데이트%'
-</select>
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and thema like '%데이트%' 
+	
+]]></select>
 
 
-
-<select id="familylist" resultType="com.bit.domain.BoardVO">
+<select id="familylist" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
 	select
 		*
 	from
-		tbl_board,tbl_attach
-	where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 and thema like '%가족%' order by binary(tbl_board.history_name) limit #{pageStart},#{perPageNum}
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and thema like '%가족%' limit #{pageStart},#{perPageNum}
+	
 ]]>
 </select>
 
 <select id="familycount" resultType="int">
-select count(*) from tbl_board where thema like '%가족%'
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and thema like '%가족%' 
+	
+]]>
 </select>
-
 
 <!-- 지역별  -->
 
@@ -251,7 +362,11 @@ select count(*) from tbl_board where thema like '%가족%'
 	select * from historic_site where bno=#{bno}
 ]]>
 </select>
-
+<update id="updateViewCnt">
+<![CDATA[
+update historic_site set view_cnt=view_cnt+1 where bno=#{bno}
+]]>
+</update>
 <select id="readRegion_detail" resultType="com.bit.domain.Historic_site_detailVO">
 <![CDATA[
 	select * from historic_site_detail where bno=#{bno}
@@ -484,4 +599,12 @@ select * from historic_site_image,nearby_attraction where fullname like concat('
 
 ]]>
 </select>
-</mapper>
+
+<!-- 댓글 수 -->
+
+<select id="reply_count" resultType="int">
+<![CDATA[
+select count(*) from historic_reply where bno=#{bno}
+]]>
+</select>
+</mapper> 

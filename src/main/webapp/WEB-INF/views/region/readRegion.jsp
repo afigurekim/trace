@@ -15,6 +15,9 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=85e0cc19a20ba6c0287ea1beb32633e7"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
 
 <style>
 body{
@@ -221,107 +224,9 @@ $(function(){
 });
 
 
-/*$(function(){
-
-getfoodList(1);
-getroomList(1);	
-function getfoodList(foodpage){
-	
-	var bno=${read.bno};
-	$.getJSON("/food/"+${read.bno}+"/"+foodpage,function(data){
-		console.log(data.list.length);
-
-		var str="";
-
-		for(var i=0;i<data.list.length;i++){
-			str+="<li><div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
-
-		}
-		$(".listman").html(str);
-		if(data.list.length>=1){
-			printPaging(data.pageMaker);
-		}
-		
-	});
-
-	
-	$("#food").on("click","li a",function(event){
-		event.preventDefault();
-		foodpage=$(this).attr("href");
-		getfoodList(foodpage);
-		
-	});
-	
-}
-function getroomList(roompage){
-	var bno=${read.bno};
-	$.getJSON("/room/"+${read.bno}+"/"+roompage,function(data){
-		console.log(data.list.length);
-		var str="";
-
-		for(var i=0;i<data.list.length;i++){
-			str+="<li><div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
-
-		}
-		$(".listman2").html(str);
-		if(data.list.length>=1){
-			printPaging2(data.pageMaker);
-		}
-		
-	});
-
-
-	$("#room").on("click","li a",function(event){
-		event.preventDefault();
-		roompage=$(this).attr("href");
-		getroomList(roompage);
-		
-	});
-	
-	
-}
-
-
-function printPaging(pageMaker){
-	var str="";
-	if(pageMaker.prev){
-		str += "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
-	}
-	
-	for(var i=pageMaker.startPage, len =pageMaker.endPage; i<=len;i++){
-		var strClass=pageMaker.cri.page == i?'class=active':'';
-		str += "<li "+strClass+"><a href='"+i+"'>"+i+"</a></li>";
-	}
-	
-	if(pageMaker.next){
-		str+= "<li><a href='"+(pageMaker.endPage+1)+"'> >> </a></li>";
-	}
-	$('#food').html(str);
-
-}
-
-function printPaging2(pageMaker){
-	var str="";
-	if(pageMaker.prev){
-		str += "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
-	}
-	
-	for(var i=pageMaker.startPage, len =pageMaker.endPage; i<=len;i++){
-		var strClass=pageMaker.cri.page == i?'class=active':'';
-		str += "<li "+strClass+"><a href='"+i+"'>"+i+"</a></li>";
-	}
-	
-	if(pageMaker.next){
-		str+= "<li><a href='"+(pageMaker.endPage+1)+"'> >> </a></li>";
-	}
-	$('#room').html(str);
-
-}
-
-});
-*/
 
 </script>
+
 </head>
 <body>
 <%@include file="../Header.jsp" %>
@@ -488,8 +393,85 @@ function printPaging2(pageMaker){
     </div>
 </div>
 
+
+	<div class="row">
+		<div class="col-md-12">
+		
+		<div class="box box-success">
+			<div class="box-header">
+				<h3 class="box-title">댓글 등록</h3>
+			</div>
+			<div class="box-body">
+				<label for="newReplyWriter">글쓴이</label>
+					<input class="form-control" type="text" placeholder="글쓴이"
+					id="newReplyWriter"><label for="newReplyText">댓글 내용</label>
+					<input class="form-control" type="text"
+					placeholder="댓글 내용" id="newReplyText">
+			</div>
+			
+		<div class="box-footer">
+			<button type="submit" class="btn btn-primary" id="replyAddBtn">등록</button>
+		</div>
+		</div>
+		
+		</div>
+	</div>
+	
+	<ul class="timeline" style="margin-top:10px;">
+		<li class="time-label" id="repliesDiv" style="list-style-type:none; margin-left:-39px; font-size:20px; font-weight:700; height:30px;"><span class="bg-green">
+		<i class="fa fa-comments bg-blue"></i>
+		댓글</span>${reply_count}</li>
+	</ul>
+	
+	<div class="text-center">
+		<ul id="pagination" class="pagination pagination-sm no-margin">
+		</ul>
+	</div>
+	<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+	<div class="modal-dialog">
+		
+		<div class="modal-content" style="margin-top:300px;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body" data-rno>
+				<p><input type="text" id="replytext" class="form-control"></p>
+			</div>
+			<div class="modal-footer">
+			
+				<button type="button" class="btn btn-info" id="replyModBtn">수정</button>
+				<button type="button" class="btn btn-danger" id="replyDelBtn">삭제</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
 	</div>
 </div>
+	
+	</div>
+</div>
+
+<script id="template" type="text/x-handlebars-template">
+{{#each .}}
+<li class="replyLi" data-rno={{rno}} style="list-style-type:none;">
+	<div class="timeline-footer" style="float:right;">
+		<a class="btn btn-primary btn-xs"
+		data-toggle="modal" data-target="#modifyModal">Modify</a>
+	</div>
+	<div class="timeline-item">
+	<h4 class="timeline-header">{{replyer}}</h4>
+	<div class="timeline-body">{{reply_text}} </div>
+	<span class="time">
+		<i class="fa fa-clock-o"></i>{{prettifyDate reg_date}}
+	</span>
+		
+</div>
+<hr>
+</li>
+{{/each}}
+
+</script>
+
 
 <script type="text/javascript">
 
@@ -719,10 +701,176 @@ function changeMarker(type){
         
     }   
 } 
+var clickcount=0;
+var bno=1;
+var replyPage=1
+function getPage(pageInfo){
+$.ajax({
+	url:pageInfo,
+	async: false,
+	success:function(data){
+		console.log("+댓글 갯수+"+data.length);
+		var str="";
+		printData(data.list,$("#repliesDiv"),$("#template"));
+		printPaging(data.pageMaker,$(".pagination"));
+		$("#modifyModal").modal('hide');
+		$("#replycntSmall").html("[ " +data.pageMaker.totalCount +" ]");
+	}
+});
+}
+Handlebars.registerHelper("prettifyDate",function(timeValue){
+	var dateObj= new Date(timeValue);
+	var year= dateObj.getFullYear();
+	var month = dateObj.getMonth()+1;
+	var date= dateObj.getDate();
+	return year+"/"+month+"/"+date;
+
+});
+
+var printData= function(replyArr,target,templateObject){
+	var template= Handlebars.compile(templateObject.html());
+	var html=template(replyArr);
+	$(".replyLi").remove();
+	target.after(html);
+}
+var printPaging= function(pageMaker,target){
+	
+	var str="";
+	if(pageMaker.prev){
+		str+= "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
+	}
+	for(var i=pageMaker.startPage,len=pageMaker.endPage;i<=len;i++)
+		{
+		var strClass= pageMaker.cri.page==i?'class=active':'';
+		str+="<li "+strClass+"><a href='"+i+"'>"+i+"</a></li>";
+		}
+	if(pageMaker.next){
+		str+="<li><a href='"+(pageMaker.endPage +1)+"'> >> </a></li>";
+	}
+	target.html(str);
+};
+$("#repliesDiv").on("click",function(){
+clickcount+=1;
+	if(clickcount==1){
+		if($(".timeline li").size() >1){
+	
+		$(".replyLi").show();
+		$(".pagination").show();
+
+		return;
+		}
+
+	getPage("/replies/"+bno+"/1");
+	
+	}else if(clickcount==2){
+
+		if($(".replyLi").show()){
+			$(".replyLi").hide();
+			$(".pagination").hide();
+		};
+		clickcount=0;
+	}
+});	
 
 
+$(".pagination").on("click","li a",function(event){
+	event.preventDefault();
+	replyPage =$(this).attr("href");
+	getPage("/replies/"+bno+"/"+replyPage);
+});
+
+$(".timeline").on("click",".replyLi",function(event){
+	
+	var reply=$(this);
+	
+	$("#replytext").val(reply.find('.timeline-body').text());
+	$(".modal-title").html(reply.attr("data-rno"));
+});
+
+$("#replyAddBtn").on("click",function(){
+	
+	var replyerObj = $("#newReplyWriter");
+	var replytextObj = $("#newReplyText");
+	var replyer = replyerObj.val();
+	var replytext= replytextObj.val();
+	if(replyer==""){
+		alert("로그인 후 이용이 가능합니다");
+	}
+	if(replytext==""){
+		alert("댓글을 입력해주세요");
+		return;
+	}
+	$.ajax({
+		type:'post',
+		url:'/replies/',
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"POST"},
+		dataType:'text',
+		processData:false,
+		data: JSON.stringify({bno:bno,replyer:replyer,reply_text:replytext}),
+		success:function(result){
+			console.log("result: "+result);
+			if(result == 'SUCCESS'){
+				alert("등록 되었습니다.");
+				replyPage=1;
+				getPage("/replies/"+bno+"/"+replyPage);
+				replyerObj.val("");
+				replytextObj.val("");
+			}
+		
+		}});
+});
+
+$("#replyModBtn").on("click",function(){
+	
+	var rno = $(".modal-title").html();
+	var replytext=$("#replytext").val();
+	
+	$.ajax({
+		type:'put',
+		url:'/replies/'+rno,
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"PUT"},
+		dataType:'text',
+		processData:false,
+		data: JSON.stringify({reply_text:replytext}),
+		success:function(result){
+			console.log("result: "+result);
+			if(result == 'SUCCESS'){
+				alert("수정 되었습니다.");
+				getPage("/replies/"+bno+"/"+replyPage);
+				
+			}
+		
+		}});
+});
 
 
+$("#replyDelBtn").on("click",function(){
+	
+	var rno = $(".modal-title").html();
+	var replytext=$("#replytext").val();
+	
+	$.ajax({
+		type:'delete',
+		url:'/replies/'+rno,
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"DELETE"},
+		dataType:'text',
+		processData:false,
+		success:function(result){
+			console.log("result: "+result);
+			if(result == 'SUCCESS'){
+				alert("삭제 되었습니다.");
+				getPage("/replies/"+bno+"/"+replyPage);
+				
+			}
+		
+		}});
+});
 </script>
 <%@include file="../MainFooter.jsp" %>
 </body>

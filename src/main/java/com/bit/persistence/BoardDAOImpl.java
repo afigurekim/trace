@@ -91,7 +91,7 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 
-	//시대별
+	//시대별 전체
 	@Override
 	public List<Historic_siteVO> periodlistAll(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
@@ -115,6 +115,13 @@ public class BoardDAOImpl implements BoardDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".readPeriodImage",bno);
 	}
+	
+	@Override
+	public Historic_site_detailVO readPeriod_detail(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".readPeriod_detail",bno);
+	}
+
 	
 	@Override
 	public List<String> getAttach() throws Exception {
@@ -215,6 +222,11 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList(namespace+".readThemaImage",bno);
 	}
 
+	@Override
+	public Historic_site_detailVO readThema_detail(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".readThema_detail",bno);
+	}
 
 	@Override
 	public List<Historic_siteVO> studylist(Criteria cri) throws Exception {
@@ -444,6 +456,24 @@ public class BoardDAOImpl implements BoardDAO {
 		return sqlSession.selectList(namespace+".attraction_image",map);
 	}
 
+//댓글 수 
+	@Override
+	public int reply_count(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".reply_count",bno);
+	}
+
+//조회수 
+	@Override
+	public void updateViewCnt(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".updateViewCnt",bno);
+	}
+
+
+
+
+	
 
 
 

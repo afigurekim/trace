@@ -51,16 +51,20 @@ public interface BoardService {
 	
 	public int hyundaecount() throws Exception;
 	
-	public List<Historic_siteVO> periodlistAll(Criteria cri) throws Exception;
 	
+	//시대별 전체
+	
+	public List<Historic_siteVO> periodlistAll(Criteria cri) throws Exception;
 
 	public int periodAllcount()throws Exception;
 	
+	// read 
 	public Historic_siteVO readPeriod(int bno)throws Exception;
 		
 	public List<Historic_siteVO> readPeriodImage(int bno)throws Exception;
 	
-	
+	public Historic_site_detailVO readPeriod_detail(int bno)throws Exception;
+
 	public List<String> getAttach()throws Exception;
 	
 	
@@ -70,6 +74,8 @@ public interface BoardService {
 	
 	public Historic_siteVO readThema(int bno)throws Exception;
 	
+	public Historic_site_detailVO readThema_detail(int bno)throws Exception;
+
 	public List<Historic_siteVO> readThemaImage(int bno)throws Exception;
 	
 	public List<Historic_siteVO> studylist(Criteria cri) throws Exception;
@@ -147,5 +153,10 @@ public interface BoardService {
 	public Nearby_attractionVO read_attraction(int bno,int rno) throws Exception;
 	
 	public List<Nearby_attractionVO> attraction_image(int bno,int rno) throws Exception;
+	
+	
+	//댓글 수
+	
+	public int reply_count(int bno)throws Exception;
 	
 }	

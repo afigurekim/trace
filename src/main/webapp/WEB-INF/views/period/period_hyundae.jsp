@@ -10,13 +10,25 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../../resources/css/list.css" /></head>
   <script type="text/javascript" src="/resources/js/upload.js"></script>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 #jh{font-family: 'Jeju Hallasan', cursive;}
+
 #footer2{
 margin-top:30px;}
+#inner1{
+padding-top:4px;
+padding-bottom:4px;
+}
+#inner2{
+}
+.plc-list>li{
+width:85.4px;
+}
+
 </style>
 <script type="text/javascript">
 $(function(){
@@ -38,14 +50,14 @@ $(function(){
 <div id="wrap">
 	<div class="content">
 	
-	<div >
+		<div style="margin-bottom:30px;">
             <img src="../resources/imgs/시대별메인.jpg">
             
       	</div>
       	<div class="pl-cate" id="jh">
 			
-			<ul class="plc-list" id="sub_category">
-				<li><a href="/period" id="allperiod" style="margin-left: -40px;">전체보기</a></li>
+			<ul class="plc-list" id="sub_category" style="margin-top:15px;">
+				<li style="margin-left: -40px;"><a href="/period" id="allperiod">전체보기</a></li>
 				<li><a href="/period/sunsa" id="sunsa">선사시대</a></li>
 				<li><a href="/period/samgook" id="samgook">삼국시대</a></li>
 				<li><a href="/period/korea" id='korea'>고려시대</a></li>
@@ -70,20 +82,18 @@ $(function(){
 	
 	<div class="glist">
 		<ul class="listman">
-		<c:forEach items="${list}" var="boardVO" varStatus="status">
+		<c:forEach items="${list}" var="Historic_siteVO" varStatus="status">
 		<li>
 			<div class="listimg">
-				<a href="/period/read?bno=${boardVO.bno}">
-				<img src="/displayFile?fileName=${boardVO.fullName}">
+				<a href="/period/read?bno=${Historic_siteVO.bno}">
+				<img src="${Historic_siteVO.first_image}">
 				
             	</a>		
 			</div>
 			<div class="additem">
-				<p class="gname">${boardVO.history_name}</p>			
-				<p class="gname_pre" style="text-overflow:elipsis;">${boardVO.period}</p>
-				<p class="account">
-				★ ${boardVO.star}				
-            	</p>
+				<p class="gname">${Historic_siteVO.site_name}</p>			
+				<p class="gname_pre" style="text-overflow:elipsis;">${Historic_siteVO.period}</p>
+				
 			</div>
 		</li>
 		</c:forEach>
@@ -91,9 +101,10 @@ $(function(){
 	</ul>
 		
 	</div>
-	
+		
 </div>
-		<div class="text-center">
+	
+	<div class="text-center">
 		<ul class="pagination">
 			<c:if test="${pageMaker.prev}">
 				<li><a href="/period/hyundae?page=${pageMaker.startPage-1}">&laquo;</a></li>

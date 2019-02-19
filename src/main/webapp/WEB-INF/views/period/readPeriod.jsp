@@ -11,12 +11,19 @@
 <link rel="stylesheet" type='text/css' href="../resources/css/list.css">
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
-<script src="https://api2.sktelecom.com/tmap/js?version=1&format=javascript&appKey=ac75ebf7-25c5-474a-be2a-b845ccf8e3bb"></script>
   <script type="text/javascript" src="/resources/js/upload.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=85e0cc19a20ba6c0287ea1beb32633e7"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
 
 <style>
 body{
     font-family: 'Noto Sans Kr','Nanum Gothic','Malgun gothic',Dotum,arial,sans-serif;
+}ul{
+margin-bottom:-5px;
 }
 #inner1{
 	padding-top:6px;
@@ -78,7 +85,7 @@ body{
     border-top: 1px solid #d5d5db;
 }
 tbody>tr>td{
-padding: 10px 10px 10px 2px;
+padding: 31px 10px 31px 2px;
 }
 
 .hschDetail_con{
@@ -93,50 +100,65 @@ padding: 10px 10px 10px 2px;
 	text-align:justify;
 	font-size:15px;
 	line-height:30px;
+	
 }
+.pagination2{
+    padding-left: 0;
+    border-radius: 4px;
+   list-style-type: none;
+    
+}
+.pagination2>li:first-child>a{
+	margin-left: 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    
+}
+.pagination2>li>a{
+	position: relative;
+    float: left;
+    padding: 6px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    text-decoration: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-top:-30px;
+    margin-bottom:30px;
+}
+.pagination2>.active>a{
+	z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #337ab7;
+    border-color: #337ab7;
+    
+}
+#mapwrap{position:relative;overflow:hidden;}
+.category, .category *{margin:0;padding:0;color:#000;}   
+.category {position:absolute;overflow:hidden;top:10px;left:10px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
+.category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
+.category li{list-style:none;float:left;width:50px;height:50px;padding-top:5px;cursor:pointer;} 
+.category .ico_coffee {background-position:-10px 0;}  
+.category .ico_store {background-position:-10px -36px;}   
+.category .ico_carpark {background-position:-10px -72px;} 
 
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
-.map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
-.map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:0;left:0;bottom:0;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
-.bg_white {background:#fff;}
-#menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
-#menu_wrap .option{text-align: center;}
-#menu_wrap .option p {margin:10px 0;}  
-#menu_wrap .option button {margin-left:5px;}
-#placesList li {list-style: none;}
-#placesList .item {position:relative;border-bottom:1px solid #888;overflow: hidden;cursor: pointer;min-height: 65px;}
-#placesList .item span {display: block;margin-top:4px;}
-#placesList .item h5, #placesList .item .info {text-overflow: ellipsis;overflow: hidden;white-space: nowrap;}
-#placesList .item .info{padding:10px 0 10px 55px;}
-#placesList .info .gray {color:#8a8a8a;}
-#placesList .info .jibun {padding-left:26px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/places_jibun.png) no-repeat;}
-#placesList .info .tel {color:#009900;}
-#placesList .item .markerbg {float:left;position:absolute;width:36px; height:37px;margin:10px 0 0 10px;background:url(http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png) no-repeat;}
-#placesList .item .marker_1 {background-position: 0 -10px;}
-#placesList .item .marker_2 {background-position: 0 -56px;}
-#placesList .item .marker_3 {background-position: 0 -102px}
-#placesList .item .marker_4 {background-position: 0 -148px;}
-#placesList .item .marker_5 {background-position: 0 -194px;}
-#placesList .item .marker_6 {background-position: 0 -240px;}
-#placesList .item .marker_7 {background-position: 0 -286px;}
-#placesList .item .marker_8 {background-position: 0 -332px;}
-#placesList .item .marker_9 {background-position: 0 -378px;}
-#placesList .item .marker_10 {background-position: 0 -423px;}
-#placesList .item .marker_11 {background-position: 0 -470px;}
-#placesList .item .marker_12 {background-position: 0 -516px;}
-#placesList .item .marker_13 {background-position: 0 -562px;}
-#placesList .item .marker_14 {background-position: 0 -608px;}
-#placesList .item .marker_15 {background-position: 0 -654px;}
-#pagination {margin:10px auto;text-align: center;}
-#pagination a {display:inline-block;margin-right:10px;}
-#pagination .on {font-weight: bold; cursor: default;color:#777;}
+.wrap {left: 0;bottom: 40px;width: 288px;height: 132px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+   
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
 </style>
  
 <script type="text/javascript">
-
-function abc(){
-
+$(function(){
 	var ctx = document.getElementById("myChart");
 	var myChart = new Chart(ctx, {
 	  type: 'bar',
@@ -199,172 +221,66 @@ function abc(){
 	  }
 	});
 
-}
+});
 
-var latitude=0;
-var longitude=0;
-function getLocation(){
-	if (navigator.geolocation) { // GPS를 지원하면
-	    navigator.geolocation.getCurrentPosition(function(position) {
-	    	latitude=position.coords.latitude;
-	    	longitude=position.coords.longitude;
-	    	map = new Tmap.Map({
-				div : 'map_div',
-				width : "100%",
-				height : "400px",
-			});
-			map.setCenter(new Tmap.LonLat("126.9850380932383", "37.566567545861645").transform("EPSG:4326", "EPSG:3857"), 15);//설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 즁심점으로 설정합니다.
-			var routeLayer = new Tmap.Layer.Vector("route");//벡터 레이어 생성
-			var markerLayer = new Tmap.Layer.Markers("start");// 마커 레이어 생성
-			map.addLayer(routeLayer);//map에 벡터 레이어 추가
-			map.addLayer(markerLayer);//map에 마커 레이어 추가
 
-			// 시작
-			var size = new Tmap.Size(24, 38);//아이콘 크기 설정
-			var offset = new Tmap.Pixel(-(size.w / 2), -size.h);
-			var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_r_m_s.png />', size, offset);//마커 아이콘 설정
-			var marker_s = new Tmap.Marker(new Tmap.LonLat("126.9850380932383", "37.566567545861645").transform("EPSG:4326", "EPSG:3857"), icon);//설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
-			markerLayer.addMarker(marker_s);//마커 레이어에 마커 추가
 
-			// 도착
-			var icon = new Tmap.IconHtml('<img src=http://tmapapis.sktelecom.com/upload/tmap/marker/pin_r_m_e.png />', size, offset);//마커 아이콘 설정
-			var marker_e = new Tmap.Marker(new Tmap.LonLat("127.10331814639885", "37.403049076341794").transform("EPSG:4326", "EPSG:3857"), icon);//설정한 좌표를 "EPSG:3857"로 좌표변환한 좌표값으로 설정합니다.
-			markerLayer.addMarker(marker_e);//마커 레이어에 마커 추가
-			var headers = {}; 
-			headers["appKey"]="ac75ebf7-25c5-474a-be2a-b845ccf8e3bb";//실행을 위한 키 입니다. 발급받으신 AppKey를 입력하세요.
-			$.ajax({
-				method:"POST",
-				headers : headers,
-				url:"https://api2.sktelecom.com/tmap/routes?version=1&format=xml",//자동차 경로안내 api 요청 url입니다.
-				async:false,
-				data:{
-					//출발지 위경도 좌표입니다.
-					startX :longitude,
-					startY :latitude,
-					//목적지 위경도 좌표입니다.
-					endX : ${boardVO.longitude},
-					endY : ${boardVO.latitude},
-					//출발지, 경유지, 목적지 좌표계 유형을 지정합니다.
-					reqCoordType : "WGS84GEO",
-					resCoordType : "EPSG3857",
-					//각도입니다.
-					angle : "172",
-					//경로 탐색 옵션 입니다.
-					searchOption : 0,
-					//교통정보 포함 옵션입니다.
-					trafficInfo : "Y"
-					
-				},
-				//데이터 로드가 성공적으로 완료되었을 때 발생하는 함수입니다.
-				success:function(response){
-					prtcl = response;
-					
-					// 결과 출력
-					var innerHtml ="";
-					var prtclString = new XMLSerializer().serializeToString(prtcl);//xml to String	
-					xmlDoc = $.parseXML( prtclString ),
-					$xml = $( xmlDoc ),
-					$intRate = $xml.find("Document");
-			    	
-					var tDistance = " 총 거리 : "+($intRate[0].getElementsByTagName("tmap:totalDistance")[0].childNodes[0].nodeValue/1000).toFixed(1)+"km,";
-					var tTime = " 총 시간 : "+($intRate[0].getElementsByTagName("tmap:totalTime")[0].childNodes[0].nodeValue/60).toFixed(0)+"분,";	
-					var tFare = " 총 요금 : "+$intRate[0].getElementsByTagName("tmap:totalFare")[0].childNodes[0].nodeValue+"원,";	
-					var taxiFare = " 예상 택시 요금 : "+$intRate[0].getElementsByTagName("tmap:taxiFare")[0].childNodes[0].nodeValue+"원";	
-
-					$("#result").text(tDistance+tTime+tFare+taxiFare);
-					
-					routeLayer.removeAllFeatures();//레이어의 모든 도형을 지웁니다.
-							
-					var traffic = $intRate[0].getElementsByTagName("traffic")[0];
-					//교통정보가 포함되어 있으면 교통정보를 포함한 경로를 그려주고
-					//교통정보가 없다면  교통정보를 제외한 경로를 그려줍니다.
-					if(!traffic){
-						var prtclLine = new Tmap.Format.KML({extractStyles:true, extractAttributes:true}).read(prtcl);//데이터(prtcl)를 읽고, 벡터 도형(feature) 목록을 리턴합니다.
-						
-						//표준 데이터 포맷인 KML을 Read/Write 하는 클래스 입니다.
-						//벡터 도형(Feature)이 추가되기 직전에 이벤트가 발생합니다.
-						routeLayer.events.register("beforefeatureadded", routeLayer, onBeforeFeatureAdded);
-				        function onBeforeFeatureAdded(e) {
-					        	var style = {};
-					        	switch (e.feature.attributes.styleUrl) {
-					        	case "#pointStyle":
-						        	style.externalGraphic = "http://topopen.tmap.co.kr/imgs/point.png"; //렌더링 포인트에 사용될 외부 이미지 파일의 url입니다.
-									style.graphicHeight = 16; //외부 이미지 파일의 크기 설정을 위한 픽셀 높이입니다.
-									style.graphicOpacity = 1; //외부 이미지 파일의 투명도 (0-1)입니다.
-									style.graphicWidth = 16; //외부 이미지 파일의 크기 설정을 위한 픽셀 폭입니다.
-					        	break;
-					        	default:
-									style.strokeColor = "#ff0000";//stroke에 적용될 16진수 color
-									style.strokeOpacity = "1";//stroke의 투명도(0~1)
-									style.strokeWidth = "5";//stroke의 넓이(pixel 단위)
-					        	};
-				        	e.feature.style = style;
-				        }
-						
-						routeLayer.addFeatures(prtclLine); //레이어에 도형을 등록합니다.
-					}else{
-						//기존 출발,도착지 마커릉 지웁니다.
-						markerLayer.removeMarker(marker_s); 
-						markerLayer.removeMarker(marker_e);
-						routeLayer.removeAllFeatures();//레이어의 모든 도형을 지웁니다.
-						
-						//-------------------------- 교통정보를 그려주는 부분입니다. -------------------------- 
-						var trafficColors = {
-								extractStyles:true,
-								
-								/* 실제 교통정보가 표출되면 아래와 같은 Color로 Line이 생성됩니다. */
-								trafficDefaultColor:"#000000", //Default
-								trafficType1Color:"#009900", //원할
-								trafficType2Color:"#8E8111", //지체
-								trafficType3Color:"#FF0000", //정체
-								
-							};    
-						var kmlForm = new Tmap.Format.KML(trafficColors).readTraffic(prtcl);
-						routeLayer = new Tmap.Layer.Vector("vectorLayerID"); //백터 레이어 생성
-						routeLayer.addFeatures(kmlForm); //교통정보를 백터 레이어에 추가   
-						
-						map.addLayer(routeLayer); // 지도에 백터 레이어 추가
-						//-------------------------- 교통정보를 그려주는 부분입니다. -------------------------- 
-					}
-					
-					map.zoomToExtent(routeLayer.getDataExtent());//map의 zoom을 routeLayer의 영역에 맞게 변경합니다.	
-				},
-				//요청 실패시 콘솔창에서 에러 내용을 확인할 수 있습니다.
-				error:function(request,status,error){
-					console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-				}
-			});
-		    }, function(error) {
-	      console.error(error);
-	    }, {
-	      enableHighAccuracy: false,
-	      maximumAge: 0,
-	      timeout: Infinity
-	    });
-	  } else {
-	    alert('GPS를 지원하지 않습니다');
-	    
-	   
-	  }
-}
 </script>
+
 </head>
-<body onload="getLocation(),abc()">
+<body>
 <%@include file="../Header.jsp" %>
 
 <div id="wrap">
 	<div class="content">
 		<div class="hschDetail_tit">
-		<strong>${boardVO.history_name}</strong>
+		<strong>${read.site_name}</strong>
 		</div>
 		
 		<div class="hschDetail_info">
 			<div class="hschDi_img" style="height:397px;">
-			<a href="#" onclick="dirImg('1636095');" title="사진을 클릭하시면 크게 확인하실 수 있습니다." style="line-height: 301px;">
- 				<img  src="/displayFile?fileName=${imglist[0]}"style="width:100%;height:100%;">
-                 
-			</a>
+			<div class="container" style="width:100%; margin:0;padding:0; height:1000px;">
+				  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+				    <!-- Indicators -->
+				    <ol class="carousel-indicators">
+				   		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				    
+				      <c:forEach items="${region_image}" var="img_list" begin="0" varStatus="status">
+					      <li data-target="#myCarousel" data-slide-to="${status.index}"></li>
+					      
+				      </c:forEach>
+				    </ol>
 				
+				    <!-- Wrapper for slides -->
+				    <div class="carousel-inner">
+				      <div class="item active">
+							<a href="#" onclick="dirImg('1636095');" title="사진을 클릭하시면 크게 확인하실 수 있습니다." style="line-height: 301px;">
+							 <img  src="${read.first_image}" style="width:100%;height:397px;">                
+							</a>				     
+						</div>
+						<c:forEach items="${region_image}"  var="img_list" begin="0" varStatus="status">
+						 	<div class="item">
+									<a href="#" onclick="dirImg('1636095');" title="사진을 클릭하시면 크게 확인하실 수 있습니다." style="line-height: 301px;">
+									 <img  src="${img_list.fullname}" style="width:100%;height:397px;">                
+									</a>				     
+								</div>
+						</c:forEach>
+						
+				     
+				    </div>
+				
+				    <!-- Left and right controls -->
+				    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+				      <span class="glyphicon glyphicon-chevron-left"></span>
+				      <span class="sr-only">Previous</span>
+				    </a>
+				    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+				      <span class="glyphicon glyphicon-chevron-right"></span>
+				      <span class="sr-only">Next</span>
+				    </a>
+				  </div>
+				</div>
+	
 			</div>
 			
 			<table class="hschDi_info">
@@ -375,26 +291,16 @@ function getLocation(){
 				       <tbody>
 				       <tr>
 					       <th scope="row">유적지 이름</th>
-					       <td>${boardVO.history_name}</td>
+					       <td>${read.site_name}</td>
 				       </tr>                             
 				       <tr>
-				           <th scope="row">소재지</th>
-				           <td>${boardVO.address2}</td>
-				           </tr>
-				       <tr>
-					       <th scope="row">시대</th>
-					       <td>${boardVO.period}</td>
+				           <th scope="row">시대</th>
+				           <td>${read.period}</td>
 				       </tr>
+				       
+				      
 				       <tr>
-					       <th scope="row">테마</th>
-					       <td>${boardVO.thema}</td>
-				       </tr>
-				       <tr>
-					       <th scope="row">별점</th>
-						   <td>${boardVO.star}</td>
-				       </tr>
-				       <tr>
-				       		<th>후기 평점</th>
+				       		<th>사용자 별점</th>
 				       		<td>
 				       		<div id="canvas" style="width:1280px; margin:auto;">
 								<canvas id="myChart"style="float:left; margin-top:10px;margin-left:21px; width:400px;height:200px;"></canvas>
@@ -421,264 +327,551 @@ function getLocation(){
 		</p>
 		</div>
 			<div class="hschDetail_con" id="expDiv">
-              	<p>${boardVO.detail}</p>
+              	<p>${read_detail.detail}</p>
+                
               </div>
+           <div class="hschDetail_con" id="expDiv">
+           
+                <script type="text/javascript">
+                if("${read_detail.info_center}"!=""){
+					document.write("<p>문의 및 안내 : ${read_detail.info_center} </p>");				
+                }
+				if("${read_detail.exp_guide}"!=""){
+					document.write("<p>체험 안내 : ${read_detail.exp_guide} </p>");
+				}
+				if("${read_detail.expage_range}"!=""){
+					document.write("<p>체험 연령 : ${read_detail.expage_range} </p>");
+				}
+				if("${read_detail.rest_day}"!=""){
+					document.write("<p>쉬는 날 : ${read_detail.rest_day} </p>");
+				}
+				if("${read_detail.use_time}"!=""){
+					document.write("<p>이용시간 : ${read_detail.use_time} </p>");
+				}
+				if("${read_detail.park}"!=""){
+					document.write("<p>주차 시설 : ${read_detail.park} </p>");
+				}
+				if("${read_detail.carriage}"!=""){
+					document.write("<p>유모차 대여 여부 : ${read_detail.carriage} </p>");
+				}
+				if("${read_detail.pet}"!=""){
+					document.write("<p>애완동물 동반 가능 여부 : ${read_detail.pet} </p>");
+				}
+				if("${read_detail.credit_card}"!=""){
+					document.write("<p>신용카드 가능 여부 : ${read_detail.credit_card} </p>");
+				}
+					
+                </script>
+	 </div>
+                
          <div style="border-bottom: 1px solid #535a75; margin-top:30px;"></div>
-         	<div>
+         	<div style="margin-top:30px">
          		<a href="#"><img src="../resources/imgs/문화재청.png"></a>
          		<a href="#"><img src="../resources/imgs/길찾기.png"></a>
          	</div>
-		<div id="map_div">
-		</div>
-		<p id="result"></p>
+		   <div style="border-bottom: 1px solid #535a75; margin-top:30px;"></div>
 	
-		
-		
-<div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
-
-    <div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" value="${boardVO.history_name} 근처 맛집" id="keyword" size="15"> 
-                    <button type="submit">검색하기</button> 
-                </form>
-            </div>
-        </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
+<div id="mapwrap"> 
+    <!-- 지도가 표시될 div -->
+    <div id="map" style="width:100%;height:500px;"></div>
+    <!-- 지도 위에 표시될 마커 카테고리 -->
+    <div class="category">
+        <ul>
+            <li id="coffeeMenu" onclick="changeMarker('coffee')">
+            <img src="../resources/imgs/음식.png" style="width:50px;height:25px;">
+                <span class="ico_comm ico_coffee"></span>
+                음식점
+            </li>
+            <li id="storeMenu" onclick="changeMarker('store')">
+             <img src="../resources/imgs/숙소.png" style="width:50px;height:25px;">
+            
+                <span class="ico_comm ico_store"></span>
+          숙박
+            </li>
+            
+        </ul>
     </div>
 </div>
 
 
-
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=85e0cc19a20ba6c0287ea1beb32633e7&libraries=services"></script>
-
-<script>
-// 마커를 담을 배열입니다
-var markers = [];
-
-var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-    mapOption = {
-        center: new daum.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-        level: 3 // 지도의 확대 레벨
-    };  
-
-// 지도를 생성합니다    
-var map = new daum.maps.Map(mapContainer, mapOption); 
-
-// 장소 검색 객체를 생성합니다
-var ps = new daum.maps.services.Places();  
-
-// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-var infowindow = new daum.maps.InfoWindow({zIndex:1});
-
-// 키워드로 장소를 검색합니다
-searchPlaces();
-
-// 키워드 검색을 요청하는 함수입니다
-function searchPlaces() {
-
-    var keyword = document.getElementById('keyword').value;
-
-    if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('키워드를 입력해주세요!');
-        return false;
-    }
-
-    // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    ps.keywordSearch(keyword, placesSearchCB); 
-}
-
-// 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
-function placesSearchCB(data, status, pagination) {
-    if (status === daum.maps.services.Status.OK) {
-
-        // 정상적으로 검색이 완료됐으면
-        // 검색 목록과 마커를 표출합니다
-        displayPlaces(data);
-        // 페이지 번호를 표출합니다
-        displayPagination(pagination);
-
-    } else if (status === daum.maps.services.Status.ZERO_RESULT) {
-
-        alert('근처 맛집 검색 결과가 존재하지 않습니다.');
-        return;
-
-    } else if (status === daum.maps.services.Status.ERROR) {
-
-        alert('검색 결과 중 오류가 발생했습니다.');
-        return;
-
-    }
-}
-
-// 검색 결과 목록과 마커를 표출하는 함수입니다
-function displayPlaces(places) {
-
-    var listEl = document.getElementById('placesList'), 
-    menuEl = document.getElementById('menu_wrap'),
-    fragment = document.createDocumentFragment(), 
-    bounds = new daum.maps.LatLngBounds(), 
-    listStr = '';
-    
-    // 검색 결과 목록에 추가된 항목들을 제거합니다
-    removeAllChildNods(listEl);
-
-    // 지도에 표시되고 있는 마커를 제거합니다
-    removeMarker();
-    
-    for ( var i=0; i<places.length; i++ ) {
-
-        // 마커를 생성하고 지도에 표시합니다
-        var placePosition = new daum.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i), 
-            itemEl = getListItem(i, places[i]); // 검색 결과 항목 Element를 생성합니다
-
-        // 검색된 장소 위치를 기준으로 지도 범위를 재설정하기위해
-        // LatLngBounds 객체에 좌표를 추가합니다
-        bounds.extend(placePosition);
-
-        // 마커와 검색결과 항목에 mouseover 했을때
-        // 해당 장소에 인포윈도우에 장소명을 표시합니다
-        // mouseout 했을 때는 인포윈도우를 닫습니다
-        (function(marker, title) {
-            daum.maps.event.addListener(marker, 'mouseover', function() {
-                displayInfowindow(marker, title);
-            });
-
-            daum.maps.event.addListener(marker, 'mouseout', function() {
-                infowindow.close();
-            });
-
-            daum.maps.event.addListener(marker, 'click', function() {
-                // 마커 위에 인포윈도우를 표시합니다
-				window.open("http://map.daum.net/link/search/"+title);
-            });
-            itemEl.onmouseover =  function () {
-                displayInfowindow(marker, title);
-            };
-
-            itemEl.onmouseout =  function () {
-                infowindow.close();
-            };
-        })(marker, places[i].place_name);
-
-        fragment.appendChild(itemEl);
-    }
-
-    // 검색결과 항목들을 검색결과 목록 Elemnet에 추가합니다
-    listEl.appendChild(fragment);
-    menuEl.scrollTop = 0;
-
-    // 검색된 장소 위치를 기준으로 지도 범위를 재설정합니다
-    map.setBounds(bounds);
-}
-
-// 검색결과 항목을 Element로 반환하는 함수입니다
-function getListItem(index, places) {
-
-    var el = document.createElement('li'),
-    itemStr = '<span class="markerbg marker_' + (index+1) + '"></span>' +
-                '<div class="info">' +
-                '   <h5>' + places.place_name + '</h5>';
-
-    if (places.road_address_name) {
-        itemStr += '    <span>' + places.road_address_name + '</span>' +
-                    '   <span class="jibun gray">' +  places.address_name  + '</span>';
-    } else {
-        itemStr += '    <span>' +  places.address_name  + '</span>'; 
-    }
-                 
-      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                '</div>';           
-
-    el.innerHTML = itemStr;
-    el.className = 'item';
-
-    return el;
-}
-
-// 마커를 생성하고 지도 위에 마커를 표시하는 함수입니다
-function addMarker(position, idx, title) {
-    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // 마커 이미지 url, 스프라이트 이미지를 씁니다
-        imageSize = new daum.maps.Size(36, 37),  // 마커 이미지의 크기
-        imgOptions =  {
-            spriteSize : new daum.maps.Size(36, 691), // 스프라이트 이미지의 크기
-            spriteOrigin : new daum.maps.Point(0, (idx*46)+10), // 스프라이트 이미지 중 사용할 영역의 좌상단 좌표
-            offset: new daum.maps.Point(13, 37) // 마커 좌표에 일치시킬 이미지 내에서의 좌표
-        },
-        markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions),
-            marker = new daum.maps.Marker({
-            position: position, // 마커의 위치
-            image: markerImage 
-        });
-
-    marker.setMap(map); // 지도 위에 마커를 표출합니다
-    markers.push(marker);  // 배열에 생성된 마커를 추가합니다
-
-    return marker;
-}
-
-// 지도 위에 표시되고 있는 마커를 모두 제거합니다
-function removeMarker() {
-    for ( var i = 0; i < markers.length; i++ ) {
-        markers[i].setMap(null);
-    }   
-    markers = [];
-}
-
-// 검색결과 목록 하단에 페이지번호를 표시는 함수입니다
-function displayPagination(pagination) {
-    var paginationEl = document.getElementById('pagination'),
-        fragment = document.createDocumentFragment(),
-        i; 
-
-    // 기존에 추가된 페이지번호를 삭제합니다
-    while (paginationEl.hasChildNodes()) {
-        paginationEl.removeChild (paginationEl.lastChild);
-    }
-
-    for (i=1; i<=pagination.last; i++) {
-        var el = document.createElement('a');
-        el.href = "#";
-        el.innerHTML = i;
-
-        if (i===pagination.current) {
-            el.className = 'on';
-        } else {
-            el.onclick = (function(i) {
-                return function() {
-                    pagination.gotoPage(i);
-                }
-            })(i);
-        }
-
-        fragment.appendChild(el);
-    }
-    paginationEl.appendChild(fragment);
-}
-
-// 검색결과 목록 또는 마커를 클릭했을 때 호출되는 함수입니다
-// 인포윈도우에 장소명을 표시합니다
-function displayInfowindow(marker, title) {
-    var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
-    infowindow.setContent(content);
-    infowindow.open(map, marker);
-}
-
- // 검색결과 목록의 자식 Element를 제거하는 함수입니다
-function removeAllChildNods(el) {   
-    while (el.hasChildNodes()) {
-        el.removeChild (el.lastChild);
-    }
-}
-</script>
-         	   
+	<div class="row">
+		<div class="col-md-12">
+		
+		<div class="box box-success">
+			<div class="box-header">
+				<h3 class="box-title">댓글 등록</h3>
+			</div>
+			<div class="box-body">
+				<label for="newReplyWriter">글쓴이</label>
+					<input class="form-control" type="text" placeholder="글쓴이"
+					id="newReplyWriter"><label for="newReplyText">댓글 내용</label>
+					<input class="form-control" type="text"
+					placeholder="댓글 내용" id="newReplyText">
+			</div>
+			
+		<div class="box-footer">
+			<button type="submit" class="btn btn-primary" id="replyAddBtn">등록</button>
+		</div>
+		</div>
+		
+		</div>
+	</div>
+	
+	<ul class="timeline" style="margin-top:10px;">
+		<li class="time-label" id="repliesDiv" style="list-style-type:none; margin-left:-39px; font-size:20px; font-weight:700; height:30px;"><span class="bg-green">
+		<i class="fa fa-comments bg-blue"></i>
+		댓글</span>${reply_count}</li>
+	</ul>
+	
+	<div class="text-center">
+		<ul id="pagination" class="pagination pagination-sm no-margin">
+		</ul>
+	</div>
+	<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+	<div class="modal-dialog">
+		
+		<div class="modal-content" style="margin-top:300px;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body" data-rno>
+				<p><input type="text" id="replytext" class="form-control"></p>
+			</div>
+			<div class="modal-footer">
+			
+				<button type="button" class="btn btn-info" id="replyModBtn">수정</button>
+				<button type="button" class="btn btn-danger" id="replyDelBtn">삭제</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
 	</div>
 </div>
+	
+	</div>
+</div>
+
+<script id="template" type="text/x-handlebars-template">
+{{#each .}}
+<li class="replyLi" data-rno={{rno}} style="list-style-type:none;">
+	<div class="timeline-footer" style="float:right;">
+		<a class="btn btn-primary btn-xs"
+		data-toggle="modal" data-target="#modifyModal">Modify</a>
+	</div>
+	<div class="timeline-item">
+	<h4 class="timeline-header">{{replyer}}</h4>
+	<div class="timeline-body">{{reply_text}} </div>
+	<span class="time">
+		<i class="fa fa-clock-o"></i>{{prettifyDate reg_date}}
+	</span>
+		
+</div>
+<hr>
+</li>
+{{/each}}
+
+</script>
+
+
+<script type="text/javascript">
+
+
+
+var coffeePositions2=new Array();
+var storePositions2=new Array();
+var str="";
+var i=0;
+
+
+$.ajax({
+	url:"/food/"+"${read.bno}",
+	async: false,
+	success:function(data){
+		console.log(data.list.length);
+		var str="";
+		for(var i=0;i<data.list.length;i++){
+			str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+			coffeePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+			str="";
+		}
+	}
+});
+
+$.ajax({
+	url:"/room/"+"${read.bno}",
+	async: false,
+	success:function(data){
+		console.log(data.list.length);
+		var str="";
+		for(var i=0;i<data.list.length;i++){
+			str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+			storePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+			str="";
+		}
+	}
+});
+/*
+$.getJSON("/food/"+${read.bno}+"/",function(data){
+	console.log(data.list.length);
+
+	var str="";
+
+	for(var i=0;i<data.list.length;i++){
+		str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+		coffeePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+		str="";
+	}
+	
+});	*/
+
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+    mapOption = { 
+        center: coffeePositions2[0].latlng, // 지도의 중심좌표 
+        level: 8 // 지도의 확대 레벨 
+    }; 
+
+var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+
+
+// 편의점 마커가 표시될 좌표 배열입니다
+var storePositions = [
+	{
+		content:'<div>앙무띠</div>',
+	    latlng:new daum.maps.LatLng(37.497535461505684, 127.02948149502778),
+
+	}
+    
+];
+
+// 주차장 마커가 표시될 좌표 배열입니다
+
+var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
+var foodimage="../resources/imgs/음식.png";
+var roomimage="../resources/imgs/숙소.png";
+    coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
+    storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
+
+    
+createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
+createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
+
+changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
+
+
+// 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
+function createMarkerImage(src, size,imageOption) {
+    var markerImage = new daum.maps.MarkerImage(src, size,imageOption);
+    return markerImage;            
+}
+
+// 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
+function createMarker(position, image) {
+    var marker = new daum.maps.Marker({
+        position: position,
+        image: image,
+    });
+    
+    return marker;  
+}   
+   
+// 커피숍 마커를 생성하고 커피숍 마커 배열에 추가하는 함수입니다
+function createCoffeeMarkers() {
+    
+    for (var i = 0; i < coffeePositions2.length; i++) {  
+        
+        var imageSize = new daum.maps.Size(40, 40),
+        imageOption = {offset: new daum.maps.Point(10,0)};
+          /*  imageOptions = {  
+                spriteOrigin: new daum.maps.Point(10, 0),    
+                spriteSize: new daum.maps.Size(36, 98)  
+            }; */    
+        
+        // 마커이미지와 마커를 생성합니다
+        var markerImage = createMarkerImage(foodimage, imageSize,imageOption),   
+            marker = createMarker(coffeePositions2[i].latlng, markerImage);  
+        var infowindow=new daum.maps.InfoWindow({
+        	content:coffeePositions2[i].content,
+        });
+        content2=coffeePositions2[i].content;
+        // 생성된 마커를 커피숍 마커 배열에 추가합니다
+       
+        coffeeMarkers.push(marker);
+       
+        daum.maps.event.addListener(marker,'mouseover',makeOverListener(map,marker,infowindow));
+        daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+        daum.maps.event.addListener(marker, 'click', makeClickListener(map,marker,content2));
+        
+  
+        
+    }   
+ 
+}
+function makeClickListener(map, marker, content2) {
+    return function() {
+        var str=content2.indexOf("<a");
+        var str2=content2.indexOf("<img");
+        var str3=content2.substring(str+9,str2-2);
+        window.location.href="http://localhost:8181"+str3;
+    };
+}
+
+
+function makeOverListener(map, marker, infowindow) {
+    return function() {
+        infowindow.open(map, marker);
+    };
+}
+
+function makeOutListener(infowindow) {
+    return function() {
+        infowindow.close();
+    };
+}
+
+// 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setCoffeeMarkers(map) {        
+    for (var i = 0; i < coffeeMarkers.length; i++) {  
+        coffeeMarkers[i].setMap(map);
+    }        
+}
+
+// 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
+function createStoreMarkers() {
+    for (var i = 0; i < storePositions2.length; i++) {
+        
+        var imageSize = new daum.maps.Size(40, 40),
+        imageOption = {offset: new daum.maps.Point(10,36)};
+
+           /* imageOptions = {   
+                spriteOrigin: new daum.maps.Point(10, 36),    
+                spriteSize: new daum.maps.Size(36, 98)  
+            };       
+     */
+        var markerImage = createMarkerImage(roomimage, imageSize, imageOption),    
+            marker = createMarker(storePositions2[i].latlng, markerImage);  
+        
+        var infowindow=new daum.maps.InfoWindow({
+        	content:storePositions2[i].content
+        });
+        content3=storePositions2[i].content;
+        // 생성된 마커를 커피숍 마커 배열에 추가합니다
+        storeMarkers.push(marker);
+        daum.maps.event.addListener(marker,'mouseover',makeOverListener(map,marker,infowindow));
+        daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+        daum.maps.event.addListener(marker, 'click', makeClickListener(map,marker,content3));
+
+    }        
+}
+
+// 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
+function setStoreMarkers(map) {        
+    for (var i = 0; i < storeMarkers.length; i++) {  
+        storeMarkers[i].setMap(map);
+    }        
+}
+
+
+// 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
+function changeMarker(type){
+    var coffeeMenu = document.getElementById('coffeeMenu');
+    var storeMenu = document.getElementById('storeMenu');
+    
+    // 커피숍 카테고리가 클릭됐을 때
+    if (type === 'coffee') {
+    
+        // 커피숍 카테고리를 선택된 스타일로 변경하고
+        coffeeMenu.className = 'menu_selected';
+        
+        // 편의점과 주차장 카테고리는 선택되지 않은 스타일로 바꿉니다
+        storeMenu.className = '';
+        
+        // 커피숍 마커들만 지도에 표시하도록 설정합니다
+        setCoffeeMarkers(map);
+        setStoreMarkers(null);
+        
+    } else if (type === 'store') { // 편의점 카테고리가 클릭됐을 때
+    
+        // 편의점 카테고리를 선택된 스타일로 변경하고
+        coffeeMenu.className = '';
+        storeMenu.className = 'menu_selected';
+        
+        // 편의점 마커들만 지도에 표시하도록 설정합니다
+        setCoffeeMarkers(null);
+        setStoreMarkers(map);
+        
+    }   
+} 
+var clickcount=0;
+var bno=1;
+var replyPage=1
+function getPage(pageInfo){
+$.ajax({
+	url:pageInfo,
+	async: false,
+	success:function(data){
+		console.log("+댓글 갯수+"+data.length);
+		var str="";
+		printData(data.list,$("#repliesDiv"),$("#template"));
+		printPaging(data.pageMaker,$(".pagination"));
+		$("#modifyModal").modal('hide');
+		$("#replycntSmall").html("[ " +data.pageMaker.totalCount +" ]");
+	}
+});
+}
+Handlebars.registerHelper("prettifyDate",function(timeValue){
+	var dateObj= new Date(timeValue);
+	var year= dateObj.getFullYear();
+	var month = dateObj.getMonth()+1;
+	var date= dateObj.getDate();
+	return year+"/"+month+"/"+date;
+
+});
+
+var printData= function(replyArr,target,templateObject){
+	var template= Handlebars.compile(templateObject.html());
+	var html=template(replyArr);
+	$(".replyLi").remove();
+	target.after(html);
+}
+var printPaging= function(pageMaker,target){
+	
+	var str="";
+	if(pageMaker.prev){
+		str+= "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
+	}
+	for(var i=pageMaker.startPage,len=pageMaker.endPage;i<=len;i++)
+		{
+		var strClass= pageMaker.cri.page==i?'class=active':'';
+		str+="<li "+strClass+"><a href='"+i+"'>"+i+"</a></li>";
+		}
+	if(pageMaker.next){
+		str+="<li><a href='"+(pageMaker.endPage +1)+"'> >> </a></li>";
+	}
+	target.html(str);
+};
+$("#repliesDiv").on("click",function(){
+clickcount+=1;
+	if(clickcount==1){
+		if($(".timeline li").size() >1){
+	
+		$(".replyLi").show();
+		$(".pagination").show();
+
+		return;
+		}
+
+	getPage("/replies/"+bno+"/1");
+	
+	}else if(clickcount==2){
+
+		if($(".replyLi").show()){
+			$(".replyLi").hide();
+			$(".pagination").hide();
+		};
+		clickcount=0;
+	}
+});	
+
+
+$(".pagination").on("click","li a",function(event){
+	event.preventDefault();
+	replyPage =$(this).attr("href");
+	getPage("/replies/"+bno+"/"+replyPage);
+});
+
+$(".timeline").on("click",".replyLi",function(event){
+	
+	var reply=$(this);
+	
+	$("#replytext").val(reply.find('.timeline-body').text());
+	$(".modal-title").html(reply.attr("data-rno"));
+});
+
+$("#replyAddBtn").on("click",function(){
+	
+	var replyerObj = $("#newReplyWriter");
+	var replytextObj = $("#newReplyText");
+	var replyer = replyerObj.val();
+	var replytext= replytextObj.val();
+	if(replyer==""){
+		alert("로그인 후 이용이 가능합니다");
+	}
+	if(replytext==""){
+		alert("댓글을 입력해주세요");
+		return;
+	}
+	$.ajax({
+		type:'post',
+		url:'/replies/',
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"POST"},
+		dataType:'text',
+		processData:false,
+		data: JSON.stringify({bno:bno,replyer:replyer,reply_text:replytext}),
+		success:function(result){
+			console.log("result: "+result);
+			if(result == 'SUCCESS'){
+				alert("등록 되었습니다.");
+				replyPage=1;
+				getPage("/replies/"+bno+"/"+replyPage);
+				replyerObj.val("");
+				replytextObj.val("");
+			}
+		
+		}});
+});
+
+$("#replyModBtn").on("click",function(){
+	
+	var rno = $(".modal-title").html();
+	var replytext=$("#replytext").val();
+	
+	$.ajax({
+		type:'put',
+		url:'/replies/'+rno,
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"PUT"},
+		dataType:'text',
+		processData:false,
+		data: JSON.stringify({reply_text:replytext}),
+		success:function(result){
+			console.log("result: "+result);
+			if(result == 'SUCCESS'){
+				alert("수정 되었습니다.");
+				getPage("/replies/"+bno+"/"+replyPage);
+				
+			}
+		
+		}});
+});
+
+
+$("#replyDelBtn").on("click",function(){
+	
+	var rno = $(".modal-title").html();
+	var replytext=$("#replytext").val();
+	
+	$.ajax({
+		type:'delete',
+		url:'/replies/'+rno,
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"DELETE"},
+		dataType:'text',
+		processData:false,
+		success:function(result){
+			console.log("result: "+result);
+			if(result == 'SUCCESS'){
+				alert("삭제 되었습니다.");
+				getPage("/replies/"+bno+"/"+replyPage);
+				
+			}
+		
+		}});
+});
+</script>
 <%@include file="../MainFooter.jsp" %>
 </body>
 </html>

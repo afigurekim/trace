@@ -41,7 +41,7 @@ public class RegionController {
 			
 			List<Historic_siteVO> list=service.regionlistAll(cri);
 
-				for(int i=0;i<list.size();i++) {
+				/*for(int i=0;i<list.size();i++) {
 				 	String clientId = "l39_4PYuXcUlZNncALoX";//애플리케이션 클라이언트 아이디값";
 			        String clientSecret = "G5LASR9tjF";//애플리케이션 클라이언트 시크릿값";
 			        try {
@@ -121,7 +121,7 @@ public class RegionController {
 			        } catch  (Exception e) {
 			            System.out.println(e);
 			        }
-				}
+				}*/
 		        model.addAttribute("list",list);
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
@@ -147,6 +147,7 @@ public class RegionController {
 				model.addAttribute("food_list",list);
 				int foodCount = service.foodcount(bno);
 				model.addAttribute("food_count",foodCount);
+				model.addAttribute("reply_count",service.reply_count(bno));
 				//cri.setPage(foodpage);
 				//model.addAttribute("foodlist",service.foodlist(cri,bno));
 				

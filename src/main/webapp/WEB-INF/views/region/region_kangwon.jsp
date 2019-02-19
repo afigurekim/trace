@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../../resources/css/list.css" /></head>
   <script type="text/javascript" src="/resources/js/upload.js"></script>
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -18,10 +19,16 @@
 
 #footer2{
 margin-top:30px;}
-
-.plc-list>li>a{
+#inner1{
+padding-top:4px;
+padding-bottom:4px;
+}
+#inner2{
+}
+.plc-list>li{
 width:85.4px;
 }
+
 </style>
 <script type="text/javascript">
 $(function(){
@@ -43,14 +50,14 @@ $(function(){
 <div id="wrap">
 	<div class="content">
 	
-	<div >
+		<div style="margin-bottom:30px;">
             <img src="../resources/imgs/mainregion.jpg">
             
       	</div>
       	<div class="pl-cate" id="jh">
 			
-			<ul class="plc-list" id="sub_category">
-				<li><a href="/region" id="allregion" style="margin-left: -40px;">전체보기</a></li>
+			<ul class="plc-list" id="sub_category" style="margin-top:15px;">
+				<li style="margin-left: -40px;"><a href="/region" id="allregion">전체보기</a></li>
 				<li><a href="/region/seoul" id="seoul">서울</a></li>
 				<li><a href="/region/incheon" id="incheon">인천</a></li>
 				<li><a href="/region/kyunggi" id='kyunggi'>경기도</a></li>
@@ -103,18 +110,18 @@ $(function(){
 	<div class="text-center">
 		<ul class="pagination">
 			<c:if test="${pageMaker.prev}">
-				<li><a href="/region/kangwon?page=${pageMaker.startPage-1}">&laquo;</a></li>
+				<li><a href="/region/seoul?page=${pageMaker.startPage-1}">&laquo;</a></li>
 			</c:if>
 			
 			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 				<li 
 					<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
-				<a href="/region/kangwon?page=${idx}">${idx}</a>
+				<a href="/region/seoul?page=${idx}">${idx}</a>
 				</li>
 			</c:forEach>
 			
 			<c:if test="${pageMaker.next && pageMaker.endPage>0 }">
-				<li><a href="/region/kangwon?page=${pageMaker.endPage +1}">&raquo;</a></li>
+				<li><a href="/region/seoul?page=${pageMaker.endPage +1}">&raquo;</a></li>
 			</c:if>
 			
 		</ul>

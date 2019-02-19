@@ -5,6 +5,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.bit.domain.BoardVO;
@@ -142,7 +143,7 @@ public class BoardServiceImpl implements BoardService {
 		return dao.hyundaecount();
 	}
 
-
+//시대별 전체 
 	@Override
 	public List<Historic_siteVO> periodlistAll(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
@@ -153,16 +154,27 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return dao.periodAllcount();
 	}
+
 	
+@Transactional(isolation=Isolation.READ_COMMITTED)
 	@Override
 	public Historic_siteVO readPeriod(int bno) throws Exception {
 		// TODO Auto-generated method stub
+
+		dao.updateViewCnt(bno);
 		return dao.readPeriod(bno);
 	}
+
 	@Override
 	public List<Historic_siteVO> readPeriodImage(int bno) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.readPeriodImage(bno);
+	}
+
+	@Override
+	public Historic_site_detailVO readPeriod_detail(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.readPeriod_detail(bno);
 	}
 
 	@Override
@@ -178,10 +190,11 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return dao.themalistAll(cri);
 	}
-
+@Transactional(isolation=Isolation.READ_COMMITTED)
 	@Override
 	public Historic_siteVO readThema(int bno) throws Exception {
 		// TODO Auto-generated method stub
+		dao.updateViewCnt(bno);
 		return dao.readThema(bno);
 	}
 
@@ -191,6 +204,11 @@ public class BoardServiceImpl implements BoardService {
 		return dao.readThemaImage(bno);
 	}
 
+	@Override
+	public Historic_site_detailVO readThema_detail(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.readThema_detail(bno);
+	}
 	@Override
 	public List<Historic_siteVO> studylist(Criteria cri) throws Exception {
 		// TODO Auto-generated method stub
@@ -232,10 +250,11 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return dao.regionlistAll(cri);
 	}
-	
+@Transactional(isolation=Isolation.READ_COMMITTED)
 	@Override
 	public Historic_siteVO readRegion(int bno) throws Exception {
 		// TODO Auto-generated method stub
+		dao.updateViewCnt(bno);
 		return dao.readRegion(bno);
 	}
 	@Override
@@ -244,6 +263,7 @@ public class BoardServiceImpl implements BoardService {
 		return dao.readRegion_detail(bno);
 	}
 
+	
 	@Override
 	public List<Historic_siteVO> readRegionImage(int bno) throws Exception {
 		// TODO Auto-generated method stub
@@ -403,6 +423,21 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return dao.attraction_image(bno,rno);
 	}
+
+
+//댓글 수
+	
+	@Override
+	public int reply_count(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.reply_count(bno);
+	}
+
+
+
+
+
+
 
 
 

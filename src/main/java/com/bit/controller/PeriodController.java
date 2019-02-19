@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bit.domain.BoardVO;
 import com.bit.domain.Criteria;
+import com.bit.domain.Historic_siteVO;
+import com.bit.domain.Nearby_attractionVO;
 import com.bit.domain.PageMaker;
 import com.bit.service.BoardService;
 
@@ -24,7 +26,7 @@ public class PeriodController {
 	@RequestMapping(value = "/period", method = RequestMethod.GET)
 	public String all_period(Criteria cri,Locale locale, Model model) {
 		try {
-			
+			System.out.println("기무띠");
 			model.addAttribute("list",service.periodlistAll(cri));
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
@@ -34,32 +36,44 @@ public class PeriodController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/period/All_period";
+		return "period/All_period";
 	}
-	/*
 	@RequestMapping(value = "/period/read", method = RequestMethod.GET)
-	public String detail(@RequestParam("bno") int bno,Model model) {
+	public String detail(@RequestParam("bno") int bno,Model model,Criteria cri) {
 		
-		try {
-			model.addAttribute(service.readPeriod(bno));
-			
-			List<BoardVO> imglist=service.readPeriodImage(bno);
-			String imglist2[] =new String[4];
-			for(int i=0;i<imglist.size();i++) {
-				imglist2[i]=imglist.get(i).getFullName().replace("s_", "");
-						System.out.println(imglist2[i]);
+		
+			try {
+				System.out.println("앙무띠");
+
+				model.addAttribute("read",service.readPeriod(bno));
+				model.addAttribute("read_detail",service.readPeriod_detail(bno));
+				List<Historic_siteVO> imglist=service.readPeriodImage(bno);
+				model.addAttribute("region_image",imglist);
+				List<Nearby_attractionVO> list = service.foodlist(bno);
+				model.addAttribute("food_list",list);
+				int foodCount = service.foodcount(bno);
+				model.addAttribute("food_count",foodCount);
+				model.addAttribute("reply_count",service.reply_count(bno));
+				//cri.setPage(foodpage);
+				//model.addAttribute("foodlist",service.foodlist(cri,bno));
+				
+				//PageMaker pageMaker = new PageMaker();
+				//pageMaker.setCri(cri);
+				//System.out.println(service.foodcount(bno));
+				//pageMaker.setTotalCount(service.foodcount(bno));
+				//model.addAttribute("pageMaker",pageMaker);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			model.addAttribute("imglist",imglist2);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return "/period/readPeriod";
-	}*/
-	
+			
+		
+		return "period/readPeriod";
+	}
 	@RequestMapping(value = "/period/josun", method = RequestMethod.GET)
 	public String josun(Criteria cri,Locale locale, Model model) {
 		try {
+			System.out.println("앙무띠");
 			model.addAttribute("list",service.josunlist(cri));
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
@@ -69,7 +83,7 @@ public class PeriodController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/period/period_josun";
+		return "period/period_josun";
 	}
 	@RequestMapping(value = "/period/korea", method = RequestMethod.GET)
 	public String korea(Criteria cri,Locale locale, Model model) {
@@ -83,7 +97,7 @@ public class PeriodController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/period/period_korea";
+		return "period/period_korea";
 	}
 	
 	@RequestMapping(value = "/period/hyundae", method = RequestMethod.GET)
@@ -98,7 +112,7 @@ public class PeriodController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/period/period_hyundae";
+		return "period/period_hyundae";
 	}
 	
 	@RequestMapping(value = "/period/sunsa", method = RequestMethod.GET)
@@ -113,7 +127,7 @@ public class PeriodController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/period/period_sunsa";
+		return "period/period_sunsa";
 	}
 	
 	@RequestMapping(value = "/period/samgook", method = RequestMethod.GET)
@@ -128,6 +142,6 @@ public class PeriodController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/period/period_samgook";
+		return "period/period_samgook";
 	}
 }

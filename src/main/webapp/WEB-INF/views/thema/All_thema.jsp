@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../../resources/css/list.css" /></head>
   <script type="text/javascript" src="/resources/js/upload.js"></script>
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <style>
@@ -18,14 +18,14 @@
 #jh{font-family: 'Jeju Hallasan', cursive;}
 #footer2{
 margin-top:30px;}
+.plc-list>li{
+width:85.4px;
+}
 #inner1{
 padding-top:4px;
 padding-bottom:4px;
-margin-left:-8px;
 }
 #inner2{
-width:120%;
-margin-left:-8px;
 }
 </style>
 <script type="text/javascript">
@@ -48,18 +48,17 @@ $(function(){
 <div id="wrap">
 	<div class="content">
 	
-	<div >
+		<div style="margin-bottom:30px;">
             <img src="../resources/imgs/mainthema.jpg">
             
       	</div>
       	<div class="pl-cate" id="jh">
 			
-			<ul class="plc-list" id="sub_category">
-				<li><a href="/thema" id="allthema" style="margin-left: -40px;">전체보기</a></li>
-				<li><a href="/thema/study" id="sunsa">교육</a></li>
-				<li><a href="/thema/date" id="samgook">데이트</a></li>
-				<li><a href="/thema/family" id='korea'>가족</a></li>
-		
+			<ul class="plc-list" id="sub_category" style="margin-top:15px;">
+				<li style="margin-left: -40px;"><a href="/thema" id="allthema">전체보기</a></li>
+				<li><a href="/thema/study" id="study">교육</a></li>
+				<li><a href="/thema/date" id="date">데이트</a></li>
+				<li><a href="/thema/family" id='family'>가족</a></li>
 				
 			</ul>
 		</div>
@@ -80,20 +79,18 @@ $(function(){
 	
 	<div class="glist">
 		<ul class="listman">
-		<c:forEach items="${list}" var="boardVO" varStatus="status">
+		<c:forEach items="${list}" var="Historic_siteVO" varStatus="status">
 		<li>
 			<div class="listimg">
-				<a href="/thema/read?bno=${boardVO.bno}">
-				<img src="/displayFile?fileName=${boardVO.fullName}">
+				<a href="/thema/read?bno=${Historic_siteVO.bno}">
+				<img src="${Historic_siteVO.first_image}">
 				
             	</a>		
 			</div>
 			<div class="additem">
-				<p class="gname">${boardVO.history_name}</p>			
-				<p class="gname_pre" style="text-overflow:elipsis;">${boardVO.thema}</p>
-				<p class="account">
-				★ ${boardVO.star}				
-            	</p>
+				<p class="gname">${Historic_siteVO.site_name}</p>			
+				<p class="gname_pre" style="text-overflow:elipsis;">${Historic_siteVO.thema}</p>
+				
 			</div>
 		</li>
 		</c:forEach>
@@ -109,18 +106,18 @@ $(function(){
 	<div class="text-center">
 		<ul class="pagination">
 			<c:if test="${pageMaker.prev}">
-				<li><a href="thema?page=${pageMaker.startPage-1}">&laquo;</a></li>
+				<li><a href="/thema?page=${pageMaker.startPage-1}">&laquo;</a></li>
 			</c:if>
 			
 			<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 				<li 
 					<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
-				<a href="thema?page=${idx}">${idx}</a>
+				<a href="/thema?page=${idx}">${idx}</a>
 				</li>
 			</c:forEach>
 			
 			<c:if test="${pageMaker.next && pageMaker.endPage>0 }">
-				<li><a href="thema?page=${pageMaker.endPage +1}">&raquo;</a></li>
+				<li><a href="/thema?page=${pageMaker.endPage +1}">&raquo;</a></li>
 			</c:if>
 			
 		</ul>

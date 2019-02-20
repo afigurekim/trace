@@ -16,6 +16,11 @@ public interface BoardService {
 	
 	public void remove(Integer bno)throws Exception;
 	
+	//별점 주기
+	public void star_insert(int star,String id,Integer bno) throws Exception;
+	
+	public int star_check(int bno,String id) throws Exception;
+	
 	
 	//메인
 	public List<Historic_siteVO>MainPeriod() throws Exception;

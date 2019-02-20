@@ -155,10 +155,96 @@ padding: 31px 10px 31px 2px;
     .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
     .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
     .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+.rating-stars ul {
+  list-style-type:none;
+  padding:0;
+  
+  -moz-user-select:none;
+  -webkit-user-select:none;
+}
+.rating-stars ul > li.star {
+  display:inline-block;
+  
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+  font-size:2.5em; /* Change the size of the stars */
+  color:#ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+  color:#FFCC36;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+  color:#FF912C;
+}
 </style>
  
 <script type="text/javascript">
+
+
+	
 $(function(){
+	/* 1. Visualizing things on Hover - See next part for action on click */
+	  $('#stars li').on('mouseover', function(){
+	    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+	   
+	    // Now highlight all the stars that's not after the current hovered star
+	    $(this).parent().children('li.star').each(function(e){
+	      if (e < onStar) {
+	        $(this).addClass('hover');
+	      }
+	      else {
+	        $(this).removeClass('hover');
+	      }
+	    });
+	    
+	  }).on('mouseout', function(){
+	    $(this).parent().children('li.star').each(function(e){
+	      $(this).removeClass('hover');
+	    });
+	  });
+	  
+	  
+	  /* 2. Action to perform on click */
+	  $('#stars li').on('click', function(){
+	    var onStar = parseInt($(this).data('value'), 10); // The star currently selected
+	    var stars = $(this).parent().children('li.star');
+	    
+	    for (i = 0; i < stars.length; i++) {
+	      $(stars[i]).removeClass('selected');
+	    }
+	    
+	    for (i = 0; i < onStar; i++) {
+	      $(stars[i]).addClass('selected');
+	    }
+	    
+	    // JUST RESPONSE (Not needed)
+	    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+	   var bn=${read.bno};
+	    $.ajax({
+	    	url:"/starValue",
+	    	type:'post',
+	    	data:{
+	    		star:ratingValue,
+	    		id:'forteas2',
+	    		bno:bn,
+	    	},
+	    	success:function(data){
+	    		if(data==0){
+	    			alert("등록되었습니다");
+	    		}else{
+	    			alert("이미 등록하셨습니다");
+	    		}
+	    	}
+	    	
+	    })
+	  });
+	 
 	var ctx = document.getElementById("myChart");
 	var myChart = new Chart(ctx, {
 	  type: 'bar',
@@ -313,18 +399,33 @@ $(function(){
 		</div>
 		
 		
-		<div style="border-bottom: 1px solid #535a75; margin-top:30px;">
-		<a href="#" style="border:1px solid black; float:right; margin-left:10px;text-decoration:none;" >찜하기</a>
-			<p style="text-align:right; margin-right:10px;">리뷰평점<select>
-				<option value="1">1</option>
-				<option value="2">2</option>
-				<option value="3">3</option>
-				<option value="4">4</option>
-				<option value="5">5</option>
-			</select>
-			<button type="button">등록</button>
+		<div style="margin-top:30px;">
+		<button type="button" class="btn btn-primary"style="float:right; margin-left:10px;">찜하기</button>	
+		<section class='rating-widget' style="margin-top:450px;">
+   
+  <!-- Rating Stars Box -->
+  <div class='rating-stars text-right'>
+    <ul id='stars'>
+      <li class='star' title='Poor' data-value='1'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+      <li class='star' title='Fair' data-value='2'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+      <li class='star' title='Good' data-value='3'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+      <li class='star' title='Excellent' data-value='4'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+      <li class='star' title='WOW!!!' data-value='5'>
+        <i class='fa fa-star fa-fw'></i>
+      </li>
+    </ul>
+  </div>
+ 
+</section>
 		
-		</p>
 		</div>
 			<div class="hschDetail_con" id="expDiv">
               	<p>${read_detail.detail}</p>
@@ -334,10 +435,10 @@ $(function(){
            
                 <script type="text/javascript">
                 if("${read_detail.info_center}"!=""){
-					document.write("<p>문의 및 안내 : ${read_detail.info_center} </p>");				
+					document.write("<p>문의 및 안내 : <br> ${read_detail.info_center} </p>");				
                 }
 				if("${read_detail.exp_guide}"!=""){
-					document.write("<p>체험 안내 : ${read_detail.exp_guide} </p>");
+					document.write("<p>체험 안내 : <br> ${read_detail.exp_guide} </p>");
 				}
 				if("${read_detail.expage_range}"!=""){
 					document.write("<p>체험 연령 : ${read_detail.expage_range} </p>");
@@ -346,7 +447,7 @@ $(function(){
 					document.write("<p>쉬는 날 : ${read_detail.rest_day} </p>");
 				}
 				if("${read_detail.use_time}"!=""){
-					document.write("<p>이용시간 : ${read_detail.use_time} </p>");
+					document.write("<p>이용시간 : <br> ${read_detail.use_time} </p>");
 				}
 				if("${read_detail.park}"!=""){
 					document.write("<p>주차 시설 : ${read_detail.park} </p>");

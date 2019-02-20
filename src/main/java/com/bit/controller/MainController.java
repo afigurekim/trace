@@ -49,7 +49,21 @@ public class MainController {
 		
 		return "Main";
 	}
-	
+	@ResponseBody
+	@RequestMapping(value="/starValue",method=RequestMethod.POST)
+	public int starValue(int star,String id,int bno) {
+		int su=0;
+		try {
+			su=service.star_check(bno, id);
+			if(su==0) {
+				service.star_insert(star, id,bno);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return su;
+	}
 	@ResponseBody
 	@RequestMapping(value = "/mainimage", method = RequestMethod.GET)
 	public ResponseEntity<Map<String,Object>> mainimage(Locale locale, Model model) {

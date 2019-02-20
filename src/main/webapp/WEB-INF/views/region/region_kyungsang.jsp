@@ -57,7 +57,7 @@ $(function(){
       	<div class="pl-cate" id="jh">
 			
 			<ul class="plc-list" id="sub_category" style="margin-top:15px;">
-				<li style="margin-left: -40px;"><a href="/region" id="allregion">전체보기</a></li>
+				<li style="margin-left: -40px;"><a href="/region/all" id="allregion">전체보기</a></li>
 				<li><a href="/region/seoul" id="seoul">서울</a></li>
 				<li><a href="/region/incheon" id="incheon">인천</a></li>
 				<li><a href="/region/kyunggi" id='kyunggi'>경기도</a></li>

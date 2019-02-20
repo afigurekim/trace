@@ -46,9 +46,6 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 
-
-
-
 	@Override
 	public void update(BoardVO vo) throws Exception {
 		// TODO Auto-generated method stub
@@ -61,6 +58,29 @@ public class BoardDAOImpl implements BoardDAO {
 		// TODO Auto-generated method stub
 		sqlSession.delete(namespace+".delete",bno);
 	}
+	
+	@Override
+	public void star_insert(int star, String id,Integer bno) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("star", star);
+		map.put("id", id);
+		map.put("bno", bno);
+		sqlSession.insert(namespace+".star_insert",map);
+	}
+
+
+	@Override
+	public int star_check(int bno, String id) throws Exception {
+		// TODO Auto-generated method stub
+		Map<String,Object>map = new HashMap<String,Object>();
+		map.put("bno", bno);
+		map.put("id", id);
+		
+		return sqlSession.selectOne(namespace+".star_check",map);
+	}
+
+	
 	//메인
 	@Override
 	public List<Historic_siteVO> MainPeriod() throws Exception {
@@ -469,6 +489,8 @@ public class BoardDAOImpl implements BoardDAO {
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace+".updateViewCnt",bno);
 	}
+
+
 
 
 

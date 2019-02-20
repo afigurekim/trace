@@ -33,8 +33,17 @@ import com.bit.service.BoardService;
 public class RegionController {
 	@Inject
 	private BoardService service;
-	
-	@RequestMapping(value = "/region", method = RequestMethod.GET)
+	@RequestMapping(value="/region/main",method=RequestMethod.GET)
+	public String main_region() {
+		
+		return "/region/region_main";
+	}
+	@RequestMapping(value="/region/main/{state}",method=RequestMethod.GET)
+	public String main_region_jeju(@PathVariable String state) {
+		
+		return "/region/video";
+	}
+	@RequestMapping(value = "/region/all", method = RequestMethod.GET)
 	public String all_period(Criteria cri,Locale locale, Model model) {
 		try {
 			

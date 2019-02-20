@@ -105,7 +105,7 @@ $(function(){
 			 		</ul>
 			 	</li>
 			 		
-			 	<li><a href="/region">지역별</a>
+			 	<li><a href="/region/main">지역별</a>
 			 		<ul>
 			 			<li><a href="#" style="background-color:white;"></a><li>	
 			 			<li><a href="#">서울</a></li>

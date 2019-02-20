@@ -54,7 +54,22 @@ public class BoardServiceImpl implements BoardService {
 	}
 
 	
-	
+//별점 주기
+	@Override
+	public void star_insert(int star, String id,Integer bno) throws Exception {
+		// TODO Auto-generated method stub
+		dao.star_insert(star,id,bno);
+	}
+
+
+
+	@Override
+	public int star_check(int bno, String id) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.star_check(bno, id);
+	}
+
+
 	//메인
 	
 	@Override
@@ -432,6 +447,8 @@ public class BoardServiceImpl implements BoardService {
 		// TODO Auto-generated method stub
 		return dao.reply_count(bno);
 	}
+
+
 
 
 

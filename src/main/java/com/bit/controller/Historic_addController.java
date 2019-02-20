@@ -330,9 +330,12 @@ public class Historic_addController {
         conn4.disconnect();
       
         index=sb2.indexOf("<overview>");
+        
         index2=sb2.indexOf("</overview>");
         detail=sb2.substring(index+10,index2);
-        
+        detail.replaceAll("&lt;br /&gt;", "\n");
+        detail.replaceAll("&lt;br&gt;", "\n");
+       
         index=sb4.indexOf("<chkbabycarriage>");
         index2=sb4.indexOf("</chkbabycarriage>");
         carriage=sb4.substring(index+17,index2);
@@ -342,6 +345,7 @@ public class Historic_addController {
 	        index2=sb4.indexOf("</infocenter>");
 	        infocenter=sb4.substring(index+12, index2);
         }
+        infocenter.replaceAll("&lt;br /&gt;"," ");
         index=sb4.indexOf("<chkpet>");
         index2=sb4.indexOf("</chkpet>");
         pet=sb4.substring(index+8, index2);
@@ -363,6 +367,7 @@ public class Historic_addController {
         index=sb4.indexOf("<expguide>");
         index2=sb4.indexOf("</expguide>");
         expguide=sb4.substring(index+10,index2);
+        expguide.replaceAll("&lt;br&gt;","\n");
         
         index=sb4.indexOf("<parking>");
         index2=sb4.indexOf("</parking>");
@@ -371,7 +376,8 @@ public class Historic_addController {
         index=sb4.indexOf("<usetime>");
         index2=sb4.indexOf("</usetime>");
         usetime=sb4.substring(index+9, index2);
-        
+        usetime.replaceAll("&gt;&lt;br&gt;", "\n");
+        usetime.replaceAll("&lt;br&gt;", "\n");
         System.out.println(detail);
         System.out.println(expagerange);
         System.out.println(expguide);

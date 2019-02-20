@@ -10,9 +10,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../../resources/css/list.css" /></head>
   <script type="text/javascript" src="/resources/js/upload.js"></script>
-          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <style>
 @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 #jh{font-family: 'Jeju Hallasan', cursive;}
@@ -34,11 +34,9 @@ width:85.4px;
 $(function(){
 		if(window.location.href=="http://localhost:8181/region/seoul" || window.location.href.includes("http://localhost:8181/region/seoul?page="))
 		{
-			$("#seoul").css('background-color','wheat');
+			$("#mainseoul").css('background-color','wheat');
 		}	
-	
-
-
+		
 
 });	
 
@@ -49,16 +47,16 @@ $(function(){
 <%@include file="../Header.jsp" %>
 <div id="wrap">
 	<div class="content">
-	
-		<div style="margin-bottom:30px;">
+	<div style="margin-bottom:30px;">
             <img src="../resources/imgs/mainregion.jpg">
             
       	</div>
+		
       	<div class="pl-cate" id="jh">
 			
 			<ul class="plc-list" id="sub_category" style="margin-top:15px;">
-				<li style="margin-left: -40px;"><a href="/region" id="allregion">전체보기</a></li>
-				<li><a href="/region/seoul" id="seoul">서울</a></li>
+				<li style="margin-left: -40px;"><a href="/region/all" id="allregion">전체보기</a></li>
+				<li><a href="/region/seoul" id="mainseoul">서울</a></li>
 				<li><a href="/region/incheon" id="incheon">인천</a></li>
 				<li><a href="/region/kyunggi" id='kyunggi'>경기도</a></li>
 				<li><a href="/region/kangwon" id="kangwon">강원도</a></li>

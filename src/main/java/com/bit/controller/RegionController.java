@@ -135,6 +135,7 @@ public class RegionController {
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);
 			pageMaker.setTotalCount(service.regionAllcount());
+		
 			model.addAttribute("pageMaker",pageMaker);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

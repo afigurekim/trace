@@ -46,7 +46,8 @@ public class ReplyController {
 		ResponseEntity<Map<String,Object>> entity= null;
 		try {
 			
-			System.out.println(page);
+			System.out.println(page+"페이지입니다");
+			System.out.println(bno+"bno입니다");
 			Criteria cri = new Criteria();
 			cri.setPage(page);
 			cri.setPerPageNum(5);
@@ -56,10 +57,10 @@ public class ReplyController {
 			
 			Map<String,Object> map = new HashMap<String,Object>();
 			List<ReplyVO> list = service.listPage(bno, cri);
-			
+			System.out.println(list.size()+"리스트 사이즈입니다");
 			map.put("list", list);
 			int replyCount= service.count(bno);
-			
+			System.out.println(replyCount+"댓글갯수입니다");
 			pageMaker.setTotalCount(replyCount);
 			
 			map.put("pageMaker", pageMaker);
@@ -73,20 +74,7 @@ public class ReplyController {
 	
 	}
 	
-	@RequestMapping(value="/all/{bno}",method=RequestMethod.GET)
-	public ResponseEntity<List<ReplyVO>> list(@PathVariable("bno") Integer bno){
-		
-		ResponseEntity<List<ReplyVO>> entity = null;
-		try {
-			entity=new ResponseEntity<>(
-			service.list(bno),HttpStatus.OK);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			entity=new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-		}
-		return entity;
-	}
+
 	@RequestMapping(value="/{rno}",method= {RequestMethod.PUT,RequestMethod.PATCH})
 	public ResponseEntity<String> update(@PathVariable("rno") Integer rno,@RequestBody ReplyVO vo){
 		

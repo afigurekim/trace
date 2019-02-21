@@ -3,159 +3,41 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
-<html>
+<html >
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-
-<link rel="stylesheet" type='text/css' href="../resources/css/list.css">
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
-  <script type="text/javascript" src="/resources/js/upload.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=85e0cc19a20ba6c0287ea1beb32633e7"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-
-
-<style>
-body{
-    font-family: 'Noto Sans Kr','Nanum Gothic','Malgun gothic',Dotum,arial,sans-serif;
-}ul{
-margin-bottom:-5px;
-}
-#inner1{
-	padding-top:6px;
-	padding-bottom:16px;
-}
-
-.hschDetail_tit{
-	position: relative;
-    margin-bottom: 30px;
-    border-top: 2px solid #535a75;
-    border-bottom: 1px solid #535a75;
-    padding: 15px 0;
-    text-align: center;	
-}
-.hschDeatil_tit>p{
-    color: #555;
-    text-align: center;
-    font-weight: 400;
-}
-.hschDetail_tit>strong{
-	olor: #000;
-    font-size: 21px;
-    font-weight: 600;
-}
-.hschDetail_info>.hschDi_img{
-    width: 48.5%;
-    height: auto;
-    vertical-align: middle;
-    max-height: 100%;
-    max-width: 100%;
-	background: #ddd;
-    text-align: center;
-}
-.hschDetail_info>div{
-	position: relative;
-    float: left;
-    width: 48.5%;
-}
-.hschDetail_info>.hschDi_info{
-    float: left;
-    width: 48.5%;
-    table-layout: fixed;
-    border-collapse: collapse;
-    border-top: 1px solid #535a75;
-    border-bottom: 1px solid #535a75;
-    margin-left: 3%;
-    font-size: 15px;
-    color: #555;
-    font-weight: 300;
-    line-height: 1.5;
-}
-.hschDi_info>tbody>tr>th{
-	text-align:left;
-}
-.hschDi_info>tbody>tr:first-child{
-	border-top:0;
-}
-.hschDi_info>tbody>tr{
-    border-top: 1px solid #d5d5db;
-}
-tbody>tr>td{
-padding: 31px 10px 31px 2px;
-}
-
-.hschDetail_con{
-    margin-top: 30px;
-    padding: 30px 27px;
-    background: #f8f8f9;
-}
-.hschDetail_con>p:last-child{
-	margin-bottom:0;
-}
-.hschDetail_con>p{
-	text-align:justify;
-	font-size:15px;
-	line-height:30px;
-	
-}
-.pagination2{
-    padding-left: 0;
-    border-radius: 4px;
-   list-style-type: none;
-    
-}
-.pagination2>li:first-child>a{
-	margin-left: 0;
-    border-top-left-radius: 4px;
-    border-bottom-left-radius: 4px;
-    
-}
-.pagination2>li>a{
-	position: relative;
-    float: left;
-    padding: 6px 12px;
-    margin-left: -1px;
-    line-height: 1.42857143;
-    color: #337ab7;
-    text-decoration: none;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    margin-top:-30px;
-    margin-bottom:30px;
-}
-.pagination2>.active>a{
-	z-index: 3;
-    color: #fff;
-    cursor: default;
-    background-color: #337ab7;
-    border-color: #337ab7;
-    
-}
-#mapwrap{position:relative;overflow:hidden;}
-.category, .category *{margin:0;padding:0;color:#000;}   
-.category {position:absolute;overflow:hidden;top:10px;left:10px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
-.category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
-.category li{list-style:none;float:left;width:50px;height:50px;padding-top:5px;cursor:pointer;} 
-.category .ico_coffee {background-position:-10px 0;}  
-.category .ico_store {background-position:-10px -36px;}   
-.category .ico_carpark {background-position:-10px -72px;} 
-
-.wrap {left: 0;bottom: 40px;width: 288px;height: 132px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
-    .wrap * {padding: 0;margin: 0;}
-    .wrap .info {width: 286px;height: 120px;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
-    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
-    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>About Us | Impact By Distinctive Themes</title>
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../resources/css/pe-icons.css" rel="stylesheet">
+    <link href="../resources/css/prettyPhoto.css" rel="stylesheet">
+    <link href="../resources/css/animate.css" rel="stylesheet">
+    <link href="../resources/css/style.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <script src="../resources/js/jquery.js"></script>
+    <link rel="shortcut icon" href="../resources/imgs/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/imgs/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/imgs/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="../resources/imgs/ico/apple-touch-icon-57x57.png">
+ 	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=85e0cc19a20ba6c0287ea1beb32633e7"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
    
-    .info .body {position: relative;overflow: hidden;}
-    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
-    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
-    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
-    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
-.rating-stars ul {
+ 	<script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/jquery.prettyPhoto.js"></script>
+    <script src="../resources/js/plugins.js"></script>
+    <script src="../resources/js/init.js"></script>
+
+   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+   <style>
+   .rating-stars ul {
   list-style-type:none;
   padding:0;
   
@@ -182,12 +64,64 @@ padding: 31px 10px 31px 2px;
 .rating-stars ul > li.star.selected > i.fa {
   color:#FF912C;
 }
-</style>
- 
-<script type="text/javascript">
+#mapwrap{position:relative;overflow:hidden;}
+.category, .category *{margin:0;padding:0;color:#000;}   
+.category {position:absolute;overflow:hidden;top:10px;left:10px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
+.category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
+.category li{list-style:none;float:left;width:50px;height:50px;padding-top:5px;cursor:pointer;} 
+.category .ico_coffee {background-position:-10px 0;}  
+.category .ico_store {background-position:-10px -36px;}   
+.category .ico_carpark {background-position:-10px -72px;} 
 
+.wrap {left: 0;bottom: 40px;width: 288px;height: 132px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
+    .wrap * {padding: 0;margin: 0;}
+    .wrap .info {width: 286px;height: 120px;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
+    .wrap .info:nth-child(1) {border: 0;box-shadow: 0px 1px 2px #888;}
+    .info .title {padding: 5px 0 0 10px;height: 30px;background: #eee;border-bottom: 1px solid #ddd;font-size: 18px;font-weight: bold;}
+   
+    .info .body {position: relative;overflow: hidden;}
+    .info .desc {position: relative;margin: 13px 0 0 90px;height: 75px;}
+    .desc .ellipsis {overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
+    .desc .jibun {font-size: 11px;color: #888;margin-top: -2px;}
+    .info .img {position: absolute;top: 6px;left: 5px;width: 73px;height: 71px;border: 1px solid #ddd;color: #888;overflow: hidden;}
+   
+.listimg>a{
+	text-deocration:none;
+}
+.listimg>a>img{
+	width:255px;
+	height:170px;
 
-	
+}
+.additem .gname{
+	display: block;
+    overflow: hidden;
+    padding: 3px 0px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(221,221,221);
+    color: black;
+    font-size: 11px;
+    line-height: 13px;
+    text-indent: 5px;
+    background-color: rgb(248,248,248);
+    font-weight: bold;
+}
+.additem .gname_pre{
+	display: block;
+    overflow: hidden;
+    padding: 3px 0px;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-top-color: rgb(221,221,221);
+    color: black;
+    font-size: 11px;
+    line-height: 13px;
+    text-indent: 5px;
+    background-color: rgb(248,248,248);
+}
+   </style>
+<script>
 $(function(){
 	/* 1. Visualizing things on Hover - See next part for action on click */
 	  $('#stars li').on('mouseover', function(){
@@ -307,26 +241,127 @@ $(function(){
 	  }
 	});
 
+
 });
 
 
-
 </script>
-
-</head>
+</head><!--/head-->
 <body>
-<%@include file="../Header.jsp" %>
+<div id="preloader"></div>
+    <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
+    <div id="search-wrapper">
+        <div class="container">
+            <input id="search-box" placeholder="Search">
+        </div>
+    </div>
+    </div>
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="/"><h1><span class="pe-7s-gleam bounce-in"></span> IMPACT</h1></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/intro">소개</a></li>
+                     <li class="dropdown active">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">유적지 <i class="icon-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+	                    <li><a href="/period">시대별</a></li>
+	                    <li><a href="/thema">테마별</a></li>
+	                    <li><a href="/region/main">지역별</a></li>
+                        </ul>
+                    </li> 
 
-<div id="wrap">
-	<div class="content">
-		<div class="hschDetail_tit">
-		<strong>${read.site_name}</strong>
-		</div>
-		
-		<div class="hschDetail_info">
-			<div class="hschDi_img" style="height:397px;">
-			<div class="container" style="width:100%; margin:0;padding:0; height:1000px;">
-				  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <li><a href="/join">회원가입</a></li> 
+                    <li><a href="/login">로그인</a></li> 
+                    <li><a href="/mypage">마이페이지</a></li> 
+                    <li><a href="/write">공지사항</a></li> 
+                    
+                 
+                    <li><span class="search-trigger"><i class="fa fa-search"></i></span></li>
+                </ul>
+            </div>
+        </div>
+    </header><!--/header-->
+
+    <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">Hot Off The Press</h2>
+                                    <hr>
+                                    <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
+
+    <div id="content-wrapper">
+        <section id="blog" class="white">
+            <div class="container">            
+            <div class="gap"></div>
+                <div class="row">
+                    <aside class="col-sm-4 col-sm-push-8"> 
+
+                        <div class="widget categories">
+                            <h3 class="widget-title">유적지 정보</h3>
+                            <div class="row">
+                                
+                                <div class="col-sm-6">
+                                    <ul class="arrow">
+                                        <li>${read.site_name}</li>
+                                        <li>${read.address}</li>
+                                    </ul>
+                                </div>
+                            </div>                     
+                        </div><!--/.categories-->
+                        <div class="widget tags">
+                            <h3 class="widget-title">사용자 별점</h3>
+                            <div id="canvas" style="width:1280px; margin:auto;">
+								<canvas id="myChart"style="float:left; margin-top:10px;margin-left:21px; width:400px;height:200px;"></canvas>
+							</div>
+                        </div><!--/.tags-->
+						<section class='rating-widget'>
+							<div class='rating-stars text-center' >
+							    <ul id='stars' style="margin-top:60px;"> 
+							      <li class='star' title='Poor' data-value='1'>
+							        <i class='fa fa-star fa-fw'></i>
+							      </li>
+							      <li class='star' title='Fair' data-value='2'>
+							        <i class='fa fa-star fa-fw'></i>
+							      </li>
+							      <li class='star' title='Good' data-value='3'>
+							        <i class='fa fa-star fa-fw'></i>
+							      </li>
+							      <li class='star' title='Excellent' data-value='4'>
+							        <i class='fa fa-star fa-fw'></i>
+							      </li>
+							      <li class='star' title='WOW!!!' data-value='5'>
+							        <i class='fa fa-star fa-fw'></i>
+							      </li>
+							     <button type="button" class="btn btn-primary"style="margin-bottom:18px;">찜하기</button>	
+							      
+							    </ul>
+							  </div>
+						</section>
+                    </aside>        
+                    <div class="col-sm-8 col-sm-pull-4">
+                        <div class="blog">
+                            <div class="blog-item">
+                                <div class="blog-featured-image">
+                                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
 				    <!-- Indicators -->
 				    <ol class="carousel-indicators">
 				   		<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -341,13 +376,13 @@ $(function(){
 				    <div class="carousel-inner">
 				      <div class="item active">
 							<a href="#" onclick="dirImg('1636095');" title="사진을 클릭하시면 크게 확인하실 수 있습니다." style="line-height: 301px;">
-							 <img  src="${read.first_image}" style="width:100%;height:397px;">                
+							 <img  src="${read.first_image}" class="img-responsive img-blog">                
 							</a>				     
 						</div>
 						<c:forEach items="${region_image}"  var="img_list" begin="0" varStatus="status">
 						 	<div class="item">
 									<a href="#" onclick="dirImg('1636095');" title="사진을 클릭하시면 크게 확인하실 수 있습니다." style="line-height: 301px;">
-									 <img  src="${img_list.fullname}" style="width:100%;height:397px;">                
+									 <img  src="${img_list.fullname}" class="img-responsive img-blog">                
 									</a>				     
 								</div>
 						</c:forEach>
@@ -364,127 +399,63 @@ $(function(){
 				      <span class="glyphicon glyphicon-chevron-right"></span>
 				      <span class="sr-only">Next</span>
 				    </a>
-				  </div>
-				</div>
+				    </div>
+                                    
+                  <div class="overlay">
+                         <a class="preview btn btn-outlined btn-primary" href="blog-item.html" rel="prettyPhoto"><i class="fa fa-link"></i></a>
+                  </div>
+                 </div> 
+                 <div class="blog-content">
+                     <h3 class="main-title">${read.site_name}</h3>
+                     
+                     <p class="lead">${read_detail.detail}</p>
+                     <hr>
+
+                     <script type="text/javascript">
+					 if("${read_detail.info_center}"!=""){
+						document.write("<p>문의 및 안내 : <br> ${read_detail.info_center} </p>");				
+					            }
+					if("${read_detail.exp_guide}"!=""){
+						document.write("<p>체험 안내 : <br> ${read_detail.exp_guide} </p>");
+					}
+					if("${read_detail.expage_range}"!=""){
+						document.write("<p>체험 연령 : ${read_detail.expage_range} </p>");
+					}
+					if("${read_detail.rest_day}"!=""){
+						document.write("<p>쉬는 날 : ${read_detail.rest_day} </p>");
+					}
+					if("${read_detail.use_time}"!=""){
+						document.write("<p>이용시간 : <br> ${read_detail.use_time} </p>");
+					}
+					if("${read_detail.park}"!=""){
+						document.write("<p>주차 시설 : ${read_detail.park} </p>");
+					}
+					if("${read_detail.carriage}"!=""){
+						document.write("<p>유모차 대여 여부 : ${read_detail.carriage} </p>");
+					}
+					if("${read_detail.pet}"!=""){
+						document.write("<p>애완동물 동반 가능 여부 : ${read_detail.pet} </p>");
+					}
+					if("${read_detail.credit_card}"!=""){
+						document.write("<p>신용카드 가능 여부 : ${read_detail.credit_card} </p>");
+					}
 	
-			</div>
-			
-			<table class="hschDi_info">
-				      <colgroup>
-				        <col style="width:125px">
-				        <col>
-				       </colgroup>
-				       <tbody>
-				       <tr>
-					       <th scope="row">유적지 이름</th>
-					       <td>${read.site_name}</td>
-				       </tr>                             
-				       <tr>
-				           <th scope="row">소재지</th>
-				           <td>${read.address}</td>
-				       </tr>
-				       
-				      
-				       <tr>
-				       		<th>사용자 별점</th>
-				       		<td>
-				       		<div id="canvas" style="width:1280px; margin:auto;">
-								<canvas id="myChart"style="float:left; margin-top:10px;margin-left:21px; width:400px;height:200px;"></canvas>
-							</div>
-				       		</td>
-				       </tr>      
-				      </tbody>
-				</table>
-						
-		</div>
-		
-		
-		<div style="margin-top:30px;">
-		<button type="button" class="btn btn-primary"style="float:right; margin-left:10px;">찜하기</button>	
-		<section class='rating-widget' style="margin-top:450px;">
-   
-  <!-- Rating Stars Box -->
-  <div class='rating-stars text-right'>
-    <ul id='stars'>
-      <li class='star' title='Poor' data-value='1'>
-        <i class='fa fa-star fa-fw'></i>
-      </li>
-      <li class='star' title='Fair' data-value='2'>
-        <i class='fa fa-star fa-fw'></i>
-      </li>
-      <li class='star' title='Good' data-value='3'>
-        <i class='fa fa-star fa-fw'></i>
-      </li>
-      <li class='star' title='Excellent' data-value='4'>
-        <i class='fa fa-star fa-fw'></i>
-      </li>
-      <li class='star' title='WOW!!!' data-value='5'>
-        <i class='fa fa-star fa-fw'></i>
-      </li>
-    </ul>
-  </div>
- 
-</section>
-		
-		</div>
-			<div class="hschDetail_con" id="expDiv">
-              	<p>${read_detail.detail}</p>
-                
-              </div>
-           <div class="hschDetail_con" id="expDiv">
-           
-                <script type="text/javascript">
-                if("${read_detail.info_center}"!=""){
-					document.write("<p>문의 및 안내 : <br> ${read_detail.info_center} </p>");				
-                }
-				if("${read_detail.exp_guide}"!=""){
-					document.write("<p>체험 안내 : <br> ${read_detail.exp_guide} </p>");
-				}
-				if("${read_detail.expage_range}"!=""){
-					document.write("<p>체험 연령 : ${read_detail.expage_range} </p>");
-				}
-				if("${read_detail.rest_day}"!=""){
-					document.write("<p>쉬는 날 : ${read_detail.rest_day} </p>");
-				}
-				if("${read_detail.use_time}"!=""){
-					document.write("<p>이용시간 : <br> ${read_detail.use_time} </p>");
-				}
-				if("${read_detail.park}"!=""){
-					document.write("<p>주차 시설 : ${read_detail.park} </p>");
-				}
-				if("${read_detail.carriage}"!=""){
-					document.write("<p>유모차 대여 여부 : ${read_detail.carriage} </p>");
-				}
-				if("${read_detail.pet}"!=""){
-					document.write("<p>애완동물 동반 가능 여부 : ${read_detail.pet} </p>");
-				}
-				if("${read_detail.credit_card}"!=""){
-					document.write("<p>신용카드 가능 여부 : ${read_detail.credit_card} </p>");
-				}
-					
-                </script>
-	 </div>
-                
-         <div style="border-bottom: 1px solid #535a75; margin-top:30px;"></div>
-         	<div style="margin-top:30px">
-         		<a href="#"><img src="../resources/imgs/문화재청.png"></a>
-         		<a href="#"><img src="../resources/imgs/길찾기.png"></a>
-         	</div>
-		   <div style="border-bottom: 1px solid #535a75; margin-top:30px;"></div>
-	
+    				</script>
+
+   <hr>
 <div id="mapwrap"> 
-    <!-- 지도가 표시될 div -->
-    <div id="map" style="width:100%;height:500px;"></div>
-    <!-- 지도 위에 표시될 마커 카테고리 -->
-    <div class="category">
-        <ul>
-            <li id="coffeeMenu" onclick="changeMarker('coffee')">
-            <img src="../resources/imgs/음식.png" style="width:50px;height:25px;">
-                <span class="ico_comm ico_coffee"></span>
-                음식점
-            </li>
-            <li id="storeMenu" onclick="changeMarker('store')">
-             <img src="../resources/imgs/숙소.png" style="width:50px;height:25px;">
+   <!-- 지도가 표시될 div -->
+   <div id="map" style="width:100%;height:500px;"></div>
+   <!-- 지도 위에 표시될 마커 카테고리 -->
+   <div class="category">
+       <ul>
+           <li id="coffeeMenu" onclick="changeMarker('coffee')">
+           <img src="../resources/imgs/음식.png" style="width:50px;height:25px;">
+               <span class="ico_comm ico_coffee"></span>
+               음식점
+           </li>
+           <li id="storeMenu" onclick="changeMarker('store')">
+            <img src="../resources/imgs/숙소.png" style="width:50px;height:25px;">
             
                 <span class="ico_comm ico_store"></span>
           숙박
@@ -493,8 +464,20 @@ $(function(){
         </ul>
     </div>
 </div>
+                           
+<hr>
 
-
+<div id="comments">
+  <div id="comments-list">
+   <ul class="timeline" style="margin-top:10px;">
+		<li class="time-label" id="repliesDiv" style="margin-bottom:30px;list-style-type:none; margin-left:-39px; font-size:20px; font-weight:700; height:30px;"><span class="bg-green">
+		<i class="fa fa-comments bg-blue"></i>
+		댓글</span>${reply_count}</li>
+	</ul>
+	<div class="text-center">
+		<ul id="pagination" class="pagination pagination-sm no-margin">
+		</ul>
+	</div>
 	<div class="row">
 		<div class="col-md-12">
 		
@@ -503,32 +486,50 @@ $(function(){
 				<h3 class="box-title">댓글 등록</h3>
 			</div>
 			<div class="box-body">
-				<label for="newReplyWriter">글쓴이</label>
 					<input class="form-control" type="text" placeholder="글쓴이"
-					id="newReplyWriter"><label for="newReplyText">댓글 내용</label>
-					<input class="form-control" type="text"
-					placeholder="댓글 내용" id="newReplyText">
+					id="newReplyWriter">
+					<div style="margin-top:15px; margin-bottom:15px;">
+					<textarea rows="8"  id="newReplyText" class="form-control" placeholder="내용"></textarea> 
+					</div>
 			</div>
 			
 		<div class="box-footer">
-			<button type="submit" class="btn btn-primary" id="replyAddBtn">등록</button>
+			<button type="submit" class="btn btn-primary btn-outlined" id="replyAddBtn">등록</button>
 		</div>
 		</div>
 		
 		</div>
-	</div>
-	
-	<ul class="timeline" style="margin-top:10px;">
-		<li class="time-label" id="repliesDiv" style="list-style-type:none; margin-left:-39px; font-size:20px; font-weight:700; height:30px;"><span class="bg-green">
-		<i class="fa fa-comments bg-blue"></i>
-		댓글</span>${reply_count}</li>
-	</ul>
-	
-	<div class="text-center">
-		<ul id="pagination" class="pagination pagination-sm no-margin">
-		</ul>
-	</div>
-	<div id="modifyModal" class="modal modal-primary fade" role="dialog">
+	</div>                           
+       	</div>
+    </div>
+</div>
+
+        </div>
+    </div><!--/.col-md-8-->
+</div><!--/.row-->
+    </div>
+</section><!--/#blog-->
+</div>
+
+    <div id="footer-wrapper">
+       
+
+        <footer id="footer" class="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        &copy; 2019 <a target="_blank" href="http://www.distinctivethemes.com" title="Premium Themes and Templates">Distinctive Themes</a>. All Rights Reserved.
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="pull-right">
+                            <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li><!--#gototop-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer><!--/#footer-->
+    </div>
+    <div id="modifyModal" class="modal modal-primary fade" role="dialog">
 	<div class="modal-dialog">
 		
 		<div class="modal-content" style="margin-top:300px;">
@@ -548,23 +549,18 @@ $(function(){
 		</div>
 	</div>
 </div>
-	
-	</div>
-</div>
-
+    
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
 <li class="replyLi" data-rno={{rno}} style="list-style-type:none;">
-	<div class="timeline-footer" style="float:right;">
-		<a class="btn btn-primary btn-xs"
-		data-toggle="modal" data-target="#modifyModal">Modify</a>
+	<div class="well">
+	<div class="media-heading">{{replyer}}
+	&nbsp;<small><i class="fa fa-clock-o"></i> {{prettifyDate reg_date}}</small>
 	</div>
-	<div class="timeline-item">
-	<h4 class="timeline-header">{{replyer}}</h4>
 	<div class="timeline-body">{{reply_text}} </div>
-	<span class="time">
-		<i class="fa fa-clock-o"></i>{{prettifyDate reg_date}}
-	</span>
+		<a class="pull-right btn btn-primary btn-outlined"
+		data-toggle="modal" data-target="#modifyModal">Modify</a>
+	
 		
 </div>
 <hr>
@@ -805,12 +801,17 @@ function changeMarker(type){
 var clickcount=0;
 var bno=1;
 var replyPage=1
+$(function(){
+	getPage('/replies/'+1+"/"+1);
+
+});
 function getPage(pageInfo){
 $.ajax({
 	url:pageInfo,
 	async: false,
+	type:'get',
 	success:function(data){
-		console.log("+댓글 갯수+"+data.length);
+		console.log("+댓글 갯수+"+data.list.length);
 		var str="";
 		printData(data.list,$("#repliesDiv"),$("#template"));
 		printPaging(data.pageMaker,$(".pagination"));
@@ -850,8 +851,9 @@ var printPaging= function(pageMaker,target){
 	}
 	target.html(str);
 };
-$("#repliesDiv").on("click",function(){
+/*$("#repliesDiv").on("click",function(){
 clickcount+=1;
+alert("hi");
 	if(clickcount==1){
 		if($(".timeline li").size() >1){
 	
@@ -872,7 +874,7 @@ clickcount+=1;
 		clickcount=0;
 	}
 });	
-
+*/
 
 $(".pagination").on("click","li a",function(event){
 	event.preventDefault();
@@ -973,6 +975,6 @@ $("#replyDelBtn").on("click",function(){
 		}});
 });
 </script>
-<%@include file="../MainFooter.jsp" %>
+   
 </body>
 </html>

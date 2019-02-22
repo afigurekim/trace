@@ -241,7 +241,12 @@ $(function(){
 	  }
 	});
 
+	var windowWidth = $( window ).width();
 
+	$(window).resize(function(){
+		 windowWidth = $( window ).width();
+	$("#food_image_modal").height($("#food_image_modal").width());
+	});
 });
 
 
@@ -531,6 +536,28 @@ $(function(){
 		</div>
 	</div>
 </div>
+<div id="modifyModal2" class="modal modal-primary fade" role="dialog">
+	<div class="modal-dialog">
+		
+		<div class="modal-content" style="margin-top:300px;">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+				<div class="listimg">
+				<img src="#"   id="food_image_modal" style="width:100%;">
+				</div>
+				<p id="food_address" style="margin-top:20px; border-bottom:1px solid gray; border-top:1px solid gray;"></p>
+				<p id="food_detail_modal" style="margin-top:20px; font-size:13px;"></p>
+				
+				</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+			</div>
+		</div>
+	</div>
+</div>
 
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
@@ -687,11 +714,31 @@ function createCoffeeMarkers() {
 }
 function makeClickListener(map, marker, content2) {
     return function() {
-        var str=content2.indexOf("<a");
-        var str2=content2.indexOf("<img");
-        var str3=content2.substring(str+9,str2-2);
-        
-        window.location.href="http://localhost:8181"+str3;
+     	//alert(content2);
+        var str=content2.indexOf("<a href");
+        var str2=content2.indexOf("<img src");
+        var str3=content2.substring(str+16,str2-2);
+        $.ajax({
+        	url:"/region"+str3,
+        	async: false,
+        	success:function(data){
+        		
+	        		for(var i=0;i<data.food_image.length;i++){
+	        			console.log(data.food_image[i]);
+	                   
+						
+	        		}
+        	   		$("#food_image_modal").attr("src",data.read_attraction.first_image);
+
+	        		$(".modal-title").text(data.read_attraction.attraction_name);
+	        		$("#food_address").text(data.read_attraction.address);
+	        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
+ 
+	        		$("#modifyModal2").modal();  
+
+	        		 
+        	}
+        });
     };
 }
 

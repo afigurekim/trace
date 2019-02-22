@@ -1,11 +1,5 @@
 package com.bit.controller;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -223,28 +217,42 @@ public class RegionController {
 		}
 		return entity;
 	}
+	
+	@ResponseBody
 	@RequestMapping(value = "/region/attraction_read", method = RequestMethod.GET)
-	public String attraction_detail(@RequestParam("bno") int bno, int rno,Model model,Criteria cri) {
-		
+	public ResponseEntity<Map<String,Object>>  attraction_detail(@RequestParam("bno") int bno, int rno,Model model,Criteria cri) {
+		ResponseEntity<Map<String,Object>> entity= null;
+
 		
 			try {
-				model.addAttribute("read_attraction",service.read_attraction(bno, rno));
+				Map<String,Object> map = new HashMap<String,Object>();
+				map.put("read_attraction", service.read_attraction(bno, rno));
+
+				//model.addAttribute("read_attraction",service.read_attraction(bno, rno));
 				List<Nearby_attractionVO> imglist=service.attraction_image(bno,rno);
 				
 				for(int i=0;i<imglist.size();i++) {
 					if(imglist.get(i).getFullname().indexOf("http")!=-1) {
+					
 						imglist.get(i).setFullname(imglist.get(i).getFullname().substring(imglist.get(i).getFullname().indexOf("http")));
+						
 					}
 				}
-				model.addAttribute("food_image",imglist);
+				map.put("food_image", imglist);
+				//model.addAttribute("food_image",imglist);
+				entity= new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
+
 				
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				e.printStackTrace();
+				entity=new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
 			}
 			
 		
-		return "/region/read_Attraction";
+			return entity;
+
 	}
 	@RequestMapping(value = "/region/seoul", method = RequestMethod.GET)
 	public String seoul(Criteria cri,Locale locale, Model model) {

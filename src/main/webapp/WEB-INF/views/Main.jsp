@@ -7,54 +7,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Home | Impact By Distinctive Themes</title>
+    <title>About Us | Impact By Distinctive Themes</title>
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="../resources/css/pe-icons.css" rel="stylesheet">
     <link href="../resources/css/prettyPhoto.css" rel="stylesheet">
     <link href="../resources/css/animate.css" rel="stylesheet">
     <link href="../resources/css/style.css" rel="stylesheet">
-    <script src="../resources/js/jquery.js"></script>
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
+    <script src="../resources/js/jquery.js"></script>
     <link rel="shortcut icon" href="../resources/imgs/ico/favicon.ico">
-    <link rel="apple-touch-icon" sizes="144x144" href="../resources/imgs/ico/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="../resources/imgs/ico/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="../resources/imgs/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" href="../resources/imgs/ico/apple-touch-icon-57x57.png">
-
-    <script src="../resources/js/plugins.js"></script>
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/imgs/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/imgs/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="../resources/imgs/ico/apple-touch-icon-57x57.png">
     <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/jquery.prettyPhoto.js"></script>   
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWDPCiH080dNCTYC-uprmLOn2mt2BMSUk&amp;sensor=true"></script> 
+    <script src="../resources/js/jquery.prettyPhoto.js"></script>
+    <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
-    <script type="text/javascript">
-   /* jQuery(document).ready(function($){
-	'use strict';
-      	jQuery('body').backstretch([
-	        "../resources/imgs/bg/bg1.jpg",
-	        "../resources/imgs/bg/bg2.jpg",
-	        "../resources/imgs/bg/bg3.jpg"
-	    ], {duration: 5000, fade: 500, centeredY: true });
+  
+    
+<style>
 
-	
-    });*/
-    </script>
+</style>
+<script type="text/javascript">
+
+</script>
 </head><!--/head-->
 <body>
 <div id="preloader"></div>
-    <header class="navbar navbar-inverse navbar-fixed-top " role="banner">
+    <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
+    <div id="search-wrapper">
+        <div class="container">
+            <input id="search-box" placeholder="Search">
+        </div>
+    </div>
+ 
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
-                 <a class="navbar-brand" href="index.html"><h1><span class="pe-7s-gleam bounce-in"></span> 발자취</h1></a>
+                <a class="navbar-brand" href="/"><h1><span class="pe-7s-gleam bounce-in"></span> IMPACT</h1></a>
             </div>
-            <div class="collapse navbar-collapse">
+             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/intro">소개</a></li>
                      <li class="dropdown active">
@@ -77,13 +77,15 @@
             </div>
         </div>
     </header><!--/header-->
-<div id="content" style="position:fixed; margin-top:40px;">
-	<script src="../resources/js/three.js"></script>
+
+    
+    <div id="content-wrapper">
+        <script src="../resources/js/three.js"></script>
 	<script src="../resources/js/tween.min.js"></script>
 	<script src="../resources/js/TrackballControls.js"></script>
 	<script src="../resources/js/CSS3DRenderer.js"></script>
 	
-		<div id="container" style="margin-top:-200px;"></div>
+		<div id="container" style="width:90%;"></div>
 		<div id="menu" style="display:none;">
 			<button id="table">TABLE</button>
 			<button id="sphere">SPHERE</button>
@@ -348,15 +350,11 @@
 			}
 		</script>
 	</div>
-    <div id="content-wrapper">
-        
-
-
-     
-        </div>
+  
 
     <div id="footer-wrapper">
         
+
         <footer id="footer" class="">
             <div class="container">
                 <div class="row">

@@ -71,7 +71,35 @@ $(function(){
 	console.log(width);
 	console.log(height+"높이");
 	//alert($(".item-inner>a>img").eq(1).height(272));
-})
+	$("#all_region").click(function(){
+		window.location.href="http://localhost:8181/region/all";
+	});		
+	$("#seoul").click(function(){
+		window.location.href="http://localhost:8181/region/seoul";
+	});
+	$("#incheon").click(function(){
+		window.location.href="http://localhost:8181/region/incheon";
+	});	
+	$("#kyunggi").click(function(){
+		window.location.href="http://localhost:8181/region/kyunggi";
+	});
+	$("#kangwon").click(function(){
+		window.location.href="http://localhost:8181/region/kangwon";
+	});
+	$("#chungchung").click(function(){
+		window.location.href="http://localhost:8181/region/chungchung";
+	});	
+	$("#kyungsang").click(function(){
+		window.location.href="http://localhost:8181/region/kyungsang";
+	});	
+	$("#junla").click(function(){
+		window.location.href="http://localhost:8181/region/junla";
+	});	
+	$("#jeju").click(function(){
+		window.location.href="http://localhost:8181/region/jeju";
+	});			
+	
+});
 </script>
 </head><!--/head-->
 <body>
@@ -81,7 +109,6 @@ $(function(){
         <div class="container">
             <input id="search-box" placeholder="Search">
         </div>
-    </div>
     </div>
         <div class="container">
             <div class="navbar-header">
@@ -140,15 +167,45 @@ $(function(){
             <div class="container">
                     
                     <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary active" href="#" data-filter="*">All</a></li>
-                        <li><a class="btn btn-outlined btn-primary" href="#" data-filter=".bootstrap">Bootstrap</a></li>
-                        <li><a class="btn btn-outlined btn-primary" href="#" data-filter=".html">HTML</a></li>
-                        <li><a class="btn btn-outlined btn-primary" href="#" data-filter=".wordpress">Wordpress</a></li>
+                        <li><a class="btn btn-outlined btn-primary active" id="all_region" href="#" data-filter="*">전체보기</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="seoul" data-filter="*">서울</a></li>
+                        <li><a class="btn btn-outlined btn-primary"  id="incheon" href="#" data-filter="*">인천</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="kyunggi" href="#" data-filter="*">경기도</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="kangwon" href="#" data-filter="*">강원도</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="chungchung" href="#" data-filter="*">충청도</a></li>
+                    	<li><a class="btn btn-outlined btn-primary" id="kyungsang" href="#" data-filter="*">경상도</a></li>
+         				<li><a class="btn btn-outlined btn-primary" id="junla" href="#" data-filter="*">전라도</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="jeju" href="#" data-filter="*">제주도</a></li>
+                    	
                     </ul><!--/#portfolio-filter-->
-
+						
                     <ul class="portfolio-items col-3 isotope fade-up">
 				      <c:forEach items="${list}" var="Historic_siteVO" varStatus="status">
-                        <li class="portfolio-item apps isotope-item">
+               			<!--  <script>
+               			var address="${Historic_siteVO.address}";
+               			if(address.indexOf("서울")!=-1){
+                            document.write("<li class='portfolio-item apps seoul isotope-item'>");
+               			}else if(address.indexOf("인천")!=-1){
+                            document.write("<li class='portfolio-item apps incheon isotope-item'>");
+
+               			}else if(address.indexOf("대구")!=-1){
+                            document.write("<li class='portfolio-item kyungsang isotope-item'>");
+               			}
+               			else if(address.indexOf("광주")!=-1){
+                            document.write("<li class='portfolio-item kyungsang isotope-item'>");
+               			}else if(address.indexOf("대전")!=-1){
+                            document.write("<li class='portfolio-item kyungsang isotope-item'>");
+               			}
+               			document.write("<div class='item-inner'>");
+               			document.write("<a href='/region/read?bno=${Historic_siteVO.bno}'>");
+               			document.write("<img class='img-responsive img-blog' src='${Historic_siteVO.first_image}'>");
+               			document.write("<h5>${Historic_siteVO.site_name}</h5>");
+               			document.write("</a>");
+               			document.write("</div>");
+               			document.write("</li>");
+               			</script>  -->
+           				 <li class='portfolio-item apps seoul isotope-item'>
+               			
                           <div class="item-inner">
 								<a href="/region/read?bno=${Historic_siteVO.bno}">
 								
@@ -156,17 +213,19 @@ $(function(){
 								
 								
 								 <h5>${Historic_siteVO.site_name}</h5>
+								
 				            	</a>		
 						</div>
-						</li>
+						</li>  
 					  </c:forEach>
-                        <li class="portfolio-item apps isotope-item">
+					  <!-- 
+                         <li class="portfolio-item apps isotope-item">
                             <div class="item-inner">
                                 <img src="http://placehold.it/800x600" alt="">
                                 <h5>Lorem ipsum11 dolor sit amet</h5>
                                     <a href="#" rel="prettyPhoto"></a>             
                             </div>           
-                        </li><!--/.portfolio-item-->
+                        </li>
                         <li class="portfolio-item joomla bootstrap isotope-item">
                             <div class="item-inner">
                                 <img src="http://placehold.it/800x600" alt="">
@@ -175,7 +234,7 @@ $(function(){
                                     <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>              
                                 </div>           
                             </div>           
-                        </li><!--/.portfolio-item-->
+                        </li>
                         <li class="portfolio-item bootstrap wordpress isotope-item">
                             <div class="item-inner">
                                 <img src="http://placehold.it/800x600" alt="">
@@ -184,7 +243,7 @@ $(function(){
                                     <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>        
                                 </div>           
                             </div>           
-                        </li><!--/.portfolio-item-->
+                        </li>
                         <li class="portfolio-item joomla 
                         wordpress apps isotope-item">
                             <div class="item-inner">
@@ -194,7 +253,7 @@ $(function(){
                                     <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>          
                                 </div>           
                             </div>           
-                        </li><!--/.portfolio-item-->
+                        </li>
                         <li class="portfolio-item joomla html isotope-item">
                             <div class="item-inner">
                                 <img src="http://placehold.it/800x600" alt="">
@@ -203,7 +262,7 @@ $(function(){
                                     <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>          
                                 </div>    
                             </div>       
-                        </li><!--/.portfolio-item-->
+                        </li>
                         <li class="portfolio-item wordpress html isotope-item">
                             <div class="item-inner">
                                 <img src="http://placehold.it/800x600" alt="">
@@ -212,7 +271,7 @@ $(function(){
                                     <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>           
                                 </div>           
                             </div>           
-                        </li><!--/.portfolio-item-->
+                        </li>
                         <li class="portfolio-item joomla wordpress apps isotope-item">
                             <div class="item-inner">
                                 <img src="http://placehold.it/800x600" alt="">
@@ -221,7 +280,7 @@ $(function(){
                                     <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>          
                                 </div>           
                             </div>           
-                        </li><!--/.portfolio-item-->
+                        </li>
                         <li class="portfolio-item joomla html isotope-item">
                             <div class="item-inner">
                                 <img src="http://placehold.it/800x600" alt="">
@@ -230,7 +289,7 @@ $(function(){
                                     <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>          
                                 </div>    
                             </div>       
-                        </li><!--/.portfolio-item-->
+                        </li>
                         <li class="portfolio-item wordpress html isotope-item">
                             <div class="item-inner">
                                 <img src="http://placehold.it/800x600" alt="">
@@ -239,69 +298,32 @@ $(function(){
                                     <a class="preview btn btn-outlined btn-primary" href="http://placehold.it/800x600" rel="prettyPhoto"><i class="fa fa-eye"></i></a>           
                                 </div>           
                             </div>           
-                        </li><!--/.portfolio-item-->
+                        </li>-->
                     </ul>
+                    <div class="text-center">
+						<ul class="pagination">
+							<c:if test="${pageMaker.prev}">
+								<li><a href="/region/all?page=${pageMaker.startPage-1}">&laquo;</a></li>
+							</c:if>
+							
+							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+								<li 
+									<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
+								<a href="/region/all?page=${idx}">${idx}</a>
+								</li>
+							</c:forEach>
+							
+							<c:if test="${pageMaker.next && pageMaker.endPage>0 }">
+								<li><a href="/region/all?page=${pageMaker.endPage +1}">&raquo;</a></li>
+							</c:if>
+							
+						</ul>
+					</div>
                 </div>
             </section>
     </div>
 
     <div id="footer-wrapper">
-        <section id="bottom" class="">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-sm-6 about-us-widget">
-                        <h4>Global Coverage</h4>
-                        <p>Was drawing natural fat respect husband. An as noisy an offer drawn blush place. These tried for way joy wrote witty. In mr began music weeks after at begin.</p>
-                    </div><!--/.col-md-3-->
-
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Company</h4>
-                        <div>
-                            <ul class="arrow">
-                                <li><a href="#">Company Overview</a></li>
-                                <li><a href="#">Meet The Team</a></li>
-                                <li><a href="#">Our Awesome Partners</a></li>
-                                <li><a href="#">Our Services</a></li>
-                            </ul>
-                        </div>
-                    </div><!--/.col-md-3-->
-
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Latest Articles</h4>
-                        <div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img class="widget-img" src="http://placehold.it/800x600" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <span class="media-heading"><a href="#">Blog Post A</a></span>
-                                    <small class="muted">Posted 14 April 2014</small>
-                                </div>
-                            </div>
-                            <div class="media">
-                                <div class="pull-left">
-                                    <img class="widget-img" src="http://placehold.it/800x600" alt="">
-                                </div>
-                                <div class="media-body">
-                                    <span class="media-heading"><a href="#">Blog Post B</a></span>
-                                    <small class="muted">Posted 14 April 2014</small>
-                                </div>
-                            </div>
-                        </div>  
-                    </div><!--/.col-md-3-->
-
-                    <div class="col-md-3 col-sm-6">
-                        <h4>Come See Us</h4>
-                        <address>
-                            <strong>Ace Towers</strong><br>
-                            New York Ave,<br>
-                            New York, 215648<br>
-                            <abbr title="Phone"><i class="fa fa-phone"></i></abbr> 546 840654 05
-                        </address>
-                    </div> <!--/.col-md-3-->
-                </div>
-            </div>
-        </section><!--/#bottom-->
 
         <footer id="footer" class="">
             <div class="container">

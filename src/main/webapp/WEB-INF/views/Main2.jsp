@@ -1,147 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page session="true" %>
-
-    
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-  <script type="text/javascript" src="/resources/js/upload.js"></script>
-<link rel="stylesheet" type="text/css" href="../../resources/css/style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Home | Impact By Distinctive Themes</title>
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../resources/css/pe-icons.css" rel="stylesheet">
+    <link href="../resources/css/prettyPhoto.css" rel="stylesheet">
+    <link href="../resources/css/animate.css" rel="stylesheet">
+    <link href="../resources/css/style.css" rel="stylesheet">
+    <script src="../resources/js/jquery.js"></script>
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <link rel="shortcut icon" href="../resources/imgs/ico/favicon.ico">
+    <link rel="apple-touch-icon" sizes="144x144" href="../resources/imgs/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="../resources/imgs/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="../resources/imgs/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" href="../resources/imgs/ico/apple-touch-icon-57x57.png">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="../resources/js/plugins.js"></script>
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/jquery.prettyPhoto.js"></script>   
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCWDPCiH080dNCTYC-uprmLOn2mt2BMSUk&amp;sensor=true"></script> 
+    <script src="../resources/js/init.js"></script>
+    <script type="text/javascript">
+   /* jQuery(document).ready(function($){
+	'use strict';
+      	jQuery('body').backstretch([
+	        "../resources/imgs/bg/bg1.jpg",
+	        "../resources/imgs/bg/bg2.jpg",
+	        "../resources/imgs/bg/bg3.jpg"
+	    ], {duration: 5000, fade: 500, centeredY: true });
 
-
-
-<style>
-
-@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-.jh{font-family: 'Jeju Hallasan', cursive;}
-
-#footer2{
-position:fixed;
-bottom:0;
-width:100%;
-}
-.container2{
-    position: relative;
-    margin: 135px auto 135px;
-    width: 1050px;
-    min-height: 700px;
-}
-.jbFixed{
-position:fixed;
-top:0px;
-}
-.background{
-fill:#f7fcfd;
-pointer-events:all;}
-#map{
-border:1px solid #ddd;}
-#states path{
-cursor:pointer;}
-
-#states path{
-fill:#ccece6;
-stroke:#fff;
-stroke-width:1.5px;}
-
-#states text{
-cursor:pointer;
-font-size:12px;
-font-family:'Nanum Gothic';}
-
-#inner1{
-padding-top:4px;
-padding-bottom:4px;
-}
-#menu2>ul>li{
-margin-top:150px;
-}
-.element {
-				width: 480px;
-				height: 320px;
-				box-shadow: 0px 0px 12px rgba(0,0,0,0.5);
-				border: 1px solid rgba(105,105,105,0.25);
-				text-align: center;
-				cursor: default;
-			}
-			.element:hover {
-				box-shadow: 0px 0px 12px rgba(0,0,0,0.75);
-				border: 1px solid rgba(105,105,105,0.75);
-			}
-				.element .symbol {
-					position: absolute;
-					top: 0px;
-					left: 0px;
-					right: 0px;
-					font-size: 60px;
-					font-weight: bold;
-					color: rgba(0,0,0,0.75);
-					text-shadow: 0 0 10px rgba(105,105,105,0.95);
-				}
-</style>
-<script type="text/javascript">
-/*
-window.onload = function () {
-    $(".box").each(function () {
-        // 개별적으로 Wheel 이벤트 적용
-        $(this).on("mousewheel DOMMouseScroll", function (e) {
-            e.preventDefault();
-            var delta = 0;
-            if (!event) event = window.event;
-            if (event.wheelDelta) {
-                delta = event.wheelDelta / 120;
-                if (window.opera) delta = -delta;
-            } else if (event.detail) delta = -event.detail / 3;
-            var moveTop = null;
-            // 마우스휠을 위에서 아래로
-            if (delta < 0) {
-                if ($(this).next() != undefined) {
-                    moveTop = $(this).next().offset().top;
-                }
-            // 마우스휠을 아래에서 위로
-            } else {
-                if ($(this).prev() != undefined) {
-                    moveTop = $(this).prev().offset().top;
-                }
-            }
-            // 화면 이동 0.8초(800)
-            $("html,body").stop().animate({
-                scrollTop: moveTop + 'px'
-            }, {
-                duration: 800, complete: function () {
-                }
-            });
-        });
-    });
-}
-$(function(){
-    var lastScrollTop = 0,
-        delta = 15;
-    $(window).scroll(function (event) {
-        var st = $(this).scrollTop();
-        if (Math.abs(lastScrollTop - st) <= delta) return;
-        if ((st > lastScrollTop) && (lastScrollTop > 0)) {
-            $("#header").css("top", "0px");
-        } else {
-            $("#header").css("top", "0px");
-        }
-        lastScrollTop = st;
-    });
-});  
-*/
-</script>
-</head>
+	
+    });*/
+    </script>
+</head><!--/head-->
 <body>
+<div id="preloader"></div>
+    <header class="navbar navbar-inverse navbar-fixed-top " role="banner">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+                 <a class="navbar-brand" href="index.html"><h1><span class="pe-7s-gleam bounce-in"></span> 발자취</h1></a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/intro">소개</a></li>
+                     <li class="dropdown active">
+                       <a href="#" class="dropdown-toggle" data-toggle="dropdown">유적지 <i class="icon-angle-down"></i></a>
+                        <ul class="dropdown-menu">
+	                    <li><a href="/period">시대별</a></li>
+	                    <li><a href="/thema">테마별</a></li>
+	                    <li><a href="/region/main">지역별</a></li>
+                        </ul>
+                    </li> 
 
-<%@include file="Header.jsp" %>
- 
+                    <li><a href="/join">회원가입</a></li> 
+                    <li><a href="/login">로그인</a></li> 
+                    <li><a href="/mypage">마이페이지</a></li> 
+                    <li><a href="/write">공지사항</a></li> 
+                    
+                 
+                    <li><span class="search-trigger"><i class="fa fa-search"></i></span></li>
+                </ul>
+            </div>
+        </div>
+    </header><!--/header-->
 <div id="content" style="position:fixed; margin-top:40px;">
 	<script src="../resources/js/three.js"></script>
 	<script src="../resources/js/tween.min.js"></script>
@@ -149,14 +84,14 @@ $(function(){
 	<script src="../resources/js/CSS3DRenderer.js"></script>
 	
 		<div id="container"></div>
-		<div id="menu">
+		<div id="menu" style="display:none;">
 			<button id="table">TABLE</button>
 			<button id="sphere">SPHERE</button>
 			<button id="helix">HELIX</button>
 			<button id="grid">GRID</button>
 		</div>
 
-		<script>
+		<script type="text/javascript">
 		var main_image=new Array();
 		$.ajax({
 			url:'/mainimage',
@@ -348,12 +283,9 @@ $(function(){
 							transform( targets.grid, 2000 );
 						}else if(count==3){
 							transform(targets.sphere,2000);
-						}else if(count==4){
-							transform( targets.table, 2000 );
-
 						}
 						count++;
-						if(count>4){
+						if(count>3){
 							count=1;
 						}
 					},10000);
@@ -416,18 +348,31 @@ $(function(){
 			}
 		</script>
 	</div>
-	
+    <div id="content-wrapper">
+        
 
 
+     
+        </div>
 
-
-
-
-
-
-<%@include file="MainFooter.jsp" %>
+    <div id="footer-wrapper">
+        
+        <footer id="footer" class="">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        &copy; 2019 <a target="_blank" href="http://www.distinctivethemes.com" title="Premium Themes and Templates">Distinctive Themes</a>. All Rights Reserved.
+                    </div>
+                    <div class="col-sm-6">
+                        <ul class="pull-right">
+                            <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li><!--#gototop-->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer><!--/#footer-->
+    </div>
 
 
 </body>
 </html>
-	

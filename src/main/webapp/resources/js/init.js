@@ -25,7 +25,7 @@ jQuery(function($) {
 	$('.tile-progress .tile-header').matchHeight();
 
 	var footerHeight = jQuery('#footer-wrapper').outerHeight();
-	jQuery('#content-wrapper').css('margin-bottom', 96 );
+	jQuery('#content-wrapper').css('margin-bottom', 150 );
 
 	var windowsHeight = jQuery(window).height();
 	var navHeight = jQuery('navbar-fixed-top').outerHeight();

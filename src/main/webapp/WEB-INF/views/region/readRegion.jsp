@@ -288,27 +288,9 @@ $(function(){
         </div>
     </header><!--/header-->
 
-    <section id="single-page-slider" class="no-margin">
-        <div class="carousel slide" data-ride="carousel">
-            <div class="carousel-inner">
-                <div class="item active">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">Hot Off The Press</h2>
-                                    <hr>
-                                    <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
-                                </div>
-                            </div>   
-                        </div>
-                    </div>
-                </div><!--/.item-->
-            </div><!--/.carousel-inner-->
-        </div><!--/.carousel-->
-    </section><!--/#main-slider-->
+    
 
-    <div id="content-wrapper">
+    <div id="content-wrapper" style="margin-top:70px;">
         <section id="blog" class="white">
             <div class="container">            
             <div class="gap"></div>
@@ -549,7 +531,7 @@ $(function(){
 		</div>
 	</div>
 </div>
-    
+
 <script id="template" type="text/x-handlebars-template">
 {{#each .}}
 <li class="replyLi" data-rno={{rno}} style="list-style-type:none;">
@@ -708,6 +690,7 @@ function makeClickListener(map, marker, content2) {
         var str=content2.indexOf("<a");
         var str2=content2.indexOf("<img");
         var str3=content2.substring(str+9,str2-2);
+        
         window.location.href="http://localhost:8181"+str3;
     };
 }

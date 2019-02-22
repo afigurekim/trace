@@ -46,7 +46,7 @@ public class RegionController {
 	@RequestMapping(value = "/region/all", method = RequestMethod.GET)
 	public String all_period(Criteria cri,Locale locale, Model model) {
 		try {
-			
+		
 			
 			List<Historic_siteVO> list=service.regionlistAll(cri);
 

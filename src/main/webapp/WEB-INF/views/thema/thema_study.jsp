@@ -124,7 +124,7 @@ $(function(){
 	
 	
 </div>
-<%@include file="../MainFooter.jsp" %>
+<!-- <%@include file="../MainFooter.jsp" %> -->
 
 </body>
 </html>

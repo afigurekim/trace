@@ -3,8 +3,8 @@
 <mapper namespace="com.bit.mapper.MemberMapper">
 
 <insert id="insertMember">
-insert into member(user_name,user_id,user_pw,birth_day,sex,post,address1,address2,contact1,contact2,contact3,email,phone1,phone2,phone3)
-values (#{username},#{userid},#{userpw},#{birthday},#{sex},#{post},#{address1},#{address2},#{contact1},#{contact2},#{contact3},#{email},#{phone1},#{phone2},#{phone3})
+insert into member(user_name,user_id,user_pw,email,phone)
+values (#{user_name},#{user_id},#{user_pw},#{email},#{phone})
 </insert>
 
 <select id="checkId" resultType="java.lang.Integer">
@@ -17,7 +17,7 @@ select count(*) from member where email=#{email}
 
 <update id="emailAuth" parameterType="java.util.HashMap">
 <![CDATA[
-update member set emailcheck=#{auth} where email=#{email}
+update member set email_check=#{auth} where email=#{email}
 ]]>
 </update>
 

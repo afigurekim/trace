@@ -81,6 +81,5 @@
 	</div>
 </div>
 
-<%@include file="MainFooter.jsp"%>
 </body>
 </html>

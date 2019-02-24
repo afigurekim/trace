@@ -1515,7 +1515,6 @@ img.author-box-image {
 #footer-wrapper {
     z-index: 1;
     padding-top: 60px;
-    position: fixed;
     bottom: 0;
     width: 100%;
 }

@@ -193,7 +193,7 @@ button {
 	</div>
 </div>
 
-<%@include file="MainFooter.jsp" %>
+<!-- <%@include file="MainFooter.jsp" %> -->
 
 <script type="text/javascript">
 

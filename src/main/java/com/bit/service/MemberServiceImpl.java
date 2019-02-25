@@ -9,7 +9,7 @@ import javax.mail.MessagingException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
-import com.bit.domain.Criteria;
+import com.bit.domain.MemberSiteVO;
 import com.bit.domain.MemberVO;
 import com.bit.domain.ReplyVO;
 import com.bit.persistence.MemberDAO;
@@ -77,27 +77,45 @@ public class MemberServiceImpl implements MemberService {
 		return dao.emailCheck(email);
 	}
 
-	// KDH 2019-02-20
+	// 회원 정보 select 서비스
 	@Override
 	public List<MemberVO> selectMember(String user_id) throws Exception {
 		return dao.selectMember(user_id);
 	}
 
+	// 회원 정보 update 서비스
 	@Override
 	public void updateMember(MemberVO vo) {
 		dao.updateMember(vo);
 	}
 
+//	@Override
+//	public List<ReplyVO> selectReplyMember(String user_id, Criteria cri) throws Exception {
+//		return dao.selectReplyMember(user_id, cri);
+//	}
+//
+//	@Override
+//	public int countReplyMember(String user_id) throws Exception {
+//		return dao.countReplyMember(user_id);
+//	}
+	
+	// 내 댓글 select 서비스
 	@Override
-	public List<ReplyVO> selectReplyMember(String user_id, Criteria cri) throws Exception {
-		return dao.selectReplyMember(user_id, cri);
+	public List<ReplyVO> selectReplyMember(String user_id) throws Exception {
+		return dao.selectReplyMember(user_id);
 	}
 
+	// 찜 목록 select 서비스
 	@Override
-	public int countReplyMember(String user_id) throws Exception {
-		return dao.countReplyMember(user_id);
+	public List<MemberSiteVO> selectSiteMember(String user_id) throws Exception {
+		return dao.selectSiteMember(user_id);
 	}
-	
+
+	// 찜 아이템 delete 서비스
+	@Override
+	public void deleteSiteMember(int jno) throws Exception {
+		dao.deleteSiteMember(jno);
+	}
 	
 	@Override
 	public int login(String id,String pw) {

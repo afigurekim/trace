@@ -2,7 +2,7 @@ package com.bit.service;
 
 import java.util.List;
 
-import com.bit.domain.Criteria;
+import com.bit.domain.MemberSiteVO;
 import com.bit.domain.MemberVO;
 import com.bit.domain.ReplyVO;
 
@@ -30,14 +30,22 @@ public interface MemberService {
 	
 	public void emailAuthCheck(String email);
 	
-	// KDH 2019-02-20
+	// 회원 정보 select 서비스
 	public List<MemberVO> selectMember(String user_id) throws Exception;
 	
-	// KDH 2019-02-21
+	// 회원 정보 update 서비스
 	public void updateMember(MemberVO vo);
 	
-	// KDH 2019-02-22
-	public List<ReplyVO> selectReplyMember(String user_id, Criteria cri) throws Exception;
-	public int countReplyMember(String user_id) throws Exception;
+//	public List<ReplyVO> selectReplyMember(String user_id, Criteria cri) throws Exception;
+//	public int countReplyMember(String user_id) throws Exception;
+	
+	// 내 댓글 select 서비스
+	public List<ReplyVO> selectReplyMember(String user_id) throws Exception;
+	
+	// 찜 목록 select 서비스
+	public List<MemberSiteVO> selectSiteMember(String user_id) throws Exception;
+	
+	// 찜 아이템 delete 서비스
+	public void deleteSiteMember(int jno) throws Exception;
 	
 }

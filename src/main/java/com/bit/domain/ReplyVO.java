@@ -10,6 +10,7 @@ public class ReplyVO {
 	private String replyer;
 	private Date reg_date;
 	private Date update_date;
+	private String site_name;
 	public Integer getBno() {
 		return bno;
 	}
@@ -45,6 +46,12 @@ public class ReplyVO {
 	}
 	public void setUpdate_date(Date update_date) {
 		this.update_date = update_date;
+	}
+	public String getSite_name() {
+		return site_name;
+	}
+	public void setSite_name(String site_name) {
+		this.site_name = site_name;
 	}
 	
 	

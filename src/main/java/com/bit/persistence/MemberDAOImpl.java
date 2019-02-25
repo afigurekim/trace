@@ -43,7 +43,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void emailAuthCheck(String email) {
 		int auth=1;
-		System.out.println("ÀÌ¸ÞÀÏ ÀÎÁõ check");
+		System.out.println("ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ check");
 		Map<String,Object> paramMap = new HashMap<String,Object>();
 		System.out.println(email);
 		paramMap.put("auth",auth);
@@ -78,5 +78,40 @@ public class MemberDAOImpl implements MemberDAO {
 	public int countReplyMember(String user_id) throws Exception {
 		return sqlSession.selectOne(namespace+".countReplyMember", user_id);
 	}
+	
+	@Override
+	public int login(String id,String pw) {
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("id",id);
+		map.put("pw",pw);
+		return sqlSession.selectOne(namespace+".login",map);
+	}
+	
+	@Override
+	public int login_email_Check(String id) {
+		return sqlSession.selectOne(namespace+".login_email_Check",id);
+	}
+	
+	@Override
+	public String find_id(String name, String email) {
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("name",name);
+		map.put("email",email);
+		return sqlSession.selectOne(namespace+".find_id",map);
+	}
+	
+	@Override
+	public String find_pw(String name, String id, String phone,String email) {
+		Map<String , Object> map=new HashMap<String, Object>();
+		map.put("phone",phone);
+	
+		map.put("name",name);
+		map.put("id",id);
+		map.put("email",email);
+		return sqlSession.selectOne(namespace+".find_pw",map);
+	}
+
+
 
 }

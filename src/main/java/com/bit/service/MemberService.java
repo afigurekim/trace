@@ -8,6 +8,18 @@ import com.bit.domain.ReplyVO;
 
 public interface MemberService {
 	
+	public int login_email_Check(String id);
+
+	public int login(String id,String pw);
+	
+	public String find_id(String name,String email);
+	
+	public String find_pw(String id,String name,String phone,String email);
+	
+	public void find_pw_email(String fpw,String email)throws Exception;
+
+	
+	
 	public void insertMember(MemberVO vo);
 	
 	public int checkId(String id);

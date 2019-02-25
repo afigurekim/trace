@@ -13,6 +13,7 @@ import com.bit.domain.BoardVO;
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
 import com.bit.domain.Historic_site_detailVO;
+import com.bit.domain.Historic_site_starVO;
 import com.bit.domain.Nearby_attractionVO;
 
 @Repository	
@@ -60,13 +61,10 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 	
 	@Override
-	public void star_insert(int star, String id,Integer bno) throws Exception {
+	public void star_insert(Historic_site_starVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("star", star);
-		map.put("id", id);
-		map.put("bno", bno);
-		sqlSession.insert(namespace+".star_insert",map);
+	
+		sqlSession.insert(namespace+".star_insert",vo);
 	}
 
 
@@ -488,6 +486,13 @@ public class BoardDAOImpl implements BoardDAO {
 	public void updateViewCnt(int bno) throws Exception {
 		// TODO Auto-generated method stub
 		sqlSession.update(namespace+".updateViewCnt",bno);
+	}
+//readChartList
+
+	@Override
+	public List<Historic_site_starVO> readChartList(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".readChartList",bno);
 	}
 
 

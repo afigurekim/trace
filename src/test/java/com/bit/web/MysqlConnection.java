@@ -22,7 +22,7 @@ public class MysqlConnection {
 	
 	@Test
 	public void testInsertMember()throws Exception{
-		MemberVO vo = new MemberVO();
+	/*	MemberVO vo = new MemberVO();
 		vo.setUser_name("김윤제");
 		vo.setUser_id("forteas2");
 		vo.setUser_pw("godqhr52");
@@ -32,6 +32,6 @@ public class MysqlConnection {
 		vo.setAddress1("서울시 성북구 정릉2동");
 		vo.setAddress2("수석하이빌 303호 206-99");
 		vo.setEmail("forteas2003@hanmail.net");
-		dao.insertMember(vo);
+		dao.insertMember(vo);*/
 	}
 }

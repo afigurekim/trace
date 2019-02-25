@@ -41,20 +41,20 @@ public class MemberServiceImpl implements MemberService {
 		try {
 			MailHandler sendMail = new MailHandler(mailSender);
 
-			sendMail.setSubject("[¹ßÀÚÃë Åõ¾î ¼­ºñ½º ÀÌ¸ŞÀÏ ÀÎÁõ]");
+			sendMail.setSubject("[ë°œìì·¨ íˆ¬ì–´ ì„œë¹„ìŠ¤ ì´ë©”ì¼ ì¸ì¦]");
 
 			/*sendMail.setText(
-					new StringBuffer().append("<h1>¸ŞÀÏÀÎÁõ</h1>")
+					new StringBuffer().append("<h1>ë©”ì¼ì¸ì¦</h1>")
 					.append("<a href='http://localhost:8181/emailcheck/1")
-					.append("' target='_blenk'>ÀÌ¸ŞÀÏ ÀÎÁõ È®ÀÎ</a>").toString());
+					.append("' target='_blenk'>ì´ë©”ì¼ ì¸ì¦ í™•ì¸</a>").toString());
 					sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 					sendMail.setTo(email);
 					sendMail.send();*/
 			
 			sendMail.setText(
-			new StringBuffer().append("<h1>¹ßÀÚÃë Åõ¾î ¸ŞÀÏÀÎÁõ</h1>")
+			new StringBuffer().append("<h1>ë°œìì·¨ íˆ¬ì–´ ë©”ì¼ì¸ì¦</h1>")
 			.append("<a href='http://localhost:8181/emailauth/"+email)
-			.append("' target='_blenk'>ÀÌ¸ŞÀÏ ÀÎÁõ È®ÀÎ</a>").toString());
+			.append("' target='_blenk'>ì´ë©”ì¼ ì¸ì¦ í™•ì¸</a>").toString());
 			sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 			sendMail.setTo(email);
 			sendMail.send();
@@ -97,4 +97,68 @@ public class MemberServiceImpl implements MemberService {
 	public int countReplyMember(String user_id) throws Exception {
 		return dao.countReplyMember(user_id);
 	}
+	
+	
+	@Override
+	public int login(String id,String pw) {
+		// TODO Auto-generated method stub
+		return dao.login(id,pw);
+	}
+	
+
+
+	@Override
+	public int login_email_Check(String id) {
+		// TODO Auto-generated method stub
+		return dao.login_email_Check(id);
+	}
+	
+
+
+	@Override
+	public String find_id(String name, String email) {
+		// TODO Auto-generated method stub
+		return dao.find_id(name, email);
+	}
+	
+	@Override
+	public String find_pw(String id, String name,String phone,String email) {
+		// TODO Auto-generated method stub
+		return dao.find_pw(name, id, phone,email);
+	}
+
+	@Override
+	public void find_pw_email(String fpw, String email) throws Exception {
+		// TODO Auto-generated method stub
+		try {
+			MailHandler sendMail = new MailHandler(mailSender);
+
+			sendMail.setSubject("[ë°œìì·¨ ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°]");
+
+			/*sendMail.setText(
+					new StringBuffer().append("<h1>ë©”ì¼ì¸ì¦</h1>")
+					.append("<a href='http://localhost:8181/emailcheck/1")
+					.append("' target='_blenk'>ì´ë©”ì¼ ì¸ì¦ í™•ì¸</a>").toString());
+					sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+					sendMail.setTo(email);
+					sendMail.send();*/
+			
+			sendMail.setText(
+			new StringBuffer().append("<h1>ë°œìì·¨ ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</h1>")
+			.append("ê·€í•˜ì˜ ë¹„ë°€ë²ˆí˜¸ëŠ” "+fpw+"ì…ë‹ˆë‹¤").toString());
+			
+			sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+			sendMail.setTo(email);
+			sendMail.send();
+	
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
+

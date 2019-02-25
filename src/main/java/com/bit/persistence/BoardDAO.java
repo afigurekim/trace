@@ -6,6 +6,7 @@ import com.bit.domain.BoardVO;
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
 import com.bit.domain.Historic_site_detailVO;
+import com.bit.domain.Historic_site_starVO;
 import com.bit.domain.Nearby_attractionVO;
 
 public interface BoardDAO {
@@ -18,7 +19,7 @@ public interface BoardDAO {
 	public void delete(Integer bno)throws Exception;
 	
 	//별점 주기
-	public void star_insert(int star,String id,Integer bno) throws Exception;
+	public void star_insert(Historic_site_starVO vo) throws Exception;
 	
 	public int star_check(int bno,String id) throws Exception;
 	
@@ -167,5 +168,10 @@ public interface BoardDAO {
 	
 	//조회수
 	public void updateViewCnt(int bno)throws Exception;
+	
+	//readChartList
+	
+	public List<Historic_site_starVO> readChartList(int bno)throws Exception;
+	
 	
 }

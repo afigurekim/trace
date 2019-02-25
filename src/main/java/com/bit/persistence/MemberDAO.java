@@ -8,6 +8,17 @@ import com.bit.domain.ReplyVO;
 
 public interface MemberDAO {
 	
+	//서지혜
+	public int login_email_Check(String id);
+
+	public int login(String id,String pw);
+	
+	public String find_id(String name,String email);
+	
+	public String find_pw(String name,String id,String phone,String email);
+	
+	//윤제
+	
 	public void insertMember(MemberVO vo);
 	
 	public int checkId(String id);

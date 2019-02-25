@@ -3,83 +3,494 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-  <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.3.js" charset="utf-8"></script>
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
-<style>
-@import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
-.jh{font-family: 'Jeju Hallasan', cursive;}
-</style>
-<link rel="stylesheet" type="text/css" href="../../resources/css/join.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>About Us | Impact By Distinctive Themes</title>
+    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../resources/css/pe-icons.css" rel="stylesheet">
+    <link href="../resources/css/prettyPhoto.css" rel="stylesheet">
+    <link href="../resources/css/animate.css" rel="stylesheet">
+    <link href="../resources/css/style.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->       
+    <script src="../resources/js/jquery.js"></script>
+    <link rel="shortcut icon" href="../resources/imgs/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/imgs/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/imgs/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="../resources/imgs/ico/apple-touch-icon-57x57.png">
+    <script src="../resources/js/bootstrap.min.js"></script>
+    <script src="../resources/js/jquery.prettyPhoto.js"></script>
+    <script src="../resources/js/plugins.js"></script>
+    <script src="../resources/js/init.js"></script>
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
+	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+  
+    
+ <style type="text/css">
+    
+		    @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+		.jh{font-family: 'Jeju Hallasan', cursive;}
+		
+		
+		.modal {
+		        text-align: center;
+		}
+		
+		
+		 
+		@media screen and (min-width: 768px) { 
+		        .modal:before {
+		                display: inline-block;
+		                vertical-align: middle;
+		                content: " ";
+		                height: 100%;
+		        }
+		}
+		 
+		.modal-dialog {
+		        display: inline-block;
+		        text-align: left;
+		        vertical-align: middle;
+		}
+		    
+    </style>
+<script type="text/javascript">
+$(function(){
+	var windowWidth=$(window).width();
+	
+	
+	if(windowWidth<=768){
+		$(".modal-content").css("width","382.99px");
+		$("#modal-find2").css("margin-left","115px");
+		$("#modal-find").css("margin-left","115px");
 
-</head>
+		//$(".modal-content").width(600);
+		$(".modal-content").css("margin-top","120px");
+		$("#modal_name").css("left",0);
+		$("#modal_name").css("top",0);
+		$("#modal_name2").css("left",0);
+		$("#modal_name2").css("top",0);
+		}else{
+			$(".modal-content").css("width","600px");
+			$(".modal-content").css("margin-top","0px");
+			$("#modal-find2").css("margin-left","215px");
+			$("#modal-find").css("margin-left","215px");
+
+		}
+	
+	$(window).resize(function(){
+		windowWidth=$(window).width();
+		console.log(windowWidth);
+		/*
+		if(windowWidth<=893){
+			$(".row").css("width","355px");
+			$(".row").css("margin","auto");
+		}else{
+			$(".row").css("width","1170px");
+
+		}*/
+		if(windowWidth<=768){
+		$(".modal-content").css("width","382.99px");
+		$("#modal-find").css("margin-left","115px");
+		$("#modal-find2").css("margin-left","115px");
+		$(".col-sm-2").css("left",0);
+		$(".col-sm-2").css("top",0);
+		//$(".modal-content").width(600);
+		$(".modal-content").css("margin-top","120px");
+
+		}else{
+			$(".modal-content").css("width","600px");
+			$(".modal-content").css("margin-top","0px");
+			$("#modal-find").css("margin-left","215px");
+
+			$("#modal-find2").css("margin-left","215px");
+			$("#modal_name").css("left","100px");
+			$("#modal_name").css("top","-30px");
+			$("#modal_email").css("left","100px");
+			$("#modal_name2").css("left","100px");
+			$("#modal_name2").css("top","-30px");
+			$("#modal_email2").css("left","100px");
+			$("#modal_Id2").css("left","100px");
+			$("#modal_Phone2").css("left","100px");
+			
+		}
+		
+
+	});
+
+	$("#btbtn").click(function(e){
+		
+		e.preventDefault();
+		
+		
+		var id=$("#member_idid").val();
+		var pw=$("#member_pw").val();
+	
+		
+		$.ajax({
+			url:"/login",
+			type:'post',
+			data:{
+				sid:id,
+				spw:pw,
+			},
+			success:function(data){
+				 if(data==2){
+					window.location.href="http://localhost:8181/";
+				 }else if(data==0){
+					 alert("아이디/비밀번호를 확인해주세요");
+				 }else if(data==1){
+					 alert("이메일 인증을 해주세요");
+				 }
+			}
+		});
+	});
+});
+
+//ID찾기
+  	
+  $(function(){
+	  $("#findBtn").click(function(e){
+	//	  alert("gi");
+		  e.preventDefault();
+		//  alert("아이디 찾기중....");
+		
+		 var email=$("#find_email").val(); 
+		 var name=$("#find_name").val();
+		 
+	//	 alert(name);
+	//	 alert(email);
+		 
+		 $.ajax({
+			 url:"/find_id",
+		 	 type:'post',
+		 	 data:{
+		 		 sname:name,
+		 		 semail:email
+		 	 },
+		 	 success:function(data){
+		 		 if(data!=""){
+	 				$("#eid").html("아이디는 "+data+"입니다.");
+		 		 }else{
+		 			$("#eid").html("일치하는 아이디가 없습니다");
+		 		 }
+
+		 	}   
+		 });
+	  });
+  });
+  
+  
+  //비밀번호 찾기
+  
+    $(function(){
+	  $("#findBtn1").click(function(e){
+		  e.preventDefault();
+	//	  alert("비밀번호 찾기중....");
+		  
+		 var id=$("#find_id1").val(); 
+		 var name=$("#find_name1").val();
+		 var phone=$("#find_phone").val();
+			
+		 var email=$("#find_email1").val();
+		 
+	//	 alert(id);
+	//	 alert(name);
+	/* 	 alert(phone1);
+		 alert(phone2);
+		 alert(phone3);
+		 alert(email); */
+		 
+		 $.ajax({
+			 url:"/find_pw",
+		 	 type:'post',
+		 	 async:false,
+		 	 data:{
+		 		 tid:id,
+		 		 tname:name,
+		 		 tphone:phone,
+		 		 temail:email
+		 	 },
+		 	 success:function(data){
+		 		   $(document).ready(function() {
+		 			    var fpw= data;
+		 			  //  alert("kkkkkk"+fpw);
+		 			  if(fpw!=""){
+		 			    $("#tpw").html("귀하의 이메일로 비밀번호를 발송하였습니다");
+		 			  }else{
+			 			    $("#tpw").html("일치하는 회원이 없습니다");
+
+		 			  }
+		 			    });  
+		 	}   
+		 });
+	  });
+  });
+</script>
+</head><!--/head-->
 <body>
 <%@include file="Header.jsp" %>
 
-<div id="wrap">
-	<div id="join_content">
-	<div id="loginWrap">
-    <div class="page-body">
-       	   <div class="mlog-sign">
-       	                 			<h1 class="jh">회원 로그인</h1>
-       	   
-	    	   <form name="loginform" id="loginform" action="loginpro.php" method="post"><input type="hidden" name="url" value="/member/join.php">
-                <div class="mlog">
-                        <ul class="frm-list">
-                            <li class="id"><label><span class="name">아이디</span><span><input type="text" id="member_id" name="id" maxlength="20" onkeypress="javascript:if(event.keyCode == 13) { loginch() }" class="MS_login_id" value=""></span></label></li>
-                            <li class="id"><label><span class="name">비밀번호</span><span><input type="password" id="member_passwd" name="passwd" maxlength="20" onkeypress="javascript:if(event.keyCode == 13) { loginch() }" value="" class="MS_login_pw" style="margin-left:10px;"></span></label></li>
-                        </ul>
-                        <p class="buttonlogin"><span><a href="javascript:loginch();" class="btnlogin">LOGIN</a></span></p>
-                </div>
-           	</form>
-           	 <div class="sign">
-           	   <p class="msg">- 아이디 또는 비밀번호를 잊어버렸나요!</p>
-           	   <a href="#"><img src="../resources/imgs/아이디찾기.png"></a>
-           	    <a href="#"><img src="../resources/imgs/비밀번호 찾기.png"></a>
-           	    <div id="naver_id_login" style="margin-top:20px;">
-           	   </div>
-           	   <script type="text/javascript">
-            	var naver_id_login = new naver_id_login("nFs3k4lMgKQ6pNrJTLZ1", "http://localhost:8181/callback");
-            	
-              	var state = naver_id_login.getUniqState();
-              	naver_id_login.setButton("white",3.60);
-              	naver_id_login.setDomain("http://localhost:8181/login");
-              	naver_id_login.setState(state);
-              	naver_id_login.setPopup();
-              	naver_id_login.init_naver_id_login();
-                // 네이버 사용자 프로필 조회
-                naver_id_login.get_naver_userprofile("naverSignInCallback()");
-                // 네이버 사용자 프로필 조회 이후 프로필 정보를 처리할 callback function
-                function naverSignInCallback() {
-                  alert(naver_id_login.getProfileData('email'));
-                  alert(naver_id_login.getProfileData('nickname'));
-                  alert(naver_id_login.getProfileData('age'));
-                }
-              	
-            
-  </script>
-			   <a href="#"><img src="../resources/imgs/카카오 로그인.png" style="width:185px; height:40px;"></a>
-			   <hr style="margin-top:20px; margin-bottom:20px;">
-                    <p class="msg">- 회원가입을 하시면 더 많은 혜택을 받으실 수 있습니다.</p>
-                    <p class="buttonlogin1"><span><a href="/member/join.php" class="btnlogin1">JOIN US</a></span></p>
-                    <p class="msg"></p>
-                    <p class="msg"></p>
-                    <p class="msg"></p>
-                  
-
-                </div>
-           </div>
-            <!-- .mlog-sign -->
-       
-       </div>
-       
-	
-	
-</div>
-
+    <div style="width:100%;height:200px; background-color:gray;margin-bottom:120px;"></div>
+    <div class="container">
+  <div class="row">
+      <div class="col-md-12">
+          <div class="center gap fade-down section-heading">
+              <h2 class="main-title">Login</h2>
+              <hr>
+          </div>                
+      </div>
+ </div> 
+<form method="post" style="width:350px; margin:auto;">  
+  <div class="row">
+     <div class="">
+       <div class="input-group">
+   <span class="input-group-addon"><img alt="" src="../resources/imgs/people2.png" style="width: 18px; height: 18px;"></span>
+   <input type="text" class="form-control input-lg" id="member_idid" aria-describedby="inputSuccess4Status" placeholder="&ensp;아이디" style="width:100%">
+	  </div>  
 	</div>
 </div>
+	            
+<div class="row" style="margin-bottom: 5px;">
+   <div class="">
+     <div class="input-group">
+ 		<span class="input-group-addon"><img alt="" src="../resources/imgs/lock3.png" style="width: 18px; height: 18px;"></span>
+		<input type="password" class="form-control input-lg" id="member_pw" aria-describedby="inputGroupSuccess3Status" placeholder="&ensp;비밀번호"  style="width:100%">
+ 	</div> 
+   </div>
+</div>
+	            
+<div class="row" >
+    <div class="">
+   	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:100%; font-weight:bolder;">Login</button>
+   	
+   </div>
+</div>
+</form>
+
+<div class="row" style="margin-bottom: 9px; width: 380px;  margin-left: auto; margin-right: auto;">
+    <div class=""><!-- 
+   	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:60%; font-weight:bolder;">Sign up</button> -->
+   	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:49.5%; font-weight:bolder;" data-target="#exampleModalCenter" data-toggle="modal" >ID 찾기</button>
+   	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:49.5%; font-weight:bolder;"data-target="#exampleModalCenter1" data-toggle="modal" >PassWord찾기</button>
+   <!-- 		<span style="margin-left: 15px;"><a data-toggle="modal"  data-target="#exampleModalCenter" style="text-decoration: none; font-weight: bold; font-size: 14px;">ID /</a></span>
+      	<span><a data-toggle="modal"  data-target="#exampleModalCenter1" style="text-decoration: none; font-weight: bold; font-size: 14px;">Password 찾기</a></span>
+    
+    --></div>
+</div>
+
+	<div class="row" style="margin-bottom: 0px; width: 380px;  margin-left: auto; margin-right: auto; margin-top: 10px; border-top: 1.3px solid gray; padding-top: 15px;" >
+    <div class="">
+   	<a href="/join" class="btn btn-default btn-lg" id="btbtn" style="width:100%; font-weight:bolder; ">Sign up</a>
+   </div>
+</div>
+ <div class="row">
+	 <div class="" style="width: 375px; margin: auto; padding-top: 2px;" >
+	 	
+	     <span><a href="${url} "><img src="../resources/imgs/White2.PNG" style="width: 170px; height: 43px; position: relative; left: 10px;"></a></span>  
+		 <span><a id="custom-login-btn" href="javascript:loginWithKakao()">
+			<img src="../resources/imgs/카카오 로그인.png" style="width: 170px; height: 43px; position: relative; left: 30px;">
+			   </a>
+		 </span>
+			  <script type="text/javascript">
+				      // 사용할 앱의 JavaScript 키를 설정해 주세요.
+				      Kakao.init('976f456333f18614366222d9de9153d7');
+				      // 카카오 로그인 버튼을 생성합니다.
+				     // Kakao.Auth.createLoginButton({
+				    //   container: '#kakao-login-btn',
+				    
+				    function loginWithKakao(){
+				    	Kakao.Auth.login({
+				        success: function(authObj) {
+				          // 로그인 성공시, API를 호출합니다.
+			  
+				          
+				            Kakao.API.request({
+					            url: '/v2/user/me',
+					            success: function(res) {
+					              console.log(JSON.stringify(res.kaccount_email));
+					              console.log(JSON.stringify(res.id));
+					              //sessionStorage.setItem("id", res.id);
+					              //window.location.href="http://localhost:8080/";
+								$.ajax({
+									url:"/kakao/login/"+res.id,
+									type:'get',
+									success:function(data)
+									{
+										if(data==1){
+										window.location.href="http://localhost:8181/";
+										}
+									}
+								});
+				            },
+				            fail: function(error) {
+				              alert(JSON.stringify(error));
+				            }
+				          });    
+				        },
+				        fail: function(err) {
+				          alert(JSON.stringify(err));
+				        }
+						 });
+							};
+		
+			</script>		
+		</div>      	 
+	</div>
+
+
+</div>
+
+    <%@include file="Footer.jsp" %>
+    
+    
+    <!--아이디 찾기 Modal -->
+				<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered" role="document">
+				  <!-- Modal Content -->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h3 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold; position: relative; top: 10px; left: 10px;">아이디 찾기</h3>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				   <!-- body -->
+				      <div class="modal-body">
+				      	<div style="border-bottom: 1.5px solid gray"">
+				      		<img alt="" id="modal-find" src="../resources/imgs/find.png" style="width:128px; height:128px; margin-left:215px; margin-bottom:10px;">
+				      		<p style="text-align:center; font-size: 13px;">이름과 이메일을 입력하여 아이디를 찾아보세요</p>
+				      	</div>
+				      	<form class="form-horizontal" method="post">
+						  <div class="form-group" style="margin-top: 60px; ">
+						    <label for="id" id="modal_name" class="col-sm-2" style="font-weight: bold; font-size: 16px; position: relative; left: 100px; top:-30px;">이름</label>
+						    <div class="col-sm-8">
+						     <input type="text" class="form-control" id="find_name" placeholder="Name" style="position: relative; ">
+						     </div>
+						  </div>
+						   <div class="form-group" style="">
+						    <label for="inputEmail3" id="modal_email" class="col-sm-2 " style="font-weight: bold; font-size: 14px; position: relative; left: 100px;">이메일</label><br>
+						    <div class="col-sm-8">
+						      <input type="email" class="form-control" id="find_email" placeholder="Email" >
+						        <br>
+						    </div>
+						  </div>
+					  </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary" id="findBtn" data-toggle="modal" data-target="#exampleModal">Find</button>
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        </form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!-- Modal안에 모달 -->
+					<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel">ID</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <!-- ID결과 -->
+					      <div class="modal-body">
+					       <h4 style="text-align: center" id="eid"></h4>
+					      </div>
+					      <div class="modal-footer">
+					        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+					         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					
+					
+				<!--비밀번호 찾기 Modal -->
+				<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+				  <div class="modal-dialog modal-dialog-centered" role="document">
+				  <!-- Modal Content -->
+				    <div class="modal-content">
+				      <div class="modal-header">
+				        <h3 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold; position: relative; top: 10px; left: 10px;">비밀번호 찾기</h3>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				   <!-- body -->
+				      <div class="modal-body">
+				      	<div style="border-bottom: 1.5px solid gray"">
+				      		<img alt="" id="modal-find2" src="../resources/imgs/lock.png" style="width:128px; height:128px; margin-left:215px; margin-bottom:10px;">
+				      		<p style="text-align:center; font-size: 13px;">이름과 이메일을 입력하여 아이디를 찾아보세요</p>
+				      	</div>
+				      	<form class="form-horizontal" method="post">
+						  <div class="form-group" style="margin-top: 60px;">
+						    <label for="id" id="modal_name2" class="col-sm-2" style="font-weight: bold; font-size: 16px; position: relative; left: 100px; top:-30px;">이름</label>
+						    <div class="col-sm-8">
+						     <input type="text" class="form-control" id="find_name1" placeholder="Name" style="position: relative; ">
+						     </div>
+						  </div>
+						   <div class="form-group">
+						    <label for="inputEmail3" id="modal_email2" class="col-sm-2 " style="font-weight: bold; font-size: 14px; position: relative; left: 100px;">이메일</label><br>
+						    <div class="col-sm-8">
+						      <input type="email" class="form-control" id="find_email1" placeholder="Email" >
+						       
+						    </div>
+						  </div>
+						  <div class="form-group" >
+						    <label for="ID" id="modal_Id2" class="col-sm-2 " style="font-weight: bold; font-size: 14px; position: relative; left:100px; ">아이디</label><br>
+						    <div class="col-sm-8">
+						      <input type="text" class="form-control" id="find_id1" placeholder="ID" >
+						        
+						    </div>
+						  </div>
+						  <div class="form-group" style="">
+						    <label for="phone" id="modal_Phone2" class="col-sm-2 " style="font-weight: bold; font-size: 14px; position: relative; left: 100px;">폰</label><br>
+						    <div class="col-sm-8" >
+						     	 <input type="text" class="form-control" id="find_phone" placeholder="Phone">
+						        <br>
+						    </div>
+						  </div>
+					  </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-primary" id="findBtn1" data-toggle="modal" data-target="#exampleModal1">Find</button>
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        </form>
+				      </div>
+				    </div>
+				  </div>
+				</div>
+				<!-- Modal안에 모달 -->
+					<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" id="exampleModalLabel"></h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <!-- 비밀번호결과 -->
+					      <div class="modal-body">
+					       <h4 style="text-align: center" id="tpw"></h4>
+					      </div>
+					      <div class="modal-footer">
+					        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+					         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+					
+
+
 
 </body>
 </html>

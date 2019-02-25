@@ -123,6 +123,7 @@
    </style>
 <script>
 $(function(){
+	
 	/* 1. Visualizing things on Hover - See next part for action on click */
 	  $('#stars li').on('mouseover', function(){
 	    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
@@ -160,6 +161,7 @@ $(function(){
 	    // JUST RESPONSE (Not needed)
 	    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
 	   var bn=${read.bno};
+	   
 	    $.ajax({
 	    	url:"/starValue",
 	    	type:'post',
@@ -176,9 +178,37 @@ $(function(){
 	    		}
 	    	}
 	    	
-	    })
+	    });
 	  });
-	 
+	 var dataset=new Array();
+	 var data1=0;
+	 var data2=0;
+	 var data3=0;
+	 var data4=0;
+	 var data5=0;
+	  $.ajax({
+	    	url:"/readChartList/"+${read.bno},
+	    	type:'get',
+	    	async:false,
+	    	data:{},
+	    	success:function(data){
+	    		for(var i=0;i<data.list.length;i++){
+	    			if(data.list[i].star==1){
+	    				data1++;
+	    			}else if(data.list[i].star==2){
+	    				data2++;
+	    			}else if(data.list[i].star==3){
+	    				data3++;
+	    			}else if(data.list[i].star==4){
+	    				data4++;
+	    			}else if(data.list[i].star==5){
+	    				data5++;
+	    			}
+	    		}
+	    	}
+	    	
+	    });
+
 	var ctx = document.getElementById("myChart");
 	var myChart = new Chart(ctx, {
 	  type: 'bar',
@@ -186,7 +216,7 @@ $(function(){
 	    labels: ["1점","2점","3점","4점","5점"],
 	    datasets: [{
 	      label: '',
-	      data: [20,10,50,40,70],
+	      data: [data1,data2,data3,data4,data5],
 	      backgroundColor: [
 	        'rgba(255, 99, 132, 0.2)',
 	        'rgba(54, 162, 235, 0.2)',
@@ -247,6 +277,9 @@ $(function(){
 		 windowWidth = $( window ).width();
 	$("#food_image_modal").height($("#food_image_modal").width());
 	});
+	
+	
+	
 });
 
 

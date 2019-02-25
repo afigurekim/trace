@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
+import com.bit.domain.Historic_site_starVO;
 import com.bit.domain.Nearby_attractionVO;
 import com.bit.domain.PageMaker;
 import com.bit.service.BoardService;
@@ -170,10 +171,34 @@ public class RegionController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value="/readChartList/{bno}")
+	public ResponseEntity<Map<String,Object>> readChartList(@PathVariable int bno) throws Exception
+	{
+		
+		System.out.println("컴다운");
+		ResponseEntity<Map<String,Object>> entity= null;
+		try {
+			//System.out.println("bno"+bno);
+			
+			Map<String,Object> map = new HashMap<String,Object>();
+			List<Historic_site_starVO> list=service.readChartList(bno);
+			System.out.println(list.get(0).getStar()+" 평점");
+			map.put("list", list);
+			
+			entity= new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
+		}catch(Exception e) {
+			e.printStackTrace();
+			entity=new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
+		}
+		return entity;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value="/food/{bno}")
 	public ResponseEntity<Map<String,Object>> food_list(@PathVariable int bno) throws Exception
 	{
-		System.out.println("컴온");
+		
+		System.out.println("컴다운");
 		ResponseEntity<Map<String,Object>> entity= null;
 		try {
 			System.out.println("bno"+bno);

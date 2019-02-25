@@ -49,9 +49,9 @@ private static final Logger logger = LoggerFactory.getLogger(JoinController.clas
 		return service.checkId(sid);
 	}
 	@RequestMapping(value="/emailcheck",method=RequestMethod.GET)
-	public @ResponseBody int emailcheck(String email)throws Exception{
+	public @ResponseBody int emailcheck(String semail)throws Exception{
 	
-		return service.emailCheck(email);
+		return service.emailCheck(semail);
 	}
 	@RequestMapping(value="/emailauth/{email:.+}",method=RequestMethod.GET)
 	public String checkEmail(@PathVariable String email)throws Exception{

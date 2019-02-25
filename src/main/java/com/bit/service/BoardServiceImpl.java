@@ -12,6 +12,7 @@ import com.bit.domain.BoardVO;
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
 import com.bit.domain.Historic_site_detailVO;
+import com.bit.domain.Historic_site_starVO;
 import com.bit.domain.Nearby_attractionVO;
 import com.bit.persistence.BoardDAO;
 
@@ -56,9 +57,9 @@ public class BoardServiceImpl implements BoardService {
 	
 //별점 주기
 	@Override
-	public void star_insert(int star, String id,Integer bno) throws Exception {
+	public void star_insert(Historic_site_starVO vo) throws Exception {
 		// TODO Auto-generated method stub
-		dao.star_insert(star,id,bno);
+		dao.star_insert(vo);
 	}
 
 
@@ -446,6 +447,14 @@ public class BoardServiceImpl implements BoardService {
 	public int reply_count(int bno) throws Exception {
 		// TODO Auto-generated method stub
 		return dao.reply_count(bno);
+	}
+
+
+
+	@Override
+	public List<Historic_site_starVO> readChartList(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.readChartList(bno);
 	}
 
 

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
+import com.bit.domain.Historic_site_starVO;
 import com.bit.domain.Nearby_attractionVO;
 import com.bit.service.BoardService;
 
@@ -46,17 +47,21 @@ public class MainController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		System.out.println("main test...");
 		return "Main";
 	}
 	@ResponseBody
 	@RequestMapping(value="/starValue",method=RequestMethod.POST)
 	public int starValue(int star,String id,int bno) {
 		int su=0;
+		Historic_site_starVO vo = new Historic_site_starVO();
+		vo.setBno(bno);
+		vo.setUser_id(id);
+		vo.setStar(star);
 		try {
 			su=service.star_check(bno, id);
 			if(su==0) {
-				service.star_insert(star, id,bno);
+				service.star_insert(vo);
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -107,11 +112,7 @@ public class MainController {
 	
 	
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(Locale locale, Model model) {
-		
-		return "login";
-	}
+	
 	@RequestMapping(value = "/order_deliver", method = RequestMethod.GET)
 	public String order_deliver(Locale locale, Model model) {
 		return "order_deliver";

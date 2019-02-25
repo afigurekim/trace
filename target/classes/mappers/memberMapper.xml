@@ -2,9 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.bit.mapper.MemberMapper">
 
+<!-- 서지혜 -->
+<select id="login" resultType="int">
+select count(*) from member where user_id =#{id} and user_pw = #{pw}
+</select>
+
+<select id="login_email_Check" resultType="int">
+select count(*) from member where user_id=#{id} and emailcheck='1'
+</select>
+
+<select id="find_id" resultType="String">
+	select user_id from member where email=#{email} and user_name=#{name}
+</select>
+
+<select id="find_pw" resultType="String">
+	select user_pw from member where user_name=#{name} and user_id=#{id} and email=#{email} and phone=#{phone} 
+</select>
+<!-- 서지혜 -->
+
 <insert id="insertMember">
-insert into member(user_name,user_id,user_pw,birth_day,sex,post,address1,address2,contact1,contact2,contact3,email,phone1,phone2,phone3)
-values (#{user_name},#{user_id},#{user_pw},#{birth_day},#{sex},#{post},#{address1},#{address2},#{contact1},#{contact2},#{contact3},#{email},#{phone1},#{phone2},#{phone3})
+insert into member(user_name,user_id,user_pw,email,phone)
+values (#{user_name},#{user_id},#{user_pw},#{email},#{phone})
 </insert>
 
 <select id="checkId" resultType="java.lang.Integer">
@@ -17,7 +35,7 @@ select count(*) from member where email=#{email}
 
 <update id="emailAuth" parameterType="java.util.HashMap">
 <![CDATA[
-update member set emailcheck=#{auth} where email=#{email}
+update member set email_check=#{auth} where email=#{email}
 ]]>
 </update>
 

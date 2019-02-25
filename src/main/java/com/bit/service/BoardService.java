@@ -6,6 +6,7 @@ import com.bit.domain.BoardVO;
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
 import com.bit.domain.Historic_site_detailVO;
+import com.bit.domain.Historic_site_starVO;
 import com.bit.domain.Nearby_attractionVO;
 
 public interface BoardService {
@@ -17,7 +18,7 @@ public interface BoardService {
 	public void remove(Integer bno)throws Exception;
 	
 	//별점 주기
-	public void star_insert(int star,String id,Integer bno) throws Exception;
+	public void star_insert(Historic_site_starVO vo) throws Exception;
 	
 	public int star_check(int bno,String id) throws Exception;
 	
@@ -163,5 +164,9 @@ public interface BoardService {
 	//댓글 수
 	
 	public int reply_count(int bno)throws Exception;
+	
+	//read Chart List
+	public List<Historic_site_starVO> readChartList(int bno)throws Exception;
+	
 	
 }	

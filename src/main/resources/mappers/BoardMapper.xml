@@ -24,7 +24,7 @@ where bno=#{bno}
 </delete>
 
 <insert id="star_insert">
-insert into historic_site_star(bno,user_id,star) values(#{bno},#{id},#{star})
+insert into historic_site_star(bno,user_id,star) values(#{bno},#{user_id},#{star})
 </insert>
 
 <select id="star_check" resultType="int">
@@ -612,5 +612,9 @@ select * from historic_site_image,nearby_attraction where fullname like concat('
 <![CDATA[
 select count(*) from historic_reply where bno=#{bno}
 ]]>
+</select>
+
+<select id="readChartList" resultType="com.bit.domain.Historic_site_starVO">
+select * from historic_site_star where bno=#{bno}
 </select>
 </mapper> 

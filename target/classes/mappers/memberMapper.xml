@@ -3,8 +3,8 @@
 <mapper namespace="com.bit.mapper.MemberMapper">
 
 <insert id="insertMember">
-insert into member(user_name,user_id,user_pw,email,phone)
-values (#{user_name},#{user_id},#{user_pw},#{email},#{phone})
+insert into member(user_name,user_id,user_pw,birth_day,sex,post,address1,address2,contact1,contact2,contact3,email,phone1,phone2,phone3)
+values (#{user_name},#{user_id},#{user_pw},#{birth_day},#{sex},#{post},#{address1},#{address2},#{contact1},#{contact2},#{contact3},#{email},#{phone1},#{phone2},#{phone3})
 </insert>
 
 <select id="checkId" resultType="java.lang.Integer">
@@ -20,5 +20,31 @@ select count(*) from member where email=#{email}
 update member set emailcheck=#{auth} where email=#{email}
 ]]>
 </update>
+
+<!-- // KDH 2019-02-20 -->
+<select id="selectMember" resultType="com.bit.domain.MemberVO">
+<![CDATA[
+select * from member where user_id=#{user_id}
+]]>
+</select>
+
+<!-- // KDH 2019-02-21 -->
+<update id="updateMember">
+<![CDATA[
+update member set user_name=#{user_name}, user_pw=#{user_pw}, birth_day=#{birth_day}, sex=#{sex}, post=#{post}, address1=#{address1}, address2=#{address2}, contact1=#{contact1}, contact2=#{contact2}, contact3=#{contact3}, email=#{email}, phone1=#{phone1}, phone2=#{phone2}, phone3=#{phone3} where user_id=#{user_id}
+]]>
+</update>
+
+<!-- // KDH 2019-02-22 -->
+<select id="selectReplyMember" resultType="com.bit.domain.ReplyVO">
+<![CDATA[
+select * from historic_site_reply where replyer=#{user_id} limit #{cri.pageStart}, #{cri.perPageNum}
+]]>
+</select>
+<select id="countReplyMember" resultType="int">
+<![CDATA[
+select count(rno) from historic_reply where replyer=#{user_id}
+]]>
+</select>
 
 </mapper>

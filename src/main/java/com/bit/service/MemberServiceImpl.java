@@ -1,6 +1,7 @@
 package com.bit.service;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import javax.inject.Inject;
 import javax.mail.MessagingException;
@@ -8,7 +9,9 @@ import javax.mail.MessagingException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.bit.domain.Criteria;
 import com.bit.domain.MemberVO;
+import com.bit.domain.ReplyVO;
 import com.bit.persistence.MemberDAO;
 import com.bit.util.MailHandler;
 
@@ -38,20 +41,20 @@ public class MemberServiceImpl implements MemberService {
 		try {
 			MailHandler sendMail = new MailHandler(mailSender);
 
-			sendMail.setSubject("[ë°œìì·¨ íˆ¬ì–´ ì„œë¹„ìŠ¤ ì´ë©”ì¼ ì¸ì¦]");
+			sendMail.setSubject("[¹ßÀÚÃë Åõ¾î ¼­ºñ½º ÀÌ¸ŞÀÏ ÀÎÁõ]");
 
 			/*sendMail.setText(
-					new StringBuffer().append("<h1>ë©”ì¼ì¸ì¦</h1>")
+					new StringBuffer().append("<h1>¸ŞÀÏÀÎÁõ</h1>")
 					.append("<a href='http://localhost:8181/emailcheck/1")
-					.append("' target='_blenk'>ì´ë©”ì¼ ì¸ì¦ í™•ì¸</a>").toString());
+					.append("' target='_blenk'>ÀÌ¸ŞÀÏ ÀÎÁõ È®ÀÎ</a>").toString());
 					sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 					sendMail.setTo(email);
 					sendMail.send();*/
 			
 			sendMail.setText(
-			new StringBuffer().append("<h1>ë°œìì·¨ íˆ¬ì–´ ë©”ì¼ì¸ì¦</h1>")
+			new StringBuffer().append("<h1>¹ßÀÚÃë Åõ¾î ¸ŞÀÏÀÎÁõ</h1>")
 			.append("<a href='http://localhost:8181/emailauth/"+email)
-			.append("' target='_blenk'>ì´ë©”ì¼ ì¸ì¦ í™•ì¸</a>").toString());
+			.append("' target='_blenk'>ÀÌ¸ŞÀÏ ÀÎÁõ È®ÀÎ</a>").toString());
 			sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 			sendMail.setTo(email);
 			sendMail.send();
@@ -72,5 +75,26 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public int emailCheck(String email) {
 		return dao.emailCheck(email);
+	}
+
+	// KDH 2019-02-20
+	@Override
+	public List<MemberVO> selectMember(String user_id) throws Exception {
+		return dao.selectMember(user_id);
+	}
+
+	@Override
+	public void updateMember(MemberVO vo) {
+		dao.updateMember(vo);
+	}
+
+	@Override
+	public List<ReplyVO> selectReplyMember(String user_id, Criteria cri) throws Exception {
+		return dao.selectReplyMember(user_id, cri);
+	}
+
+	@Override
+	public int countReplyMember(String user_id) throws Exception {
+		return dao.countReplyMember(user_id);
 	}
 }

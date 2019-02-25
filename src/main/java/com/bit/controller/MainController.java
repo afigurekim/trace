@@ -112,10 +112,6 @@ public class MainController {
 		
 		return "login";
 	}
-	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String mypage(Locale locale, Model model) {
-		return "mypage";
-	}
 	@RequestMapping(value = "/order_deliver", method = RequestMethod.GET)
 	public String order_deliver(Locale locale, Model model) {
 		return "order_deliver";

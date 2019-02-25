@@ -17,7 +17,7 @@ select count(*) from member where email=#{email}
 
 <update id="emailAuth" parameterType="java.util.HashMap">
 <![CDATA[
-update member set email_check=#{auth} where email=#{email}
+update member set emailcheck=#{auth} where email=#{email}
 ]]>
 </update>
 

@@ -10,27 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>About Us | Impact By Distinctive Themes</title>
-    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../resources/css/pe-icons.css" rel="stylesheet">
-    <link href="../resources/css/prettyPhoto.css" rel="stylesheet">
-    <link href="../resources/css/animate.css" rel="stylesheet">
-    <link href="../resources/css/style.css" rel="stylesheet">
+    <title>지역별 전라도</title>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../resources/css/pe-icons.css" rel="stylesheet">
+    <link href="../../../resources/css/prettyPhoto.css" rel="stylesheet">
+    <link href="../../../resources/css/animate.css" rel="stylesheet">
+    <link href="../../../resources/css/style.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <script src="../resources/js/jquery.js"></script>
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/imgs/ico/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/imgs/ico/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon-precomposed" href="../resources/imgs/ico/apple-touch-icon-57x57.png">
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/jquery.prettyPhoto.js"></script>
-    <script src="../resources/js/plugins.js"></script>
-    <script src="../resources/js/init.js"></script>
+    <script src="../../../resources/js/jquery.js"></script>
+    <link rel="shortcut icon" href="../../../resources/imgs/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../resources/imgs/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../resources/imgs/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="../../../resources/imgs/ico/apple-touch-icon-57x57.png">
+    <script src="../../../resources/js/bootstrap.min.js"></script>
+    <script src="../../../resources/js/jquery.prettyPhoto.js"></script>
+    <script src="../../../resources/js/plugins.js"></script>
+    <script src="../../..//resources/js/init.js"></script>
     <script type="text/javascript">
    
     </script>
@@ -71,33 +71,99 @@ $(function(){
 	console.log(width);
 	console.log(height+"높이");
 	//alert($(".item-inner>a>img").eq(1).height(272));
-	$("#all_region").click(function(){
-		window.location.href="http://localhost:8181/region/all";
+$("#all_region").click(function(){
+		
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="http://localhost:8181/eng/region/all";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="http://localhost:8181/china/region/all";
+		}else{
+			window.location.href="http://localhost:8181/region/all";
+		}
 	});		
 	$("#seoul").click(function(){
-		window.location.href="http://localhost:8181/region/seoul";
+		
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="http://localhost:8181/eng/region/seoul";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="http://localhost:8181/china/region/seoul";
+		}else{
+			window.location.href="http://localhost:8181/region/seoul";
+		}	
+		
 	});
 	$("#incheon").click(function(){
-		window.location.href="http://localhost:8181/region/incheon";
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="http://localhost:8181/eng/region/incheon";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="http://localhost:8181/china/region/incheon";
+		}else{
+			window.location.href="http://localhost:8181/region/incheon";
+		}	
+		
 	});	
 	$("#kyunggi").click(function(){
-		window.location.href="http://localhost:8181/region/kyunggi";
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="http://localhost:8181/eng/region/kyunggi";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="http://localhost:8181/china/region/kyunggi";
+		}else{
+			window.location.href="http://localhost:8181/region/kyunggi";
+		}	
+		
 	});
+	
 	$("#kangwon").click(function(){
-		window.location.href="http://localhost:8181/region/kangwon";
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="http://localhost:8181/eng/region/kangwon";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="http://localhost:8181/china/region/kangwon";
+		}else{
+			window.location.href="http://localhost:8181/region/kangwon";
+		}	
+		
 	});
 	$("#chungchung").click(function(){
-		window.location.href="http://localhost:8181/region/chungchung";
+		
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="http://localhost:8181/eng/region/chungchung";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="http://localhost:8181/china/region/chungchung";
+		}else{
+			window.location.href="http://localhost:8181/region/chungchung";
+		}
+		
 	});	
 	$("#kyungsang").click(function(){
-		window.location.href="http://localhost:8181/region/kyungsang";
+
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="http://localhost:8181/eng/region/kyungsang";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="http://localhost:8181/china/region/kyungsang";
+		}else{
+			window.location.href="http://localhost:8181/region/kyungsang";
+		}
 	});	
 	$("#junla").click(function(){
-		window.location.href="http://localhost:8181/region/junla";
+
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="http://localhost:8181/eng/region/junla";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="http://localhost:8181/china/region/junla";
+		}else{
+			window.location.href="http://localhost:8181/region/junla";
+		}
 	});	
 	$("#jeju").click(function(){
-		window.location.href="http://localhost:8181/region/jeju";
-	});			
+
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="http://localhost:8181/eng/region/jeju";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="http://localhost:8181/china/region/jeju";
+		}else{
+			window.location.href="http://localhost:8181/region/jeju";
+		}
+	});					
 });
 </script>
 </head><!--/head-->
@@ -169,12 +235,22 @@ $(function(){
            				<li class='portfolio-item app isotope-item'>
                			
                           <div class="item-inner">
-								<a href="/region/read?bno=${Historic_siteVO.bno}">
-								
+						<script type="text/javascript">
+                          if(window.location.href.indexOf("eng")!=-1){
+                            document.write("<a href='/eng/region/read?bno=${Historic_siteVO.bno}'>");
+
+                          }else if(window.location.href.indexOf("china")!=-1){
+                              document.write("<a href='/china/region/read?bno=${Historic_siteVO.bno}'>");
+
+                          }else{
+                            document.write("<a href='/region/read?bno=${Historic_siteVO.bno}'>");
+                        	  
+                          }
+                          </script>								
                                 <img class="img-responsive img-blog" src="${Historic_siteVO.first_image}">
 								
 								
-								 <h5>${Historic_siteVO.site_name}</h5>
+								 <h5 style="overflow:hidden">${Historic_siteVO.site_name}</h5>
 								
 				            	</a>		
 						</div>
@@ -264,18 +340,50 @@ $(function(){
                     <div class="text-center">
 						<ul class="pagination">
 							<c:if test="${pageMaker.prev}">
-								<li><a href="/region/all?page=${pageMaker.startPage-1}">&laquo;</a></li>
+							<script type="text/javascript">
+							 if(window.location.href.indexOf("eng")!=-1){
+		                            document.write("<li><a href=/eng/region/junla?page=${pageMaker.startPage-1}&laquo;</a></li>");
+		                          }else if(window.location.href.indexOf("china")!=-1){
+			                            document.write("<li><a href=/china/region/junla?page=${pageMaker.startPage-1}&laquo;</a></li>");
+
+		                          }else{
+			                            document.write("<li><a href=/region/junla?page=${pageMaker.startPage-1}&laquo;</a></li>");
+		                        	  
+		                          }
+							</script>
 							</c:if>
 							
 							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 								<li 
 									<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
-								<a href="/region/all?page=${idx}">${idx}</a>
+								<script type="text/javascript">
+								if(window.location.href.indexOf("eng")!=-1){
+		                            document.write("<a href='/eng/region/junla?page=${idx}'>${idx}</a>");
+		                          }else if(window.location.href.indexOf("china")!=-1){
+			                       document.write("<a href='/china/region/junla?page=${idx}'>${idx}</a>");
+
+		                          }else{
+				                       document.write("<a href='/region/junla?page=${idx}'>${idx}</a>");
+		                        	  
+		                          }
+								</script>
+								
 								</li>
 							</c:forEach>
 							
 							<c:if test="${pageMaker.next && pageMaker.endPage>0 }">
-								<li><a href="/region/all?page=${pageMaker.endPage +1}">&raquo;</a></li>
+							<script type="text/javascript">
+								if(window.location.href.indexOf("eng")!=-1){
+		                            document.write("<li><a href='/eng/region/junla?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+		                          }else if(window.location.href.indexOf("china")!=-1){
+			                            document.write("<li><a href='/china/region/junla?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+
+		                          }else{
+			                            document.write("<li><a href='/region/junla?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+		                        	  
+		                          }
+								</script>
+							
 							</c:if>
 							
 						</ul>

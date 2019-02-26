@@ -45,22 +45,22 @@ public class LoginController {
 	  @RequestMapping(value = "/login", method = RequestMethod.GET) 
 	  public String login(Locale locale,Model model, HttpSession session) {
 	  
-	 // ³×ÀÌ¹ö¾ÆÀÌµð·Î ÀÎÁõ URLÀ» »ý¼ºÇÏ±â À§ÇÏ¿© naverLoginBOÅ¬·¡½ºÀÇ getAuthorizationUrl¸Þ¼Òµå È£Ãâ 
+	 // ï¿½ï¿½ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½Ìµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ URLï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½ naverLoginBOÅ¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ getAuthorizationUrlï¿½Þ¼Òµï¿½ È£ï¿½ï¿½ 
 	  String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-	  System.out.println("³×ÀÌ¹ö:" + naverAuthUrl); //³×ÀÌ¹ö 
+	  System.out.println("ï¿½ï¿½ï¿½Ì¹ï¿½:" + naverAuthUrl); //ï¿½ï¿½ï¿½Ì¹ï¿½ 
 	  model.addAttribute("url", naverAuthUrl); 
 	 
 	  return "login"; 
 	  }
 	 
 
-	  // ³×ÀÌ¹ö ·Î±×ÀÎ ¼º°ø½Ã callbackÈ£Ãâ ¸Þ¼Òµå
+	  // ï¿½ï¿½ï¿½Ì¹ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ callbackÈ£ï¿½ï¿½ ï¿½Þ¼Òµï¿½
 	
 	 @RequestMapping(value = "/callback", method = { RequestMethod.GET,RequestMethod.POST }) 
 	  public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws IOException { 
-	  System.out.println("¿©±â´Â callback");
+	  System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ callback");
 	  OAuth2AccessToken oauthToken; oauthToken = naverLoginBO.getAccessToken(session, code, state);
-	  // ·Î±×ÀÎ »ç¿ëÀÚ Á¤º¸¸¦ ÀÐ¾î¿Â´Ù. 
+	  // ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½Â´ï¿½. 
 	  apiResult = naverLoginBO.getUserProfile(oauthToken);
 	  System.out.println("result" + apiResult); 
 	  int index=apiResult.indexOf("id");
@@ -121,10 +121,10 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 
-		return "Main";
+		return "/Main/Main";
 	}
 	
-	//¾ÆÀÌµð Ã£±â
+	//ï¿½ï¿½ï¿½Ìµï¿½ Ã£ï¿½ï¿½
 
 	@ResponseBody
 	@RequestMapping(value="/find_id", method=RequestMethod.POST)
@@ -135,7 +135,7 @@ public class LoginController {
 		return fi;
 	}
 	
-	//ºñ¹Ð¹øÈ£ Ã£±â
+	//ï¿½ï¿½Ð¹ï¿½È£ Ã£ï¿½ï¿½
 	@ResponseBody
 	@RequestMapping(value="/find_pw",method=RequestMethod.POST)
 	public String find_pw(String tname,String tid,String tphone,String temail) {
@@ -148,7 +148,7 @@ public class LoginController {
 		String fpw=service.find_pw(tid,tname, tphone, temail);
 		System.out.println(fpw);
 		if(fpw==null) {
-			System.out.println(fpw+"³Î");
+			System.out.println(fpw+"ï¿½ï¿½");
 			fpw=null;
 		}
 		if(fpw!=null) {

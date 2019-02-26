@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>About Us | Impact By Distinctive Themes</title>
+    <title>발자취</title>
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="../resources/css/pe-icons.css" rel="stylesheet">
@@ -52,7 +52,7 @@ $(function(){
 </script>
 </head><!--/head-->
 <body id="background">
-<%@include file="Header.jsp" %>
+<%@include file="../Header.jsp" %>
     
     <div id="content-wrapper" style="margin-top:50px; overflow:hidden;">
         <script src="../resources/js/three.js"></script>
@@ -372,7 +372,7 @@ $(function(){
 	</div>
   
 
-    <%@include file="Footer.jsp"%>
+    <%@include file="../Footer.jsp"%>
 
 </body>
 </html>

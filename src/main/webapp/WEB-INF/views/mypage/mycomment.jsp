@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>내 댓글</title>
+    <title>내 댓글214pxw</title>
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="../resources/css/pe-icons.css" rel="stylesheet">
@@ -38,12 +38,7 @@
 	    });
     </script>
     <style>
-    	.text-col{
-    		white-space: nowrap;
-    		overflow: hidden;
-    		text-overflow: ellipsis;
-    	}
-		#single-page-slider {
+    	#single-page-slider {
 			background-image: url("../resources/imgs/mypage-banner.jpg");
 			bakcground-color: #483D8B;
 			background-size: cover;
@@ -96,22 +91,22 @@
                         <table class="table">
 				        	<thead>
 				        		<tr>
-				        			<th class="col-md-1 hidden-sm hidden-xs">글번호</th>
-				        			<th class="col-md-2">장소</th>
-				        			<th>내용</th>
-				        			<th class="col-md-2">작성일</th>
-				        			<th class="col-md-1 hidden-sm hidden-xs"></th>
+				        			<th class="col-md-1" style="white-space: nowrap;">글번호</th>
+				        			<th class="col-md-2" style="white-space: nowrap;">장소</th>
+				        			<th class="col-xs-1 hidden-xs" style="white-space: nowrap;">내용</th>
+				        			<th class="col-md-2" style="white-space: nowrap;">작성일</th>
+				        			<th class="col-md-1"></th>
 				        		</tr>
 				        	</thead>
 				        	<tbody>
 				        		<c:forEach items="${mycommentList}" var="ReplyVO" varStatus="status">
 				        		<tr class="clickable-row" data-href="/period/read?bno=${ReplyVO.bno}">
-									<td class="col-md-1 hidden-sm hidden-xs" style="vertical-align: middle">${status.index+1}</td><!-- 글번호는 프론트에서 처리 -->
+									<td class="col-md-1" style="vertical-align: middle">${status.index+1}</td><!-- 글번호는 프론트에서 처리 -->
 									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;">${ReplyVO.site_name}</td>
-									<td style="vertical-align: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 4.8em;">${ReplyVO.reply_text}</td>
+									<td class="col-xs-1 hidden-xs" style="vertical-align: middle; white-space: nowrap;">${ReplyVO.reply_text}</td>
 									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;"><fmt:formatDate value="${ReplyVO.update_date}" pattern="yyyy/MM/dd"/></td>
 									<!-- 댓글이 작성된 페이지로 이동하는 이동 버튼 (시대 페이지 기준 주소) -->
-									<td  class="col-md-1 hidden-sm hidden-xs" style="vertical-align: middle">
+									<td class="col-md-1" style="vertical-align: middle">
 										<a role="button" class="btn btn-primary" href="/period/read?bno=${ReplyVO.bno}">
 											이동
 										</a>

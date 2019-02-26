@@ -105,35 +105,35 @@
                     <div class="col-md-10 fade-up">
                         <h3>찜 목록</h3>
                         <br>
-                        <div class="table-responsive">
+                        <div>
                         <table class="table">
                         	<thead>
                         		<tr>
-                        			<th class="tblcol-1"></th>
-                        			<th>장소</th>
-                        			<th class="tblcol-3">주소</th>
-                        			<th class="tblcol-4">시대</th>
-                        			<th class="tblcol-5">테마</th>
-                        			<th class="tblcol-6"></th>
-                        			<th class="tblcol-7"></th>
+                        			<th class="col-md-1"></th>
+                        			<th class="col-md-3" style="white-space: nowrap;">장소</th>
+                        			<th class="col-md-4 hidden-xs" style="white-space: nowrap;">주소</th>
+                        			<th class="col-md-1 hidden-xs" style="white-space: nowrap;">시대</th>
+                        			<th class="col-md-1 hidden-xs" style="white-space: nowrap;">테마</th>
+                        			<th class="col-md-1"></th>
+                        			<th class="col-md-1"></th>
                         		</tr>
                         	</thead>
                         	<tbody>
                         		
                         		<c:forEach items="${mysiteList}" var="MemberSiteVO" varStatus="status">
                         		<tr class="clickable-row" data-href="/period/read?bno=${MemberSiteVO.bno}">
-                        			<td class="tblcol-1" style="vertical-align: middle"><img class="thumb" src="${MemberSiteVO.first_image}"></td>
-                        			<td style="vertical-align: middle">${MemberSiteVO.site_name}</td>
-                        			<td class="tblcol-3" style="vertical-align: middle">${MemberSiteVO.address}</td>
-                        			<td class="tblcol-4" style="vertical-align: middle">${MemberSiteVO.period}</td>
-                        			<td class="tblcol-5" style="vertical-align: middle">${MemberSiteVO.thema}</td>
-                        			<td class="tblcol-6" style="vertical-align: middle">
+                        			<td class="col-md-1" style="vertical-align: middle;"><img class="thumb" src="${MemberSiteVO.first_image}"></td>
+                        			<td class="col-md-3" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.site_name}</td>
+                        			<td class="col-md-4 hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.address}</td>
+                        			<td class="col-md-1 hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.period}</td>
+                        			<td class="col-md-1 hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.thema}</td>
+                        			<td class="col-md-1" style="vertical-align: middle">
                         				<a class="btn btn-primary" role="button" href="/period/read?bno=${MemberSiteVO.bno}">
                         					이동
                         				</a>
                         			</td>
                         			<!-- 찜 목록 아이템 삭제 버튼 -->
-                        			<td class="tblcol-7" style="vertical-align: middle">
+                        			<td class="col-md-1" style="vertical-align: middle">
                         				<form action="/mypage" method="post">
                         					<input type="hidden" name="jno" value="${MemberSiteVO.jno}"/>
                         					<button type="submit" class="btn btn-warning">

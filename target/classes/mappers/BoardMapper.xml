@@ -610,7 +610,7 @@ select * from historic_site_image,nearby_attraction where fullname like concat('
 
 <select id="reply_count" resultType="int">
 <![CDATA[
-select count(*) from historic_reply where bno=#{bno}
+select count(*) from historic_site_reply where bno=#{bno}
 ]]>
 </select>
 

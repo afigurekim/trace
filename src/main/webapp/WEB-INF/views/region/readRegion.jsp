@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>About Us | Impact By Distinctive Themes</title>
+    <title>지역별 유적지 정보</title>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../../resources/css/pe-icons.css" rel="stylesheet">
@@ -120,10 +120,11 @@
     text-indent: 5px;
     background-color: rgb(248,248,248);
 }
+
    </style>
 <script>
 $(function(){
-	
+
 	/* 1. Visualizing things on Hover - See next part for action on click */
 	  $('#stars li').on('mouseover', function(){
 	    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
@@ -279,7 +280,13 @@ $(function(){
 	});
 	
 	
+	$(".box-success").click(function(){
+	});
 	
+
+//	$("#modify_modal").css("display","none");
+	
+
 });
 
 
@@ -466,8 +473,18 @@ $(function(){
 				<h3 class="box-title">댓글 등록</h3>
 			</div>
 			<div class="box-body">
-					<input class="form-control" type="text" placeholder="글쓴이"
-					id="newReplyWriter">
+	
+					<script type="text/javascript">
+					
+					if("${login_id}"!=""){
+						document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' value=${login_id} readonly>");
+					}else if("${login_id2}"!=""){
+						document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' value=${login_id2} readonly>");
+	
+					}else{
+						document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' readonly>");
+					}
+					</script> 
 					<div style="margin-top:15px; margin-bottom:15px;">
 					<textarea rows="8"  id="newReplyText" class="form-control" placeholder="내용"></textarea> 
 					</div>
@@ -556,8 +573,6 @@ $(function(){
 
 
 <script type="text/javascript">
-
-
 
 var coffeePositions2=new Array();
 var storePositions2=new Array();
@@ -962,6 +977,7 @@ $("#replyAddBtn").on("click",function(){
 	var replytext= replytextObj.val();
 	if(replyer==""){
 		alert("로그인 후 이용이 가능합니다");
+		return;
 	}
 	if(replytext==""){
 		alert("댓글을 입력해주세요");

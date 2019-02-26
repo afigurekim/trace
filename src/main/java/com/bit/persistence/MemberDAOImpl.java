@@ -96,6 +96,12 @@ public class MemberDAOImpl implements MemberDAO {
 	public void deleteSiteMember(int jno) throws Exception {
 		sqlSession.delete(namespace+".deleteSiteMember", jno);
 	}
+	
+	// 내 찜 아이템 insert DAO
+	@Override
+	public void insertSiteMember(MemberSiteVO vo) throws Exception {
+		sqlSession.insert(namespace+".insertSiteMember", vo);
+	}
 //////////////////////////////////////////////////////////////////////////////////
 	//지혜
 	@Override

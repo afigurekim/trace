@@ -30,7 +30,14 @@
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
     <script type="text/javascript">
- 
+	    $(document).ready(function($) {
+	    	$(".clickable-row").css("cursor", "pointer");
+	        $(".clickable-row").click(function() {
+	        	if(!$(event.target).hasClass("tblcol-7")) {
+	        		window.location = $(this).data("href");
+	        	}
+	        });
+	    });
     </script>
     <style>
 		.thumb {
@@ -38,13 +45,23 @@
 			height: 110px;
 		}
 		.tblcol-1 {
-			width: 20%;
-		}
-		.tblcol-4, .tblcol-5 {
 			width: 15%;
 		}
-		.tblcol-6 {
+		.tblcol-3 {
+			width: 30%;
+		}
+		.tblcol-4, .tblcol-5 {
 			width: 10%;
+		}
+		.tblcol-6, .tblcol-7 {
+			width: 5%;
+		}
+		#single-page-slider {
+			background-image: url("../resources/imgs/mypage-banner.jpg");
+			bakcground-color: #483D8B;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 	</style>
   
@@ -72,7 +89,7 @@
         </div><!--/.carousel-->
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
-    <div id="content-wrapper" style="margin-top:70px;">
+    <div id="content-wrapper" class="no-margin">
         <section id="contact" class="white">
             <div class="container">
                 <div class="gap"></div>
@@ -88,32 +105,39 @@
                     <div class="col-md-10 fade-up">
                         <h3>찜 목록</h3>
                         <br>
+                        <div class="table-responsive">
                         <table class="table">
                         	<thead>
                         		<tr>
                         			<th class="tblcol-1"></th>
                         			<th>장소</th>
-                        			<th>주소</th>
+                        			<th class="tblcol-3">주소</th>
                         			<th class="tblcol-4">시대</th>
                         			<th class="tblcol-5">테마</th>
                         			<th class="tblcol-6"></th>
+                        			<th class="tblcol-7"></th>
                         		</tr>
                         	</thead>
                         	<tbody>
                         		
                         		<c:forEach items="${mysiteList}" var="MemberSiteVO" varStatus="status">
-                        		<tr>
+                        		<tr class="clickable-row" data-href="/period/read?bno=${MemberSiteVO.bno}">
                         			<td class="tblcol-1" style="vertical-align: middle"><img class="thumb" src="${MemberSiteVO.first_image}"></td>
                         			<td style="vertical-align: middle">${MemberSiteVO.site_name}</td>
-                        			<td style="vertical-align: middle">${MemberSiteVO.address}</td>
+                        			<td class="tblcol-3" style="vertical-align: middle">${MemberSiteVO.address}</td>
                         			<td class="tblcol-4" style="vertical-align: middle">${MemberSiteVO.period}</td>
                         			<td class="tblcol-5" style="vertical-align: middle">${MemberSiteVO.thema}</td>
-                        			<!-- 찜 목록 아이템 삭제 버튼 -->
                         			<td class="tblcol-6" style="vertical-align: middle">
+                        				<a class="btn btn-primary" role="button" href="/period/read?bno=${MemberSiteVO.bno}">
+                        					이동
+                        				</a>
+                        			</td>
+                        			<!-- 찜 목록 아이템 삭제 버튼 -->
+                        			<td class="tblcol-7" style="vertical-align: middle">
                         				<form action="/mypage" method="post">
                         					<input type="hidden" name="jno" value="${MemberSiteVO.jno}"/>
-                        					<button type="submit" id="join-submit" class="btn btn-warning">
-                        						삭제<i class="fa fa-times spaceLeft"></i>
+                        					<button type="submit" class="btn btn-warning">
+                        						삭제
                         					</button>
                         				</form>
                         			</td>
@@ -121,9 +145,10 @@
                         		</c:forEach>
                         	</tbody>
                         </table>
+                        </div>
                     </div><!-- col -->
                 </div><!-- row -->  
-                <div class="gap"></div>         
+                <!-- <div class="gap"></div> -->        
             </div>
         </section><!-- section -->
     </div>

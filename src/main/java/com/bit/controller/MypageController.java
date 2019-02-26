@@ -46,6 +46,13 @@ public class MypageController {
 		service.deleteSiteMember(jno);
 		return "/mypage/mysite";
 	}
+	// /mypage.add POST방식 접근 -> 찜목록 항목 추가 후 찜목록 이동
+	@RequestMapping(value="/mypage.add", method = RequestMethod.POST)
+	public String mysiteadd(MemberSiteVO membersite) throws Exception {
+		logger.info(membersite.toString());
+		service.insertSiteMember(membersite);
+		return "/mypage/mypage";
+	}
 	// /mycomment GET방식 접근 -> 내 댓글 페이지
 	@RequestMapping(value = "/mycomment", method = RequestMethod.GET)
 	public String mycomment(Model model) throws Exception {

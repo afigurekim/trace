@@ -117,6 +117,12 @@ public class MemberServiceImpl implements MemberService {
 		dao.deleteSiteMember(jno);
 	}
 	
+	// 찜 아이템 insert 서비스
+	@Override
+	public void insertSiteMember(MemberSiteVO vo) throws Exception {
+		dao.insertSiteMember(vo);
+	}
+	
 	@Override
 	public int login(String id,String pw) {
 		// TODO Auto-generated method stub
@@ -179,4 +185,3 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 }
-

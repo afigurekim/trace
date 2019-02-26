@@ -28,36 +28,15 @@
     <script src="../resources/js/jquery.prettyPhoto.js"></script>
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
-    <script type="text/javascript">
- 
-    </script>
-    <script type="text/javascript">
-	$(function(){
-		var windowWidth = $( window ).width();
-		var joinWidth=$("#joinform").width();
-		 $("#join_responsive").css("width","909.98px");
-		 $("#join_responsive").css("margin","auto");
-		 $("#join_responsive").css("margin-top","0px");
-	
-		 if(windowWidth<=626){
-			 $("#join_responsive").width(windowWidth-30);
-		 }
-		$(window).resize(function(){
-			 windowWidth = $( window ).width();
-			 joinWidth=$("#joinform").width();
-			
-			 if(windowWidth<=626){
-				 $("#join_responsive").width(windowWidth-30);
-	
-			 }else{
-				 $("#join_responsive").css("width","909.98px");
-			 }
-			console.log("폼크기"+joinWidth);
-			console.log("윈도우 크기"+windowWidth);
-		});
-	});
-	
-	</script>
+    <style>
+		#single-page-slider {
+			background-image: url("../resources/imgs/mypage-banner.jpg");
+			bakcground-color: #483D8B;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	</style>
 </head><!--/head-->
 <body>
 <%@include file="../Header.jsp" %>
@@ -82,7 +61,7 @@
         </div><!--/.carousel-->
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
-    <div id="content-wrapper" style="margin-top:70px;">
+    <div id="content-wrapper" class="no-margin">
         <section id="contact" class="white">
             <div class="container">
                 <div class="gap"></div>
@@ -109,7 +88,7 @@
 		                    </div>
 						</form>
                 </div><!-- row -->  
-                <div class="gap"></div>         
+                <!-- <div class="gap"></div> -->  
             </div>
             </div>
         </section><!-- section -->

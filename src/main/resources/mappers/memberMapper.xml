@@ -80,5 +80,19 @@ select * from member_site where user_id=#{user_id}
 delete from member_site where jno=#{jno}
 </delete>
 
+<!-- 찜 아이템 insert 쿼리문 by 도형 -->
+<insert id="insertSiteMember">
+INSERT INTO MEMBER_SITE (
+	USER_ID, BNO, FIRST_IMAGE, SITE_NAME, ADDRESS, PERIOD, THEMA
+) VALUES (
+	${user_id}, 
+	${bno}, 
+	(SELECT HISTORIC_SITE.FIRST_IMAGE FROM HISTORIC_SITE WHERE HISTORIC_SITE.BNO=${bno}), 
+	(SELECT HISTORIC_SITE.SITE_NAME FROM HISTORIC_SITE WHERE HISTORIC_SITE.BNO=${bno}), 
+	(SELECT HISTORIC_SITE.ADDRESS FROM HISTORIC_SITE WHERE HISTORIC_SITE.BNO=${bno}), 
+	(SELECT HISTORIC_SITE.PERIOD FROM HISTORIC_SITE WHERE HISTORIC_SITE.BNO=${bno}), 
+	(SELECT HISTORIC_SITE.THEMA FROM HISTORIC_SITE WHERE HISTORIC_SITE.BNO=${bno})
+);
+</insert>
 
 </mapper>

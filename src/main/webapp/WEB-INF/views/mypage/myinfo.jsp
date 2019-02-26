@@ -30,9 +30,6 @@
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
     <script type="text/javascript">
-  
-    </script>
-    <script type="text/javascript">
 	function checkPwd(){
 		var passReg=/[a-z0-9]{10,15}$/g;
 	
@@ -95,16 +92,15 @@
 		 $("#join_responsive").css("margin","auto");
 		 $("#join_responsive").css("margin-top","0px");
 	
-		 if(windowWidth<=626){
-			 $("#join_responsive").width(windowWidth-30);
+		 if(windowWidth<=1182){
+			 $("#join_responsive").width(windowWidth*.8333);
 		 }
 		$(window).resize(function(){
 			 windowWidth = $( window ).width();
 			 joinWidth=$("#joinform").width();
 			
-			 if(windowWidth<=626){
-				 $("#join_responsive").width(windowWidth-30);
-	
+			 if(windowWidth<=1182){
+				 $("#join_responsive").width(windowWidth*.8333);
 			 }else{
 				 $("#join_responsive").css("width","909.98px");
 			 }
@@ -114,6 +110,15 @@
 	});
 	
 	</script>
+    <style>
+		#single-page-slider {
+			background-image: url("../resources/imgs/mypage-banner.jpg");
+			bakcground-color: #483D8B;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	</style>
 </head><!--/head-->
 <body>
 <%@include file="../Header.jsp" %>
@@ -138,12 +143,12 @@
         </div><!--/.carousel-->
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
-    <div id="content-wrapper" style="margin-top:70px;">
+    <div id="content-wrapper" class="no-margin">
         <section id="contact" class="white">
             <div class="container">
                 <div class="gap"></div>
-                <div id="join_responsive" class="row">
-                    <div class="col-md-2 fade-up">
+                <div class="row">
+                    <div id="menu_responsive" class="col-md-2 fade-up">
                         <h3>마이페이지</h3>
                         <p><a href="/mypage">찜 목록</a><br/>
                             <a href="/mycomment">내 댓글</a><br/>
@@ -151,7 +156,7 @@
                         </p>
                     </div><!-- col -->
                 
-                    <div class="col-md-10 fade-up">
+                    <div id="join_responsive" class="col-md-10 fade-up">
 		        		<h3>정보수정</h3>
 		                <form role="joinform" id="joinform" action="/myinfo" method="post">
 		                	<c:forEach items="${memberList}" var="MemberVO" varStatus="status">
@@ -198,7 +203,7 @@
 		                    </c:forEach>
 						</form>
                 </div><!-- row -->  
-                <div class="gap"></div>         
+                <!-- <div class="gap"></div> -->
             </div>
             </div>
         </section><!-- section -->

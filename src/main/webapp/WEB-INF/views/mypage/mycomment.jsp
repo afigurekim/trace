@@ -30,14 +30,25 @@
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
     <script type="text/javascript">
- 
+	    $(document).ready(function($) {
+	    	$(".clickable-row").css("cursor", "pointer");
+	        $(".clickable-row").click(function() {
+	        	window.location = $(this).data("href");
+	        });
+	    });
     </script>
     <style>
-		.tblcol-1, .tblcol-5 {
-			width: 10%;
-		}
-		.tblcol-2, .tblcol-4 {
-			width: 15%;
+    	.text-col{
+    		white-space: nowrap;
+    		overflow: hidden;
+    		text-overflow: ellipsis;
+    	}
+		#single-page-slider {
+			background-image: url("../resources/imgs/mypage-banner.jpg");
+			bakcground-color: #483D8B;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 	</style>
   
@@ -65,7 +76,7 @@
         </div><!--/.carousel-->
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
-    <div id="content-wrapper" style="margin-top:70px;">
+    <div id="content-wrapper" class="no-margin">
         <section id="contact" class="white">
             <div class="container">
                 <div class="gap"></div>
@@ -81,32 +92,38 @@
                     <div class="col-md-10 fade-up">
                         <h3>내 댓글</h3>
                         <br>
-                        <table class="table tablecontent">
+                        <div class="table-wrapper">
+                        <table class="table">
 				        	<thead>
 				        		<tr>
-				        			<th class="tblcol-1">글번호</th>
-				        			<th class="tblcol-2">장소</th>
+				        			<th class="col-md-1 hidden-sm hidden-xs">글번호</th>
+				        			<th class="col-md-2">장소</th>
 				        			<th>내용</th>
-				        			<th class="tblcol-4">작성일</th>
-				        			<th class="tblcol-5">이동</th>
+				        			<th class="col-md-2">작성일</th>
+				        			<th class="col-md-1 hidden-sm hidden-xs"></th>
 				        		</tr>
 				        	</thead>
-				        	<tbody class="repliesBody">
+				        	<tbody>
 				        		<c:forEach items="${mycommentList}" var="ReplyVO" varStatus="status">
-				        		<tr>
-									<td class="tblcol-1">${status.index+1}</td><!-- 글번호는 프론트에서 처리 -->
-									<td class="tblcol-2">${ReplyVO.site_name}</td>
-									<td>${ReplyVO.reply_text}</td>
-									<td class="tblcol-4"><fmt:formatDate value="${ReplyVO.update_date}" pattern="yyyy/MM/dd"/></td>
+				        		<tr class="clickable-row" data-href="/period/read?bno=${ReplyVO.bno}">
+									<td class="col-md-1 hidden-sm hidden-xs" style="vertical-align: middle">${status.index+1}</td><!-- 글번호는 프론트에서 처리 -->
+									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;">${ReplyVO.site_name}</td>
+									<td style="vertical-align: middle; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-height: 4.8em;">${ReplyVO.reply_text}</td>
+									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;"><fmt:formatDate value="${ReplyVO.update_date}" pattern="yyyy/MM/dd"/></td>
 									<!-- 댓글이 작성된 페이지로 이동하는 이동 버튼 (시대 페이지 기준 주소) -->
-									<td class="tblcol-5"><a role="button" class="btn btn-default" href="/period/read?bno=${ReplyVO.bno}">이동</a></td>
+									<td  class="col-md-1 hidden-sm hidden-xs" style="vertical-align: middle">
+										<a role="button" class="btn btn-primary" href="/period/read?bno=${ReplyVO.bno}">
+											이동
+										</a>
+									</td>
 								</tr>
 				        		</c:forEach>
 				        	</tbody>
 			        	</table>
+			        	</div>
                     </div><!-- col -->
                 </div><!-- row -->  
-                <div class="gap"></div>         
+                <!-- <div class="gap"></div> -->        
             </div>
         </section><!-- section -->
     </div>

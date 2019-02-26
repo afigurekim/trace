@@ -10,30 +10,30 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>About Us | Impact By Distinctive Themes</title>
-    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../resources/css/pe-icons.css" rel="stylesheet">
-    <link href="../resources/css/prettyPhoto.css" rel="stylesheet">
-    <link href="../resources/css/animate.css" rel="stylesheet">
-    <link href="../resources/css/style.css" rel="stylesheet">
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../resources/css/pe-icons.css" rel="stylesheet">
+    <link href="../../../resources/css/prettyPhoto.css" rel="stylesheet">
+    <link href="../../../resources/css/animate.css" rel="stylesheet">
+    <link href="../../../resources/css/style.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <script src="../resources/js/jquery.js"></script>
-    <link rel="shortcut icon" href="../resources/imgs/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/imgs/ico/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/imgs/ico/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon-precomposed" href="../resources/imgs/ico/apple-touch-icon-57x57.png">
+    <script src="../../../resources/js/jquery.js"></script>
+    <link rel="shortcut icon" href="../../../resources/imgs/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../resources/imgs/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../resources/imgs/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="../../../resources/imgs/ico/apple-touch-icon-57x57.png">
  	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=85e0cc19a20ba6c0287ea1beb32633e7"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.1/handlebars.js"></script>
    
- 	<script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/jquery.prettyPhoto.js"></script>
-    <script src="../resources/js/plugins.js"></script>
-    <script src="../resources/js/init.js"></script>
+ 	<script src="../../../resources/js/bootstrap.min.js"></script>
+    <script src="../../../resources/js/jquery.prettyPhoto.js"></script>
+    <script src="../../../resources/js/plugins.js"></script>
+    <script src="../../../resources/js/init.js"></script>
 
    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
    <style>
@@ -430,12 +430,12 @@ $(function(){
    <div class="category">
        <ul>
            <li id="coffeeMenu" onclick="changeMarker('coffee')">
-           <img src="../resources/imgs/음식.png" style="width:50px;height:25px;">
+           <img src="../../../resources/imgs/음식.png" style="width:50px;height:25px;">
                <span class="ico_comm ico_coffee"></span>
                음식점
            </li>
            <li id="storeMenu" onclick="changeMarker('store')">
-            <img src="../resources/imgs/숙소.png" style="width:50px;height:25px;">
+            <img src="../../../resources/imgs/숙소.png" style="width:50px;height:25px;">
             
                 <span class="ico_comm ico_store"></span>
           숙박
@@ -564,34 +564,92 @@ var storePositions2=new Array();
 var str="";
 var i=0;
 
-
-$.ajax({
-	url:"/food/"+"${read.bno}",
-	async: false,
-	success:function(data){
-		console.log(data.list.length);
-		var str="";
-		for(var i=0;i<data.list.length;i++){
-			str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
-			coffeePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
-			str="";
+if(window.location.href.indexOf("eng")!=-1){
+	$.ajax({
+		url:"/eng/food/"+"${read.bno}",
+		async: false,
+		success:function(data){
+			console.log(data.list.length);
+			var str="";
+			for(var i=0;i<data.list.length;i++){
+				str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+				coffeePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+				str="";
+			}
 		}
-	}
-});
+	});
 
-$.ajax({
-	url:"/room/"+"${read.bno}",
-	async: false,
-	success:function(data){
-		console.log(data.list.length);
-		var str="";
-		for(var i=0;i<data.list.length;i++){
-			str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
-			storePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
-			str="";
+	$.ajax({
+		url:"/eng/room/"+"${read.bno}",
+		async: false,
+		success:function(data){
+			console.log(data.list.length);
+			var str="";
+			for(var i=0;i<data.list.length;i++){
+				str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+				storePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+				str="";
+			}
 		}
-	}
-});
+	});
+}else if(window.location.href.indexOf("ch")!=-1){
+	$.ajax({
+		url:"/ch/food/"+"${read.bno}",
+		async: false,
+		success:function(data){
+			console.log(data.list.length);
+			var str="";
+			for(var i=0;i<data.list.length;i++){
+				str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+				coffeePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+				str="";
+			}
+		}
+	});
+
+	$.ajax({
+		url:"/ch/room/"+"${read.bno}",
+		async: false,
+		success:function(data){
+			console.log(data.list.length);
+			var str="";
+			for(var i=0;i<data.list.length;i++){
+				str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+				storePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+				str="";
+			}
+		}
+	});
+}else{
+	$.ajax({
+		url:"/food/"+"${read.bno}",
+		async: false,
+		success:function(data){
+			console.log(data.list.length);
+			var str="";
+			for(var i=0;i<data.list.length;i++){
+				str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+				coffeePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+				str="";
+			}
+		}
+	});
+
+	$.ajax({
+		url:"/room/"+"${read.bno}",
+		async: false,
+		success:function(data){
+			console.log(data.list.length);
+			var str="";
+			for(var i=0;i<data.list.length;i++){
+				str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
+				storePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
+				str="";
+			}
+		}
+	});
+}
+
 /*
 $.getJSON("/food/"+${read.bno}+"/",function(data){
 	console.log(data.list.length);
@@ -628,8 +686,8 @@ var storePositions = [
 // 주차장 마커가 표시될 좌표 배열입니다
 
 var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
-var foodimage="../resources/imgs/음식.png";
-var roomimage="../resources/imgs/숙소.png";
+var foodimage="../../../resources/imgs/음식.png";
+var roomimage="../../../resources/imgs/숙소.png";
     coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
     storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
 
@@ -805,10 +863,10 @@ function changeMarker(type){
     }   
 } 
 var clickcount=0;
-var bno=1;
+var bno=${read.bno};
 var replyPage=1
 $(function(){
-	getPage('/replies/'+1+"/"+1);
+	getPage('/replies/'+bno+"/"+1);
 
 });
 function getPage(pageInfo){

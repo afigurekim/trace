@@ -162,13 +162,21 @@ $(function(){
 	    // JUST RESPONSE (Not needed)
 	    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
 	   var bn=${read.bno};
-	   
+	   var user_id;
+	   if("${login_id}"!=""){
+		   user_id="${login_id}";
+	   }else if("${login_id2}"!=""){
+		   user_id="${login_id2}";
+	   }else{
+		   alert("로그인 후 이용이 가능합니다");
+		   return;
+	   }
 	    $.ajax({
 	    	url:"/starValue",
 	    	type:'post',
 	    	data:{
 	    		star:ratingValue,
-	    		id:'forteas2',
+	    		id:user_id,
 	    		bno:bn,
 	    	},
 	    	success:function(data){
@@ -541,7 +549,9 @@ $(function(){
 				<div class="listimg">
 				<img src="#"   id="food_image_modal" style="width:100%;">
 				</div>
-				<p id="food_address" style="margin-top:20px; border-bottom:1px solid gray; border-top:1px solid gray;"></p>
+				<p id="food_address" style="margin-top:20px;  border-top:1px solid gray;"></p>
+				<p id="food_contact" style="border-bottom:1px solid gray;"></p>
+				
 				<p id="food_detail_modal" style="margin-top:20px; font-size:13px;"></p>
 				
 				</div>
@@ -560,7 +570,7 @@ $(function(){
 	&nbsp;<small><i class="fa fa-clock-o"></i> {{prettifyDate reg_date}}</small>
 	</div>
 	<div class="timeline-body">{{reply_text}} </div>
-		<a class="pull-right btn btn-primary btn-outlined"
+		<a class="pull-right btn btn-primary btn-outlined" id="modify_modal"
 		data-toggle="modal" data-target="#modifyModal">Modify</a>
 	
 		
@@ -781,6 +791,7 @@ function makeClickListener(map, marker, content2) {
 
 	        		$(".modal-title").text(data.read_attraction.attraction_name);
 	        		$("#food_address").text(data.read_attraction.address);
+	        		$("#food_contact").text(data.read_attraction.tel);
 	        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
  
 	        		$("#modifyModal2").modal();  
@@ -892,6 +903,7 @@ $.ajax({
 	success:function(data){
 		console.log("+댓글 갯수+"+data.list.length);
 		var str="";
+
 		printData(data.list,$("#repliesDiv"),$("#template"));
 		printPaging(data.pageMaker,$(".pagination"));
 		$("#modifyModal").modal('hide');
@@ -910,9 +922,17 @@ Handlebars.registerHelper("prettifyDate",function(timeValue){
 
 var printData= function(replyArr,target,templateObject){
 	var template= Handlebars.compile(templateObject.html());
+	
 	var html=template(replyArr);
 	$(".replyLi").remove();
 	target.after(html);
+	for(var i=0;i<replyArr.length;i++){
+		if(replyArr[i].replyer !="${login_id2}")
+		{
+			$("#modify_modal").hide();
+
+		}
+	}
 }
 var printPaging= function(pageMaker,target){
 	

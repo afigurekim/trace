@@ -181,7 +181,21 @@ public class RegionController {
 		
 			try {
 				model.addAttribute("read",service.readRegion(bno));
-				model.addAttribute("read_detail",service.readRegion_detail(bno));
+				Historic_site_detailVO detail = service.readRegion_detail(bno);
+				detail.setDetail(detail.getDetail().replaceAll("&lt;br /&gt;","<br>"));
+				detail.setDetail(detail.getDetail().replaceAll("&lt;br&gt;","<br>"));
+				detail.setInfo_center(detail.getInfo_center().replaceAll("&lt;br /&gt;", "<br>"));
+				detail.setInfo_center(detail.getInfo_center().replaceAll("&lt;br&gt;", "<br>"));
+				detail.setExp_guide(detail.getExp_guide().replaceAll("&lt;br /&gt;","<br>"));
+				detail.setExp_guide(detail.getExp_guide().replaceAll("&lt;br&gt;","<br>"));
+				detail.setExpage_range(detail.getExp_guide().replaceAll("&lt;br /&gt;","<br>"));
+				detail.setExpage_range(detail.getExp_guide().replaceAll("&lt;br&gt;","<br>"));
+				detail.setUse_time(detail.getUse_time().replaceAll("&lt;br /&gt;","<br>"));
+				detail.setUse_time(detail.getUse_time().replaceAll("&lt;br&gt;","<br>"));
+				detail.setRest_day(detail.getRest_day().replaceAll("&lt;br /&gt;","<br>"));
+				detail.setRest_day(detail.getRest_day().replaceAll("&lt;br&gt;","<br>"));
+
+				model.addAttribute("read_detail",detail);
 				List<Historic_siteVO> imglist=service.readRegionImage(bno);
 				model.addAttribute("region_image",imglist);
 				List<Nearby_attractionVO> list = service.foodlist(bno);
@@ -217,6 +231,18 @@ public class RegionController {
 				read.setAddress(tr.translate(lang, read.getAddress(), "region"));
 				model.addAttribute("read",read);
 				Historic_site_detailVO read_detail=service.readRegion_detail(bno);
+				read_detail.setDetail(read_detail.getDetail().replaceAll("&lt;br /&gt;","<br>"));
+				read_detail.setDetail(read_detail.getDetail().replaceAll("&lt;br&gt;","<br>"));
+				read_detail.setInfo_center(read_detail.getInfo_center().replaceAll("&lt;br /&gt;", "<br>"));
+				read_detail.setInfo_center(read_detail.getInfo_center().replaceAll("&lt;br&gt;", "<br>"));
+				read_detail.setExp_guide(read_detail.getExp_guide().replaceAll("&lt;br /&gt;","<br>"));
+				read_detail.setExp_guide(read_detail.getExp_guide().replaceAll("&lt;br&gt;","<br>"));
+				read_detail.setExpage_range(read_detail.getExp_guide().replaceAll("&lt;br /&gt;","<br>"));
+				read_detail.setExpage_range(read_detail.getExp_guide().replaceAll("&lt;br&gt;","<br>"));
+				read_detail.setUse_time(read_detail.getUse_time().replaceAll("&lt;br /&gt;","<br>"));
+				read_detail.setUse_time(read_detail.getUse_time().replaceAll("&lt;br&gt;","<br>"));
+				read_detail.setRest_day(read_detail.getRest_day().replaceAll("&lt;br /&gt;","<br>"));
+				read_detail.setRest_day(read_detail.getRest_day().replaceAll("&lt;br&gt;","<br>"));
 				read_detail.setDetail(tr.translate(lang, read_detail.getDetail(), "region"));
 				read_detail.setInfo_center(tr.translate(lang, read_detail.getInfo_center(), "region"));
 				read_detail.setRest_day(tr.translate(lang, read_detail.getRest_day(), "region"));
@@ -279,7 +305,7 @@ public class RegionController {
 	@RequestMapping(value="/food/{bno}")
 	public ResponseEntity<Map<String,Object>> default_food_list(@PathVariable int bno) throws Exception
 	{
-		
+	
 		System.out.println("컴다운");
 		ResponseEntity<Map<String,Object>> entity= null;
 		try {
@@ -287,6 +313,7 @@ public class RegionController {
 			
 			Map<String,Object> map = new HashMap<String,Object>();
 			List<Nearby_attractionVO> list = service.foodlist(bno);
+		
 			int foodCount = service.foodcount(bno);
 			System.out.println(foodCount);
 			map.put("list", list);
@@ -388,14 +415,63 @@ public class RegionController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/region/attraction_read", method = RequestMethod.GET)
-	public ResponseEntity<Map<String,Object>>  attraction_detail(@RequestParam("bno") int bno, int rno,Model model,Criteria cri) {
+	public ResponseEntity<Map<String,Object>>  default_attraction_detail(@RequestParam("bno") int bno, int rno,Model model,Criteria cri) {
 		ResponseEntity<Map<String,Object>> entity= null;
 
 		
 			try {
 				Map<String,Object> map = new HashMap<String,Object>();
-				map.put("read_attraction", service.read_attraction(bno, rno));
+				Nearby_attractionVO read_attraction = service.read_attraction(bno, rno);
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br&gt;","\n"));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;","\n"));
 
+				map.put("read_attraction", read_attraction);
+				
+			
+				//model.addAttribute("read_attraction",service.read_attraction(bno, rno));
+				List<Nearby_attractionVO> imglist=service.attraction_image(bno,rno);
+				
+				for(int i=0;i<imglist.size();i++) {
+					if(imglist.get(i).getFullname().indexOf("http")!=-1) {
+					
+						imglist.get(i).setFullname(imglist.get(i).getFullname().substring(imglist.get(i).getFullname().indexOf("http")));
+						
+					}
+				}
+				map.put("food_image", imglist);
+				//model.addAttribute("food_image",imglist);
+				entity= new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);
+
+				
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				e.printStackTrace();
+				entity=new ResponseEntity<Map<String,Object>>(HttpStatus.BAD_REQUEST);
+			}
+			
+		
+			return entity;
+
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/{lang}/region/attraction_read", method = RequestMethod.GET)
+	public ResponseEntity<Map<String,Object>>  attraction_detail(@PathVariable String lang,@RequestParam("bno") int bno, int rno,Model model,Criteria cri) {
+		ResponseEntity<Map<String,Object>> entity= null;
+
+		
+			try {
+				Map<String,Object> map = new HashMap<String,Object>();
+				Nearby_attractionVO read_attraction = service.read_attraction(bno, rno);
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br&gt;","\n"));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;","\n"));
+				read_attraction.setAddress(tr.translate(lang, read_attraction.getAddress(), "region"));
+				read_attraction.setAttraction_name(tr.translate(lang, read_attraction.getAttraction_detail(), "region"));
+				read_attraction.setAttraction_detail(tr.translate(lang, read_attraction.getAttraction_detail(), "region"));
+				map.put("read_attraction", read_attraction);
+				
+			
 				//model.addAttribute("read_attraction",service.read_attraction(bno, rno));
 				List<Nearby_attractionVO> imglist=service.attraction_image(bno,rno);
 				

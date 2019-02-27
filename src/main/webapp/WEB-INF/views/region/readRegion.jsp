@@ -285,18 +285,28 @@ $(function(){
 	$(window).resize(function(){
 		 windowWidth = $( window ).width();
 	$("#food_image_modal").height($("#food_image_modal").width());
-	});
 	
+	console.log($(".overlay").width());
+	$("#first_image").height($(".overlay").width()/1.5);
+	$("img[name=full_image]").height($(".overlay").width()/1.5);
+
+	});
+
 	
 	$(".box-success").click(function(){
+		
 	});
-	
 
-//	$("#modify_modal").css("display","none");
-	
+	$("img[name=full_image]").height($(".overlay").width()/1.5);
+
+
+/*for(var i=0;i<$("img[name=full_image]").length;i++){
+
+	$("img[name=full_image]").height($(".overlay").width()/1.5);
+}
+*/
 
 });
-
 
 </script>
 </head><!--/head-->
@@ -371,13 +381,14 @@ $(function(){
 				    <div class="carousel-inner">
 				      <div class="item active">
 							<a href="#" onclick="dirImg('1636095');" title="사진을 클릭하시면 크게 확인하실 수 있습니다." style="line-height: 301px;">
-							 <img  src="${read.first_image}" class="img-responsive img-blog">                
+							 <img src="${read.first_image}" class="img-responsive img-blog" id="first_image" style="">                
 							</a>				     
 						</div>
 						<c:forEach items="${region_image}"  var="img_list" begin="0" varStatus="status">
 						 	<div class="item">
 									<a href="#" onclick="dirImg('1636095');" title="사진을 클릭하시면 크게 확인하실 수 있습니다." style="line-height: 301px;">
-									 <img  src="${img_list.fullname}" class="img-responsive img-blog">                
+									 <img  src="${img_list.fullname}" class="img-responsive img-blog" id="full_image"  name="full_image" >   
+									           
 									</a>				     
 								</div>
 						</c:forEach>
@@ -777,28 +788,77 @@ function makeClickListener(map, marker, content2) {
         var str=content2.indexOf("<a href");
         var str2=content2.indexOf("<img src");
         var str3=content2.substring(str+16,str2-2);
-        $.ajax({
-        	url:"/region"+str3,
-        	async: false,
-        	success:function(data){
-        		
-	        		for(var i=0;i<data.food_image.length;i++){
-	        			console.log(data.food_image[i]);
-	                   
-						
-	        		}
-        	   		$("#food_image_modal").attr("src",data.read_attraction.first_image);
+        console.log(str3);
+        if(window.location.href.indexOf("eng")!=-1){
+        	$.ajax({
+            	url:"/eng/region"+str3,
+            	async: false,
+            	success:function(data){
+            		
+    	        		for(var i=0;i<data.food_image.length;i++){
+    	        			console.log(data.food_image[i]);
+    	                   
+    						
+    	        		}
+            	   		$("#food_image_modal").attr("src",data.read_attraction.first_image);
 
-	        		$(".modal-title").text(data.read_attraction.attraction_name);
-	        		$("#food_address").text(data.read_attraction.address);
-	        		$("#food_contact").text(data.read_attraction.tel);
-	        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
- 
-	        		$("#modifyModal2").modal();  
+    	        		$(".modal-title").text(data.read_attraction.attraction_name);
+    	        		$("#food_address").text(data.read_attraction.address);
+    	        		$("#food_contact").text(data.read_attraction.tel);
+    	        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
+     					console.log(data.read_attraction.attraction_detail);
+    	        		$("#modifyModal2").modal();  
 
-	        		 
-        	}
-        });
+    	        		 
+            	}
+            });
+        }else if(window.location.href.indexOf("china")!=-1){
+        	$.ajax({
+            	url:"/china/region"+str3,
+            	async: false,
+            	success:function(data){
+            		
+    	        		for(var i=0;i<data.food_image.length;i++){
+    	        			console.log(data.food_image[i]);
+    	                   
+    						
+    	        		}
+            	   		$("#food_image_modal").attr("src",data.read_attraction.first_image);
+
+    	        		$(".modal-title").text(data.read_attraction.attraction_name);
+    	        		$("#food_address").text(data.read_attraction.address);
+    	        		$("#food_contact").text(data.read_attraction.tel);
+    	        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
+     					console.log(data.read_attraction.attraction_detail);
+    	        		$("#modifyModal2").modal();  
+
+    	        		 
+            	}
+            });
+        }else{
+	        $.ajax({
+	        	url:"/region"+str3,
+	        	async: false,
+	        	success:function(data){
+	        		
+		        		for(var i=0;i<data.food_image.length;i++){
+		        			console.log(data.food_image[i]);
+		                   
+							
+		        		}
+	        	   		$("#food_image_modal").attr("src",data.read_attraction.first_image);
+	
+		        		$(".modal-title").text(data.read_attraction.attraction_name);
+		        		$("#food_address").text(data.read_attraction.address);
+		        		$("#food_contact").text(data.read_attraction.tel);
+		        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
+	 					console.log(data.read_attraction.attraction_detail);
+		        		$("#modifyModal2").modal();  
+	
+		        		 
+	        	}
+	        });
+        }
     };
 }
 
@@ -922,12 +982,11 @@ Handlebars.registerHelper("prettifyDate",function(timeValue){
 
 var printData= function(replyArr,target,templateObject){
 	var template= Handlebars.compile(templateObject.html());
-	
 	var html=template(replyArr);
 	$(".replyLi").remove();
 	target.after(html);
 	for(var i=0;i<replyArr.length;i++){
-		if(replyArr[i].replyer !="${login_id2}")
+		if(replyArr[i].replyer !="${login_id2}" && replyArr[i].replyer !="${login_id}")
 		{
 			$("#modify_modal").hide();
 
@@ -1074,6 +1133,12 @@ $("#replyDelBtn").on("click",function(){
 		
 		}});
 });
+
+$(function(){
+	$("#first_image").height($(".overlay").width()/1.5);
+	$("#full_image").height($(".overlay").width()/1.5);
+});
+
 </script>
    
 </body>

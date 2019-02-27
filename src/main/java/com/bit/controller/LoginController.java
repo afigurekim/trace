@@ -121,7 +121,7 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 
-		return "Main";
+		return "/Main/Main";
 	}
 	
 	//아이디 찾기

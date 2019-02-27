@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>About Us | Impact By Distinctive Themes</title>
+    <title>지역별 유적지 정보</title>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../../resources/css/pe-icons.css" rel="stylesheet">
@@ -120,10 +120,11 @@
     text-indent: 5px;
     background-color: rgb(248,248,248);
 }
+
    </style>
 <script>
 $(function(){
-	
+
 	/* 1. Visualizing things on Hover - See next part for action on click */
 	  $('#stars li').on('mouseover', function(){
 	    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
@@ -161,13 +162,21 @@ $(function(){
 	    // JUST RESPONSE (Not needed)
 	    var ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
 	   var bn=${read.bno};
-	   
+	   var user_id;
+	   if("${login_id}"!=""){
+		   user_id="${login_id}";
+	   }else if("${login_id2}"!=""){
+		   user_id="${login_id2}";
+	   }else{
+		   alert("로그인 후 이용이 가능합니다");
+		   return;
+	   }
 	    $.ajax({
 	    	url:"/starValue",
 	    	type:'post',
 	    	data:{
 	    		star:ratingValue,
-	    		id:'forteas2',
+	    		id:user_id,
 	    		bno:bn,
 	    	},
 	    	success:function(data){
@@ -279,7 +288,13 @@ $(function(){
 	});
 	
 	
+	$(".box-success").click(function(){
+	});
 	
+
+//	$("#modify_modal").css("display","none");
+	
+
 });
 
 
@@ -466,8 +481,18 @@ $(function(){
 				<h3 class="box-title">댓글 등록</h3>
 			</div>
 			<div class="box-body">
-					<input class="form-control" type="text" placeholder="글쓴이"
-					id="newReplyWriter">
+	
+					<script type="text/javascript">
+					
+					if("${login_id}"!=""){
+						document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' value=${login_id} readonly>");
+					}else if("${login_id2}"!=""){
+						document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' value=${login_id2} readonly>");
+	
+					}else{
+						document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' readonly>");
+					}
+					</script> 
 					<div style="margin-top:15px; margin-bottom:15px;">
 					<textarea rows="8"  id="newReplyText" class="form-control" placeholder="내용"></textarea> 
 					</div>
@@ -524,7 +549,9 @@ $(function(){
 				<div class="listimg">
 				<img src="#"   id="food_image_modal" style="width:100%;">
 				</div>
-				<p id="food_address" style="margin-top:20px; border-bottom:1px solid gray; border-top:1px solid gray;"></p>
+				<p id="food_address" style="margin-top:20px;  border-top:1px solid gray;"></p>
+				<p id="food_contact" style="border-bottom:1px solid gray;"></p>
+				
 				<p id="food_detail_modal" style="margin-top:20px; font-size:13px;"></p>
 				
 				</div>
@@ -543,7 +570,7 @@ $(function(){
 	&nbsp;<small><i class="fa fa-clock-o"></i> {{prettifyDate reg_date}}</small>
 	</div>
 	<div class="timeline-body">{{reply_text}} </div>
-		<a class="pull-right btn btn-primary btn-outlined"
+		<a class="pull-right btn btn-primary btn-outlined" id="modify_modal"
 		data-toggle="modal" data-target="#modifyModal">Modify</a>
 	
 		
@@ -556,8 +583,6 @@ $(function(){
 
 
 <script type="text/javascript">
-
-
 
 var coffeePositions2=new Array();
 var storePositions2=new Array();
@@ -766,6 +791,7 @@ function makeClickListener(map, marker, content2) {
 
 	        		$(".modal-title").text(data.read_attraction.attraction_name);
 	        		$("#food_address").text(data.read_attraction.address);
+	        		$("#food_contact").text(data.read_attraction.tel);
 	        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
  
 	        		$("#modifyModal2").modal();  
@@ -877,6 +903,7 @@ $.ajax({
 	success:function(data){
 		console.log("+댓글 갯수+"+data.list.length);
 		var str="";
+
 		printData(data.list,$("#repliesDiv"),$("#template"));
 		printPaging(data.pageMaker,$(".pagination"));
 		$("#modifyModal").modal('hide');
@@ -895,9 +922,17 @@ Handlebars.registerHelper("prettifyDate",function(timeValue){
 
 var printData= function(replyArr,target,templateObject){
 	var template= Handlebars.compile(templateObject.html());
+	
 	var html=template(replyArr);
 	$(".replyLi").remove();
 	target.after(html);
+	for(var i=0;i<replyArr.length;i++){
+		if(replyArr[i].replyer !="${login_id2}")
+		{
+			$("#modify_modal").hide();
+
+		}
+	}
 }
 var printPaging= function(pageMaker,target){
 	
@@ -962,6 +997,7 @@ $("#replyAddBtn").on("click",function(){
 	var replytext= replytextObj.val();
 	if(replyer==""){
 		alert("로그인 후 이용이 가능합니다");
+		return;
 	}
 	if(replytext==""){
 		alert("댓글을 입력해주세요");

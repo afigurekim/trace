@@ -284,9 +284,8 @@ $(function(){
 
 	$(window).resize(function(){
 		 windowWidth = $( window ).width();
-	$("#food_image_modal").height($("#food_image_modal").width());
 	
-	console.log($(".overlay").width());
+	
 	$("#first_image").height($(".overlay").width()/1.5);
 	$("img[name=full_image]").height($(".overlay").width()/1.5);
 
@@ -304,8 +303,17 @@ $(function(){
 
 	$("img[name=full_image]").height($(".overlay").width()/1.5);
 }
-*/
-
+*/var windowWidth = $( window ).width();
+	$(window).resize(function(){
+	 windowWidth = $( window ).width();
+	console.log("윈도우 크기"+windowWidth);
+	if(windowWidth<=620){
+		//$("img[name=modal_food]").width(windowWidth-50);
+	}
+	});
+	if(windowWidth<=620){
+		//$("img[name=modal_food]").width(windowWidth-50);
+	}
 });
 
 </script>
@@ -557,8 +565,8 @@ $(function(){
 				<h4 class="modal-title"></h4>
 			</div>
 			<div class="modal-body">
-				<div class="listimg">
-				<img src="#"   id="food_image_modal" style="width:100%;">
+				<div class="">
+				<img src="#"   id="food_image_modal" name="modal_food" style="width:100%;">
 				</div>
 				<p id="food_address" style="margin-top:20px;  border-top:1px solid gray;"></p>
 				<p id="food_contact" style="border-bottom:1px solid gray;"></p>
@@ -808,7 +816,6 @@ function makeClickListener(map, marker, content2) {
     	        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
      					console.log(data.read_attraction.attraction_detail);
     	        		$("#modifyModal2").modal();  
-
     	        		 
             	}
             });
@@ -831,7 +838,6 @@ function makeClickListener(map, marker, content2) {
     	        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
      					console.log(data.read_attraction.attraction_detail);
     	        		$("#modifyModal2").modal();  
-
     	        		 
             	}
             });
@@ -854,7 +860,9 @@ function makeClickListener(map, marker, content2) {
 		        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
 	 					console.log(data.read_attraction.attraction_detail);
 		        		$("#modifyModal2").modal();  
-	
+		        		console.log($("img[name=modal_food]").width()+"width");
+						//$("img[name=modal_food]").height($("#food_image_modal").width()/1.5);
+
 		        		 
 	        	}
 	        });

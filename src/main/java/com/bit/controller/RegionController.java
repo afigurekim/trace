@@ -424,6 +424,8 @@ public class RegionController {
 				Nearby_attractionVO read_attraction = service.read_attraction(bno, rno);
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br&gt;","\n"));
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;","\n"));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;lsquo;",""));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;rsquo;",""));
 
 				map.put("read_attraction", read_attraction);
 				

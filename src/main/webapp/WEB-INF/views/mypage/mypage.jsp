@@ -37,6 +37,10 @@
 	        		window.location = $(this).data("href");
 	        	}
 	        });
+	        if("${login_id}"=="" && "${login_id2}"==""){
+	        	alert("로그인 후 이용해주세요");
+	        	window.location.href="/login";
+	        }
 	    });
     </script>
     <style>

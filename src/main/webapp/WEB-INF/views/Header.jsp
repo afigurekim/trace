@@ -6,8 +6,21 @@
 <meta charset="UTF-8">
 
 </head>
-
+<script type="text/javascript">
+$(function(){
+	
+$("#mypage").click(function(e){
+	if("${login_id}"=="" && "${login_id2}"==""){
+		alert("로그인 후 이용해주세요");
+		e.preventDefault();
+	}
+	
+	
+});
+});
+</script>
 <body>
+
 
 	<div id="preloader"></div>
     <header class="navbar navbar-inverse navbar-fixed-top opaqued" role="banner">
@@ -51,7 +64,7 @@
 						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>로그아웃</a></li>");
 					 	}
-	                    document.write("<li><a href='/mypage'>마이페이지</a></li>"); 
+	                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
 	                    document.write("<li><a href='/write'>공지사항</a></li>");
                     }
                     else if(window.location.href.indexOf("eng")!=-1){
@@ -74,7 +87,7 @@
 						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>LOGOUT</a></li>");
 					 	}
-	                    document.write("<li><a href='/mypage'>MYPAGE</a></li>"); 
+	                    document.write("<li><a id='mypage' href='/mypage'>MYPAGE</a></li>"); 
 	                    document.write("<li><a href='/write'>NOTICE</a></li>");
                     }
                     else if(window.location.href.indexOf("china")!=-1){
@@ -97,7 +110,7 @@
 						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>退出 </a></li>");
 					 	}
-	                    document.write("<li><a href='/mypage'>我的页面</a></li>"); 
+	                    document.write("<li><a id='mypage' href='/mypage'>我的页面</a></li>"); 
 	                    document.write("<li><a href='/write'>公知事項</a></li>");
                     }else{
                     	document.write("<li><a href='/intro'>소개</a></li>");
@@ -119,7 +132,7 @@
 						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>로그아웃</a></li>");
 					 	}
-	                    document.write("<li><a href='/mypage'>마이페이지</a></li>"); 
+	                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
 	                    document.write("<li><a href='/write'>공지사항</a></li>");
                     }
                     </script>

@@ -116,6 +116,12 @@ public class MemberServiceImpl implements MemberService {
 	public void deleteSiteMember(int jno) throws Exception {
 		dao.deleteSiteMember(jno);
 	}
+
+	// 찜 아이템 중복 서비스
+	@Override
+	public int checkSiteMember(MemberSiteVO vo) throws Exception {
+		return dao.checkSiteMember(vo);
+	}
 	
 	// 찜 아이템 insert 서비스
 	@Override

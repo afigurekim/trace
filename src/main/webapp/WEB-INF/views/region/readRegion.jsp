@@ -279,14 +279,7 @@ $(function(){
 	    }
 	  }
 	});
-	
-	
-	$("#first_image").height($(".overlay").width()/1.5);
-	$("img[name=full_image]").height($(".overlay").width()/1.5);
 
-
-	
-	
 	var windowWidth = $( window ).width();
 
 	$(window).resize(function(){
@@ -298,11 +291,60 @@ $(function(){
 
 	});
 
-
-
-
-
 	
+	$(".box-success").click(function(){
+		
+	});
+
+	$("img[name=full_image]").height($(".overlay").width()/1.5);
+
+
+/*for(var i=0;i<$("img[name=full_image]").length;i++){
+
+	$("img[name=full_image]").height($(".overlay").width()/1.5);
+}
+*/var windowWidth = $( window ).width();
+	$(window).resize(function(){
+	 windowWidth = $( window ).width();
+	console.log("윈도우 크기"+windowWidth);
+	if(windowWidth<=620){
+		//$("img[name=modal_food]").width(windowWidth-50);
+	}
+	});
+	if(windowWidth<=620){
+		//$("img[name=modal_food]").width(windowWidth-50);
+	}
+	
+	$("#jimbtn").click(function(e){
+		e.preventDefault();
+		
+		var bno=${read.bno};
+		var user_id;
+		if("${login_id}"!=""){
+			user_id="${login_id}";
+		}else if("${login_id2}"!=""){
+			user_id="${login_id2}";
+		}else{
+			alert("로그인 후 이용이 가능합니다");
+			return;
+		}
+		
+		$.ajax({
+		  url:"/jimadd",
+		  type:'post',
+		  data:{
+		  	user_id:user_id,
+		  	bno:bno,
+		  },
+		  success:function(data){
+		  	if(data==0){
+		  		alert("찜목록에 추가되었습니다");
+		  	}else{
+		  		alert("이 장소는 이미 추가하셨습니다");
+		  	}
+		  }	
+		});
+	});
 });
 
 </script>
@@ -354,7 +396,9 @@ $(function(){
 							        <i class='fa fa-star fa-fw'></i>
 							      </li>
 							    </ul>
-							    <a href="/mypage/add/${read.bno}" role="button" class="btn btn-primary"style="margin-bottom:18px;">찜하기</a>
+							    <form>
+								    <button id="jimbtn" type="button" class="btn btn-primary" style="margin-bottom:18px;">찜하기</button>
+							    </form>
 							  </div>
 						</section>
                     </aside>        
@@ -624,9 +668,9 @@ if(window.location.href.indexOf("eng")!=-1){
 			}
 		}
 	});
-}else if(window.location.href.indexOf("china")!=-1){
+}else if(window.location.href.indexOf("ch")!=-1){
 	$.ajax({
-		url:"/china/food/"+"${read.bno}",
+		url:"/ch/food/"+"${read.bno}",
 		async: false,
 		success:function(data){
 			console.log(data.list.length);
@@ -640,7 +684,7 @@ if(window.location.href.indexOf("eng")!=-1){
 	});
 
 	$.ajax({
-		url:"/china/room/"+"${read.bno}",
+		url:"/ch/room/"+"${read.bno}",
 		async: false,
 		success:function(data){
 			console.log(data.list.length);

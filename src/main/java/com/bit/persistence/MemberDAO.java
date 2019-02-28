@@ -47,6 +47,9 @@ public interface MemberDAO {
 	// 내 찜 아이템 delete DAO
 	public void deleteSiteMember(int jno) throws Exception;
 
+	// 내 찜 아이템 중복체크 DAO
+	public int checkSiteMember(MemberSiteVO vo) throws Exception;
+
 	// 내 찜 아이템 insert DAO
 	public void insertSiteMember(MemberSiteVO vo) throws Exception;
 }

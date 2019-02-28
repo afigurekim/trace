@@ -6,6 +6,9 @@ import java.util.Locale;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.service.MemberService;
 import com.bit.util.NaverLoginBO;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 @Controller
@@ -63,15 +67,21 @@ public class LoginController {
 	  // 로그인 사용자 정보를 읽어온다. 
 	  apiResult = naverLoginBO.getUserProfile(oauthToken);
 	  System.out.println("result" + apiResult); 
-	  int index=apiResult.indexOf("id");
-	  System.out.println(index);
-	  int index2=apiResult.lastIndexOf("age");
-	  System.out.println(index2);
-	  String name= apiResult.substring(index+5,index2-3);
+	  // 네이버 api에서 가져온 사용자 정보를 JSON으로 변환
+	  JSONParser jsonParser = new JSONParser();
+	  JSONObject jsonobj = new JSONObject();
+	  try {
+		  	jsonobj = (JSONObject) jsonParser.parse(apiResult);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	  // response JSON 객체를 뽑아온 다음 그 안 id 객체 값을 string 변환
+	  JSONObject response = (JSONObject) jsonobj.get("response");
+	  String name = (String) response.get("id");
 	  System.out.println(name);
 	  session.setAttribute("login_id2", name); 
 
-	  return "/Main/Main";
+	  return "Main/Main";
 	  }
 	
 
@@ -121,7 +131,7 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 
-		return "Main";
+		return "redirect:/";
 	}
 	
 	//아이디 찾기

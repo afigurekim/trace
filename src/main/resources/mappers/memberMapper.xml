@@ -8,7 +8,7 @@ select count(*) from member where user_id =#{id} and user_pw = #{pw}
 </select>
 
 <select id="login_email_Check" resultType="int">
-select count(*) from member where user_id=#{id} and email_check='1'
+select count(*) from member where user_id=#{id} and emailcheck='1'
 </select>
 
 <select id="find_id" resultType="String">

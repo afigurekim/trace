@@ -38,6 +38,13 @@
 #img_size{
  background-image: url("../resources/imgs/cloud.png");
 }
+		#single-page-slider {
+			background-image: url("../resources/imgs/banner/region-kyungsang-banner.jpg");
+			bakcground-color: #01b29e;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
 </style>
 
 <script>
@@ -178,9 +185,9 @@ $("#all_region").click(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">Our Works</h2>
+                                    <h2 class="main-title">지역별</h2>
                                     <hr>
-                                    <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
+                                    <p>서울 · 인천 · 경기 · 강원 · 충청 · 경상 · 전라 · 제주</p>
                                 </div>
                             </div>   
                         </div>

@@ -20,6 +20,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ul class="pull-right">
+                        	<li><a href="http://api.visitkorea.or.kr/main.do"><img src="../../resources/imgs/TourAPILogo.png"/></a></li>
                             <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li><!--#gototop-->
                         </ul>
                     </div>

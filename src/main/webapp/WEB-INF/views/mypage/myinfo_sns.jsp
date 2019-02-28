@@ -78,11 +78,11 @@
 		        		<h3>정보수정</h3>
 		                <form role="joinform" id="joinform">
 		                	<br>
-		                	<h4>정보수정이 성공적으로 완료되었습니다.</h4>
+		                	<h4>네이버/카카오 로그인 하신 경우 개인정보를 저장하지 않습니다.</h4>
 		                	<br>
 		                	<!-- 정보수정 페이지로 돌아가는 버튼 -->
 		                    <div class="form-group text-center">
-		                        <a type="submit" id="join-submit" class="btn btn-primary" role="button" href="/myinfo">
+		                        <a type="submit" id="join-submit" class="btn btn-primary" role="button" href="/mypage">
 		                            돌아가기
 		                        </a>
 		                    </div>

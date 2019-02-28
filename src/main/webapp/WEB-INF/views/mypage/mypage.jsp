@@ -57,7 +57,7 @@
 			width: 5%;
 		}
 		#single-page-slider {
-			background-image: url("../resources/imgs/mypage-banner.jpg");
+			background-image: url("../resources/imgs/banner/mypage-banner.jpg");
 			bakcground-color: #483D8B;
 			background-size: cover;
 			background-repeat: no-repeat;

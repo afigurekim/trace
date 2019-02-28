@@ -346,9 +346,8 @@ $(function(){
 							      <li class='star' title='WOW!!!' data-value='5'>
 							        <i class='fa fa-star fa-fw'></i>
 							      </li>
-							     <button type="button" class="btn btn-primary"style="margin-bottom:18px;">찜하기</button>	
-							      
 							    </ul>
+							    <a href="/mypage/add/${read.bno}" role="button" class="btn btn-primary"style="margin-bottom:18px;">찜하기</a>
 							  </div>
 						</section>
                     </aside>        

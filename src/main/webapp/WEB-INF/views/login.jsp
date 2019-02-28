@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>About Us | Impact By Distinctive Themes</title>
+    <title>로그인</title>
     <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="../resources/css/pe-icons.css" rel="stylesheet">
@@ -57,6 +57,13 @@
 		        display: inline-block;
 		        text-align: left;
 		        vertical-align: middle;
+		}
+		#single-page-slider {
+			background-image: url("../resources/imgs/banner/login-banner.jpg");
+			bakcground-color: #A9A9A9;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 		    
     </style>
@@ -237,17 +244,26 @@ $(function(){
 <body>
 <%@include file="Header.jsp" %>
 
-    <div style="width:100%;height:200px; background-color:gray;margin-bottom:120px;"></div>
-    <div class="container">
-  <div class="row">
-      <div class="col-md-12">
-          <div class="center gap fade-down section-heading">
-              <h2 class="main-title">Login</h2>
-              <hr>
-          </div>                
-      </div>
- </div> 
+  <section id="single-page-slider" class="no-margin">
+        <div class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center gap fade-down section-heading">
+                                    <h2 class="main-title">LOGIN</h2>
+                                    <hr>
+                                </div>
+                            </div>   
+                        </div>
+                    </div>
+                </div><!--/.item-->
+            </div><!--/.carousel-inner-->
+        </div><!--/.carousel-->
+    </section><!--/#main-slider-->
 <form method="post" style="width:350px; margin:auto;">  
+  <div class="big-gap"></div>
   <div class="row">
      <div class="">
        <div class="input-group">
@@ -278,7 +294,7 @@ $(function(){
     <div class=""><!-- 
    	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:60%; font-weight:bolder;">Sign up</button> -->
    	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:49.5%; font-weight:bolder;" data-target="#exampleModalCenter" data-toggle="modal" >ID 찾기</button>
-   	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:49.5%; font-weight:bolder;"data-target="#exampleModalCenter1" data-toggle="modal" >PassWord찾기</button>
+   	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:49.5%; font-weight:bolder;"data-target="#exampleModalCenter1" data-toggle="modal" >Password찾기</button>
    <!-- 		<span style="margin-left: 15px;"><a data-toggle="modal"  data-target="#exampleModalCenter" style="text-decoration: none; font-weight: bold; font-size: 14px;">ID /</a></span>
       	<span><a data-toggle="modal"  data-target="#exampleModalCenter1" style="text-decoration: none; font-weight: bold; font-size: 14px;">Password 찾기</a></span>
     
@@ -291,11 +307,11 @@ $(function(){
    </div>
 </div>
  <div class="row">
-	 <div class="" style="width: 375px; margin: auto; padding-top: 2px;" >
+	 <div class="" style="width: 380px; margin: auto; padding-top: 2px;" >
 	 	
-	     <span><a href="${url} "><img src="../resources/imgs/White2.PNG" style="width: 170px; height: 43px; position: relative; left: 10px;"></a></span>  
+	     <span><a href="${url} "><img src="../resources/imgs/loginbtn-naver.png" style="width: 188px; height: 39px; position: relative; margin-left: 0px;"></a></span>  
 		 <span><a id="custom-login-btn" href="javascript:loginWithKakao()">
-			<img src="../resources/imgs/카카오 로그인.png" style="width: 170px; height: 43px; position: relative; left: 30px;">
+			<img src="../resources/imgs/loginbtn-kakao.png" style="width: 188px; height: 39px; position: relative; margin-left: 0px;">
 			   </a>
 		 </span>
 			  <script type="text/javascript">

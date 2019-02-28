@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,33 +34,59 @@ public class MypageController {
 	private MemberService service;
 	// /mypage GET방식 접근 -> 찜목록 페이지
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String mypage(Model model) throws Exception {
-		List<MemberSiteVO> mysiteList = service.selectSiteMember("mrhong1234"); // 세션 user_id 값 받아와야 하는 곳
+	public String mypage(Model model, HttpSession session) throws Exception {
+//		String temp = "mrhong1234";
+//		session.setAttribute("login_id2", temp);
+		Object session_id = session.getAttribute("login_id");
+		if(session_id==null || session_id=="") { 
+			session_id = session.getAttribute("login_id2");
+			if(session_id==null || session_id=="") { return "redirect:login"; }
+		}
+		String user_id = session_id.toString();
+		logger.info("user_id : "+user_id);
+		List<MemberSiteVO> mysiteList = service.selectSiteMember(user_id);
 		logger.info(mysiteList.toString());
 		model.addAttribute("mysiteList", mysiteList);
-		return "/mypage/mypage";
+		return "mypage/mypage";
 	}
 	// /mypage POST방식 접근 -> 찜목록 항목 삭제 페이지
 	@RequestMapping(value="/mypage", method = RequestMethod.POST)
 	public String mysitedel(@RequestParam("jno") int jno) throws Exception {
 		logger.info(jno+"");
 		service.deleteSiteMember(jno);
-		return "/mypage/mysite";
+		return "mypage/mysite";
 	}
 	// /mypage.add POST방식 접근 -> 찜목록 항목 추가 후 찜목록 이동
-	@RequestMapping(value="/mypage.add", method = RequestMethod.POST)
-	public String mysiteadd(MemberSiteVO membersite) throws Exception {
+	@RequestMapping(value="/mypage/add/{bno}", method = RequestMethod.GET)
+	public String mysiteadd(@PathVariable("bno") int bno, HttpSession session) throws Exception {
+		MemberSiteVO membersite = new MemberSiteVO();
+		membersite.setBno(bno);
+		Object session_id = session.getAttribute("login_id");
+		if(session_id==null || session_id=="") { 
+			session_id = session.getAttribute("login_id2");
+			if(session_id==null || session_id=="") { return "redirect:login"; }
+		}
+		String user_id = session_id.toString();
+		membersite.setUser_id("'"+user_id+"'");
+		logger.info("user_id : "+user_id);
 		logger.info(membersite.toString());
 		service.insertSiteMember(membersite);
-		return "/mypage/mypage";
+		return "redirect:/mypage";
 	}
 	// /mycomment GET방식 접근 -> 내 댓글 페이지
 	@RequestMapping(value = "/mycomment", method = RequestMethod.GET)
-	public String mycomment(Model model) throws Exception {
-		List<ReplyVO> mycommentList = service.selectReplyMember("mrhong1234"); // 세션 user_id 값 받아와야 하는 곳
+	public String mycomment(Model model, HttpSession session) throws Exception {
+		Object session_id = session.getAttribute("login_id");
+		if(session_id==null || session_id=="") { 
+			session_id = session.getAttribute("login_id2");
+			if(session_id==null || session_id=="") { return "redirect:login"; }
+		}
+		String user_id = session_id.toString();
+		logger.info("user_id : "+user_id);
+		List<ReplyVO> mycommentList = service.selectReplyMember(user_id);
 		logger.info(mycommentList.toString());
 		model.addAttribute("mycommentList", mycommentList);
-		return "/mypage/mycomment";
+		return "mypage/mycomment";
 	}
 	// 댓글 페이지 페이징 처리 하려다 망한 코드
 //	@RequestMapping(value = "/myreply/{user_id}/{page}", method = RequestMethod.GET)
@@ -92,18 +119,29 @@ public class MypageController {
 //	}
 	// /myinfo GET방식 접근 -> 내 정보 수정 페이지
 	@RequestMapping(value = "/myinfo", method = RequestMethod.GET)
-	public String myinfoget(Model model) throws Exception {
-		List<MemberVO> memberList = service.selectMember("mrhong1234"); // 세션 user_id 값 받아와야 하는 곳
+	public String myinfoget(Model model, HttpSession session) throws Exception {
+		Object session_id = session.getAttribute("login_id");
+		if(session_id==null || session_id=="") { 
+			session_id = session.getAttribute("login_id2");
+			if(session_id==null || session_id=="") { 
+				return "redirect:login"; 
+			} else {
+				return "mypage/myinfo_sns";
+			}
+		}
+		String user_id = session_id.toString();
+		logger.info("user_id : "+user_id);
+		List<MemberVO> memberList = service.selectMember(user_id);
 		logger.info(memberList.toString());
 		model.addAttribute("memberList", memberList);
-		return "/mypage/myinfo";
+		return "mypage/myinfo";
 	}
 	// /myinfo POST방식 접근 -> 정보 수정 성공 페이지
 	@RequestMapping(value = "/myinfo", method = RequestMethod.POST)
 	public String myinfopost(MemberVO member) throws Exception {
 		logger.info(member.toString());
 		service.updateMember(member);
-		return "/mypage/myupdate";
+		return "mypage/myupdate";
 	}
 	
 }

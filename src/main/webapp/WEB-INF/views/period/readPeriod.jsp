@@ -29,7 +29,6 @@ margin-bottom:-5px;
 	padding-top:6px;
 	padding-bottom:16px;
 }
-
 .hschDetail_tit{
 	position: relative;
     margin-bottom: 30px;
@@ -87,7 +86,6 @@ margin-bottom:-5px;
 tbody>tr>td{
 padding: 31px 10px 31px 2px;
 }
-
 .hschDetail_con{
     margin-top: 30px;
     padding: 30px 27px;
@@ -143,7 +141,6 @@ padding: 31px 10px 31px 2px;
 .category .ico_coffee {background-position:-10px 0;}  
 .category .ico_store {background-position:-10px -36px;}   
 .category .ico_carpark {background-position:-10px -72px;} 
-
 .wrap {left: 0;bottom: 40px;width: 288px;height: 132px;text-align: left;overflow: hidden;font-size: 12px;font-family: 'Malgun Gothic', dotum, '돋움', sans-serif;line-height: 1.5;}
     .wrap * {padding: 0;margin: 0;}
     .wrap .info {width: 286px;height: 120px;border-right: 1px solid #ccc;overflow: hidden;background: #fff;}
@@ -220,11 +217,7 @@ $(function(){
 	    }
 	  }
 	});
-
 });
-
-
-
 </script>
 
 </head>
@@ -474,15 +467,10 @@ $(function(){
 
 
 <script type="text/javascript">
-
-
-
 var coffeePositions2=new Array();
 var storePositions2=new Array();
 var str="";
 var i=0;
-
-
 $.ajax({
 	url:"/food/"+"${read.bno}",
 	async: false,
@@ -496,7 +484,6 @@ $.ajax({
 		}
 	}
 });
-
 $.ajax({
 	url:"/room/"+"${read.bno}",
 	async: false,
@@ -513,9 +500,7 @@ $.ajax({
 /*
 $.getJSON("/food/"+${read.bno}+"/",function(data){
 	console.log(data.list.length);
-
 	var str="";
-
 	for(var i=0;i<data.list.length;i++){
 		str+="<div class='listimg'><a href='/region/attraction_read?bno="+data.list[i].bno+"&rno="+data.list[i].rno+"'><img src="+data.list[i].first_image+"></a></div><div class='additem'><p class='gname'>"+data.list[i].attraction_name+"</p><p class='gname_pre' style='text-overflow:elipsis;'>"+data.list[i].address+"</p></div></li>";
 		coffeePositions2.push({content:str,latlng:new daum.maps.LatLng(data.list[i].longitude,data.list[i].latitude)});
@@ -523,47 +508,35 @@ $.getJSON("/food/"+${read.bno}+"/",function(data){
 	}
 	
 });	*/
-
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
         center: coffeePositions2[0].latlng, // 지도의 중심좌표 
         level: 8 // 지도의 확대 레벨 
     }; 
-
 var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-
-
 // 편의점 마커가 표시될 좌표 배열입니다
 var storePositions = [
 	{
 		content:'<div>앙무띠</div>',
 	    latlng:new daum.maps.LatLng(37.497535461505684, 127.02948149502778),
-
 	}
     
 ];
-
 // 주차장 마커가 표시될 좌표 배열입니다
-
 var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
 var foodimage="../resources/imgs/음식.png";
 var roomimage="../resources/imgs/숙소.png";
     coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
     storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다
-
     
 createCoffeeMarkers(); // 커피숍 마커를 생성하고 커피숍 마커 배열에 추가합니다
 createStoreMarkers(); // 편의점 마커를 생성하고 편의점 마커 배열에 추가합니다
-
 changeMarker('coffee'); // 지도에 커피숍 마커가 보이도록 설정합니다    
-
-
 // 마커이미지의 주소와, 크기, 옵션으로 마커 이미지를 생성하여 리턴하는 함수입니다
 function createMarkerImage(src, size,imageOption) {
     var markerImage = new daum.maps.MarkerImage(src, size,imageOption);
     return markerImage;            
 }
-
 // 좌표와 마커이미지를 받아 마커를 생성하여 리턴하는 함수입니다
 function createMarker(position, image) {
     var marker = new daum.maps.Marker({
@@ -614,34 +587,28 @@ function makeClickListener(map, marker, content2) {
         window.location.href="http://localhost:8181"+str3;
     };
 }
-
-
 function makeOverListener(map, marker, infowindow) {
     return function() {
         infowindow.open(map, marker);
     };
 }
-
 function makeOutListener(infowindow) {
     return function() {
         infowindow.close();
     };
 }
-
 // 커피숍 마커들의 지도 표시 여부를 설정하는 함수입니다
 function setCoffeeMarkers(map) {        
     for (var i = 0; i < coffeeMarkers.length; i++) {  
         coffeeMarkers[i].setMap(map);
     }        
 }
-
 // 편의점 마커를 생성하고 편의점 마커 배열에 추가하는 함수입니다
 function createStoreMarkers() {
     for (var i = 0; i < storePositions2.length; i++) {
         
         var imageSize = new daum.maps.Size(40, 40),
         imageOption = {offset: new daum.maps.Point(10,36)};
-
            /* imageOptions = {   
                 spriteOrigin: new daum.maps.Point(10, 36),    
                 spriteSize: new daum.maps.Size(36, 98)  
@@ -659,18 +626,14 @@ function createStoreMarkers() {
         daum.maps.event.addListener(marker,'mouseover',makeOverListener(map,marker,infowindow));
         daum.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
         daum.maps.event.addListener(marker, 'click', makeClickListener(map,marker,content3));
-
     }        
 }
-
 // 편의점 마커들의 지도 표시 여부를 설정하는 함수입니다
 function setStoreMarkers(map) {        
     for (var i = 0; i < storeMarkers.length; i++) {  
         storeMarkers[i].setMap(map);
     }        
 }
-
-
 // 카테고리를 클릭했을 때 type에 따라 카테고리의 스타일과 지도에 표시되는 마커를 변경합니다
 function changeMarker(type){
     var coffeeMenu = document.getElementById('coffeeMenu');
@@ -724,9 +687,7 @@ Handlebars.registerHelper("prettifyDate",function(timeValue){
 	var month = dateObj.getMonth()+1;
 	var date= dateObj.getDate();
 	return year+"/"+month+"/"+date;
-
 });
-
 var printData= function(replyArr,target,templateObject){
 	var template= Handlebars.compile(templateObject.html());
 	var html=template(replyArr);
@@ -756,14 +717,11 @@ clickcount+=1;
 	
 		$(".replyLi").show();
 		$(".pagination").show();
-
 		return;
 		}
-
 	getPage("/replies/"+bno+"/1");
 	
 	}else if(clickcount==2){
-
 		if($(".replyLi").show()){
 			$(".replyLi").hide();
 			$(".pagination").hide();
@@ -771,14 +729,11 @@ clickcount+=1;
 		clickcount=0;
 	}
 });	
-
-
 $(".pagination").on("click","li a",function(event){
 	event.preventDefault();
 	replyPage =$(this).attr("href");
 	getPage("/replies/"+bno+"/"+replyPage);
 });
-
 $(".timeline").on("click",".replyLi",function(event){
 	
 	var reply=$(this);
@@ -786,7 +741,6 @@ $(".timeline").on("click",".replyLi",function(event){
 	$("#replytext").val(reply.find('.timeline-body').text());
 	$(".modal-title").html(reply.attr("data-rno"));
 });
-
 $("#replyAddBtn").on("click",function(){
 	
 	var replyerObj = $("#newReplyWriter");
@@ -821,7 +775,6 @@ $("#replyAddBtn").on("click",function(){
 		
 		}});
 });
-
 $("#replyModBtn").on("click",function(){
 	
 	var rno = $(".modal-title").html();
@@ -846,8 +799,6 @@ $("#replyModBtn").on("click",function(){
 		
 		}});
 });
-
-
 $("#replyDelBtn").on("click",function(){
 	
 	var rno = $(".modal-title").html();

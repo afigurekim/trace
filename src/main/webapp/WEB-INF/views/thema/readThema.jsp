@@ -280,23 +280,20 @@ $(function(){
 	  }
 	});
 	$("#first_image").height($(".overlay").width()/1.5);
-	$("img[name=full_image]").height($(".overlay").width()/1.5
-	var windowWidth = $( window ).width();
-
-	$(window).resize(function(){
-		 windowWidth = $( window ).width();
-	
-	
-	$("#first_image").height($(".overlay").width()/1.5);
 	$("img[name=full_image]").height($(".overlay").width()/1.5);
-
-	});
+	
+		var windowWidth = $( window ).width();
+	
+			$(window).resize(function(){
+				 windowWidth = $( window ).width();
+			
+			
+			$("#first_image").height($(".overlay").width()/1.5);
+			$("img[name=full_image]").height($(".overlay").width()/1.5);
+	
+		});
 
 	
-	$(".box-success").click(function(){
-		
-	});
-);
 
 
 });

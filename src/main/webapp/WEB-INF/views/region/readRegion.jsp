@@ -279,7 +279,14 @@ $(function(){
 	    }
 	  }
 	});
+	
+	
+	$("#first_image").height($(".overlay").width()/1.5);
+	$("img[name=full_image]").height($(".overlay").width()/1.5);
 
+
+	
+	
 	var windowWidth = $( window ).width();
 
 	$(window).resize(function(){
@@ -291,29 +298,11 @@ $(function(){
 
 	});
 
+
+
+
+
 	
-	$(".box-success").click(function(){
-		
-	});
-
-	$("img[name=full_image]").height($(".overlay").width()/1.5);
-
-
-/*for(var i=0;i<$("img[name=full_image]").length;i++){
-
-	$("img[name=full_image]").height($(".overlay").width()/1.5);
-}
-*/var windowWidth = $( window ).width();
-	$(window).resize(function(){
-	 windowWidth = $( window ).width();
-	console.log("윈도우 크기"+windowWidth);
-	if(windowWidth<=620){
-		//$("img[name=modal_food]").width(windowWidth-50);
-	}
-	});
-	if(windowWidth<=620){
-		//$("img[name=modal_food]").width(windowWidth-50);
-	}
 });
 
 </script>
@@ -635,9 +624,9 @@ if(window.location.href.indexOf("eng")!=-1){
 			}
 		}
 	});
-}else if(window.location.href.indexOf("ch")!=-1){
+}else if(window.location.href.indexOf("china")!=-1){
 	$.ajax({
-		url:"/ch/food/"+"${read.bno}",
+		url:"/china/food/"+"${read.bno}",
 		async: false,
 		success:function(data){
 			console.log(data.list.length);
@@ -651,7 +640,7 @@ if(window.location.href.indexOf("eng")!=-1){
 	});
 
 	$.ajax({
-		url:"/ch/room/"+"${read.bno}",
+		url:"/china/room/"+"${read.bno}",
 		async: false,
 		success:function(data){
 			console.log(data.list.length);

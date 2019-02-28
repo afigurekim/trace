@@ -64,7 +64,7 @@ public class MypageController {
 		Object session_id = session.getAttribute("login_id");
 		if(session_id==null || session_id=="") { 
 			session_id = session.getAttribute("login_id2");
-			if(session_id==null || session_id=="") { return "redirect:login"; }
+			if(session_id==null || session_id=="") { return "redirect:/login"; }
 		}
 		String user_id = session_id.toString();
 		membersite.setUser_id("'"+user_id+"'");

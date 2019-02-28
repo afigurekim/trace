@@ -158,9 +158,10 @@ public class RegionController {
 	public String all_period(Criteria cri,Locale locale, Model model,@PathVariable String lang) {
 		try {
 			List<Historic_siteVO> list=service.regionlistAll(cri);
-				
-				for(int i=0;i<list.size();i++) {
-					list.get(i).setSite_name(tr.translate(lang,list.get(i).getSite_name(),"region"));
+				if(lang!="kor") {
+					for(int i=0;i<list.size();i++) {
+						list.get(i).setSite_name(tr.translate(lang,list.get(i).getSite_name(),"region"));
+					}
 				}
 		        model.addAttribute("list",list);
 			PageMaker pageMaker = new PageMaker();
@@ -243,17 +244,18 @@ public class RegionController {
 				read_detail.setUse_time(read_detail.getUse_time().replaceAll("&lt;br&gt;","<br>"));
 				read_detail.setRest_day(read_detail.getRest_day().replaceAll("&lt;br /&gt;","<br>"));
 				read_detail.setRest_day(read_detail.getRest_day().replaceAll("&lt;br&gt;","<br>"));
-				read_detail.setDetail(tr.translate(lang, read_detail.getDetail(), "region"));
-				read_detail.setInfo_center(tr.translate(lang, read_detail.getInfo_center(), "region"));
-				read_detail.setRest_day(tr.translate(lang, read_detail.getRest_day(), "region"));
-				read_detail.setCarriage(tr.translate(lang, read_detail.getCarriage(), "region"));
-				read_detail.setPet(tr.translate(lang, read_detail.getPet(),"region"));
-				read_detail.setPark(tr.translate(lang, read_detail.getPark(),"region"));
-				read_detail.setCredit_card(tr.translate(lang, read_detail.getCredit_card(), "region"));
-				read_detail.setExp_guide(tr.translate(lang, read_detail.getExp_guide(), "region"));
-				read_detail.setExpage_range(tr.translate(lang, read_detail.getExpage_range(), "region"));
-				read_detail.setUse_time(tr.translate(lang, read_detail.getUse_time(), "region"));
-			
+				if(lang!="kor") {
+					read_detail.setDetail(tr.translate(lang, read_detail.getDetail(), "region"));
+					read_detail.setInfo_center(tr.translate(lang, read_detail.getInfo_center(), "region"));
+					read_detail.setRest_day(tr.translate(lang, read_detail.getRest_day(), "region"));
+					read_detail.setCarriage(tr.translate(lang, read_detail.getCarriage(), "region"));
+					read_detail.setPet(tr.translate(lang, read_detail.getPet(),"region"));
+					read_detail.setPark(tr.translate(lang, read_detail.getPark(),"region"));
+					read_detail.setCredit_card(tr.translate(lang, read_detail.getCredit_card(), "region"));
+					read_detail.setExp_guide(tr.translate(lang, read_detail.getExp_guide(), "region"));
+					read_detail.setExpage_range(tr.translate(lang, read_detail.getExpage_range(), "region"));
+					read_detail.setUse_time(tr.translate(lang, read_detail.getUse_time(), "region"));
+				}
 				model.addAttribute("read_detail",read_detail);
 				List<Historic_siteVO> imglist=service.readRegionImage(bno);
 				model.addAttribute("region_image",imglist);
@@ -340,10 +342,12 @@ public class RegionController {
 			
 			Map<String,Object> map = new HashMap<String,Object>();
 			List<Nearby_attractionVO> list = service.foodlist(bno);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setAttraction_name(tr.translate(lang, list.get(i).getAttraction_name(), "region"));
-				list.get(i).setAddress(tr.translate(lang, list.get(i).getAddress(), "region"));
-				list.get(i).setAttraction_detail(tr.translate(lang, list.get(i).getAttraction_detail(), "region"));
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setAttraction_name(tr.translate(lang, list.get(i).getAttraction_name(), "region"));
+					list.get(i).setAddress(tr.translate(lang, list.get(i).getAddress(), "region"));
+					//list.get(i).setAttraction_detail(tr.translate(lang, list.get(i).getAttraction_detail(), "region"));
+				}
 			}
 			int foodCount = service.foodcount(bno);
 			System.out.println(foodCount);
@@ -394,10 +398,13 @@ public class RegionController {
 			
 			Map<String,Object> map = new HashMap<String,Object>();
 			List<Nearby_attractionVO> list = service.roomlist(bno);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setAttraction_name(tr.translate(lang, list.get(i).getAttraction_name(), "region"));
-				list.get(i).setAddress(tr.translate(lang, list.get(i).getAddress(), "region"));
-				list.get(i).setAttraction_detail(tr.translate(lang, list.get(i).getAttraction_detail(), "region"));
+			
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setAttraction_name(tr.translate(lang, list.get(i).getAttraction_name(), "region"));
+					list.get(i).setAddress(tr.translate(lang, list.get(i).getAddress(), "region"));
+					//list.get(i).setAttraction_detail(tr.translate(lang, list.get(i).getAttraction_detail(), "region"));
+				}
 			}
 			int roomCount = service.roomcount(bno);
 			System.out.println(roomCount);
@@ -422,8 +429,8 @@ public class RegionController {
 			try {
 				Map<String,Object> map = new HashMap<String,Object>();
 				Nearby_attractionVO read_attraction = service.read_attraction(bno, rno);
-				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br&gt;","\n"));
-				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;","\n"));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br&gt;",""));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;",""));
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;lsquo;",""));
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;rsquo;",""));
 
@@ -466,11 +473,13 @@ public class RegionController {
 			try {
 				Map<String,Object> map = new HashMap<String,Object>();
 				Nearby_attractionVO read_attraction = service.read_attraction(bno, rno);
-				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br&gt;","\n"));
-				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;","\n"));
-				read_attraction.setAddress(tr.translate(lang, read_attraction.getAddress(), "region"));
-				read_attraction.setAttraction_name(tr.translate(lang, read_attraction.getAttraction_detail(), "region"));
-				read_attraction.setAttraction_detail(tr.translate(lang, read_attraction.getAttraction_detail(), "region"));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br&gt;",""));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;",""));
+				if(lang!="kor") {
+					read_attraction.setAddress(tr.translate(lang, read_attraction.getAddress(), "region"));
+					read_attraction.setAttraction_name(tr.translate(lang, read_attraction.getAttraction_name(), "region"));
+					read_attraction.setAttraction_detail(tr.translate(lang, read_attraction.getAttraction_detail(), "region"));
+				}
 				map.put("read_attraction", read_attraction);
 				
 			
@@ -519,8 +528,10 @@ public class RegionController {
 	public String seoul(Criteria cri,Locale locale, Model model,@PathVariable String lang) {
 		try {
 			List<Historic_siteVO> list=service.seoullist(cri);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+				}
 			}
 			model.addAttribute("list",list);
 			PageMaker pageMaker = new PageMaker();
@@ -553,8 +564,10 @@ public class RegionController {
 		try {
 			
 			List<Historic_siteVO> list=service.incheonlist(cri);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+				}
 			}
 			model.addAttribute("list",list);
 			PageMaker pageMaker = new PageMaker();
@@ -585,8 +598,10 @@ public class RegionController {
 	public String kyunggi(Criteria cri,Locale locale, Model model,@PathVariable String lang) {
 		try {
 			List<Historic_siteVO> list=service.kyunggilist(cri);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+				}
 			}
 			model.addAttribute("list",list);			
 			PageMaker pageMaker = new PageMaker();
@@ -619,8 +634,10 @@ public class RegionController {
 		try {
 			
 			List<Historic_siteVO> list=service.kyunggilist(cri);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+				}
 			}
 			model.addAttribute("list",list);
 			PageMaker pageMaker = new PageMaker();
@@ -651,8 +668,10 @@ public class RegionController {
 	public String chungchung(Criteria cri,Locale locale, Model model,@PathVariable String lang) {
 		try {
 			List<Historic_siteVO> list=service.chungchunglist(cri);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+				}
 			}
 			model.addAttribute("list",list);
 			PageMaker pageMaker = new PageMaker();
@@ -683,8 +702,10 @@ public class RegionController {
 	public String kyungsang(Criteria cri,Locale locale, Model model,@PathVariable String lang) {
 		try {
 			List<Historic_siteVO> list=service.kyungsanglist(cri);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+				}
 			}
 			model.addAttribute("list",list);			
 			PageMaker pageMaker = new PageMaker();
@@ -716,8 +737,10 @@ public class RegionController {
 	public String junla(Criteria cri,Locale locale, Model model,@PathVariable String lang) {
 		try {
 			List<Historic_siteVO> list=service.junlalist(cri);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+				}
 			}
 			model.addAttribute("list",list);		
 			PageMaker pageMaker = new PageMaker();
@@ -748,8 +771,10 @@ public class RegionController {
 	public String jeju(Criteria cri,Locale locale, Model model,@PathVariable String lang) {
 		try {
 			List<Historic_siteVO> list=service.jejulist(cri);
-			for(int i=0;i<list.size();i++) {
-				list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+				}
 			}
 			model.addAttribute("list",list);		
 			PageMaker pageMaker = new PageMaker();

@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>시대별 유적지 정보</title>
+    <title>테마별 유적지 정보</title>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../../resources/css/pe-icons.css" rel="stylesheet">
@@ -279,10 +279,8 @@ $(function(){
 	    }
 	  }
 	});
-
 	$("#first_image").height($(".overlay").width()/1.5);
-
-	$("img[name=full_image]").height($(".overlay").width()/1.5);
+	$("img[name=full_image]").height($(".overlay").width()/1.5
 	var windowWidth = $( window ).width();
 
 	$(window).resize(function(){
@@ -298,25 +296,9 @@ $(function(){
 	$(".box-success").click(function(){
 		
 	});
+);
 
 
-
-
-/*for(var i=0;i<$("img[name=full_image]").length;i++){
-
-	$("img[name=full_image]").height($(".overlay").width()/1.5);
-}
-*/var windowWidth = $( window ).width();
-	$(window).resize(function(){
-	 windowWidth = $( window ).width();
-	console.log("윈도우 크기"+windowWidth);
-	if(windowWidth<=620){
-		//$("img[name=modal_food]").width(windowWidth-50);
-	}
-	});
-	if(windowWidth<=620){
-		//$("img[name=modal_food]").width(windowWidth-50);
-	}
 });
 
 </script>
@@ -732,7 +714,7 @@ var storePositions = [
 // 주차장 마커가 표시될 좌표 배열입니다
 
 var markerImageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png';  // 마커이미지의 주소입니다. 스프라이트 이미지 입니다
-var foodimage="../../../resources/imgs/음식.png";
+var foodimage="http://localhost:8181/region/main../../../resources/imgs/음식.png";
 var roomimage="../../../resources/imgs/숙소.png";
     coffeeMarkers = [], // 커피숍 마커 객체를 가지고 있을 배열입니다
     storeMarkers = [], // 편의점 마커 객체를 가지고 있을 배열입니다

@@ -363,166 +363,166 @@ $(function(){
 	$(function(){
 		$("#path-0").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/jeju";
+				window.location.href="/eng/region/main/jeju";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/jeju";
+				window.location.href="/china/region/main/jeju";
 
 			}else{
 				alert("하이");
-				window.location.href="http://localhost:8181/region/main/jeju";
+				window.location.href="/region/main/jeju";
 			}
 		
 
 		});
 		$("#path-1").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/kyungsangnamdo";
+				window.location.href="/eng/region/main/kyungsangnamdo";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/kyungsangnamdo";
+				window.location.href="/china/region/main/kyungsangnamdo";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/kyungsangnamdo";
+				window.location.href="/region/main/kyungsangnamdo";
 			}
 		});
 		$("#path-2").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/kyungsangbookdo";
+				window.location.href="/eng/region/main/kyungsangbookdo";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/kyungsangbookdo";
+				window.location.href="/china/region/main/kyungsangbookdo";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/kyungsangbookdo";
+				window.location.href="/region/main/kyungsangbookdo";
 			}
 		});
 		$("#path-3").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/junlanamdo";
+				window.location.href="/eng/region/main/junlanamdo";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/junlanamdo";
+				window.location.href="/china/region/main/junlanamdo";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/junlanamdo";
+				window.location.href="/region/main/junlanamdo";
 			}
 		});
 		$("#path-4").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/junlabookdo";
+				window.location.href="/eng/region/main/junlabookdo";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/junlabookdo";
+				window.location.href="/china/region/main/junlabookdo";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/junlabookdo";
+				window.location.href="/region/main/junlabookdo";
 			}
 		});
 		$("#path-5").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/chungchungnamdo";
+				window.location.href="/eng/region/main/chungchungnamdo";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/chungchungnamdo";
+				window.location.href="/china/region/main/chungchungnamdo";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/chungchungnamdo";
+				window.location.href="/region/main/chungchungnamdo";
 			}
 		});
 		$("#path-6").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/chungchungbookdo";
+				window.location.href="/eng/region/main/chungchungbookdo";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/chungchungbookdo";
+				window.location.href="/china/region/main/chungchungbookdo";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/chungchungbookdo";
+				window.location.href="/region/main/chungchungbookdo";
 			}
 		});
 		$("#path-7").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/kangwondo";
+				window.location.href="/eng/region/main/kangwondo";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/kangwondo";
+				window.location.href="/china/region/main/kangwondo";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/kangwondo";
+				window.location.href="/region/main/kangwondo";
 			}
 		});
 		$("#path-8").click(function(){
 			
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/kyunggido";
+				window.location.href="/eng/region/main/kyunggido";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/kyunggido";
+				window.location.href="/china/region/main/kyunggido";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/kyunggido";
+				window.location.href="/region/main/kyunggido";
 			}
 		});
 		$("#path-9").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/ulsan";
+				window.location.href="/eng/region/main/ulsan";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/ulsan";
+				window.location.href="/china/region/main/ulsan";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/ulsan";
+				window.location.href="/region/main/ulsan";
 			}
 		});
 		$("#path-10").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/daejun";
+				window.location.href="/eng/region/main/daejun";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/daejun";
+				window.location.href="/china/region/main/daejun";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/daejun";
+				window.location.href="/region/main/daejun";
 			}
 		});
 		$("#path-11").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/daejun";
+				window.location.href="/eng/region/main/daejun";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/daejun";
+				window.location.href="/china/region/main/daejun";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/kwangju";
+				window.location.href="/region/main/kwangju";
 			}
 		});
 		$("#path-12").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/incheon";
+				window.location.href="/eng/region/main/incheon";
 			}else if(window.location.href.indexOf("china")=-1){
-				window.location.href="http://localhost:8181/china/region/main/incheon";
+				window.location.href="/china/region/main/incheon";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/incheon";
+				window.location.href="/region/main/incheon";
 			}
 		});
 		$("#path-13").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/daegoo";
+				window.location.href="/eng/region/main/daegoo";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/daegoo";
+				window.location.href="/china/region/main/daegoo";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/daegoo";
+				window.location.href="/region/main/daegoo";
 			}
 		});
 		$("#path-14").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/busan";
+				window.location.href="/eng/region/main/busan";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/busan";
+				window.location.href="/china/region/main/busan";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/busan";
+				window.location.href="/region/main/busan";
 			}
 		});
 		$("#path-15").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
-				window.location.href="http://localhost:8181/eng/region/main/seoul";
+				window.location.href="/eng/region/main/seoul";
 			}else if(window.location.href.indexOf("china")!=-1){
-				window.location.href="http://localhost:8181/china/region/main/seoul";
+				window.location.href="/china/region/main/seoul";
 
 			}else{
-				window.location.href="http://localhost:8181/region/main/seoul";
+				window.location.href="/region/main/seoul";
 			}
 		});
 		

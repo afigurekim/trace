@@ -13,6 +13,7 @@ public class Translate {
 		String clientId="";
 		String clientSecret="";
 		 String a="";
+		 System.out.println(lang+"언어입니다");
 		/*if(historic=="region") {
 
 			clientId="1qa7qQPSI27OLS7cC8Ag";
@@ -79,6 +80,7 @@ public class Translate {
             }else if(lang.indexOf("eng")!=-1) {
             	target="en";
             }
+            System.out.println(target+"타겟이에요");
             String postParams ="source=ko&target="+target+"&text="+text;
 
 
@@ -107,6 +109,7 @@ public class Translate {
             a=response.substring(response.indexOf("translatedText")+17,response.length()-4);
             System.out.println(a+"a임");
             if(a.toString().indexOf("쿼리 한도")!=-1) {
+            	System.out.println("쿼리한도 count 올라갑니다"+count);
             	count++;
             	if(count<8) {
             		translate(lang,text2,historic);
@@ -125,7 +128,6 @@ public class Translate {
            
         } catch  (Exception e) {
             System.out.println(e);
-            System.out.println("앙 쿼리한도찡");
         }
 	
 		return a.toString();

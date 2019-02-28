@@ -70,6 +70,7 @@ $(function(){
 
 		<script type="text/javascript">
 		var main_image=new Array();
+		var main_bno=new Array();
 		$.ajax({
 			url:'/mainimage',
 			type:'GET',
@@ -77,6 +78,8 @@ $(function(){
 			success:function(data){
 				console.log(data.list.length);
 				for(var i=0;i<data.list.length;i++){
+					console.log(data.list[i].bno+"bno에요");
+					main_bno.push(data.list[i].bno);
 					main_image.push(data.list[i].first_image);
 				}			
 				
@@ -220,7 +223,6 @@ $(function(){
 				camera.position.z = 6000;
 				scene = new THREE.Scene();
 				// table
-				console.log(table.length/3);
 				for ( var i = 0; i < table.length; i += 3 ) {
 					var element = document.createElement( 'div' );
 					element.className = 'element';
@@ -230,11 +232,23 @@ $(function(){
 					if(i==0){
 						console.log(i);
 
-						symbol.innerHTML = "<img src="+main_image[i]+" style='width:480px;height:320px;'/>";
+						symbol.innerHTML = "<a href='/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
+						if(window.location.href.indexOf("eng")!=-1){
+							symbol.innerHTML = "<a href='/eng/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
+						}else if(window.location.href.indexOf("china")!=-1){
+							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
+						}else{
+							symbol.innerHTML = "<a href='/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
+						}
 					}else{
-						console.log(i/3);
-
-						symbol.innerHTML = "<img src="+main_image[i/3]+" style='width:480px;height:320px;'/>";
+							
+						if(window.location.href.indexOf("eng")!=-1){
+							symbol.innerHTML = "<a href='/eng/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'/></a>";
+						}else if(window.location.href.indexOf("china")!=-1){
+							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'/></a>";
+						}else{
+							symbol.innerHTML = "<a href='/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'/></a>";
+						}
 					}
 					element.appendChild( symbol );
 					var object = new THREE.CSS3DObject( element );
@@ -293,10 +307,10 @@ $(function(){
 				controls.addEventListener( 'change', render );
 				
 				$(function(){
-					$(".symbol").click(function(){
+					/*$(".symbol").click(function(){
 						alert($(this).html);
 					
-					});
+					});*/
 					var count=1;
 					setInterval(function(){
 						if(count==1){

@@ -43,7 +43,7 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void emailAuthCheck(String email) {
 		int auth=1;
-		System.out.println("�̸��� ���� check");
+		System.out.println("이메일 인증 check");
 		Map<String,Object> paramMap = new HashMap<String,Object>();
 		System.out.println(email);
 		paramMap.put("auth",auth);
@@ -95,6 +95,12 @@ public class MemberDAOImpl implements MemberDAO {
 	@Override
 	public void deleteSiteMember(int jno) throws Exception {
 		sqlSession.delete(namespace+".deleteSiteMember", jno);
+	}
+
+	// 내 찜 아이템 중복체크 DAO
+	@Override
+	public int checkSiteMember(MemberSiteVO vo) throws Exception {
+		return sqlSession.selectOne(namespace+".checkSiteMember", vo);
 	}
 	
 	// 내 찜 아이템 insert DAO

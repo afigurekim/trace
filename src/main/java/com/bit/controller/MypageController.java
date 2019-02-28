@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.domain.Criteria;
 import com.bit.domain.MemberSiteVO;
@@ -56,22 +57,24 @@ public class MypageController {
 		service.deleteSiteMember(jno);
 		return "mypage/mysite";
 	}
-	// /mypage.add POST방식 접근 -> 찜목록 항목 추가 후 찜목록 이동
-	@RequestMapping(value="/mypage/add/{bno}", method = RequestMethod.GET)
-	public String mysiteadd(@PathVariable("bno") int bno, HttpSession session) throws Exception {
+	// /jimadd POST방식 접근 -> 찜목록 항목 추가
+	@ResponseBody
+	@RequestMapping(value="/jimadd", method = RequestMethod.POST)
+	public int jimadd(int bno, String user_id){
+		int su = 0;
 		MemberSiteVO membersite = new MemberSiteVO();
+		logger.info(bno+" : "+user_id);
 		membersite.setBno(bno);
-		Object session_id = session.getAttribute("login_id");
-		if(session_id==null || session_id=="") { 
-			session_id = session.getAttribute("login_id2");
-			if(session_id==null || session_id=="") { return "redirect:login"; }
-		}
-		String user_id = session_id.toString();
 		membersite.setUser_id("'"+user_id+"'");
-		logger.info("user_id : "+user_id);
-		logger.info(membersite.toString());
-		service.insertSiteMember(membersite);
-		return "redirect:/mypage";
+		try {
+			su=service.checkSiteMember(membersite);
+			if(su==0) {
+				service.insertSiteMember(membersite);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return su;
 	}
 	// /mycomment GET방식 접근 -> 내 댓글 페이지
 	@RequestMapping(value = "/mycomment", method = RequestMethod.GET)

@@ -134,9 +134,8 @@ public class MainController {
 	
 	
 	@RequestMapping(value = "/intro", method = RequestMethod.GET)
-	public String intro(Locale locale, Model model) {
-		
-		return "intro";
+	public String intro() {
+		return "intro-new";
 	}
 	
 	

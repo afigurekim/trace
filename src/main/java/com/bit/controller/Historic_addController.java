@@ -305,7 +305,7 @@ public class Historic_addController {
 		   page_count++;
 	   }
 
-	   if(count<=1) {
+	   if(count<=8) {
 		   System.out.println("기무쓰띠");
 	   historic(sido_count,page_count,2);
 	   }

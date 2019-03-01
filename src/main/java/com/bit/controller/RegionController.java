@@ -292,7 +292,7 @@ public class RegionController {
 			
 			Map<String,Object> map = new HashMap<String,Object>();
 			List<Historic_site_starVO> list=service.readChartList(bno);
-			System.out.println(list.get(0).getStar()+" 평점");
+		//	System.out.println(list.get(0).getStar()+" 평점");
 			map.put("list", list);
 			
 			entity= new ResponseEntity<Map<String,Object>>(map,HttpStatus.OK);

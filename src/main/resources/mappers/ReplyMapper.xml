@@ -4,39 +4,39 @@
 
 <select id="list" resultType="com.bit.domain.ReplyVO">
 <![CDATA[
-select * from historic_site_reply where bno=#{bno} order by rno desc
+select * from HISTORIC_SITE_REPLY where bno=#{bno} order by rno desc
 ]]>
 </select>
 
 
 <insert id="create">
 <![CDATA[
-insert into historic_site_reply(bno,reply_text,replyer) values(#{bno},#{reply_text},#{replyer})
+insert into HISTORIC_SITE_REPLY(bno,reply_text,replyer) values(#{bno},#{reply_text},#{replyer})
 ]]>
 </insert>
 
 <update id="update">
 <![CDATA[
-update historic_site_reply set reply_text=#{reply_text},update_date=now() where rno =#{rno}
+update HISTORIC_SITE_REPLY set reply_text=#{reply_text},update_date=now() where rno =#{rno}
 ]]>
 </update>
 
 <delete id="delete">
 <![CDATA[
-delete from historic_site_reply where rno=#{rno} 
+delete from HISTORIC_SITE_REPLY where rno=#{rno} 
 ]]>
 </delete>
 
 
 <select id="listPage" resultType="com.bit.domain.ReplyVO">
 <![CDATA[
-select * from historic_site_reply where bno =#{bno} limit #{cri.pageStart},#{cri.perPageNum}
+select * from HISTORIC_SITE_REPLY where bno =#{bno} limit #{cri.pageStart},#{cri.perPageNum}
 ]]>
 </select>
 
 <select id="count" resultType="int">
 <![CDATA[
-select count(bno) from historic_site_reply where bno =#{bno}
+select count(bno) from HISTORIC_SITE_REPLY where bno =#{bno}
 ]]>
 </select>
 

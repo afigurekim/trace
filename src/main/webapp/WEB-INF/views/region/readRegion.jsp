@@ -201,19 +201,21 @@ $(function(){
 	    	async:false,
 	    	data:{},
 	    	success:function(data){
-	    		for(var i=0;i<data.list.length;i++){
-	    			if(data.list[i].star==1){
-	    				data1++;
-	    			}else if(data.list[i].star==2){
-	    				data2++;
-	    			}else if(data.list[i].star==3){
-	    				data3++;
-	    			}else if(data.list[i].star==4){
-	    				data4++;
-	    			}else if(data.list[i].star==5){
-	    				data5++;
-	    			}
-	    		}
+	    		if(data.list.length>=1){
+		    		for(var i=0;i<data.list.length;i++){
+		    			if(data.list[i].star==1){
+		    				data1++;
+		    			}else if(data.list[i].star==2){
+		    				data2++;
+		    			}else if(data.list[i].star==3){
+		    				data3++;
+		    			}else if(data.list[i].star==4){
+		    				data4++;
+		    			}else if(data.list[i].star==5){
+		    				data5++;
+		    			}
+		    		}
+		    	}
 	    	}
 	    	
 	    });

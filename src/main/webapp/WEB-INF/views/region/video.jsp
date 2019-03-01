@@ -31,7 +31,13 @@ padding:0;
 <body>
 <script>
 var state=window.location.href.substring(window.location.href.indexOf("main")+5);
-var lang=window.location.href.substring(window.location.href.indexOf("/")+17,window.location.href.indexOf("/region"));
+var lang="";
+if(window.location.href.indexOf("eng")!=-1){
+	lang="eng";
+}else if(window.location.href.indexOf("china")!=-1){
+	lang="china";
+}
+
 if(state=="seoul"){
 document.write("<div class='videoContainer'><video src='../../../resources/video/seoul.mp4' width='100%' height='100%' autoplay ></video></div>");
 
@@ -85,7 +91,7 @@ $(function(){
 	$("body").hide();
 	$("body").fadeIn(3000);
 	setTimeout(function(){$("body").fadeOut(6000);},6000);
-	if(lang!="/"){
+	if(lang!=""){
 		setTimeout(function(){location.href="/"+lang+"/region/"+state},9000);
 	}else{
 		setTimeout(function(){location.href="/region/"+state},9000);

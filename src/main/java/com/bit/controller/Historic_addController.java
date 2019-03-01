@@ -46,23 +46,23 @@ public class Historic_addController {
 	
 	public void historic(int sido,int pagenum,int start) throws Exception{
 		if(count==0) {
-			serviceKey="CphYLaAO5pr0%2FXpqoKEH58zlgZNnkkrYpNJWhl19kMQkb6c5e%2Fn8Sd1AyivmSrmOvEGJgd7iUV%2BmZtFLm5aJ6A%3D%3D";
-		}else if(count==1) {
-			serviceKey="dRHdUyuSxdOfoAJW28aN5obeuGP8MF5CnlnCVAFGjz82X8H9RHXff%2FAZNSHOlsDxrm788R60muPdspT5TaPCjw%3D%3D";
-		}else if(count==2) {
 			serviceKey="58c9zeZcCAKF1cwMbo1bo46Lc6kVEs83id5skkstk9lgNwcodJlGoypZwmZl5TQu66OQ9r0ynjXqRdZMcBZSOA%3D%3D";
-		}else if(count==3) {
+		}else if(count==1) {
 			serviceKey="nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D";
-		}else if(count==4) {
+		}else if(count==2) {
 			serviceKey="EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D";
-		}else if(count==5) {
+		}else if(count==3) {
 			serviceKey="p35TFUbXxOZ9aFN5PNJViAlwJp7rAns7%2BCrYHNE2Vs7%2FgEIqi91p5mNQOA7kHXI%2Fz%2F3LPcg4piPKihlOFvrxYw%3D%3D";
-		}else if(count==6) {
+		}else if(count==4) {
 			serviceKey="o8hqR6%2FKeUTPdvwLF0gzcR%2FJhkHYk%2FR9FagVCUivrAP3plEVY2i7HKzSngfBnnwI3kPktRal5nW%2BLFF37N%2BXNA%3D%3D";
-		}else if(count==7) {
+		}else if(count==5) {
 			serviceKey="kls8RufZ%2B2idSOYWC4H8j0pnW996K49NjZAS3m1%2BWnbCkfTG1Y26B8bc5LPYd5mWMsZFMGBpR8dz8wVG%2BzuQ4Q%3D%3D";
-		}else if(count==8) {
+		}else if(count==6) {
 			serviceKey="5JRCxIV3VwzyC2aFzOWF4l3jJGwfkHM2w8JwHa5wIlVjgnWcrHr7%2FyCa8YLO5YLsM9xG2rw9kcUxl%2BZoeEGLvQ%3D%3D";
+		}else if(count==7) {
+			serviceKey="CphYLaAO5pr0%2FXpqoKEH58zlgZNnkkrYpNJWhl19kMQkb6c5e%2Fn8Sd1AyivmSrmOvEGJgd7iUV%2BmZtFLm5aJ6A%3D%3D";
+		}else if(count==8) {
+			serviceKey="dRHdUyuSxdOfoAJW28aN5obeuGP8MF5CnlnCVAFGjz82X8H9RHXff%2FAZNSHOlsDxrm788R60muPdspT5TaPCjw%3D%3D";
 		}
 		System.out.println("count들어갑니다"+count);
 		System.out.println("sido 들어갑니다"+sido);
@@ -184,10 +184,10 @@ public class Historic_addController {
 			}
   
         }
-        System.out.println(vocount+"vo카운트에염");
        List<Historic_siteVO> list2= dao.history_list();
        System.out.println(start);
        if(start==1) {
+    	   System.out.println("유적지 카운트에요!!!"+list2.size());
 	      for(int i=0;i<list2.size();i++) {
 	    	   System.out.println("여기는 history detail  데이터 작업중");
 	    	   System.out.println(list2.get(i).getBno());
@@ -204,7 +204,8 @@ public class Historic_addController {
 	
 	       }
        }else {
-    	   for(int i=vocount+1;i<list2.size();i++) {
+    	   System.out.println("유적지 카운트2에요!!"+vocount);
+    	   for(int i=vocount;i<list2.size();i++) {
 	    	   System.out.println("여기는 history detail  데이터 작업중");
 	    	   System.out.println(list2.get(i).getBno());
 	    	   System.out.println(list2.get(i).getFirst_image());
@@ -225,7 +226,7 @@ public class Historic_addController {
 			   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
 		   }
 	   }else {
-		   for(int i=vocount+1;i<list2.size();i++) {
+		   for(int i=vocount;i<list2.size();i++) {
 			   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
 		   }
 	   }
@@ -235,7 +236,7 @@ public class Historic_addController {
     	   		room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
        		}
        	}else{
-	       	 for(int i=vocount+1;i<list2.size();i++) {
+	       	 for(int i=vocount;i<list2.size();i++) {
 				   room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
 			   }
        	}
@@ -247,7 +248,7 @@ public class Historic_addController {
 			   history_image(list2.get(i).getBno(),list2.get(i).getContent_id(),list2.get(i).getContent_typeid());
 		   }
 	   }else {
-		   for(int i=vocount+1;i<list2.size();i++) {
+		   for(int i=vocount;i<list2.size();i++) {
 			   history_image(list2.get(i).getBno(),list2.get(i).getContent_id(),list2.get(i).getContent_typeid());
 		   }
 	   }
@@ -259,7 +260,7 @@ public class Historic_addController {
 			   food_image(list3.get(i).getContent_id(),list3.get(i).getBno(),list3.get(i).getAttraction_name());
 		   }
 	   }else{
-	   		 for(int i=vocount2+1;i<list3.size();i++) {
+	   		 for(int i=vocount2;i<list3.size();i++) {
 			   food_image(list3.get(i).getContent_id(),list3.get(i).getBno(),list3.get(i).getAttraction_name());
 		   }
 	   }
@@ -277,7 +278,7 @@ public class Historic_addController {
 		  
 	    	  System.out.println("룸이미지 작업들어간다");
 
-	   	  for(int i=vocount3+1;i<list6.size();i++) {
+	   	  for(int i=vocount3;i<list6.size();i++) {
 	    	  room_image(list6.get(i).getContent_id(),list6.get(i).getBno(),list6.get(i).getAttraction_name());
 	      }
 	   }
@@ -297,7 +298,7 @@ public class Historic_addController {
 		   count++;
 	   }
 	  
-	   if(sido_count>8) {
+	   if(sido_count==9) {
 		   sido_count=31;
 	   }
 	   if(sido_count>39) {
@@ -305,7 +306,7 @@ public class Historic_addController {
 		   page_count++;
 	   }
 
-	   if(count<=8) {
+	   if(count<=1) {
 		   System.out.println("기무쓰띠");
 	   historic(sido_count,page_count,2);
 	   }

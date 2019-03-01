@@ -79,7 +79,7 @@ public class MainController {
 			//logger.info("not.exist 기본값 없음 : {}",messageSource.getMessage("not.exist", null,locale));
 			//model.addAttribute("periodlist",service.MainPeriod());
 			//model.addAttribute("themalist",service.MainThema());
-			model.addAttribute("locationlist",service.MainLocation());
+			//model.addAttribute("locationlist",service.MainLocation());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

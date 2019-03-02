@@ -282,24 +282,36 @@ $(function(){
 	  }
 	});
 
+	$("#first_image").height($(".overlay").width()/1.5);
+
+	$("img[name=full_image]").height($(".overlay").width()/1.5);
+
+
 	var windowWidth = $( window ).width();
 
+	if(windowWidth<=500){
+		$("#food_image_modal").height(windowWidth/1.5);
+
+	}else{
+		$("#food_image_modal").height(372);
+
+	}
+	
 	$(window).resize(function(){
 		 windowWidth = $( window ).width();
 	
 	
 	$("#first_image").height($(".overlay").width()/1.5);
 	$("img[name=full_image]").height($(".overlay").width()/1.5);
-
-	});
-
 	
-	$(".box-success").click(function(){
-		
+		if(windowWidth<=500){
+			$("#food_image_modal").height(windowWidth/1.5);
+
+		}else{
+			$("#food_image_modal").height(372);
+
+		}
 	});
-
-	$("img[name=full_image]").height($(".overlay").width()/1.5);
-
 
 /*for(var i=0;i<$("img[name=full_image]").length;i++){
 
@@ -369,6 +381,8 @@ $(function(){
                                     <ul class="arrow">
                                         <li>${read.site_name}</li>
                                         <li>${read.address}</li>
+                                        <li>${read.thema}</li>
+                                        <li>${read.period}</li>
                                     </ul>
                                 </div>
                             </div>                     

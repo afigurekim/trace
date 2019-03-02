@@ -61,14 +61,21 @@ $(function(){
 			$(".item-inner>a>img").eq(1).height(168);
 		}*/
 		//if(windowWidth<=745){
-			for(var i=1;i<count;i++){
-				$(".item-inner>a>img").eq(i).height($(".item-inner>a>img").eq(0).height());
+			for(var i=0;i<count;i++){
+				if(i==8){
+					continue;		
+				}
+			
+				$(".item-inner>a>img").eq(i).height($(".item-inner>a>img").eq(8).height());
 			}
 
 	});
 
-	for(var i=1;i<count;i++){
-		$(".item-inner>a>img").eq(i).height($(".item-inner>a>img").eq(0).height());
+	for(var i=0;i<count;i++){
+	if(i==8){
+		continue;		
+	}
+		$(".item-inner>a>img").eq(i).height($(".item-inner>a>img").eq(8).height());
 	}	
 	
 	var width=$(".item-inner>a>img").eq(0).width();

@@ -7,17 +7,7 @@
 
 </head>
 <script type="text/javascript">
-$(function(){
-	
-$("#mypage").click(function(e){
-	if("${login_id}"=="" && "${login_id2}"==""){
-		alert("로그인 후 이용해주세요");
-		e.preventDefault();
-	}
-	
-	
-});
-});
+
 </script>
 <body>
 
@@ -63,8 +53,9 @@ $("#mypage").click(function(e){
 					 	else{
 						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>로그아웃</a></li>");
+		                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
+
 					 	}
-	                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
 	                    document.write("<li><a href='/write'>공지사항</a></li>");
                     }
                     else if(window.location.href.indexOf("eng")!=-1){
@@ -79,16 +70,16 @@ $("#mypage").click(function(e){
                     	document.write("</ul>");
                     	document.write("</li>");
 					 	if(("${login_id2}"=="" || "${login_id2}"==null) && ("${login_id}"=="" || "${login_id}"==null)){
-					 		document.write("<li><a href='/join'>JOIN</a></li>");
-					 		document.write("<li><a href='/login'>LOGIN</a></li>");
+					 		document.write("<li><a href='/eng/join'>JOIN</a></li>");
+					 		document.write("<li><a href='/eng/login'>LOGIN</a></li>");
+		                    document.write("<li><a id='mypage' href='/eng/mypage'>MYPAGE</a></li>"); 
 
 					 	}
 					 	else{
 						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>LOGOUT</a></li>");
 					 	}
-	                    document.write("<li><a id='mypage' href='/mypage'>MYPAGE</a></li>"); 
-	                    document.write("<li><a href='/write'>NOTICE</a></li>");
+	                    document.write("<li><a href='/eng/write'>NOTICE</a></li>");
                     }
                     else if(window.location.href.indexOf("china")!=-1){
                     	document.write("<li><a href='/china/intro'>贴士</a></li>");
@@ -102,16 +93,18 @@ $("#mypage").click(function(e){
                     	document.write("</ul>");
                     	document.write("</li>");
 					 	if(("${login_id2}"=="" || "${login_id2}"==null) && ("${login_id}"=="" || "${login_id}"==null)){
-					 		document.write("<li><a href='/join'>加入会员</a></li>");
-					 		document.write("<li><a href='/login'>签到</a></li>");
+					 		document.write("<li><a href='/china/join'>加入会员</a></li>");
+					 		document.write("<li><a href='/china/login'>签到</a></li>");
 
 					 	}
 					 	else{
 						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>退出 </a></li>");
+		                    document.write("<li><a id='mypage' href='/china/mypage'>我的页面</a></li>"); 
+
 					 	}
-	                    document.write("<li><a id='mypage' href='/mypage'>我的页面</a></li>"); 
-	                    document.write("<li><a href='/write'>公知事項</a></li>");
+	                    document.write("<li><a id='mypage' href='/china/mypage'>我的页面</a></li>"); 
+	                    document.write("<li><a href='/china/write'>公知事項</a></li>");
                     }else{
                     	document.write("<li><a href='/intro'>소개</a></li>");
                     	document.write("<li class='dropdown active'>");
@@ -131,6 +124,8 @@ $("#mypage").click(function(e){
 					 	else{
 						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>로그아웃</a></li>");
+		                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
+
 					 	}
 	                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
 	                    document.write("<li><a href='/write'>공지사항</a></li>");

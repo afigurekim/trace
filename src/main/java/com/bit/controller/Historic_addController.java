@@ -46,9 +46,9 @@ public class Historic_addController {
 	
 	public void historic(int sido,int pagenum,int start) throws Exception{
 		if(count==0) {
-			serviceKey="58c9zeZcCAKF1cwMbo1bo46Lc6kVEs83id5skkstk9lgNwcodJlGoypZwmZl5TQu66OQ9r0ynjXqRdZMcBZSOA%3D%3D";
+			serviceKey="CphYLaAO5pr0%2FXpqoKEH58zlgZNnkkrYpNJWhl19kMQkb6c5e%2Fn8Sd1AyivmSrmOvEGJgd7iUV%2BmZtFLm5aJ6A%3D%3D";
 		}else if(count==1) {
-			serviceKey="nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D";
+			serviceKey="dRHdUyuSxdOfoAJW28aN5obeuGP8MF5CnlnCVAFGjz82X8H9RHXff%2FAZNSHOlsDxrm788R60muPdspT5TaPCjw%3D%3D";
 		}else if(count==2) {
 			serviceKey="EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D";
 		}else if(count==3) {
@@ -60,9 +60,9 @@ public class Historic_addController {
 		}else if(count==6) {
 			serviceKey="5JRCxIV3VwzyC2aFzOWF4l3jJGwfkHM2w8JwHa5wIlVjgnWcrHr7%2FyCa8YLO5YLsM9xG2rw9kcUxl%2BZoeEGLvQ%3D%3D";
 		}else if(count==7) {
-			serviceKey="CphYLaAO5pr0%2FXpqoKEH58zlgZNnkkrYpNJWhl19kMQkb6c5e%2Fn8Sd1AyivmSrmOvEGJgd7iUV%2BmZtFLm5aJ6A%3D%3D";
+			serviceKey="58c9zeZcCAKF1cwMbo1bo46Lc6kVEs83id5skkstk9lgNwcodJlGoypZwmZl5TQu66OQ9r0ynjXqRdZMcBZSOA%3D%3D";
 		}else if(count==8) {
-			serviceKey="dRHdUyuSxdOfoAJW28aN5obeuGP8MF5CnlnCVAFGjz82X8H9RHXff%2FAZNSHOlsDxrm788R60muPdspT5TaPCjw%3D%3D";
+			serviceKey="nilE%2Bgxdo0tHLffsEZzqOB0JH62Q%2BCbWzvqvyLKZz108cgqvmXVMtZx2c0d1GJFZlIAxaKusc9d%2BYzOTHYOhkQ%3D%3D";
 		}
 		System.out.println("count들어갑니다"+count);
 		System.out.println("sido 들어갑니다"+sido);
@@ -291,6 +291,9 @@ public class Historic_addController {
 	   if(sido_count==7) {
 		   count++;
 	   }
+	   if(sido_count==9) {
+		   sido_count=31;
+	   }
 	   if(sido_count==33) {
 		   count++;
 	   }
@@ -298,15 +301,13 @@ public class Historic_addController {
 		   count++;
 	   }
 	  
-	   if(sido_count==9) {
-		   sido_count=31;
-	   }
+
 	   if(sido_count>39) {
 		   sido_count=1;
 		   page_count++;
 	   }
 
-	   if(count<=1) {
+	   if(count<=6) {
 		   System.out.println("기무쓰띠");
 	   historic(sido_count,page_count,2);
 	   }
@@ -665,7 +666,7 @@ public class Historic_addController {
     	
 		String contentid="";
         System.out.println("-------------------------------------------------------------------------------음식점");
-        StringBuilder urlBuilder5= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey="+serviceKey+"&contentTypeId=39&mapX="+latitude+"&mapY="+longitude+"&radius=2000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1\n");
+        StringBuilder urlBuilder5= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey="+serviceKey+"&contentTypeId=39&mapX="+latitude+"&mapY="+longitude+"&radius=3000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1\n");
         URL url5= new URL(urlBuilder5.toString());
         BufferedReader rd5;
 
@@ -717,7 +718,7 @@ public class Historic_addController {
        }
 	@Transactional
     public void room_list(String latitude,String longitude,Integer bno) throws Exception{
-    	StringBuilder urlBuilder9= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey="+serviceKey+"&contentTypeId=32&mapX="+latitude+"&mapY="+longitude+"&radius=2000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1");
+    	StringBuilder urlBuilder9= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey="+serviceKey+"&contentTypeId=32&mapX="+latitude+"&mapY="+longitude+"&radius=3000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1");
         URL url9= new URL(urlBuilder9.toString());
         BufferedReader rd9;
 

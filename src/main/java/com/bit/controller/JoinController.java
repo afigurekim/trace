@@ -29,12 +29,28 @@ private static final Logger logger = LoggerFactory.getLogger(JoinController.clas
 	private MemberService service;
 	
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
-	public String joinget(Locale locale, Model model) {
+	public String default_joinget(Locale locale, Model model) {
+		
+		return "join";
+	}
+	@RequestMapping(value = "/{lang}/join", method = RequestMethod.GET)
+	public String joinget(Locale locale, Model model,@PathVariable String lang) {
 		
 		return "join";
 	}
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
-	public String joinpost(MemberVO member, RedirectAttributes rttr,Model model) throws Exception {
+	public String default_joinpost(MemberVO member, RedirectAttributes rttr,Model model) throws Exception {
+		logger.info("회원가입 등록");
+		logger.info(member.toString());
+		System.out.println(member.toString());
+		System.out.println("회원가입좀하자");
+		service.emailAuth(member.getEmail());
+		service.insertMember(member);
+		
+		return "joinsuccess";
+	}
+	@RequestMapping(value = "/{lang}/join", method = RequestMethod.POST)
+	public String joinpost(MemberVO member, RedirectAttributes rttr,Model model,@PathVariable String lang) throws Exception {
 		logger.info("회원가입 등록");
 		logger.info(member.toString());
 		System.out.println(member.toString());

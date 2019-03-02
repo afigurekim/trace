@@ -131,7 +131,7 @@ $(function(){
 
 	});
 
-	$("#btbtn").click(function(e){
+	$("#btnbn").click(function(e){
 		
 		e.preventDefault();
 		
@@ -183,9 +183,24 @@ $(function(){
 		 	 },
 		 	 success:function(data){
 		 		 if(data!=""){
-	 				$("#eid").html("아이디는 "+data+"입니다.");
+		 			 if(window.location.href.indexOf("eng")!=-1){
+			 				$("#eid").html("ID IS"+data);
+
+		 			 }else if(window.location.href.indexOf("china")!=-1){
+			 				$("#eid").html("用户名 "+data+"是的.");
+
+		 			 }else{
+			 				$("#eid").html("아이디는 "+data+"입니다");
+		 			 }
 		 		 }else{
-		 			$("#eid").html("일치하는 아이디가 없습니다");
+		 			 if(window.location.href.indexOf("eng")!=-1){
+				 			$("#eid").html("No matching ID.");
+
+		 			 }else if(window.location.href.indexOf("china")!=-1){
+				 			$("#eid").html("没有一致的用户名");
+		 			 }else{
+				 			$("#eid").html("일치하는 아이디가 없습니다");
+		 			 }
 		 		 }
 
 		 	}   
@@ -252,7 +267,15 @@ $(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">LOGIN</h2>
+                                    <script>
+                                    	if(window.location.href.indexOf("eng")!=-1){
+                                    		document.write("<h2 class='main-title'>LOGIN</h2>");
+                                    	}else if(window.location.href.indexOf("china")!=-1){
+                                    		document.write("<h2 class='main-title'>登录</h2>");
+                                    	}else{
+                                    		document.write("<h2 class='main-title'>로그인</h2>");
+                                    	}
+                                    </script>
                                     <hr>
                                 </div>
                             </div>   
@@ -268,8 +291,18 @@ $(function(){
      <div class="">
        <div class="input-group">
    <span class="input-group-addon"><img alt="" src="../resources/imgs/people2.png" style="width: 18px; height: 18px;"></span>
-   <input type="text" class="form-control input-lg" id="member_idid" aria-describedby="inputSuccess4Status" placeholder="&ensp;아이디" style="width:100%">
-	  </div>  
+   <script>
+   		if(window.location.href.indexOf("eng")!=-1){
+   			document.write("<input type='text' class='form-control input-lg' id='member_idid' aria-describedby='inputSuccess4Status' placeholder='&ensp;ID' style='width:100%'>");
+   		}else if(window.location.href.indexOf("china")!=-1){
+   			document.write("<input type='text' class='form-control input-lg' id='member_idid' aria-describedby='inputSuccess4Status' placeholder='&ensp;身份证' style='width:100%'>");
+
+   		}else{
+   			document.write("<input type='text' class='form-control input-lg' id='member_idid' aria-describedby='inputSuccess4Status' placeholder='&ensp;아이디' style='width:100%'>");
+
+   		}
+   </script>  
+   </div>  
 	</div>
 </div>
 	            
@@ -277,15 +310,35 @@ $(function(){
    <div class="">
      <div class="input-group">
  		<span class="input-group-addon"><img alt="" src="../resources/imgs/lock3.png" style="width: 18px; height: 18px;"></span>
-		<input type="password" class="form-control input-lg" id="member_pw" aria-describedby="inputGroupSuccess3Status" placeholder="&ensp;비밀번호"  style="width:100%">
+		<script>
+			if(window.location.href.indexOf("eng")!=-1){
+				document.write("<input type='password' class='form-control input-lg' id='member_pw' aria-describedby='inputGroupSuccess3Status' placeholder='&ensp;PASSWORD'  style='width:100%'>");
+			}else if(window.location.href.indexOf("china")!=-1){
+				document.write("<input type='password' class='form-control input-lg' id='member_pw' aria-describedby='inputGroupSuccess3Status' placeholder='&ensp;密码'  style='width:100%'>");
+
+			}else {
+				document.write("<input type='password' class='form-control input-lg' id='member_pw' aria-describedby='inputGroupSuccess3Status' placeholder='&ensp;비밀번호'  style='width:100%'>");
+			}
+		</script>
+		
  	</div> 
    </div>
 </div>
 	            
 <div class="row" >
     <div class="">
-   	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:100%; font-weight:bolder;">Login</button>
-   	
+    <script>
+    	if(window.location.href.indexOf("eng")!=-1){
+    		document.write("<button type='button' class='btn btn-default btn-lg' id='btnbn' style='width:100%; font-weight:bolder;'>LOGIN</button>");
+    	}else if(window.location.href.indexOf("china")!=-1){
+    		document.write("<button type='button' class='btn btn-default btn-lg' id='btnbn' style='width:100%; font-weight:bolder;'>登录</button>");
+
+    	}else{
+    		document.write("<button type='button' class='btn btn-default btn-lg' id='btnbn' style='width:100%; font-weight:bolder;'>로그인</button>");
+
+    	}
+    </script>
+   		
    </div>
 </div>
 </form>
@@ -293,8 +346,21 @@ $(function(){
 <div class="row" style="margin-bottom: 9px; width: 380px;  margin-left: auto; margin-right: auto;">
     <div class=""><!-- 
    	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:60%; font-weight:bolder;">Sign up</button> -->
-   	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:49.5%; font-weight:bolder;" data-target="#exampleModalCenter" data-toggle="modal" >ID 찾기</button>
-   	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:49.5%; font-weight:bolder;"data-target="#exampleModalCenter1" data-toggle="modal" >Password찾기</button>
+   	<script>
+   		if(window.location.href.indexOf("eng")!=-1){
+   			document.write("<button type='button' class='btn btn-default btn-lg'  style='width:49.5%; font-weight:bolder;' data-target='#exampleModalCenter' data-toggle='modal' >FIND ID</button>");
+   			document.write("<button type='button' class='btn btn-default btn-lg'  style='width:49.5%; font-weight:bolder;' data-target='#exampleModalCenter1' data-toggle='modal' >FIND PASSWORD</button>");
+
+   		}else if(window.location.href.indexOf("china")!=-1){
+   			document.write("<button type='button' class='btn btn-default btn-lg'  style='width:49.5%; font-weight:bolder;' data-target='#exampleModalCenter' data-toggle='modal' >寻找用户名</button>");
+   			document.write("<button type='button' class='btn btn-default btn-lg'  style='width:49.5%; font-weight:bolder;' data-target='#exampleModalCenter1' data-toggle='modal' >寻找密码</button>");
+
+   		}else{
+   			document.write("<button type='button' class='btn btn-default btn-lg'  style='width:49.5%; font-weight:bolder;' data-target='#exampleModalCenter' data-toggle='modal' >아이디 찾기</button>");
+   			document.write("<button type='button' class='btn btn-default btn-lg'  style='width:49.5%; font-weight:bolder;' data-target='#exampleModalCenter1' data-toggle='modal' >비밀번호 찾기</button>");
+
+   		}
+   	</script>
    <!-- 		<span style="margin-left: 15px;"><a data-toggle="modal"  data-target="#exampleModalCenter" style="text-decoration: none; font-weight: bold; font-size: 14px;">ID /</a></span>
       	<span><a data-toggle="modal"  data-target="#exampleModalCenter1" style="text-decoration: none; font-weight: bold; font-size: 14px;">Password 찾기</a></span>
     
@@ -303,7 +369,16 @@ $(function(){
 
 	<div class="row" style="margin-bottom: 0px; width: 380px;  margin-left: auto; margin-right: auto; margin-top: 10px; border-top: 1.3px solid gray; padding-top: 15px;" >
     <div class="">
-   	<a href="/join" class="btn btn-default btn-lg" id="btbtn" style="width:100%; font-weight:bolder; ">Sign up</a>
+    <script>
+    	if(window.location.href.indexOf("eng")!=-1){
+    		document.write("<a href='/eng/join' class='btn btn-default btn-lg' id='btbtn' style='width:100%; font-weight:bolder; '>SIGN UP</a>");
+    	}else if(window.location.href.indexOf("china")!=-1){
+    		document.write("<a href='/china/join' class='btn btn-default btn-lg' id='btbtn' style='width:100%; font-weight:bolder; '>注册会员</a>");
+    	}else{
+    		document.write("<a href='/join' class='btn btn-default btn-lg' id='btbtn' style='width:100%; font-weight:bolder; '>회원가입</a>");
+
+    	}
+    </script>
    </div>
 </div>
  <div class="row">
@@ -372,35 +447,94 @@ $(function(){
 				  <!-- Modal Content -->
 				    <div class="modal-content">
 				      <div class="modal-header">
-				        <h3 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold; position: relative; top: 10px; left: 10px;">아이디 찾기</h3>
+				      	<script>
+				      		if(window.location.href.indexOf("eng")!=-1){
+								document.write("<h3 class='modal-title' id='exampleModalLongTitle' style='font-weight: bold; position: relative; top: 10px; left: 10px;'>FIND ID</h3>");
+				      		}else if(window.location.href.indexOf("china")!=-1){
+								document.write("<h3 class='modal-title' id='exampleModalLongTitle' style='font-weight: bold; position: relative; top: 10px; left: 10px;'>寻找用户名</h3>");
+				      		}else{
+								document.write("<h3 class='modal-title' id='exampleModalLongTitle' style='font-weight: bold; position: relative; top: 10px; left: 10px;'>아이디 찾기</h3>");
+				      		}
+				      		
+				      	</script>
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				          <span aria-hidden="true">&times;</span>
 				        </button>
 				      </div>
 				   <!-- body -->
 				      <div class="modal-body">
-				      	<div style="border-bottom: 1.5px solid gray"">
+				      	<div style="border-bottom: 1.5px solid gray">
 				      		<img alt="" id="modal-find" src="../resources/imgs/find.png" style="width:128px; height:128px; margin-left:215px; margin-bottom:10px;">
-				      		<p style="text-align:center; font-size: 13px;">이름과 이메일을 입력하여 아이디를 찾아보세요</p>
+				      		<script>
+				     			if(window.location.href.indexOf("eng")!=-1){
+				     				document.write("<p style='text-align:center; font-size: 13px;'>Enter your name and email to find your ID.</p>");
+				     			}else if(window.location.href.indexOf("china")!=-1){
+				     				document.write("<p style='text-align:center; font-size: 13px;'>请输入姓名和邮箱查找用户名</p>");
+				     			}else{
+				     				document.write("<p style='text-align:center; font-size: 13px;'>이름과 이메일을 입력하여 아이디를 찾아보세요</p>");
+
+				     			}
+				      		</script>
+				      		
+				      		
+				     
+				      		
 				      	</div>
 				      	<form class="form-horizontal" method="post">
 						  <div class="form-group" style="margin-top: 60px; ">
-						    <label for="id" id="modal_name" class="col-sm-2" style="font-weight: bold; font-size: 16px; position: relative; left: 100px; top:-30px;">이름</label>
-						    <div class="col-sm-8">
-						     <input type="text" class="form-control" id="find_name" placeholder="Name" style="position: relative; ">
+						  <script>
+						  		if(window.location.href.indexOf("eng")!=-1){
+						  			document.write("<label for='id' id='modal_name' class='col-sm-2' style='font-weight: bold; font-size: 16px; position: relative; left: 100px; top:-30px;'>NAME</label>");
+						  			document.write("<div class='col-sm-8'>");
+						  			document.write("<input type='text' class='form-control' id='find_name' placeholder='NAME' style='position:relative;'>");
+						  		}else if(window.location.href.indexOf("china")!=-1){
+						  			document.write("<label for='id' id='modal_name' class='col-sm-2' style='font-weight: bold; font-size: 16px; position: relative; left: 100px; top:-30px;'>名</label>");
+						  			document.write("<div class='col-sm-8'>");
+						  			document.write("<input type='text' class='form-control' id='find_name' placeholder='名' style='position:relative;'>");
+						  		}else{
+						  			document.write("<label for='id' id='modal_name' class='col-sm-2' style='font-weight: bold; font-size: 16px; position: relative; left: 100px; top:-30px;'>이름</label>");
+						  			document.write("<div class='col-sm-8'>");
+						  			document.write("<input type='text' class='form-control' id='find_name' placeholder='이름' style='position:relative;'>");
+						  		}
+						  </script>
+						  
 						     </div>
 						  </div>
 						   <div class="form-group" style="">
-						    <label for="inputEmail3" id="modal_email" class="col-sm-2 " style="font-weight: bold; font-size: 14px; position: relative; left: 100px;">이메일</label><br>
-						    <div class="col-sm-8">
-						      <input type="email" class="form-control" id="find_email" placeholder="Email" >
+						   	<script>
+						   		if(window.location.href.indexOf("eng")!=-1){
+						   			document.write("<label for='inputEmail3' id='modal_email' class='col-sm-2' style='font-weight: bold; font-size: 14px; position: relative; left: 100px;'>EMAIL</label><br>");
+						   			document.write("<div class='col-sm-8'>");
+						   			document.write("<input type='email' class='form-control' id='find_email' placeholder='EMAIL'>");
+						   		}else if(window.location.href.indexOf("china")!=-1){
+						   			document.write("<label for='inputEmail3' id='modal_email' class='col-sm-2' style='font-weight: bold; font-size: 14px; position: relative; left: 100px;'>电子邮件</label><br>");
+						   			document.write("<div class='col-sm-8'>");
+						   			document.write("<input type='email' class='form-control' id='find_email' placeholder='电子邮件'>");
+						   		}else{
+						   			document.write("<label for='inputEmail3' id='modal_email' class='col-sm-2' style='font-weight: bold; font-size: 14px; position: relative; left: 100px;'>이메일</label><br>");
+						   			document.write("<div class='col-sm-8'>");
+						   			document.write("<input type='email' class='form-control' id='find_email' placeholder='이메일'>");
+						   		}
+						   	</script>
+						   
 						        <br>
 						    </div>
 						  </div>
 					  </div>
 				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary" id="findBtn" data-toggle="modal" data-target="#exampleModal">Find</button>
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				      <script>
+				      		if(window.location.href.indexOf("eng")!=-1){
+				      			document.write("<button type='button' class='btn btn-primary' id='findBtn' data-toggle='modal' data-target='#exampleModal'>FIND</button>");
+				      			document.write("<button type='button' class='btn btn-secondary' data-dismiss='modal'>ClOSE</button");
+				      		}else if(window.location.href.indexOf("china")!=-1){
+				      			document.write("<button type='button' class='btn btn-primary' id='findBtn' data-toggle='modal' data-target='#exampleModal'>寻找</button>");
+				      			document.write("<button type='button' class='btn btn-secondary' data-dismiss='modal'>关闭</button");
+				      		}else{
+				      			document.write("<button type='button' class='btn btn-primary' id='findBtn' data-toggle='modal' data-target='#exampleModal'>찾기</button>");
+				      			document.write("<button type='button' class='btn btn-secondary' data-dismiss='modal'>닫기</button");
+				      		}
+				      </script>
+	
 				        </form>
 				      </div>
 				    </div>
@@ -411,10 +545,19 @@ $(function(){
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
-					        <h5 class="modal-title" id="exampleModalLabel">ID</h5>
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					          <span aria-hidden="true">&times;</span>
-					        </button>
+					      <script>
+					      	if(window.location.href.indexOf("eng")!=-1){
+					      		document.write("<h5 class='modal-title' id='exampleModalLabel'>ID</h5>");
+					      		document.write("<button type='button' class='close' data-dismiss='modal' aria-label='ClOSE'><span aria-hidden='true'>&times;</span></button>");
+					      	}else if(window.location.href.indexOf("china")!=-1){
+					      		document.write("<h5 class='modal-title' id='exampleModalLabel'>用户名</h5>");
+					      		document.write("<button type='button' class='close' data-dismiss='modal' aria-label='关闭'><span aria-hidden='true'>&times;</span></button>");
+					      	}else{
+					      		document.write("<h5 class='modal-title' id='exampleModalLabel'>아이디</h5>");
+					      		document.write("<button type='button' class='close' data-dismiss='modal' aria-label='닫기'><span aria-hidden='true'>&times;</span></button>");
+					      	}
+					      </script>
+					    
 					      </div>
 					      <!-- ID결과 -->
 					      <div class="modal-body">
@@ -422,7 +565,15 @@ $(function(){
 					      </div>
 					      <div class="modal-footer">
 					        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-					         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					        <script>
+					        	if(window.location.href.indexOf("eng")!=-1){
+					        		document.write("<button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>");
+					        	}else if(window.location.href.indexOf("china")!=-1){
+					        		document.write("<button type='button' class='btn btn-secondary' data-dismiss='modal'>关闭</button>");
+					        	}else{
+					        		document.write("<button type='button' class='btn btn-secondary' data-dismiss='modal'>닫기</button>");
+					        	}
+					        </script>
 					      </div>
 					    </div>
 					  </div>

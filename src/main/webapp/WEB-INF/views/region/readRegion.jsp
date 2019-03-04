@@ -329,6 +329,7 @@ $(function(){
 		//$("img[name=modal_food]").width(windowWidth-50);
 	}
 	
+	// 찜목록 추가버튼 ajax 코드 - 도형
 	$("#jimbtn").click(function(e){
 		e.preventDefault();
 		

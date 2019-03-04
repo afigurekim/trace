@@ -51,11 +51,11 @@
                                 <div class="center gap fade-down section-heading">
 	                                <script type="text/javascript">
 					        		if(window.location.href.indexOf("eng")!=-1){
-					        			document.write("<h2 class="main-title">My Page</h2><hr><p>My Places · My Comments · Account</p>");
+					        			document.write("<h2 class=\"main-title\">My Page</h2><hr><p>My Places · My Comments · Account</p>");
 					        		}else if(window.location.href.indexOf("china")!=-1){
-					        			document.write("<h2 class="main-title">我的页面</h2><hr><p>我的地点 · 我的评论 · 帐户</p>");
+					        			document.write("<h2 class=\"main-title\">我的页面</h2><hr><p>我的地点 · 我的评论 · 帐户</p>");
 					        		}else{
-					        			document.write("<h2 class="main-title">마이페이지</h2><hr><p>찜 목록 · 내 댓글 · 정보수정</p>");
+					        			document.write("<h2 class=\"main-title\">마이페이지</h2><hr><p>찜 목록 · 내 댓글 · 정보수정</p>");
 					        		}
 					        		</script>
                                 </div>
@@ -75,14 +75,14 @@
                     <div class="col-md-2 fade-up">
                         <script type="text/javascript">
 		        		if(window.location.href.indexOf("eng")!=-1){
-		        			document.write("<h3>My Page</h3><p><a href="/mypage">My Places</a><br/><a href="/mycomment">My Comments</a><br/><a href="/myinfo">Account</a><br/></p>");
+		        			document.write("<h3>My Page</h3><p><a href=\"/eng/mypage\">My Places</a><br/><a href=\"/eng/mycomment\">My Comments</a><br/><a href=\"/eng/myinfo\">Account</a><br/></p>");
 		        		}else if(window.location.href.indexOf("china")!=-1){
-		        			document.write("<h3>我的页面</h3><p><a href="/mypage">我的地点</a><br/><a href="/mycomment">我的评论</a><br/><a href="/myinfo">帐户</a><br/></p>");
+		        			document.write("<h3>我的页面</h3><p><a href=\"/china/mypage\">我的地点</a><br/><a href=\"/china/mycomment\">我的评论</a><br/><a href=\"/china/myinfo\">帐户</a><br/></p>");
 		        		}else{
-		        			document.write("<h3>마이페이지</h3><p><a href="/mypage">찜 목록</a><br/><a href="/mycomment">내 댓글</a><br/><a href="/myinfo">정보수정</a><br/></p>");
+		        			document.write("<h3>마이페이지</h3><p><a href=\"/mypage\">찜 목록</a><br/><a href=\"/mycomment\">내 댓글</a><br/><a href=\"/myinfo\">정보수정</a><br/></p>");
 		        		}
 		        		</script>
-                   </div><!-- col -->
+                    </div><!-- col -->
                 
                     <div class="col-md-10 fade-up">
 		        		<h3>
@@ -112,17 +112,15 @@
 		                	<br>
 		                	<!-- 정보수정 페이지로 돌아가는 버튼 -->
 		                    <div class="form-group text-center">
-		                        <a type="submit" id="join-submit" class="btn btn-primary" role="button" href="/myinfo">
-		                        	<script type="text/javascript">
+		                        <script type="text/javascript">
 					        		if(window.location.href.indexOf("eng")!=-1){
-					        			document.write("Return");
+					        			document.write("<a type=\"submit\" id=\"join-submit\" class=\"btn btn-primary\" role=\"button\" href=\"/eng/myinfo\">Return</a>");
 					        		}else if(window.location.href.indexOf("china")!=-1){
-					        			document.write("返回");
+					        			document.write("<a type=\"submit\" id=\"join-submit\" class=\"btn btn-primary\" role=\"button\" href=\"/china/myinfo\">返回</a>");
 					        		}else{
-					        			document.write("돌아가기");
+					        			document.write("<a type=\"submit\" id=\"join-submit\" class=\"btn btn-primary\" role=\"button\" href=\"/myinfo\">돌아가기</a>");
 					        		}
-					        		</script>
-		                        </a>
+				        		</script>
 		                    </div>
 						</form>
                 </div><!-- row -->  

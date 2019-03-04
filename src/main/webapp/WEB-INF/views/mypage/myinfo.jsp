@@ -131,9 +131,15 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">마이페이지</h2>
-                                    <hr>
-                                    <p>찜 목록 · 내 댓글 · 정보수정</p>
+	                                <script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("<h2 class=\"main-title\">My Page</h2><hr><p>My Places · My Comments · Account</p>");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("<h2 class=\"main-title\">我的页面</h2><hr><p>我的地点 · 我的评论 · 帐户</p>");
+					        		}else{
+					        			document.write("<h2 class=\"main-title\">마이페이지</h2><hr><p>찜 목록 · 내 댓글 · 정보수정</p>");
+					        		}
+					        		</script>
                                 </div>
                             </div>   
                         </div>
@@ -149,55 +155,178 @@
                 <div class="gap"></div>
                 <div class="row">
                     <div id="menu_responsive" class="col-md-2 fade-up">
-                        <h3>마이페이지</h3>
-                        <p><a href="/mypage">찜 목록</a><br/>
-                            <a href="/mycomment">내 댓글</a><br/>
-                            <a href="/myinfo">정보수정</a><br/>
-                        </p>
+                        <script type="text/javascript">
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<h3>My Page</h3><p><a href=\"/eng/mypage\">My Places</a><br/><a href=\"/eng/mycomment\">My Comments</a><br/><a href=\"/eng/myinfo\">Account</a><br/></p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<h3>我的页面</h3><p><a href=\"/china/mypage\">我的地点</a><br/><a href=\"/china/mycomment\">我的评论</a><br/><a href=\"/china/myinfo\">帐户</a><br/></p>");
+		        		}else{
+		        			document.write("<h3>마이페이지</h3><p><a href=\"/mypage\">찜 목록</a><br/><a href=\"/mycomment\">내 댓글</a><br/><a href=\"/myinfo\">정보수정</a><br/></p>");
+		        		}
+		        		</script>
                     </div><!-- col -->
                 
                     <div id="join_responsive" class="col-md-10 fade-up">
-		        		<h3>정보수정</h3>
-		                <form role="joinform" id="joinform" action="/myinfo" method="post">
+		        		<h3>
+                        	<script type="text/javascript">
+			        		if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("Account");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("帐户");
+			        		}else{
+			        			document.write("정보수정");
+			        		}
+			        		</script>
+						</h3>
+		                <script type="text/javascript">
+			        		if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("<form role=\"joinform\" id=\"joinform\" action=\"/eng/myinfo\" method=\"post\">");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("<form role=\"joinform\" id=\"joinform\" action=\"/china/myinfo\" method=\"post\">");
+			        		}else{
+			        			document.write("<form role=\"joinform\" id=\"joinform\" action=\"/myinfo\" method=\"post\">");
+			        		}
+		        		</script>
 		                	<c:forEach items="${memberList}" var="MemberVO" varStatus="status">
 		                    <div class="form-group">
-		                        <label for="inputName">성명</label>
-		                        <input type="text" class="form-control" id="name" name="user_name" value="${MemberVO.user_name}" required placeholder="이름을 입력해 주세요">
-		                    </div>
+			                    <script>
+			                	if(window.location.href.indexOf("eng")!=-1){
+			            			document.write("<label for='inputName'>NAME</label>");
+			            			document.write("<input type='text' class='form-control' id='name' name='user_name' value='${MemberVO.user_name}' required placeholder='Enter a name'>");
+			
+			            		}else if(window.location.href.indexOf("china")!=-1){
+			            			document.write("<label for='inputName'>名</label>");
+			            			document.write("<input type='text' class='form-control' id='name' name='user_name' value='${MemberVO.user_name}' required placeholder='请输入名字。''>");
+			            		}else{
+			            			document.write("<label for='inputName'>이름</label>");
+			            			document.write("<input type='text' class='form-control' id='name' name='user_name' value='${MemberVO.user_name}' required placeholder='이름을 입력해주세요'>");
+			            		}
+			                    </script>
+		                     </div>
 		                     <div class="form-group">
-		                        <label for="InputId">아이디</label><br>
+		                        <label for="InputId">
+		                        	<script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("ID");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("用户名");
+					        		}else{
+					        			document.write("아이디");
+					        		}
+					        		</script>
+								</label><br>
 			                    <b>${MemberVO.user_id}</b>
 			                    <input type="hidden" name="user_id" value="${MemberVO.user_id}"><br>
-			                    <span><small><b>* 아이디는 변경이 불가합니다.</b></small></span>
+			                    <span><small><b>
+		                        	<script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("* ID cannot be modified.");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("* 用户名无法修改。");
+					        		}else{
+					        			document.write("* 아이디는 변경이 불가합니다.");
+					        		}
+					        		</script>
+								</b></small></span>
 		
 		                    </div>
 		                    <div class="form-group">
-		                        <label for="inputPassword">비밀번호</label>
-		                        <input type="password" class="form-control" id="passwd" name="user_pw" oninput="checkPwd()" value="${MemberVO.user_pw}" required placeholder="비밀번호는 문자와 숫자를 조합하여 10~15자리로 만들어 주세요.">
+			                    <script>
+				                    if(window.location.href.indexOf("eng")!=-1){
+				                    	document.write("<label for='inputPassword'>PASSWORD</label>");
+				             			document.write("<input type='password' class='form-control' id='passwd' name='user_pw' oninput='checkPwd()' value='${MemberVO.user_pw}' required placeholder='Please combine letters and numbers into 10 to 15 digits for the password.''>");
+				                    }else if(window.location.href.indexOf("china")!=-1){
+				                    	document.write("<label for='inputPassword'>密码</label>");
+				             			document.write("<input type='password' class='form-control' id='passwd' name='user_pw' oninput='checkPwd()' value='${MemberVO.user_pw}' required placeholder='密码请将文字和数字组合成10~15位.''>");
+			
+				             		}else{
+				             			document.write("<label for='inputPassword'>비밀번호</label>");
+				             			document.write("<input type='password' class='form-control' id='passwd' name='user_pw' oninput='checkPwd()' value='${MemberVO.user_pw}' required placeholder='비밀번호는 문자와 숫자를 조합하여 10~15자리로 만들어 주세요.'>");
+				             		}	
+			                    </script>
 		                    </div>
 		                    <div class="form-group">
-		                        <label for="inputPasswordCheck">비밀번호 확인</label>
-		                        <input type="password" class="form-control" id="repasswd" name="repasswd" oninput="checkPwd()" value="${MemberVO.user_pw}" required placeholder="비밀번호 확인을 위해 다시한번 입력 해 주세요">
+			                    <script>
+			                    	if(window.location.href.indexOf("eng")!=-1){
+			                    		document.write("<label for='inputPasswordCheck'>REPASSWORD</label>");
+			                    		document.write("<input type='password' class='form-control' id='repasswd' name='repasswd' oninput='checkPwd()' value='${MemberVO.user_pw}' required placeholder='Please enter your password again to confirm it.'>");
+			                    	}else if(window.location.href.indexOf("china")!=-1){
+			                    		document.write("<label for='inputPasswordCheck'>密码确认</label>");
+			                    		document.write("<input type='password' class='form-control' id='repasswd' name='repasswd' oninput='checkPwd()' value='${MemberVO.user_pw}' required placeholder='为了确认密码请重新输入一次。'>");
+			
+			                    	}else{
+			                    		document.write("<label for='inputPasswordCheck'>비밀번호 확인</label>");
+			                    		document.write("<input type='password' class='form-control' id='repasswd' name='repasswd' oninput='checkPwd()' value='${MemberVO.user_pw}' required placeholder='비밀번호 확인을 위해 다시한번 입력 해 주세요'>");
+			                    	}
+			                    </script>
 		                    </div>
-		                    
 		                    <div class="form-group">
-		                        <label for="InputEmail">이메일 주소</label><br>
+		                        <label for="InputEmail">
+		                        	<script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("EMAIL");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("电子邮件");
+					        		}else{
+					        			document.write("이메일");
+					        		}
+					        		</script>
+								</label><br>
 		                        <b>${MemberVO.email}</b>
 			                    <input type="hidden" name="email" value="${MemberVO.email}"><br>
-			                    <span><small><b>* 이메일은 변경이 불가합니다.</b></small></span>
+			                    <span><small><b>
+		                        	<script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("* EMAIL cannot be modified.");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("* 电子邮件无法修改。");
+					        		}else{
+					        			document.write("* 이베일 변경이 불가합니다.");
+					        		}
+					        		</script>
+								</b></small></span>
 		                 
 		                    </div>
 		                    <div class="form-group">
-		                        <label for="inputMobile">휴대폰 번호</label>
-		                        <input type="tel" class="form-control" id="phone"  name="phone" value="${MemberVO.phone}" required placeholder="-없이 휴대폰번호를 입력해 주세요">
+			                    <script>
+			                    	if(window.location.href.indexOf("eng")!=-1){
+			                    		document.write("<label for='inputMobile'>PhoneNumber</label>");
+			                    		document.write("<input type='tel' class='form-control' id='phone' name='phone' value='${MemberVO.phone}' required placeholder='Enter cell phone number without -.'>");
+			                    	}else if(window.location.href.indexOf("china")!=-1){
+			                    		document.write("<label for='inputMobile'>手机号</label>");
+			                    		document.write("<input type='tel' class='form-control' id='phone' name='phone' value='${MemberVO.phone}' required placeholder='请输入没有手机号码的电话号码。'>");
+			
+			                    	}else{
+			                    		document.write("<label for='inputMobile'>휴대폰 번호</label>");
+			                    		document.write("<input type='tel' class='form-control' id='phone' name='phone' value='${MemberVO.phone}' required placeholder='-없이 휴대폰번호를 입력해 주세요'>");
+			                    	}
+			                    </script>
 		                    </div>
 		                   <!-- 정보수정이 성공하면 성공 페이지로 이동 -->
 		                    <div class="form-group text-center">
 		                        <button type="submit" id="join-submit" class="btn btn-primary">
-		                            정보수정<i class="fa fa-check spaceLeft"></i>
+		                        	<script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("Submit");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("信息修正");
+					        		}else{
+					        			document.write("정보수정");
+					        		}
+					        		</script>
+									<i class="fa fa-check spaceLeft"></i>
 		                        </button>
 		                        <button type="reset" class="btn btn-warning">
-		                            수정취소<i class="fa fa-times spaceLeft"></i>
+		                        	<script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("Cancel");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("取消修改");
+					        		}else{
+					        			document.write("수정취소");
+					        		}
+					        		</script>
+									<i class="fa fa-times spaceLeft"></i>
 		                        </button>
 		                    </div>
 		                    </c:forEach>

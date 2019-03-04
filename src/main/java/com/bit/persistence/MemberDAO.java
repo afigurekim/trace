@@ -3,6 +3,7 @@ package com.bit.persistence;
 import java.util.List;
 
 import com.bit.domain.Criteria;
+import com.bit.domain.MemberSiteVO;
 import com.bit.domain.MemberVO;
 import com.bit.domain.ReplyVO;
 
@@ -27,14 +28,23 @@ public interface MemberDAO {
 	
 	public void emailAuthCheck(String email);
 	
-	// KDH 2019-02-20
+	// 회원 정보 select DAO by 도형
 	public List<MemberVO> selectMember(String user_id);
 	
-	// KDH 2019-02-21
+	// 회원 정보 update DAO
 	public void updateMember(MemberVO vo);
 	
-	// KDH 2019-02-22
-	public List<ReplyVO> selectReplyMember(String user_id, Criteria cri) throws Exception;
-	public int countReplyMember(String user_id) throws Exception;
+	// 내 댓글 페이징 처리 하려다 망한 코드
+//	public List<ReplyVO> selectReplyMember(String user_id, Criteria cri) throws Exception;
+//	public int countReplyMember(String user_id) throws Exception;
+	
+	// 내 댓글 select DAO
+	public List<ReplyVO> selectReplyMember(String user_id) throws Exception;
+	
+	// 내 찜 목록 select DAO
+	public List<MemberSiteVO> selectSiteMember(String user_id) throws Exception;
+	
+	// 내 찜 아이템 delete DAO
+	public void deleteSiteMember(int jno) throws Exception;
 	
 }

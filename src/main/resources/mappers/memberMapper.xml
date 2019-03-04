@@ -8,7 +8,7 @@ select count(*) from member where user_id =#{id} and user_pw = #{pw}
 </select>
 
 <select id="login_email_Check" resultType="int">
-select count(*) from member where user_id=#{id} and emailcheck='1'
+select count(*) from member where user_id=#{id} and email_check='1'
 </select>
 
 <select id="find_id" resultType="String">
@@ -39,30 +39,46 @@ update member set email_check=#{auth} where email=#{email}
 ]]>
 </update>
 
-<!-- // KDH 2019-02-20 -->
+<!-- 회원 정보 select 쿼리문  by 도형-->
 <select id="selectMember" resultType="com.bit.domain.MemberVO">
 <![CDATA[
 select * from member where user_id=#{user_id}
 ]]>
 </select>
 
-<!-- // KDH 2019-02-21 -->
+<!-- 회원 정보 update 쿼리문 by 도형 -->
 <update id="updateMember">
 <![CDATA[
-update member set user_name=#{user_name}, user_pw=#{user_pw}, birth_day=#{birth_day}, sex=#{sex}, post=#{post}, address1=#{address1}, address2=#{address2}, contact1=#{contact1}, contact2=#{contact2}, contact3=#{contact3}, email=#{email}, phone1=#{phone1}, phone2=#{phone2}, phone3=#{phone3} where user_id=#{user_id}
+update member set user_name=#{user_name}, user_pw=#{user_pw}, phone=#{phone} where user_id=#{user_id}
 ]]>
 </update>
 
-<!-- // KDH 2019-02-22 -->
+<!-- 내 댓글 select 쿼리문 by 도형 -->
 <select id="selectReplyMember" resultType="com.bit.domain.ReplyVO">
 <![CDATA[
-select * from historic_site_reply where replyer=#{user_id} limit #{cri.pageStart}, #{cri.perPageNum}
+select historic_site.bno, historic_site.site_name, reply_text, historic_site_reply.update_date from historic_site_reply, historic_site where historic_site.bno=historic_site_reply.bno and historic_site_reply.replyer=#{user_id}
 ]]>
 </select>
+<!-- limit #{cri.pageStart}, #{cri.perPageNum} -->
+
+<!-- 안 쓰는 코드 -->
 <select id="countReplyMember" resultType="int">
 <![CDATA[
 select count(rno) from historic_reply where replyer=#{user_id}
 ]]>
 </select>
+
+<!-- 찜 목록 select 쿼리문 by 도형 -->
+<select id="selectSiteMember" resultType="com.bit.domain.MemberSiteVO">
+<![CDATA[
+select * from member_site where user_id=#{user_id}
+]]>
+</select>
+
+<!-- 찜 아이템 delete 쿼리문 by 도형 -->
+<delete id="deleteSiteMember">
+delete from member_site where jno=#{jno}
+</delete>
+
 
 </mapper>

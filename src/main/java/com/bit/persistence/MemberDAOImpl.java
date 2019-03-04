@@ -9,7 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.bit.domain.Criteria;
+import com.bit.domain.MemberSiteVO;
 import com.bit.domain.MemberVO;
 import com.bit.domain.ReplyVO;
 
@@ -23,7 +23,7 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	private static final String namespace="com.bit.mapper.MemberMapper";
 
-
+//윤제
 	@Override
 	public void insertMember(MemberVO vo) {
 		// TODO Auto-generated method stub
@@ -52,33 +52,52 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		sqlSession.update(namespace+".emailAuth",paramMap);
 	}
-
-	// KDH 2019-02-20
+////////////////////////////////////////////
+	// 회원 정보 select DAO by 도형
 	@Override
 	public List<MemberVO> selectMember(String user_id) {
 		return sqlSession.selectList(namespace+".selectMember",user_id);
 	}
 
-	// KDH 2019-02-21
+	// 회원 정보 update DAO
 	@Override
 	public void updateMember(MemberVO vo) {
 		sqlSession.update(namespace+".updateMember",vo);
 	}
 
-	// KDH 2019-02-22
+	// 내 댓글 페이징 처리 하려다 망한 코드
+//	@Override
+//	public List<ReplyVO> selectReplyMember(String user_id, Criteria cri) throws Exception {
+//		Map<String,Object> paramMap= new HashMap<>();
+//		paramMap.put("user_id", user_id);
+//		paramMap.put("cri", cri);
+//		return sqlSession.selectList(namespace+".selectReplyMember",paramMap);
+//	}
+//
+//	@Override
+//	public int countReplyMember(String user_id) throws Exception {
+//		return sqlSession.selectOne(namespace+".countReplyMember", user_id);
+//	}
+	
+	// 내 댓글 select DAO
 	@Override
-	public List<ReplyVO> selectReplyMember(String user_id, Criteria cri) throws Exception {
-		Map<String,Object> paramMap= new HashMap<>();
-		paramMap.put("user_id", user_id);
-		paramMap.put("cri", cri);
-		return sqlSession.selectList(namespace+".selectReplyMember",paramMap);
+	public List<ReplyVO> selectReplyMember(String user_id) throws Exception {
+		return sqlSession.selectList(namespace+".selectReplyMember",user_id);
 	}
 
+	// 내 찜 목록 select DAO
 	@Override
-	public int countReplyMember(String user_id) throws Exception {
-		return sqlSession.selectOne(namespace+".countReplyMember", user_id);
+	public List<MemberSiteVO> selectSiteMember(String user_id) throws Exception {
+		return sqlSession.selectList(namespace+".selectSiteMember",user_id);
 	}
-	
+
+	// 내 찜 아이템 delete DAO
+	@Override
+	public void deleteSiteMember(int jno) throws Exception {
+		sqlSession.delete(namespace+".deleteSiteMember", jno);
+	}
+//////////////////////////////////////////////////////////////////////////////////
+	//지혜
 	@Override
 	public int login(String id,String pw) {
 		
@@ -112,6 +131,6 @@ public class MemberDAOImpl implements MemberDAO {
 		return sqlSession.selectOne(namespace+".find_pw",map);
 	}
 
-
+////////////////////////////////////////////////////////////////////////////////////
 
 }

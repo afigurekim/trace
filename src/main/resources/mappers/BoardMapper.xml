@@ -24,45 +24,13 @@ where bno=#{bno}
 </delete>
 
 <insert id="star_insert">
-insert into historic_site_star(bno,user_id,star) values(#{bno},#{user_id},#{star})
+insert into HISTORIC_SITE_STAR(bno,user_id,star) values(#{bno},#{user_id},#{star})
 </insert>
 
 <select id="star_check" resultType="int">
-select count(*) from historic_site_star where bno=#{bno} and user_id=#{id}
-</select>
-<select id="mainPeriod" resultType="com.bit.domain.BoardVO">
-<![CDATA[
-	select
-		*
-	from
-		tbl_board,tbl_attach
-	where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 order by binary(tbl_board.history_name) limit 4
-]]>
+select count(*) from HISTORIC_SITE_STAR where bno=#{bno} and user_id=#{id}
 </select>
 
-<select id="mainThema" resultType="com.bit.domain.BoardVO">
-<![CDATA[
-	select
-		*
-	from
-		tbl_board,tbl_attach
-	where tbl_board.bno=tbl_attach.bno and tbl_attach.attach_num=1 order by binary(tbl_board.history_name) limit 4,4;
-	
-]]>
-
-</select>
-
-<select id="mainLocation" resultType="com.bit.domain.Historic_siteVO">
-
-<![CDATA[
-	select
-		*
-	from
-		HISTORIC_SITE,HISTORIC_SITE_IMAGE
-	where HISTORIC_SITE.BNO=HISTORIC_SITE_IMAGE.BNO and HISTORIC_SITE_IMAGE.IMAGE_NUM=0 and HISTORIC_SITE_IMAGE.FULLNAME!="" and HISTORIC_SITE_IMAGE.SITE_TYPE="유적지" order by binary(HISTORIC_SITE.SITE_NAME) limit 8;
-	
-]]>
-</select>
 
 <select id="periodlistAll" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
@@ -89,7 +57,7 @@ select count(*) from historic_site_star where bno=#{bno} and user_id=#{id}
 
 <select id="readPeriod" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
-	select * from historic_site where bno=#{bno}
+	select * from HISTORIC_SITE where bno=#{bno}
 ]]>
 </select>
 
@@ -102,7 +70,7 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 
 <select id="readPeriod_detail" resultType="com.bit.domain.Historic_site_detailVO">
 <![CDATA[
-	select * from historic_site_detail where bno=#{bno}
+	select * from HISTORIC_SITE_DETAIL where bno=#{bno}
 ]]>
 </select>
 
@@ -252,13 +220,13 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 
 <select id="readThema" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
-	select * from historic_site where bno=#{bno}
+	select * from HISTORIC_SITE where bno=#{bno}
 ]]>
 </select>
 
 <select id="readThema_detail" resultType="com.bit.domain.Historic_site_detailVO">
 <![CDATA[
-	select * from historic_site_detail where bno=#{bno}
+	select * from HISTORIC_SITE_DETAIL where bno=#{bno}
 ]]>
 </select>
 
@@ -365,17 +333,17 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 
 <select id="readRegion" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
-	select * from historic_site where bno=#{bno}
+	select * from HISTORIC_SITE where bno=#{bno}
 ]]>
 </select>
 <update id="updateViewCnt">
 <![CDATA[
-update historic_site set view_cnt=view_cnt+1 where bno=#{bno}
+update HISTORIC_SITE set view_cnt=view_cnt+1 where bno=#{bno}
 ]]>
 </update>
 <select id="readRegion_detail" resultType="com.bit.domain.Historic_site_detailVO">
 <![CDATA[
-	select * from historic_site_detail where bno=#{bno}
+	select * from HISTORIC_SITE_DETAIL where bno=#{bno}
 ]]>
 </select>
 
@@ -595,13 +563,13 @@ select count(*) from NEARBY_ATTRACTION WHERE BNO=#{bno} and ATTRACTION_TYPE="숙
 
 <select id="read_attraction" resultType="com.bit.domain.Nearby_attractionVO">
 <![CDATA[
-select * from nearby_attraction where bno=#{bno} and rno=#{rno}
+select * from NEARBY_ATTRACTION where bno=#{bno} and rno=#{rno}
 ]]>
 </select>
 
 <select id="attraction_image" resultType="com.bit.domain.Nearby_attractionVO">
 <![CDATA[
-select * from historic_site_image,nearby_attraction where fullname like concat('%',nearby_attraction.attraction_name,'%') and historic_site_image.bno=#{bno} and nearby_attraction.rno=#{rno};
+select * from HISTORIC_SITE_IMAGE,NEARBY_ATTRACTION where fullname like concat('%',NEARBY_ATTRACTION.attraction_name,'%') and HISTORIC_SITE_IMAGE.bno=#{bno} and NEARBY_ATTRACTION.rno=#{rno};
 
 ]]>
 </select>
@@ -610,11 +578,11 @@ select * from historic_site_image,nearby_attraction where fullname like concat('
 
 <select id="reply_count" resultType="int">
 <![CDATA[
-select count(*) from historic_reply where bno=#{bno}
+select count(*) from HISTORIC_SITE_REPLY where bno=#{bno}
 ]]>
 </select>
 
 <select id="readChartList" resultType="com.bit.domain.Historic_site_starVO">
-select * from historic_site_star where bno=#{bno}
+select * from HISTORIC_SITE_STAR where bno=#{bno}
 </select>
 </mapper> 

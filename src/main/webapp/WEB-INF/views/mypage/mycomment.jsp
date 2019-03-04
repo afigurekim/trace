@@ -30,14 +30,20 @@
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
     <script type="text/javascript">
- 
+	    $(document).ready(function($) {
+	    	$(".clickable-row").css("cursor", "pointer");
+	        $(".clickable-row").click(function() {
+	        	window.location = $(this).data("href");
+	        });
+	    });
     </script>
     <style>
-		.tblcol-1, .tblcol-5 {
-			width: 10%;
-		}
-		.tblcol-2, .tblcol-4 {
-			width: 15%;
+    	#single-page-slider {
+			background-image: url("../resources/imgs/banner/mypage-banner.jpg");
+			bakcground-color: #483D8B;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
 		}
 	</style>
   
@@ -53,9 +59,15 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">마이페이지</h2>
-                                    <hr>
-                                    <p>찜 목록 · 내 댓글 · 정보수정</p>
+	                                <script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("<h2 class="main-title">My Page</h2><hr><p>My Places · My Comments · Account</p>");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("<h2 class="main-title">我的页面</h2><hr><p>我的地点 · 我的评论 · 帐户</p>");
+					        		}else{
+					        			document.write("<h2 class="main-title">마이페이지</h2><hr><p>찜 목록 · 내 댓글 · 정보수정</p>");
+					        		}
+					        		</script>
                                 </div>
                             </div>   
                         </div>
@@ -65,48 +77,116 @@
         </div><!--/.carousel-->
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
-    <div id="content-wrapper" style="margin-top:70px;">
+    <div id="content-wrapper" class="no-margin">
         <section id="contact" class="white">
             <div class="container">
                 <div class="gap"></div>
                 <div class="row">
                     <div class="col-md-2 fade-up">
-                        <h3>마이페이지</h3>
-                        <p><a href="/mypage">찜 목록</a><br/>
-                            <a href="/mycomment">내 댓글</a><br/>
-                            <a href="/myinfo">정보수정</a><br/>
-                        </p>
+                        <script type="text/javascript">
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<h3>My Page</h3><p><a href="/mypage">My Places</a><br/><a href="/mycomment">My Comments</a><br/><a href="/myinfo">Account</a><br/></p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<h3>我的页面</h3><p><a href="/mypage">我的地点</a><br/><a href="/mycomment">我的评论</a><br/><a href="/myinfo">帐户</a><br/></p>");
+		        		}else{
+		        			document.write("<h3>마이페이지</h3><p><a href="/mypage">찜 목록</a><br/><a href="/mycomment">내 댓글</a><br/><a href="/myinfo">정보수정</a><br/></p>");
+		        		}
+		        		</script>
                     </div><!-- col -->
                 
                     <div class="col-md-10 fade-up">
-                        <h3>내 댓글</h3>
+                        <h3>
+                        	<script type="text/javascript">
+			        		if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("My Comments");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("我的地方");
+			        		}else{
+			        			document.write("내 댓글");
+			        		}
+			        		</script>
+						</h3>
                         <br>
-                        <table class="table tablecontent">
+                        <div class="table-wrapper">
+                        <table class="table">
 				        	<thead>
 				        		<tr>
-				        			<th class="tblcol-1">글번호</th>
-				        			<th class="tblcol-2">장소</th>
-				        			<th>내용</th>
-				        			<th class="tblcol-4">작성일</th>
-				        			<th class="tblcol-5">이동</th>
+				        			<th class="col-md-1" style="white-space: nowrap;">
+										<script type="text/javascript">
+						        		if(window.location.href.indexOf("eng")!=-1){
+						        			document.write("No.");
+						        		}else if(window.location.href.indexOf("china")!=-1){
+						        			document.write("数");
+						        		}else{
+						        			document.write("글번호");
+						        		}
+						        		</script>
+						        	</th>
+				        			<th class="col-md-2" style="white-space: nowrap;">
+										<script type="text/javascript">
+						        		if(window.location.href.indexOf("eng")!=-1){
+						        			document.write("Place");
+						        		}else if(window.location.href.indexOf("china")!=-1){
+						        			document.write("地点");
+						        		}else{
+						        			document.write("장소");
+						        		}
+						        		</script>
+						        	</th>
+				        			<th class="col-xs-1 hidden-xs" style="white-space: nowrap;">
+										<script type="text/javascript">
+						        		if(window.location.href.indexOf("eng")!=-1){
+						        			document.write("Comment");
+						        		}else if(window.location.href.indexOf("china")!=-1){
+						        			document.write("评论");
+						        		}else{
+						        			document.write("내용");
+						        		}
+						        		</script>
+						        	</th>
+				        			<th class="col-md-2" style="white-space: nowrap;">
+										<script type="text/javascript">
+						        		if(window.location.href.indexOf("eng")!=-1){
+						        			document.write("Date");
+						        		}else if(window.location.href.indexOf("china")!=-1){
+						        			document.write("日期");
+						        		}else{
+						        			document.write("작성일");
+						        		}
+						        		</script>
+						        	</th>
+				        			<th class="col-md-1"></th>
 				        		</tr>
 				        	</thead>
-				        	<tbody class="repliesBody">
+				        	<tbody>
 				        		<c:forEach items="${mycommentList}" var="ReplyVO" varStatus="status">
-				        		<tr>
-									<td class="tblcol-1">${status.index+1}</td><!-- 글번호는 프론트에서 처리 -->
-									<td class="tblcol-2">${ReplyVO.site_name}</td>
-									<td>${ReplyVO.reply_text}</td>
-									<td class="tblcol-4"><fmt:formatDate value="${ReplyVO.update_date}" pattern="yyyy/MM/dd"/></td>
+				        		<tr class="clickable-row" data-href="/period/read?bno=${ReplyVO.bno}">
+									<td class="col-md-1" style="vertical-align: middle">${status.index+1}</td><!-- 글번호는 프론트에서 처리 -->
+									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;">${ReplyVO.site_name}</td>
+									<td class="col-xs-1 hidden-xs" style="vertical-align: middle; white-space: nowrap;">${ReplyVO.reply_text}</td>
+									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;"><fmt:formatDate value="${ReplyVO.update_date}" pattern="yyyy/MM/dd"/></td>
 									<!-- 댓글이 작성된 페이지로 이동하는 이동 버튼 (시대 페이지 기준 주소) -->
-									<td class="tblcol-5"><a role="button" class="btn btn-default" href="/period/read?bno=${ReplyVO.bno}">이동</a></td>
+									<td class="col-md-1" style="vertical-align: middle">
+										<a role="button" class="btn btn-primary" href="/period/read?bno=${ReplyVO.bno}">
+                        					<script type="text/javascript">
+							        		if(window.location.href.indexOf("eng")!=-1){
+							        			document.write("View");
+							        		}else if(window.location.href.indexOf("china")!=-1){
+							        			document.write("移动");
+							        		}else{
+							        			document.write("이동");
+							        		}
+							        		</script>
+										</a>
+									</td>
 								</tr>
 				        		</c:forEach>
 				        	</tbody>
 			        	</table>
+			        	</div>
                     </div><!-- col -->
                 </div><!-- row -->  
-                <div class="gap"></div>         
+                <div class="gap"></div>      
             </div>
         </section><!-- section -->
     </div>

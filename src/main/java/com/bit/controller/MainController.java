@@ -6,21 +6,25 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import com.bit.domain.Criteria;
 import com.bit.domain.Historic_siteVO;
 import com.bit.domain.Historic_site_starVO;
-import com.bit.domain.Nearby_attractionVO;
 import com.bit.service.BoardService;
 
 /**
@@ -37,18 +41,51 @@ public class MainController {
 	@Inject
 	private BoardService service;
 
+	
+	@Autowired
+	SessionLocaleResolver localeResolver;
+	
+	@Autowired
+	MessageSource messageSource;
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String main(Locale locale, Model model) {
+	public String default_main(Locale locale, Model model,HttpServletRequest request) {
 		try {
+			logger.info("welecome foottrace {} ",locale);
+			logger.info("session Locale is {} ",localeResolver.resolveLocale(request));
+			
+			logger.info("site.title:{}",messageSource.getMessage("site.title", null,"default text",locale));
+			logger.info("site.count :{}",messageSource.getMessage("site.count", new String[] {"첫번째"},"default text",locale));
+			//logger.info("not.exist 기본값 없음 : {}",messageSource.getMessage("not.exist", null,locale));
 			//model.addAttribute("periodlist",service.MainPeriod());
 			//model.addAttribute("themalist",service.MainThema());
-			model.addAttribute("locationlist",service.MainLocation());
+			//model.addAttribute("locationlist",service.MainLocation());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println("main test...");
-		return "Main";
+		return "/Main/Main";
+	}
+	@RequestMapping(value = "/{state}", method = RequestMethod.GET)
+	public String main(Locale locale, Model model,HttpServletRequest request,@PathVariable String state) {
+		try {
+			System.out.println(state);
+			logger.info("welecome foottrace {} ",locale);
+			logger.info("session Locale is {} ",localeResolver.resolveLocale(request));
+			
+			logger.info("site.title:{}",messageSource.getMessage("site.title", null,"default text",locale));
+			logger.info("site.count :{}",messageSource.getMessage("site.count", new String[] {"첫번째"},"default text",locale));
+			//logger.info("not.exist 기본값 없음 : {}",messageSource.getMessage("not.exist", null,locale));
+			//model.addAttribute("periodlist",service.MainPeriod());
+			//model.addAttribute("themalist",service.MainThema());
+			//model.addAttribute("locationlist",service.MainLocation());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("main test...");
+		return "/Main/Main";
 	}
 	@ResponseBody
 	@RequestMapping(value="/starValue",method=RequestMethod.POST)
@@ -78,10 +115,12 @@ public class MainController {
 			
 			Map<String,Object> map = new HashMap<String,Object>();
 			Criteria cri = new Criteria();
-			cri.setPerPageNum(89);
+			cri.setPage(1);
+			cri.setPerPageNum(125);
 			
 			List<Historic_siteVO> list=service.periodlistAll(cri);
 
+			System.out.println(list.size()+"메인 사이즈");
 			map.put("list", list);
 			
 			//return service.foodlist(cri,bno);
@@ -97,9 +136,8 @@ public class MainController {
 	
 	
 	@RequestMapping(value = "/intro", method = RequestMethod.GET)
-	public String intro(Locale locale, Model model) {
-		
-		return "intro";
+	public String intro() {
+		return "intro-new";
 	}
 	
 	
@@ -113,41 +151,6 @@ public class MainController {
 	
 
 	
-	@RequestMapping(value = "/order_deliver", method = RequestMethod.GET)
-	public String order_deliver(Locale locale, Model model) {
-		return "order_deliver";
-	}
-	@RequestMapping(value = "/cart", method = RequestMethod.GET)
-	public String cart(Locale locale, Model model) {
-		return "cart";
-	}
-	@RequestMapping(value = "/interest", method = RequestMethod.GET)
-	public String interest(Locale locale, Model model) {
-		return "interest";
-	}
-	@RequestMapping(value = "/notice", method = RequestMethod.GET)
-	public String notice(Locale locale, Model model) {
-		return "notice";
-	}
-	@RequestMapping(value = "/qna", method = RequestMethod.GET)
-	public String qna(Locale locale, Model model) {
-		return "qna";
-	}
-	@RequestMapping(value = "/faq", method = RequestMethod.GET)
-	public String faq(Locale locale, Model model) {
-		return "faq";
-	}
-	@RequestMapping(value = "/review", method = RequestMethod.GET)
-	public String review(Locale locale, Model model) {
-		return "review";
-	}
-	@RequestMapping(value = "/event", method = RequestMethod.GET)
-	public String event(Locale locale, Model model) {
-		return "event";
-	}
-	@RequestMapping(value = "/PostSearch", method = RequestMethod.GET)
-	public String PostSearch(Locale locale, Model model) {
-		return "PostSearch";
-	}
+	
 	
 }

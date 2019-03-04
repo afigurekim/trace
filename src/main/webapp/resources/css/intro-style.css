@@ -1,0 +1,74 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font: 400 15px/1.8 "Lato", sans-serif;
+  color: #777;
+}
+
+.intro-parallax {
+  position: relative;
+  background-attachment: fixed;
+  background-position: center 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  /**
+   * Default height
+   */
+  height: 100%;
+}
+
+.intro-caption {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  height: 100%;
+}
+
+.intro-caption .intro-border {
+  background-color: #111;
+  color: #fff;
+  padding: 0.9375vw;
+  font-size: 1.3020vw;
+  letter-spacing: 0.5208vw;
+}
+
+h3 {
+  letter-spacing: 0.2604vw;
+  text-transform: uppercase;
+  font: 1.0416vw "Lato", sans-serif;
+  color: #111111;
+  text-align:center;
+}
+
+.intro-text {
+  color: #777777;
+  background-color: #ffffff;
+  text-align: center;
+  padding: 2.6041vw 4.1666vw;
+  /* text-align: justify; */
+}
+
+/* Turn off parallax scrolling for tablets and phones */
+@media only screen and (max-device-width: 1024px) {
+  .intro-parallax {
+    background-attachment: scroll;
+  }
+}

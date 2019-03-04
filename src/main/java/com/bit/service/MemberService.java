@@ -47,5 +47,11 @@ public interface MemberService {
 	
 	// 찜 아이템 delete 서비스
 	public void deleteSiteMember(int jno) throws Exception;
+
+	// 찜 아이템 중복 확인 서비스
+	public int checkSiteMember(MemberSiteVO vo) throws Exception;
+
+	// 찜 아이템 insert 서비스
+	public void insertSiteMember(MemberSiteVO vo) throws Exception;
 	
 }

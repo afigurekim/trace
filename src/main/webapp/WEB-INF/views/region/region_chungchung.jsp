@@ -10,27 +10,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>About Us | Impact By Distinctive Themes</title>
-    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../resources/css/pe-icons.css" rel="stylesheet">
-    <link href="../resources/css/prettyPhoto.css" rel="stylesheet">
-    <link href="../resources/css/animate.css" rel="stylesheet">
-    <link href="../resources/css/style.css" rel="stylesheet">
+    <title>지역별 충청도</title>
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../resources/css/pe-icons.css" rel="stylesheet">
+    <link href="../../../resources/css/prettyPhoto.css" rel="stylesheet">
+    <link href="../../../resources/css/animate.css" rel="stylesheet">
+    <link href="../../../resources/css/style.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <script src="../resources/js/jquery.js"></script>
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/imgs/ico/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/imgs/ico/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon-precomposed" href="../resources/imgs/ico/apple-touch-icon-57x57.png">
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/jquery.prettyPhoto.js"></script>
-    <script src="../resources/js/plugins.js"></script>
-    <script src="../resources/js/init.js"></script>
+    <script src="../../../resources/js/jquery.js"></script>
+    <link rel="shortcut icon" href="../../../resources/imgs/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../resources/imgs/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../resources/imgs/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="../../../resources/imgs/ico/apple-touch-icon-57x57.png">
+    <script src="../../../resources/js/bootstrap.min.js"></script>
+    <script src="../../../resources/js/jquery.prettyPhoto.js"></script>
+    <script src="../../../resources/js/plugins.js"></script>
+    <script src="../../../resources/js/init.js"></script>
     <script type="text/javascript">
    
     </script>
@@ -38,6 +38,13 @@
 #img_size{
  background-image: url("../resources/imgs/cloud.png");
 }
+		#single-page-slider {
+			background-image: url("../resources/imgs/banner/region-chungchung-banner.jpg");
+			bakcground-color: #01b29e;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
 </style>
 
 <script>
@@ -72,37 +79,104 @@ $(function(){
 	console.log(height+"높이");
 	//alert($(".item-inner>a>img").eq(1).height(272));
 	$("#all_region").click(function(){
-		window.location.href="http://localhost:8181/region/all";
+		
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/region/all";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/region/all";
+		}else{
+			window.location.href="/region/all";
+		}
 	});		
 	$("#seoul").click(function(){
-		window.location.href="http://localhost:8181/region/seoul";
+		
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/region/seoul";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/region/seoul";
+		}else{
+			window.location.href="/region/seoul";
+		}	
+		
 	});
 	$("#incheon").click(function(){
-		window.location.href="http://localhost:8181/region/incheon";
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/region/incheon";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/region/incheon";
+		}else{
+			window.location.href="/region/incheon";
+		}	
+		
 	});	
 	$("#kyunggi").click(function(){
-		window.location.href="http://localhost:8181/region/kyunggi";
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/region/kyunggi";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/region/kyunggi";
+		}else{
+			window.location.href="/region/kyunggi";
+		}	
+		
 	});
+	
 	$("#kangwon").click(function(){
-		window.location.href="http://localhost:8181/region/kangwon";
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/region/kangwon";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/region/kangwon";
+		}else{
+			window.location.href="/region/kangwon";
+		}	
+		
 	});
 	$("#chungchung").click(function(){
-		window.location.href="http://localhost:8181/region/chungchung";
+		
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/region/chungchung";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/ch/region/chungchung";
+		}else{
+			window.location.href="/region/chungchung";
+		}
+		
 	});	
 	$("#kyungsang").click(function(){
-		window.location.href="http://localhost:8181/region/kyungsang";
+
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/region/kyungsang";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/region/kyungsang";
+		}else{
+			window.location.href="/region/kyungsang";
+		}
 	});	
 	$("#junla").click(function(){
-		window.location.href="http://localhost:8181/region/junla";
+
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/region/junla";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/region/junla";
+		}else{
+			window.location.href="/region/junla";
+		}
 	});	
 	$("#jeju").click(function(){
-		window.location.href="http://localhost:8181/region/jeju";
-	});			
+
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/region/jeju";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/region/jeju";
+		}else{
+			window.location.href="/region/jeju";
+		}
+	});				
 });
 </script>
 </head><!--/head-->
 <body>
 <%@include file="../Header.jsp" %>
+
     <section id="single-page-slider" class="no-margin">
         <div class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
@@ -111,9 +185,9 @@ $(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">Our Works</h2>
+                                    <h2 class="main-title">지역별</h2>
                                     <hr>
-                                    <p>Of an or game gate west face shed. ﻿no great but music too old found arose.</p>
+                                    <p>서울 · 인천 · 경기 · 강원 · 충청 · 경상 · 전라 · 제주</p>
                                 </div>
                             </div>   
                         </div>
@@ -168,12 +242,22 @@ $(function(){
            				<li class='portfolio-item app isotope-item'>
                			
                           <div class="item-inner">
-								<a href="/region/read?bno=${Historic_siteVO.bno}">
-								
+						<script type="text/javascript">
+                          if(window.location.href.indexOf("eng")!=-1){
+                            document.write("<a href='/eng/region/read?bno=${Historic_siteVO.bno}'>");
+
+                          }else if(window.location.href.indexOf("china")!=-1){
+                              document.write("<a href='/china/region/read?bno=${Historic_siteVO.bno}'>");
+
+                          }else{
+                            document.write("<a href='/region/read?bno=${Historic_siteVO.bno}'>");
+                        	  
+                          }
+                          </script>								
                                 <img class="img-responsive img-blog" src="${Historic_siteVO.first_image}">
 								
 								
-								 <h5>${Historic_siteVO.site_name}</h5>
+								 <h5 style="overflow:hidden">${Historic_siteVO.site_name}</h5>
 								
 				            	</a>		
 						</div>
@@ -263,18 +347,50 @@ $(function(){
                     <div class="text-center">
 						<ul class="pagination">
 							<c:if test="${pageMaker.prev}">
-								<li><a href="/region/all?page=${pageMaker.startPage-1}">&laquo;</a></li>
+							<script type="text/javascript">
+							 if(window.location.href.indexOf("eng")!=-1){
+		                            document.write("<li><a href=/eng/region/chungchung?page=${pageMaker.startPage-1}&laquo;</a></li>");
+		                          }else if(window.location.href.indexOf("china")!=-1){
+			                            document.write("<li><a href=/china/region/chungchung?page=${pageMaker.startPage-1}&laquo;</a></li>");
+
+		                          }else{
+			                            document.write("<li><a href=/region/chungchung?page=${pageMaker.startPage-1}&laquo;</a></li>");
+		                        	  
+		                          }
+							</script>
 							</c:if>
 							
 							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
 								<li 
 									<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
-								<a href="/region/all?page=${idx}">${idx}</a>
+								<script type="text/javascript">
+								if(window.location.href.indexOf("eng")!=-1){
+		                            document.write("<a href='/eng/region/chungchung?page=${idx}'>${idx}</a>");
+		                          }else if(window.location.href.indexOf("china")!=-1){
+			                       document.write("<a href='/china/region/chungchung?page=${idx}'>${idx}</a>");
+
+		                          }else{
+				                       document.write("<a href='/region/chungchung?page=${idx}'>${idx}</a>");
+		                        	  
+		                          }
+								</script>
+								
 								</li>
 							</c:forEach>
 							
 							<c:if test="${pageMaker.next && pageMaker.endPage>0 }">
-								<li><a href="/region/all?page=${pageMaker.endPage +1}">&raquo;</a></li>
+							<script type="text/javascript">
+								if(window.location.href.indexOf("eng")!=-1){
+		                            document.write("<li><a href='/eng/region/chungchung?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+		                          }else if(window.location.href.indexOf("china")!=-1){
+			                            document.write("<li><a href='/china/region/chungchung?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+
+		                          }else{
+			                            document.write("<li><a href='/region/chungchung?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+		                        	  
+		                          }
+								</script>
+							
 							</c:if>
 							
 						</ul>

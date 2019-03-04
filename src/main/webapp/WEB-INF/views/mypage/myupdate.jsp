@@ -28,36 +28,15 @@
     <script src="../resources/js/jquery.prettyPhoto.js"></script>
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
-    <script type="text/javascript">
- 
-    </script>
-    <script type="text/javascript">
-	$(function(){
-		var windowWidth = $( window ).width();
-		var joinWidth=$("#joinform").width();
-		 $("#join_responsive").css("width","909.98px");
-		 $("#join_responsive").css("margin","auto");
-		 $("#join_responsive").css("margin-top","0px");
-	
-		 if(windowWidth<=626){
-			 $("#join_responsive").width(windowWidth-30);
-		 }
-		$(window).resize(function(){
-			 windowWidth = $( window ).width();
-			 joinWidth=$("#joinform").width();
-			
-			 if(windowWidth<=626){
-				 $("#join_responsive").width(windowWidth-30);
-	
-			 }else{
-				 $("#join_responsive").css("width","909.98px");
-			 }
-			console.log("폼크기"+joinWidth);
-			console.log("윈도우 크기"+windowWidth);
-		});
-	});
-	
-	</script>
+    <style>
+		#single-page-slider {
+			background-image: url("../resources/imgs/banner/mypage-banner.jpg");
+			bakcground-color: #483D8B;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	</style>
 </head><!--/head-->
 <body>
 <%@include file="../Header.jsp" %>
@@ -70,9 +49,15 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">마이페이지</h2>
-                                    <hr>
-                                    <p>찜 목록 · 내 댓글 · 정보수정</p>
+	                                <script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("<h2 class="main-title">My Page</h2><hr><p>My Places · My Comments · Account</p>");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("<h2 class="main-title">我的页面</h2><hr><p>我的地点 · 我的评论 · 帐户</p>");
+					        		}else{
+					        			document.write("<h2 class="main-title">마이페이지</h2><hr><p>찜 목록 · 내 댓글 · 정보수정</p>");
+					        		}
+					        		</script>
                                 </div>
                             </div>   
                         </div>
@@ -82,34 +67,66 @@
         </div><!--/.carousel-->
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
-    <div id="content-wrapper" style="margin-top:70px;">
+    <div id="content-wrapper" class="no-margin">
         <section id="contact" class="white">
             <div class="container">
                 <div class="gap"></div>
                 <div id="join_responsive" class="row">
                     <div class="col-md-2 fade-up">
-                        <h3>마이페이지</h3>
-                        <p><a href="/mypage">찜 목록</a><br/>
-                            <a href="/mycomment">내 댓글</a><br/>
-                            <a href="/myinfo">정보수정</a><br/>
-                        </p>
-                    </div><!-- col -->
+                        <script type="text/javascript">
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<h3>My Page</h3><p><a href="/mypage">My Places</a><br/><a href="/mycomment">My Comments</a><br/><a href="/myinfo">Account</a><br/></p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<h3>我的页面</h3><p><a href="/mypage">我的地点</a><br/><a href="/mycomment">我的评论</a><br/><a href="/myinfo">帐户</a><br/></p>");
+		        		}else{
+		        			document.write("<h3>마이페이지</h3><p><a href="/mypage">찜 목록</a><br/><a href="/mycomment">내 댓글</a><br/><a href="/myinfo">정보수정</a><br/></p>");
+		        		}
+		        		</script>
+                   </div><!-- col -->
                 
                     <div class="col-md-10 fade-up">
-		        		<h3>정보수정</h3>
+		        		<h3>
+                        	<script type="text/javascript">
+			        		if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("Account");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("帐户");
+			        		}else{
+			        			document.write("정보수정");
+			        		}
+			        		</script>
+						</h3>
 		                <form role="joinform" id="joinform">
 		                	<br>
-		                	<h4>정보수정이 성공적으로 완료되었습니다.</h4>
+		                	<h4>
+	                        	<script type="text/javascript">
+				        		if(window.location.href.indexOf("eng")!=-1){
+				        			document.write("The account information has been updated.");
+				        		}else if(window.location.href.indexOf("china")!=-1){
+				        			document.write("帐户信息已更新。");
+				        		}else{
+				        			document.write("정보수정이 성공적으로 완료되었습니다.");
+				        		}
+				        		</script>
+							</h4>
 		                	<br>
 		                	<!-- 정보수정 페이지로 돌아가는 버튼 -->
 		                    <div class="form-group text-center">
 		                        <a type="submit" id="join-submit" class="btn btn-primary" role="button" href="/myinfo">
-		                            돌아가기
+		                        	<script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("Return");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("返回");
+					        		}else{
+					        			document.write("돌아가기");
+					        		}
+					        		</script>
 		                        </a>
 		                    </div>
 						</form>
                 </div><!-- row -->  
-                <div class="gap"></div>         
+                <div class="gap"></div>
             </div>
             </div>
         </section><!-- section -->

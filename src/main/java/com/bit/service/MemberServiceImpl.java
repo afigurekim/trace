@@ -53,7 +53,7 @@ public class MemberServiceImpl implements MemberService {
 			
 			sendMail.setText(
 			new StringBuffer().append("<h1>발자취 투어 메일인증</h1>")
-			.append("<a href='http://localhost:8181/emailauth/"+email)
+			.append("<a href='http://www.ktrace.tk:8080/emailauth/"+email)
 			.append("' target='_blenk'>이메일 인증 확인</a>").toString());
 			sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 			sendMail.setTo(email);
@@ -115,6 +115,18 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void deleteSiteMember(int jno) throws Exception {
 		dao.deleteSiteMember(jno);
+	}
+
+	// 찜 아이템 중복 서비스
+	@Override
+	public int checkSiteMember(MemberSiteVO vo) throws Exception {
+		return dao.checkSiteMember(vo);
+	}
+	
+	// 찜 아이템 insert 서비스
+	@Override
+	public void insertSiteMember(MemberSiteVO vo) throws Exception {
+		dao.insertSiteMember(vo);
 	}
 	
 	@Override
@@ -179,4 +191,3 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 }
-

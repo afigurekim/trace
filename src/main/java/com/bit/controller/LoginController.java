@@ -6,6 +6,9 @@ import java.util.Locale;
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.service.MemberService;
 import com.bit.util.NaverLoginBO;
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonObjectFormatVisitor;
 import com.github.scribejava.core.model.OAuth2AccessToken;
 
 @Controller
@@ -43,35 +47,51 @@ public class LoginController {
 	 */
 
 	  @RequestMapping(value = "/login", method = RequestMethod.GET) 
-	  public String login(Locale locale,Model model, HttpSession session) {
+	  public String defalt_login(Locale locale,Model model, HttpSession session) {
 	  
-	 // ³×ÀÌ¹ö¾ÆÀÌµğ·Î ÀÎÁõ URLÀ» »ı¼ºÇÏ±â À§ÇÏ¿© naverLoginBOÅ¬·¡½ºÀÇ getAuthorizationUrl¸Ş¼Òµå È£Ãâ 
+	 // ë„¤ì´ë²„ì•„ì´ë””ë¡œ ì¸ì¦ URLì„ ìƒì„±í•˜ê¸° ìœ„í•˜ì—¬ naverLoginBOí´ë˜ìŠ¤ì˜ getAuthorizationUrlë©”ì†Œë“œ í˜¸ì¶œ 
 	  String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
-	  System.out.println("³×ÀÌ¹ö:" + naverAuthUrl); //³×ÀÌ¹ö 
+	  System.out.println("ë„¤ì´ë²„:" + naverAuthUrl); //ë„¤ì´ë²„ 
+	  model.addAttribute("url", naverAuthUrl); 
+	 
+	  return "login"; 
+	  }
+	  @RequestMapping(value = "/{lang}/login", method = RequestMethod.GET) 
+	  public String login(Locale locale,Model model, HttpSession session,@PathVariable String lang) {
+	  
+	 // ë„¤ì´ë²„ì•„ì´ë””ë¡œ ì¸ì¦ URLì„ ìƒì„±í•˜ê¸° ìœ„í•˜ì—¬ naverLoginBOí´ë˜ìŠ¤ì˜ getAuthorizationUrlë©”ì†Œë“œ í˜¸ì¶œ 
+	  String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+	  System.out.println("ë„¤ì´ë²„:" + naverAuthUrl); //ë„¤ì´ë²„ 
 	  model.addAttribute("url", naverAuthUrl); 
 	 
 	  return "login"; 
 	  }
 	 
 
-	  // ³×ÀÌ¹ö ·Î±×ÀÎ ¼º°ø½Ã callbackÈ£Ãâ ¸Ş¼Òµå
+	  // ë„¤ì´ë²„ ë¡œê·¸ì¸ ì„±ê³µì‹œ callbackí˜¸ì¶œ ë©”ì†Œë“œ
 	
 	 @RequestMapping(value = "/callback", method = { RequestMethod.GET,RequestMethod.POST }) 
 	  public String callback(Model model, @RequestParam String code, @RequestParam String state, HttpSession session) throws IOException { 
-	  System.out.println("¿©±â´Â callback");
+	  System.out.println("ì—¬ê¸°ëŠ” callback");
 	  OAuth2AccessToken oauthToken; oauthToken = naverLoginBO.getAccessToken(session, code, state);
-	  // ·Î±×ÀÎ »ç¿ëÀÚ Á¤º¸¸¦ ÀĞ¾î¿Â´Ù. 
+	  // ë¡œê·¸ì¸ ì‚¬ìš©ì ì •ë³´ë¥¼ ì½ì–´ì˜¨ë‹¤. 
 	  apiResult = naverLoginBO.getUserProfile(oauthToken);
 	  System.out.println("result" + apiResult); 
-	  int index=apiResult.indexOf("id");
-	  System.out.println(index);
-	  int index2=apiResult.lastIndexOf("age");
-	  System.out.println(index2);
-	  String name= apiResult.substring(index+5,index2-3);
+	  // ë„¤ì´ë²„ apiì—ì„œ ê°€ì ¸ì˜¨ ì‚¬ìš©ì ì •ë³´ë¥¼ JSONìœ¼ë¡œ ë³€í™˜
+	  JSONParser jsonParser = new JSONParser();
+	  JSONObject jsonobj = new JSONObject();
+	  try {
+		  	jsonobj = (JSONObject) jsonParser.parse(apiResult);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+	  // response JSON ê°ì²´ë¥¼ ë½‘ì•„ì˜¨ ë‹¤ìŒ ê·¸ ì•ˆ id ê°ì²´ ê°’ì„ string ë³€í™˜
+	  JSONObject response = (JSONObject) jsonobj.get("response");
+	  String name = (String) response.get("id");
 	  System.out.println(name);
 	  session.setAttribute("login_id2", name); 
 
-	  return "Main"; 
+	  return "Main/Main";
 	  }
 	
 
@@ -121,10 +141,10 @@ public class LoginController {
 	public String logout(HttpSession session) {
 		session.invalidate();
 
-		return "Main";
+		return "redirect:/";
 	}
 	
-	//¾ÆÀÌµğ Ã£±â
+	//ì•„ì´ë”” ì°¾ê¸°
 
 	@ResponseBody
 	@RequestMapping(value="/find_id", method=RequestMethod.POST)
@@ -135,7 +155,7 @@ public class LoginController {
 		return fi;
 	}
 	
-	//ºñ¹Ğ¹øÈ£ Ã£±â
+	//ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°
 	@ResponseBody
 	@RequestMapping(value="/find_pw",method=RequestMethod.POST)
 	public String find_pw(String tname,String tid,String tphone,String temail) {
@@ -148,7 +168,7 @@ public class LoginController {
 		String fpw=service.find_pw(tid,tname, tphone, temail);
 		System.out.println(fpw);
 		if(fpw==null) {
-			System.out.println(fpw+"³Î");
+			System.out.println(fpw+"ë„");
 			fpw=null;
 		}
 		if(fpw!=null) {

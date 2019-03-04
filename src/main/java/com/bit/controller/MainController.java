@@ -79,7 +79,7 @@ public class MainController {
 			//logger.info("not.exist 기본값 없음 : {}",messageSource.getMessage("not.exist", null,locale));
 			//model.addAttribute("periodlist",service.MainPeriod());
 			//model.addAttribute("themalist",service.MainThema());
-			model.addAttribute("locationlist",service.MainLocation());
+			//model.addAttribute("locationlist",service.MainLocation());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -115,10 +115,12 @@ public class MainController {
 			
 			Map<String,Object> map = new HashMap<String,Object>();
 			Criteria cri = new Criteria();
+			cri.setPage(1);
 			cri.setPerPageNum(125);
 			
 			List<Historic_siteVO> list=service.periodlistAll(cri);
 
+			System.out.println(list.size()+"메인 사이즈");
 			map.put("list", list);
 			
 			//return service.foodlist(cri,bno);

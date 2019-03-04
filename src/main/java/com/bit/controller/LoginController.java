@@ -47,7 +47,17 @@ public class LoginController {
 	 */
 
 	  @RequestMapping(value = "/login", method = RequestMethod.GET) 
-	  public String login(Locale locale,Model model, HttpSession session) {
+	  public String defalt_login(Locale locale,Model model, HttpSession session) {
+	  
+	 // 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 
+	  String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);
+	  System.out.println("네이버:" + naverAuthUrl); //네이버 
+	  model.addAttribute("url", naverAuthUrl); 
+	 
+	  return "login"; 
+	  }
+	  @RequestMapping(value = "/{lang}/login", method = RequestMethod.GET) 
+	  public String login(Locale locale,Model model, HttpSession session,@PathVariable String lang) {
 	  
 	 // 네이버아이디로 인증 URL을 생성하기 위하여 naverLoginBO클래스의 getAuthorizationUrl메소드 호출 
 	  String naverAuthUrl = naverLoginBO.getAuthorizationUrl(session);

@@ -201,19 +201,21 @@ $(function(){
 	    	async:false,
 	    	data:{},
 	    	success:function(data){
-	    		for(var i=0;i<data.list.length;i++){
-	    			if(data.list[i].star==1){
-	    				data1++;
-	    			}else if(data.list[i].star==2){
-	    				data2++;
-	    			}else if(data.list[i].star==3){
-	    				data3++;
-	    			}else if(data.list[i].star==4){
-	    				data4++;
-	    			}else if(data.list[i].star==5){
-	    				data5++;
-	    			}
-	    		}
+	    		if(data.list.length>=1){
+		    		for(var i=0;i<data.list.length;i++){
+		    			if(data.list[i].star==1){
+		    				data1++;
+		    			}else if(data.list[i].star==2){
+		    				data2++;
+		    			}else if(data.list[i].star==3){
+		    				data3++;
+		    			}else if(data.list[i].star==4){
+		    				data4++;
+		    			}else if(data.list[i].star==5){
+		    				data5++;
+		    			}
+		    		}
+		    	}
 	    	}
 	    	
 	    });
@@ -280,24 +282,36 @@ $(function(){
 	  }
 	});
 
+	$("#first_image").height($(".overlay").width()/1.5);
+
+	$("img[name=full_image]").height($(".overlay").width()/1.5);
+
+
 	var windowWidth = $( window ).width();
 
+	if(windowWidth<=500){
+		$("#food_image_modal").height(windowWidth/1.5);
+
+	}else{
+		$("#food_image_modal").height(372);
+
+	}
+	
 	$(window).resize(function(){
 		 windowWidth = $( window ).width();
 	
 	
 	$("#first_image").height($(".overlay").width()/1.5);
 	$("img[name=full_image]").height($(".overlay").width()/1.5);
-
-	});
-
 	
-	$(".box-success").click(function(){
-		
+		if(windowWidth<=500){
+			$("#food_image_modal").height(windowWidth/1.5);
+
+		}else{
+			$("#food_image_modal").height(372);
+
+		}
 	});
-
-	$("img[name=full_image]").height($(".overlay").width()/1.5);
-
 
 /*for(var i=0;i<$("img[name=full_image]").length;i++){
 
@@ -367,6 +381,8 @@ $(function(){
                                     <ul class="arrow">
                                         <li>${read.site_name}</li>
                                         <li>${read.address}</li>
+                                        <li>${read.thema}</li>
+                                        <li>${read.period}</li>
                                     </ul>
                                 </div>
                             </div>                     

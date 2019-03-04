@@ -30,10 +30,10 @@
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
     <script type="text/javascript">
-	    $(document).ready(function($) {
+	    $(document).ready(function() {
 	    	$(".clickable-row").css("cursor", "pointer");
-	        $(".clickable-row").click(function() {
-	        	if(!$(event.target).hasClass("tblcol-7")) {
+	        $(".clickable-row").click(function(event) {
+	        	if(!$(event.target).hasClass("delcol")) {
 	        		window.location = $(this).data("href");
 	        	}
 	        });
@@ -47,18 +47,6 @@
 		.thumb {
 			padding: 5px;
 			width: 110px;
-		}
-		.tblcol-1 {
-			width: 15%;
-		}
-		.tblcol-3 {
-			width: 30%;
-		}
-		.tblcol-4, .tblcol-5 {
-			width: 10%;
-		}
-		.tblcol-6, .tblcol-7 {
-			width: 5%;
 		}
 		#single-page-slider {
 			background-image: url("../resources/imgs/banner/mypage-banner.jpg");
@@ -83,11 +71,11 @@
                                 <div class="center gap fade-down section-heading">
 	                                <script type="text/javascript">
 					        		if(window.location.href.indexOf("eng")!=-1){
-					        			document.write("<h2 class="main-title">My Page</h2><hr><p>My Places · My Comments · Account</p>");
+					        			document.write("<h2 class=\"main-title\">My Page</h2><hr><p>My Places · My Comments · Account</p>");
 					        		}else if(window.location.href.indexOf("china")!=-1){
-					        			document.write("<h2 class="main-title">我的页面</h2><hr><p>我的地点 · 我的评论 · 帐户</p>");
+					        			document.write("<h2 class=\"main-title\">我的页面</h2><hr><p>我的地点 · 我的评论 · 帐户</p>");
 					        		}else{
-					        			document.write("<h2 class="main-title">마이페이지</h2><hr><p>찜 목록 · 내 댓글 · 정보수정</p>");
+					        			document.write("<h2 class=\"main-title\">마이페이지</h2><hr><p>찜 목록 · 내 댓글 · 정보수정</p>");
 					        		}
 					        		</script>
                                 </div>
@@ -107,11 +95,11 @@
                     <div class="col-md-2 fade-up">
                         <script type="text/javascript">
 		        		if(window.location.href.indexOf("eng")!=-1){
-		        			document.write("<h3>My Page</h3><p><a href="/mypage">My Places</a><br/><a href="/mycomment">My Comments</a><br/><a href="/myinfo">Account</a><br/></p>");
+		        			document.write("<h3>My Page</h3><p><a href=\"/eng/mypage\">My Places</a><br/><a href=\"/eng/mycomment\">My Comments</a><br/><a href=\"/eng/myinfo\">Account</a><br/></p>");
 		        		}else if(window.location.href.indexOf("china")!=-1){
-		        			document.write("<h3>我的页面</h3><p><a href="/mypage">我的地点</a><br/><a href="/mycomment">我的评论</a><br/><a href="/myinfo">帐户</a><br/></p>");
+		        			document.write("<h3>我的页面</h3><p><a href=\"/china/mypage\">我的地点</a><br/><a href=\"/china/mycomment\">我的评论</a><br/><a href=\"/china/myinfo\">帐户</a><br/></p>");
 		        		}else{
-		        			document.write("<h3>마이페이지</h3><p><a href="/mypage">찜 목록</a><br/><a href="/mycomment">내 댓글</a><br/><a href="/myinfo">정보수정</a><br/></p>");
+		        			document.write("<h3>마이페이지</h3><p><a href=\"/mypage\">찜 목록</a><br/><a href=\"/mycomment\">내 댓글</a><br/><a href=\"/myinfo\">정보수정</a><br/></p>");
 		        		}
 		        		</script>
                     </div><!-- col -->
@@ -134,7 +122,7 @@
                         	<thead>
                         		<tr>
                         			<th class="col-md-1 hidden-xs"></th>
-                        			<th class="col-md-3" style="white-space: nowrap;">
+                        			<th class="col-md-2" style="white-space: nowrap;">
 										<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){
 						        			document.write("Place");
@@ -167,7 +155,7 @@
 						        		}
 						        		</script>
 									</th>
-                        			<th class="col-md-1 hidden-md hidden-sm hidden-xs" style="white-space: nowrap;">
+                        			<th class="col-md-2 hidden-md hidden-sm hidden-xs" style="white-space: nowrap;">
 										<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){
 						        			document.write("Activity");
@@ -183,56 +171,37 @@
                         		</tr>
                         	</thead>
                         	<tbody>
-                        		
                         		<c:forEach items="${mysiteList}" var="MemberSiteVO" varStatus="status">
-                        		<tr class="clickable-row" data-href="/period/read?bno=${MemberSiteVO.bno}">
-                        			<td class="col-md-1 hidden-xs" style="vertical-align: middle;"><img class="thumb" src="${MemberSiteVO.first_image}"></td>
-                        			<td class="col-md-3" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.site_name}</td>
+               					<script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("<tr class=\"clickable-row\" data-href=\"/eng/period/read?bno=${MemberSiteVO.bno}\">");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("<tr class=\"clickable-row\" data-href=\"/china/period/read?bno=${MemberSiteVO.bno}\">");
+					        		}else{
+					        			document.write("<tr class=\"clickable-row\" data-href=\"/period/read?bno=${MemberSiteVO.bno}\">");
+					        		}
+				        		</script>
+									<td class="col-md-1 hidden-xs" style="vertical-align: middle;"><img class="thumb" src="${MemberSiteVO.first_image}"></td>
+                        			<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.site_name}</td>
                         			<td class="col-md-4 hidden-sm hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.address}</td>
                         			<td class="col-md-1 hidden-md hidden-sm hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.period}</td>
-                        			<td class="col-md-1 hidden-md hidden-sm hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.thema}</td>
+                        			<td class="col-md-2 hidden-md hidden-sm hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.thema}</td>
                         			<td class="col-md-1" style="vertical-align: middle">
-                        				<a class="btn btn-primary" role="button" href="/period/read?bno=${MemberSiteVO.bno}">
-                        					<script type="text/javascript">
-							        		if(window.location.href.indexOf("eng")!=-1){
-							        			document.write("View");
-							        		}else if(window.location.href.indexOf("china")!=-1){
-							        			document.write("移动");
-							        		}else{
-							        			document.write("이동");
-							        		}
-							        		</script>
-                        				</a>
+                       					<script type="text/javascript">
+						        		if(window.location.href.indexOf("eng")!=-1){
+						        			document.write("<a class=\"btn btn-primary\" role=\"button\" href=\"/eng/period/read?bno=${MemberSiteVO.bno}\">View</a>");
+						        		}else if(window.location.href.indexOf("china")!=-1){
+						        			document.write("<a class=\"btn btn-primary\" role=\"button\" href=\"/china/period/read?bno=${MemberSiteVO.bno}\">移动</a>");
+						        		}else{
+						        			document.write("<a class=\"btn btn-primary\" role=\"button\" href=\"/period/read?bno=${MemberSiteVO.bno}\">이동</a>");
+						        		}
+						        		</script>
                         			</td>
                         			<!-- 찜 목록 아이템 삭제 버튼 -->
                         			<td class="col-md-1" style="vertical-align: middle">
-                        				<script type="text/javascript">
-	                        			    $(function(){
-	                        			    	$("#delbtn").click(function(e){
-	                        			    		e.preventDefault();
-	                        			    		
-	                        			    		var jno=${MemberSiteVO.jno};
-	                        			    		$.ajax({
-	                        			    		  url:"/jimdel",
-	                        			    		  type:'post',
-	                        			    		  data:{
-	                        			    		  	jno:jno,
-	                        			    		  },
-	                        			    		  success:function(){
-	      								        		if(window.location.href.indexOf("eng")!=-1){
-	    								        			document.write("The place has been removed from your list");
-	    								        		}else if(window.location.href.indexOf("china")!=-1){
-	    								        			document.write("该地点已从您的列表中删除");
-	    								        		}else{
-	    								        			document.write("장소가 찜목록에서 삭제되었습니다");
-	    								        		}
-	                        			    		  }	
-	                        			    		});
-	                        			    	});
-	                        			    });
-                        				</script>
+                        				<div class="delcol">
                         				<form>
-                        					<button id="delbtn" type="submit" class="btn btn-warning">
+                        					<button id="delbtn${MemberSiteVO.jno}" type="button" class="btn btn-warning">
                         						<script type="text/javascript">
 								        		if(window.location.href.indexOf("eng")!=-1){
 								        			document.write("Remove");
@@ -243,7 +212,34 @@
 								        		}
 								        		</script>
                         					</button>
+					                       	<script type="text/javascript">
+					                       		$("#delbtn${MemberSiteVO.jno}").click(function(e){
+										    		e.preventDefault();
+										    		
+										    		var jno=${MemberSiteVO.jno};
+										    		$.ajax({
+										    		  url:"/jimdel",
+										    		  type:'post',
+										    		  data:{
+										    		  	jno:jno,
+										    		  },
+										    		  success:function(data){
+											        		if(window.location.href.indexOf("eng")!=-1){
+										        				alert("The place has been removed from your list");
+										        	        	window.location.href="/eng/mypage";
+										        			}else if(window.location.href.indexOf("china")!=-1){
+										        				alert("该地点已从您的列表中删除");
+										        	        	window.location.href="/china/mypage";
+										        			}else{
+										        				alert("장소가 찜목록에서 삭제되었습니다");
+										        	        	window.location.href="/mypage";
+										        			}
+										    		  }	
+										    		});
+										    	});
+											</script>
                         				</form>
+                        				</div>
                         			</td>
                         		</tr>
                         		</c:forEach>

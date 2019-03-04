@@ -61,11 +61,11 @@
                                 <div class="center gap fade-down section-heading">
 	                                <script type="text/javascript">
 					        		if(window.location.href.indexOf("eng")!=-1){
-					        			document.write("<h2 class="main-title">My Page</h2><hr><p>My Places · My Comments · Account</p>");
+					        			document.write("<h2 class=\"main-title\">My Page</h2><hr><p>My Places · My Comments · Account</p>");
 					        		}else if(window.location.href.indexOf("china")!=-1){
-					        			document.write("<h2 class="main-title">我的页面</h2><hr><p>我的地点 · 我的评论 · 帐户</p>");
+					        			document.write("<h2 class=\"main-title\">我的页面</h2><hr><p>我的地点 · 我的评论 · 帐户</p>");
 					        		}else{
-					        			document.write("<h2 class="main-title">마이페이지</h2><hr><p>찜 목록 · 내 댓글 · 정보수정</p>");
+					        			document.write("<h2 class=\"main-title\">마이페이지</h2><hr><p>찜 목록 · 내 댓글 · 정보수정</p>");
 					        		}
 					        		</script>
                                 </div>
@@ -85,11 +85,11 @@
                     <div class="col-md-2 fade-up">
                         <script type="text/javascript">
 		        		if(window.location.href.indexOf("eng")!=-1){
-		        			document.write("<h3>My Page</h3><p><a href="/mypage">My Places</a><br/><a href="/mycomment">My Comments</a><br/><a href="/myinfo">Account</a><br/></p>");
+		        			document.write("<h3>My Page</h3><p><a href=\"/eng/mypage\">My Places</a><br/><a href=\"/eng/mycomment\">My Comments</a><br/><a href=\"/eng/myinfo\">Account</a><br/></p>");
 		        		}else if(window.location.href.indexOf("china")!=-1){
-		        			document.write("<h3>我的页面</h3><p><a href="/mypage">我的地点</a><br/><a href="/mycomment">我的评论</a><br/><a href="/myinfo">帐户</a><br/></p>");
+		        			document.write("<h3>我的页面</h3><p><a href=\"/china/mypage\">我的地点</a><br/><a href=\"/china/mycomment\">我的评论</a><br/><a href=\"/china/myinfo\">帐户</a><br/></p>");
 		        		}else{
-		        			document.write("<h3>마이페이지</h3><p><a href="/mypage">찜 목록</a><br/><a href="/mycomment">내 댓글</a><br/><a href="/myinfo">정보수정</a><br/></p>");
+		        			document.write("<h3>마이페이지</h3><p><a href=\"/mypage\">찜 목록</a><br/><a href=\"/mycomment\">내 댓글</a><br/><a href=\"/myinfo\">정보수정</a><br/></p>");
 		        		}
 		        		</script>
                     </div><!-- col -->
@@ -160,24 +160,30 @@
 				        	</thead>
 				        	<tbody>
 				        		<c:forEach items="${mycommentList}" var="ReplyVO" varStatus="status">
-				        		<tr class="clickable-row" data-href="/period/read?bno=${ReplyVO.bno}">
+               					<script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("<tr class=\"clickable-row\" data-href=\"/eng/period/read?bno=${ReplyVO.bno}\">");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("<tr class=\"clickable-row\" data-href=\"/china/period/read?bno=${ReplyVO.bno}\">");
+					        		}else{
+					        			document.write("<tr class=\"clickable-row\" data-href=\"/period/read?bno=${ReplyVO.bno}\">");
+					        		}
+				        		</script>
 									<td class="col-md-1" style="vertical-align: middle">${status.index+1}</td><!-- 글번호는 프론트에서 처리 -->
 									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;">${ReplyVO.site_name}</td>
 									<td class="col-xs-1 hidden-xs" style="vertical-align: middle; white-space: nowrap;">${ReplyVO.reply_text}</td>
 									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;"><fmt:formatDate value="${ReplyVO.update_date}" pattern="yyyy/MM/dd"/></td>
 									<!-- 댓글이 작성된 페이지로 이동하는 이동 버튼 (시대 페이지 기준 주소) -->
 									<td class="col-md-1" style="vertical-align: middle">
-										<a role="button" class="btn btn-primary" href="/period/read?bno=${ReplyVO.bno}">
-                        					<script type="text/javascript">
+		               					<script type="text/javascript">
 							        		if(window.location.href.indexOf("eng")!=-1){
-							        			document.write("View");
+							        			document.write("<a role=\"button\" class=\"btn btn-primary\" href=\"/eng/period/read?bno=${ReplyVO.bno}\">View</a>");
 							        		}else if(window.location.href.indexOf("china")!=-1){
-							        			document.write("移动");
+							        			document.write("<a role=\"button\" class=\"btn btn-primary\" href=\"/china/period/read?bno=${ReplyVO.bno}\">移动</a>");
 							        		}else{
-							        			document.write("이동");
+							        			document.write("<a role=\"button\" class=\"btn btn-primary\" href=\"/period/read?bno=${ReplyVO.bno}\">이동</a>");
 							        		}
-							        		</script>
-										</a>
+						        		</script>
 									</td>
 								</tr>
 				        		</c:forEach>

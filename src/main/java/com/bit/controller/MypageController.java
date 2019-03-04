@@ -66,13 +66,6 @@ public class MypageController {
 		model.addAttribute("mysiteList", mysiteList);
 		return "mypage/mypage";
 	}
-	// /mypage POST방식 접근 -> 찜목록 항목 삭제 페이지
-	@RequestMapping(value="/mypage", method = RequestMethod.POST)
-	public String mysitedel(@RequestParam("jno") int jno) throws Exception {
-		logger.info(jno+"");
-		service.deleteSiteMember(jno);
-		return "mypage/mysite";
-	}
 	// /jimdel POST방식 접근 -> 찜목록 항목 삭제 (비동기통신)
 	@ResponseBody
 	@RequestMapping(value="/jimdel", method = RequestMethod.POST)
@@ -163,6 +156,7 @@ public class MypageController {
 		List<MemberVO> memberList = service.selectMember(user_id);
 		logger.info(memberList.toString());
 		model.addAttribute("memberList", memberList);
+		logger.info(lang);
 		return "mypage/myinfo";
 	}
 	// /myinfo POST방식 접근 -> 정보 수정 성공 페이지
@@ -174,7 +168,7 @@ public class MypageController {
 	}
 	@RequestMapping(value = "/{lang}/myinfo", method = RequestMethod.POST)
 	public String myinfopost(MemberVO member, @PathVariable String lang) throws Exception {
-		logger.info(member.toString());
+		logger.info(member.toString()+" : "+lang);
 		service.updateMember(member);
 		return "mypage/myupdate";
 	}

@@ -48,13 +48,10 @@
 					 	if(("${login_id2}"=="" || "${login_id2}"==null) && ("${login_id}"=="" || "${login_id}"==null)){
 					 		document.write("<li><a href='/join'>회원가입</a></li>");
 					 		document.write("<li><a href='/login'>로그인</a></li>");
-
 					 	}
 					 	else{
-						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>로그아웃</a></li>");
 		                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
-
 					 	}
 	                    document.write("<li><a href='/write'>공지사항</a></li>");
                     }
@@ -72,12 +69,10 @@
 					 	if(("${login_id2}"=="" || "${login_id2}"==null) && ("${login_id}"=="" || "${login_id}"==null)){
 					 		document.write("<li><a href='/eng/join'>JOIN</a></li>");
 					 		document.write("<li><a href='/eng/login'>LOGIN</a></li>");
-		                    document.write("<li><a id='mypage' href='/eng/mypage'>MYPAGE</a></li>"); 
-
 					 	}
 					 	else{
-						 	
-					 		document.write("<li><a href='/logout' onclick='logout()'>LOGOUT</a></li>");
+		                    document.write("<li><a href='/logout' onclick='logout()'>LOGOUT</a></li>");
+		                    document.write("<li><a id='mypage' href='/eng/mypage'>MYPAGE</a></li>"); 
 					 	}
 	                    document.write("<li><a href='/eng/write'>NOTICE</a></li>");
                     }
@@ -95,10 +90,8 @@
 					 	if(("${login_id2}"=="" || "${login_id2}"==null) && ("${login_id}"=="" || "${login_id}"==null)){
 					 		document.write("<li><a href='/china/join'>加入会员</a></li>");
 					 		document.write("<li><a href='/china/login'>签到</a></li>");
-
 					 	}
 					 	else{
-						 	
 					 		document.write("<li><a href='/logout' onclick='logout()'>退出 </a></li>");
 		                    document.write("<li><a id='mypage' href='/china/mypage'>我的页面</a></li>"); 
 
@@ -127,7 +120,6 @@
 		                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
 
 					 	}
-	                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
 	                    document.write("<li><a href='/write'>공지사항</a></li>");
                     }
                     </script>

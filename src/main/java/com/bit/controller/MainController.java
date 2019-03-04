@@ -137,7 +137,12 @@ public class MainController {
 	
 	@RequestMapping(value = "/intro", method = RequestMethod.GET)
 	public String intro() {
-		return "intro-new";
+		return "intro";
+	}
+	// 소개 페이지 다국어 대응 컨트롤러 - 도형
+	@RequestMapping(value = "/{lang}/intro", method = RequestMethod.GET)
+	public String intro(@PathVariable String lang) {
+		return "intro";
 	}
 	
 	

@@ -332,6 +332,38 @@ $(function(){
 	if(windowWidth<=620){
 		//$("img[name=modal_food]").width(windowWidth-50);
 	}
+	
+	// 찜목록 추가버튼 ajax 코드 - 도형
+	$("#jimbtn").click(function(e){
+		e.preventDefault();
+		
+		var bno=${read.bno};
+		var user_id;
+		if("${login_id}"!=""){
+			user_id="${login_id}";
+		}else if("${login_id2}"!=""){
+			user_id="${login_id2}";
+		}else{
+			alert("로그인 후 이용이 가능합니다");
+			return;
+		}
+		
+		$.ajax({
+		  url:"/jimadd",
+		  type:'post',
+		  data:{
+		  	user_id:user_id,
+		  	bno:bno,
+		  },
+		  success:function(data){
+		  	if(data==0){
+		  		alert("찜목록에 추가되었습니다");
+		  	}else{
+		  		alert("이 장소는 이미 추가하셨습니다");
+		  	}
+		  }	
+		});
+	});
 });
 
 </script>
@@ -385,7 +417,9 @@ $(function(){
 							        <i class='fa fa-star fa-fw'></i>
 							      </li>
 							    </ul>
-							    <a href="/mypage/add/${read.bno}" role="button" class="btn btn-primary"style="margin-bottom:18px;">찜하기</a>
+							    <form>
+								    <button id="jimbtn" type="button" class="btn btn-primary" style="margin-bottom:18px;">찜하기</button>
+							    </form>
 							  </div>
 						</section>
                     </aside>        

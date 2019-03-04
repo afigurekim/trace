@@ -203,7 +203,7 @@
 		                    </c:forEach>
 						</form>
                 </div><!-- row -->  
-                <!-- <div class="gap"></div> -->
+                <div class="gap"></div>
             </div>
             </div>
         </section><!-- section -->

@@ -39,7 +39,7 @@
  background-image: url("../resources/imgs/cloud.png");
 }
 		#single-page-slider {
-			background-image: url("../resources/imgs/banner/region-all-banner.jpg");
+			background-image: url("../resources/imgs/banner/period-all-banner.jpg");
 			bakcground-color: #01b29e;
 			background-size: cover;
 			background-repeat: no-repeat;

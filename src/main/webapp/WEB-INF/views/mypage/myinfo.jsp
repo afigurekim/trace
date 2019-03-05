@@ -32,58 +32,80 @@
     <script type="text/javascript">
 	function checkPwd(){
 		var passReg=/[a-z0-9]{10,15}$/g;
+		var password=$("#passwd").val();
+		var repassword=$("#repasswd").val();
+		var check_pw=password.search(/[0-9]/g);
+		var check_pw2=password.search(/[a-z]/ig);
 	
-	 	
-	var password=$("#passwd").val();
-	var repassword=$("#repasswd").val();
-	var check_pw=password.search(/[0-9]/g);
-	var check_pw2=password.search(/[a-z]/ig);
-	
-	
-	if(password.length<6){
-		$("#passwd").css("background-color","#FFCECE");
-	}
-	if(repassword.length<6){
-		$("#passwd").css("background-color","#FFCECE");
-	}
-	if(password ==""){
-		$("#passwd").css("background-color","#FFCECE");
-	}
-	else if(repassword==""){
-		$("#repasswd").css("background-color","#FFCECE");
-	}
-	else if(password!=repassword){
-		$("#passwd").css("background-color","#FFCECE");
-		$("#repasswd").css("background-color","#FFCECE");
-	}
-	else if(password.length>=6 && repassword.length >=6 && password==repassword && passReg.test(password) &&check_pw >=0 && check_pw2>=0)
-	{
-		$("#passwd").css("background-color","#B0F6AC");
-		$("#repasswd").css("background-color","#B0F6AC");
-	}
-	
+		if(password.length<6){
+			$("#passwd").css("background-color","#FFCECE");
+		}
+		if(repassword.length<6){
+			$("#passwd").css("background-color","#FFCECE");
+		}
+		if(password ==""){
+			$("#passwd").css("background-color","#FFCECE");
+		}
+		else if(repassword==""){
+			$("#repasswd").css("background-color","#FFCECE");
+		}
+		else if(password!=repassword){
+			$("#passwd").css("background-color","#FFCECE");
+			$("#repasswd").css("background-color","#FFCECE");
+		}
+		else if(password.length>=6 && repassword.length >=6 && password==repassword && passReg.test(password) &&check_pw >=0 && check_pw2>=0)
+		{
+			$("#passwd").css("background-color","#B0F6AC");
+			$("#repasswd").css("background-color","#B0F6AC");
+		}
 	}
 	
 	$(function(){
-		
-	$("#joinform").submit(function(event){
-		var that=$(this);
-		var pw1=$("#passwd").val();
-		var pw2=$("#repasswd").val();
-		
-		if(pw1!=pw2){
-			alert("비밀번호가 서로 다릅니다.");
-			event.preventDefault();
-		}else{
-			that.submit();
-		}
-		
-	});  
-	
-	
-	
+   		$("#join-submit").click(function(e){
+    		e.preventDefault();
+
+			var pw1=$("#passwd").val();
+			var pw2=$("#repasswd").val();
+			
+			if(pw1!=pw2){
+        		if(window.location.href.indexOf("eng")!=-1){
+        			alert("Please check that PASSWORD and REPASSWORD are same.");
+        		}else if(window.location.href.indexOf("china")!=-1){
+        			alert("密码各不相同。");
+        		}else{
+        			alert("비밀번호가 서로 다릅니다.");
+        		}
+			}else{
+				var user_id = $("#userid").val();
+				var user_name = $("#name").val();
+				var user_pw = $("#passwd").val();
+				var phone = $("#phone").val();
+				
+				$.ajax({
+		    		  url:"/myupdate",
+		    		  type:'post',
+		    		  data:{
+		    		  	user_id:user_id,
+		    		  	user_name:user_name,
+		    		  	user_pw:user_pw,
+		    		  	phone:phone,
+		    		  },
+		    		  success:function(data){
+			        		if(window.location.href.indexOf("eng")!=-1){
+		        				alert("The account information has been updated.");
+		        	        	window.location.href="/eng/myinfo";
+		        			}else if(window.location.href.indexOf("china")!=-1){
+		        				alert("帐户信息已更新。");
+		        	        	window.location.href="/china/myinfo";
+		        			}else{
+		        				alert("정보수정이 성공적으로 완료되었습니다.");
+		        	        	window.location.href="/myinfo";
+		        			}
+		    		  }	
+	    		});
+			}
+    	});
 	});
-	
 	
 	$(function(){
 		var windowWidth = $( window ).width();
@@ -180,11 +202,11 @@
 						</h3>
 		                <script type="text/javascript">
 			        		if(window.location.href.indexOf("eng")!=-1){
-			        			document.write("<form role=\"joinform\" id=\"joinform\" action=\"/eng/myinfo\" method=\"post\">");
+			        			document.write("<form role=\"joinform\" id=\"joinform\" method=\"post\">");
 			        		}else if(window.location.href.indexOf("china")!=-1){
-			        			document.write("<form role=\"joinform\" id=\"joinform\" action=\"/china/myinfo\" method=\"post\">");
+			        			document.write("<form role=\"joinform\" id=\"joinform\" method=\"post\">");
 			        		}else{
-			        			document.write("<form role=\"joinform\" id=\"joinform\" action=\"/myinfo\" method=\"post\">");
+			        			document.write("<form role=\"joinform\" id=\"joinform\" method=\"post\">");
 			        		}
 		        		</script>
 		                	<c:forEach items="${memberList}" var="MemberVO" varStatus="status">
@@ -216,7 +238,7 @@
 					        		</script>
 								</label><br>
 			                    <b>${MemberVO.user_id}</b>
-			                    <input type="hidden" name="user_id" value="${MemberVO.user_id}"><br>
+			                    <input type="hidden" id="userid" name="user_id" value="${MemberVO.user_id}"><br>
 			                    <span><small><b>
 		                        	<script type="text/javascript">
 					        		if(window.location.href.indexOf("eng")!=-1){
@@ -304,7 +326,7 @@
 		                    </div>
 		                   <!-- 정보수정이 성공하면 성공 페이지로 이동 -->
 		                    <div class="form-group text-center">
-		                        <button type="submit" id="join-submit" class="btn btn-primary">
+		                        <button type="button" id="join-submit" class="btn btn-primary">
 		                        	<script type="text/javascript">
 					        		if(window.location.href.indexOf("eng")!=-1){
 					        			document.write("Submit");

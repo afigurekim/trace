@@ -1,5 +1,6 @@
 package com.bit.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -70,7 +71,8 @@ public class ThemaController {
 			try {
 				System.out.println("앙무띠");
 
-				model.addAttribute("read",service.readThema(bno));
+				Historic_siteVO read= service.readThema(bno);
+				model.addAttribute("read",read);
 				
 				
 				Historic_site_detailVO detail = service.readThema_detail(bno);
@@ -104,6 +106,22 @@ public class ThemaController {
 				//System.out.println(service.foodcount(bno));
 				//pageMaker.setTotalCount(service.foodcount(bno));
 				//model.addAttribute("pageMaker",pageMaker);
+				Double latlng=Double.parseDouble(read.getLatitude())+Double.parseDouble(read.getLongitude());
+				//double main_latlng=Double.parseDouble(latlng);
+				System.out.println(latlng);
+				String arr[]= read.getAddress().split(" ");
+				List<Historic_siteVO> near = service.nearHistoric(latlng,bno);
+				List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
+				for(int i=0;i<near.size();i++) {
+					if(near.get(i).getAddress().indexOf(arr[0])!=-1) {
+						near_historic.add(near.get(i));
+					}
+				}
+			
+				for(int i=0;i<near_historic.size();i++) {
+					System.out.println(near_historic.get(i).getAddress());
+				}
+				model.addAttribute("near_historic",near_historic);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -121,6 +139,18 @@ public class ThemaController {
 				System.out.println("앙무띠");
 
 				Historic_siteVO read=service.readThema(bno);
+				Double latlng=Double.parseDouble(read.getLatitude())+Double.parseDouble(read.getLongitude());
+				//double main_latlng=Double.parseDouble(latlng);
+				System.out.println(latlng);
+				String arr[]= read.getAddress().split(" ");
+				List<Historic_siteVO> near = service.nearHistoric(latlng,bno);
+				List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
+				for(int i=0;i<near.size();i++) {
+					if(near.get(i).getAddress().indexOf(arr[0])!=-1) {
+						near_historic.add(near.get(i));
+					}
+				}
+			
 				read.setSite_name(tr.translate(lang, read.getSite_name(),"region"));
 				read.setAddress(tr.translate(lang, read.getAddress(), "region"));
 				model.addAttribute("read",read);
@@ -166,6 +196,12 @@ public class ThemaController {
 				//System.out.println(service.foodcount(bno));
 				//pageMaker.setTotalCount(service.foodcount(bno));
 				//model.addAttribute("pageMaker",pageMaker);
+				
+				for(int i=0;i<near_historic.size();i++) {
+					System.out.println(near_historic.get(i).getAddress());
+					near_historic.get(i).setSite_name(tr.translate(lang, near_historic.get(i).getSite_name(), "historic"));
+				}
+				model.addAttribute("near_historic",near_historic);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

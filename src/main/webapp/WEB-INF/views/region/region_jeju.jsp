@@ -39,7 +39,7 @@
  background-image: url("../resources/imgs/cloud.png");
 }
 		#single-page-slider {
-			background-image: url("../resources/imgs/banner/region-jeju-banner.jpg");
+			background-image: url("../../../resources/imgs/banner/region-jeju-banner.jpg");
 			bakcground-color: #01b29e;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -185,9 +185,22 @@ $(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">지역별</h2>
-                                    <hr>
-                                    <p>서울 · 인천 · 경기 · 강원 · 충청 · 경상 · 전라 · 제주</p>
+                                <script>
+                                	if(window.location.href.indexOf("eng")!=-1){
+                                		document.write("<h2 class='main-title'>REGION</h2>");
+                                		document.write("<hr>");
+                                		document.write("<p>Seoul · Incheon · Gyeonggi · Gangwon · Chungcheong · Gyeongsang · Jeolla · Jeju</p>");
+                                	}else if(window.location.href.indexOf("china")!=-1){
+                                   		document.write("<h2 class='main-title'>各地区</h2>");
+                                		document.write("<hr>");
+                                		document.write("<p>首尔 · 仁川 · 京畿道 · 江原道 · 忠清道 · 庆尚道 · 全罗道 · 济州岛</p>");
+                                	}else{                                	
+                                		document.write("<h2 class='main-title'>지역별</h2>");
+                                		document.write("<hr>");
+                                		document.write("<p>서울 · 인천 · 경기 · 강원 · 충청 · 경상 · 전라 · 제주</p>");
+                                	}
+                                </script>
+                            
                                 </div>
                             </div>   
                         </div>
@@ -201,17 +214,42 @@ $(function(){
         <section id="portfolio" class="white">
             <div class="container">
                     
-                    <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary" id="all_region" href="#" data-filter="*">전체보기</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="seoul" href="/region/seoul" data-filter="*">서울</a></li>
-                        <li><a class="btn btn-outlined btn-primary"  id="incheon" href="#" data-filter="*">인천</a></li>
-                        <li><a class="btn btn-outlined btn-primary "  id="kyunggi" href="#" data-filter="*">경기도</a></li>
-                        <li><a class="btn btn-outlined btn-primary " id="kangwon" href="#" data-filter="*">강원도</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="chungchung" href="#" data-filter="*">충청도</a></li>
-                    	<li><a class="btn btn-outlined btn-primary" id="kyungsang" href="#" data-filter="*">경상도</a></li>
-         				<li><a class="btn btn-outlined btn-primary" id="junla" href="#" data-filter="*">전라도</a></li>
-                        <li><a class="btn btn-outlined btn-primary active" id="jeju" href="#" data-filter="*">제주도</a></li>
-                    	
+                    <script>
+                    	document.write("<ul class='portfolio-filter fade-down center'>");
+                    	if(window.location.href.indexOf("eng")!=-1){
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='all_region' href='#' data-filter='*'>ALL</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='seoul' data-filter='*'>Seoul</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='incheon' href='#' data-filter='*'>Incheon</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='kyunggi' href='#' data-filter='*'>Kyunggi</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='kangwon' href='#' data-filter='*'>Kangwon</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='chungchung' href='#' data-filter='*'>Chungcheong</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='kyungsang' href='#' data-filter='*'>Kyungsang</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='junla' href='#' data-filter='*'>Jeolla</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary active'  id='jeju' href='#' data-filter='*'>Jeju</a></li>");
+                    	}else if(window.location.href.indexOf("china")!=-1){
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='all_region' href='#' data-filter='*'>全面查看</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='seoul' data-filter='*'>首尔</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='incheon' href='#' data-filter='*'>仁川</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='kyunggi' href='#' data-filter='*'>京畿道</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='kangwon' href='#' data-filter='*'>江原道</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='chungchung' href='#' data-filter='*'>忠清道</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='kyungsang' href='#' data-filter='*'>庆尚道</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='junla' href='#' data-filter='*'>全罗道</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary active'  id='jeju' href='#' data-filter='*'>济州岛</a></li>");
+                    	}else{
+                    		
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='all_region' href='#' data-filter='*'>전체보기</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='seoul' data-filter='*'>서울</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='incheon' href='#' data-filter='*'>인천</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='kyunggi' href='#' data-filter='*'>경기도</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='kangwon' href='#' data-filter='*'>강원도</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='chungchung' href='#' data-filter='*'>충청도</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='kyungsang' href='#' data-filter='*'>경상도</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary'  id='junla' href='#' data-filter='*'>전라도</a></li>");
+	                    	document.writeln("<li><a class='btn btn-outlined btn-primary active'  id='jeju' href='#' data-filter='*'>제주도</a></li>");
+                    	}
+
+                    </script>
                     </ul><!--/#portfolio-filter-->
 						
                     <ul class="portfolio-items col-3 isotope fade-up">

@@ -39,7 +39,7 @@
  background-image: url("../resources/imgs/cloud.png");
 }
 		#single-page-slider {
-			background-image: url("../resources/imgs/banner/thema-study-banner.jpg");
+			background-image: url("../../../resources/imgs/banner/thema-study-banner.jpg");
 			bakcground-color: #01b29e;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -128,7 +128,7 @@ $(function(){
 <body>
 <%@include file="../Header.jsp" %>
 
-    <section id="single-page-slider" class="no-margin">
+      <section id="single-page-slider" class="no-margin">
         <div class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="item active">
@@ -136,9 +136,22 @@ $(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">테마별</h2>
-                                    <hr>
-                                    <p>교육 · 가족 · 데이트 </p>
+                                	<script>
+                                		if(window.location.href.indexOf("eng")!=-1){
+                                			document.write("<h2 class='main-title'>THEMA</h2>");
+                                			document.write("<hr>");
+                                			document.write("Study · Family · Date");
+                                		}else if(window.location.href.indexOf("china")!=-1){
+                                			document.write("<h2 class='main-title'>主题</h2>");
+                                			document.write("<hr>");
+                                			document.write("教育  · 家族  · 约会");
+                                		}else{
+                                			document.write("<h2 class='main-title'>테마별</h2>");
+                                			document.write("<hr>");
+                                			document.write("교육 · 가족 · 데이트");
+                                		}
+                                	</script>
+                          
                                 </div>
                             </div>   
                         </div>
@@ -147,17 +160,34 @@ $(function(){
             </div><!--/.carousel-inner-->
         </div><!--/.carousel-->
     </section><!--/#main-slider-->
-
     <div id="content-wrapper">
         <section id="portfolio" class="white">
             <div class="container">
                     
-                    <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary" id="all_thema" href="#" data-filter="*">전체보기</a></li>
-                        <li><a class="btn btn-outlined btn-primary  active" id="study" data-filter="*">교육</a></li>
-                        <li><a class="btn btn-outlined btn-primary "  id="date" href="#" data-filter="*">데이트</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="family" href="#" data-filter="*">가족</a></li>
-                    
+              <script>
+                    	document.write("<ul class='portfolio-filter fade-down center'>");
+                    	if(window.location.href.indexOf("eng")!=-1){
+                    		document.writeln("<li><a class='btn btn-outlined btn-primary' id='all_thema' href='#' data-filter='*'>ALL</a></li>");
+                        	document.writeln("<li><a class='btn btn-outlined btn-primary active' id='study' href='#' data-filter='*'>Study</a></li>");
+                        	document.writeln("<li><a class='btn btn-outlined btn-primary' id='date' href='#' data-filter='*'>Date</a></li>");
+                        	document.writeln("<li><a class='btn btn-outlined btn-primary' id='family' href='#' data-filter='*'>Family</a></li>");
+
+                    	}else if(window.location.href.indexOf("china")!=-1){
+                    		document.writeln("<li><a class='btn btn-outlined btn-primary' id='all_thema' href='#' data-filter='*'>전체보기</a></li>");
+                        	document.writeln("<li><a class='btn btn-outlined btn-primary active' id='study' href='#' data-filter='*'>教育</a></li>");
+                        	document.writeln("<li><a class='btn btn-outlined btn-primary' id='date' href='#' data-filter='*'>约会</a></li>");
+                        	document.writeln("<li><a class='btn btn-outlined btn-primary' id='family' href='#' data-filter='*'>家族</a></li>");
+
+                    	}else{
+                    		
+                    		document.writeln("<li><a class='btn btn-outlined btn-primary' id='all_thema' href='#' data-filter='*'>전체보기</a></li>");
+                        	document.writeln("<li><a class='btn btn-outlined btn-primary active' id='study' href='#' data-filter='*'>교육</a></li>");
+                        	document.writeln("<li><a class='btn btn-outlined btn-primary' id='date' href='#' data-filter='*'>데이트</a></li>");
+                        	document.writeln("<li><a class='btn btn-outlined btn-primary' id='family' href='#' data-filter='*'>가족</a></li>");
+
+                    	}
+                    	
+                    	</script>
                     </ul><!--/#portfolio-filter-->
 						
                     <ul class="portfolio-items col-3 isotope fade-up">

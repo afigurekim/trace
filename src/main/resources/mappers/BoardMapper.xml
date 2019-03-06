@@ -22,7 +22,11 @@ where bno=#{bno}
 <delete id="delete">
 	delete from tbl_board where bno=#{bno}
 </delete>
-
+<select id="nearHistoric" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+select * from HISTORIC_SITE where bno !=#{bno} order by abs(#{latlng}-(latitude+longitude)) asc limit 4
+]]>
+</select>
 <insert id="star_insert">
 insert into HISTORIC_SITE_STAR(bno,user_id,star) values(#{bno},#{user_id},#{star})
 </insert>

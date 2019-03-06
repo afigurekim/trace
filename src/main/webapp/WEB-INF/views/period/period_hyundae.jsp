@@ -39,7 +39,7 @@
  background-image: url("../resources/imgs/cloud.png");
 }
 		#single-page-slider {
-			background-image: url("../resources/imgs/banner/period-hyundae-banner.jpg");
+			background-image: url("../../../resources/imgs/banner/period-hyundae-banner.jpg");
 			bakcground-color: #01b29e;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -153,9 +153,22 @@ $(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">시대별</h2>
-                                    <hr>
-                                    <p>선사 · 삼국 · 고려 · 조선 · 근현대 </p>
+                                	<script>
+                                		if(window.location.href.indexOf("eng")!=-1){
+                                			document.write("<h2 class='main-title'>PERIOD</h2>");
+                                			document.write("<hr>");
+                                			document.write("<p>Prehistoric · Three Kindoms · Goryeo · Joseon · Modern  ")
+                                		}else if(window.location.href.indexOf("china")!=-1){
+                                			document.write("<h2 class='main-title'>各时代</h2>");
+                                			document.write("<hr>");
+                                			document.write("<p>禅师 · 三国 · 高丽 · 朝鲜 · 近现代  ")
+                                		}else{
+                                			document.write("<h2 class='main-title'>시대별</h2>");
+                                			document.write("<hr>");
+                                			document.write("<p>선사 · 삼국 · 고려 · 조선 · 근현대 </p>");
+                                		}
+                                	</script>
+                               
                                 </div>
                             </div>   
                         </div>
@@ -169,15 +182,36 @@ $(function(){
         <section id="portfolio" class="white">
             <div class="container">
                     
-                    <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary" id="all_period" href="#" data-filter="*">전체보기</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="sunsa" data-filter="*">선사시대</a></li>
-                        <li><a class="btn btn-outlined btn-primary"  id="samgook" href="#" data-filter="*">삼국시대</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="korea" href="#" data-filter="*">고려시대</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="josun" href="#" data-filter="*">조선시대</a></li>
-                        <li><a class="btn btn-outlined btn-primary active" id="hyundae" href="#" data-filter="*">근현대</a></li>
-                    
-                    </ul><!--/#portfolio-filter-->
+                   
+                    <script>
+                    if(window.location.href.indexOf("eng")!=-1){
+                    	document.write("<ul class='portfolio-filter fade-down center'>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='all_period' href='#' data-filter='*'>ALL</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='sunsa' data-filter='*'>Prehistoric</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='samgook' data-filter='*'>Three Kindoms</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='korea' data-filter='*'>Goryeo</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='josun' data-filter='*'>Joseon</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary active' id='hyundae' data-filter='*'>Modern</a></li>");
+                    }else if(window.location.href.indexOf("china")!=-1){
+                    	document.write("<ul class='portfolio-filter fade-down center'>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='all_period' href='#' data-filter='*'>全面查看</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='sunsa' data-filter='*'>禅师</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='samgook' data-filter='*'>三国</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='korea' data-filter='*'>高丽</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='josun' data-filter='*'>朝鲜</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary active' id='hyundae' data-filter='*'>近现代 </a></li>");
+                    }else{
+                    	document.write("<ul class='portfolio-filter fade-down center'>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary active' id='all_period' href='#' data-filter='*'>전체보기</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='sunsa' data-filter='*'>선사시대</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='samgook' data-filter='*'>삼국시대</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='korea' data-filter='*'>고려시대</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary' id='josun' data-filter='*'>조선시대</a></li>");
+                    	document.writeln("<li><a class='btn btn-outlined btn-primary active' id='hyundae' data-filter='*'>근현대</a></li>");
+                    }
+
+                    </script>
+           
 						
                     <ul class="portfolio-items col-3 isotope fade-up">
 				      <c:forEach items="${list}" var="Historic_siteVO" varStatus="status">

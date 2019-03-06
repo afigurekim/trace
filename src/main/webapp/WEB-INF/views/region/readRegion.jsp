@@ -297,6 +297,9 @@ $(function(){
 
 	}
 	
+	$("img[name=near_image]").height(150);
+	$("#li_near>li").width(250);
+	
 	$(window).resize(function(){
 		 windowWidth = $( window ).width();
 	
@@ -580,6 +583,33 @@ $(function(){
         </div>
     </div><!--/.col-md-8-->
 </div><!--/.row-->
+    </div>
+    
+    <div>
+    	<h3>근처 유적지</h3>
+    
+      <ul class="portfolio-items col-3 isotope fade-up" id="li_near">
+    <c:forEach items="${near_historic}" var="Historic_siteVO">
+          <li class='portfolio-item apps seoul isotope-item'  style="margin-right:10px;">
+    
+	 <script type="text/javascript">
+	 if(window.location.href.indexOf("eng")!=-1){
+	   document.write("<a href='/eng/period/read?bno=${Historic_siteVO.bno}'>");
+	
+	 }else if(window.location.href.indexOf("china")!=-1){
+	     document.write("<a href='/china/period/read?bno=${Historic_siteVO.bno}'>");
+	
+	 }else{
+	   document.write("<a href='/period/read?bno=${Historic_siteVO.bno}'>");
+	  
+	 }
+	 </script>
+     <img class="img-responsive img-blog" name="near_image" style="" src="${Historic_siteVO.first_image}">
+     <h5 style="overflow:hidden; width:100%;">${Historic_siteVO.site_name}</h5>
+     </a>
+     </li>
+    </c:forEach>
+    </ul>
     </div>
 </section><!--/#blog-->
 </div>

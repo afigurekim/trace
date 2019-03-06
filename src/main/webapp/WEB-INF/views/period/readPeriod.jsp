@@ -189,6 +189,7 @@ $(function(){
 	    	
 	    });
 	  });
+	  
 	 var dataset=new Array();
 	 var data1=0;
 	 var data2=0;
@@ -294,7 +295,9 @@ $(function(){
 		$("#food_image_modal").height(372);
 
 	}
-	
+	$("img[name=near_image]").height(150);
+	$("#li_near>li").width(250);
+
 	$(window).resize(function(){
 		 windowWidth = $( window ).width();
 	
@@ -395,7 +398,7 @@ $(function(){
                         <div class="widget tags">
                             <h3 class="widget-title">사용자 별점</h3>
                             <div id="canvas" style="width:1280px; margin:auto;">
-								<canvas id="myChart"style="float:left; margin-top:10px;margin-left:21px; width:400px;height:200px;"></canvas>
+								<canvas id="myChart"style="float:left; margin-top:10px;margin-right:10px; width:400px;height:200px;"></canvas>
 							</div>
                         </div><!--/.tags-->
 						<section class='rating-widget'>
@@ -537,9 +540,9 @@ $(function(){
 <div id="comments">
   <div id="comments-list">
    <ul class="timeline" style="margin-top:10px;">
-		<li class="time-label" id="repliesDiv" style="margin-bottom:30px;list-style-type:none; margin-left:-39px; font-size:20px; font-weight:700; height:30px;"><span class="bg-green">
+		<li class="time-label" id="repliesDiv" style="margin-bottom:30px;list-style-type:none; margin-left:-39px; font-size:20px; font-weight:700; height:30px;"><span class="bg-green" style="float:left">
 		<i class="fa fa-comments bg-blue"></i>
-		댓글</span>${reply_count}</li>
+		댓글  </span><p id="reply_count" style="margin-left:10px;"></p></li>
 	</ul>
 	<div class="text-center">
 		<ul id="pagination" class="pagination pagination-sm no-margin">
@@ -584,6 +587,32 @@ $(function(){
         </div>
     </div><!--/.col-md-8-->
 </div><!--/.row-->
+    </div>
+    <div>
+    	<h3>근처 유적지</h3>
+    
+      <ul class="portfolio-items col-3 isotope fade-up" id="li_near">
+    <c:forEach items="${near_historic}" var="Historic_siteVO">
+          <li class='portfolio-item apps seoul isotope-item'  style="margin-right:10px;">
+    
+	 <script type="text/javascript">
+	 if(window.location.href.indexOf("eng")!=-1){
+	   document.write("<a href='/eng/period/read?bno=${Historic_siteVO.bno}'>");
+	
+	 }else if(window.location.href.indexOf("china")!=-1){
+	     document.write("<a href='/china/period/read?bno=${Historic_siteVO.bno}'>");
+	
+	 }else{
+	   document.write("<a href='/period/read?bno=${Historic_siteVO.bno}'>");
+	  
+	 }
+	 </script>
+     <img class="img-responsive img-blog" name="near_image" style="" src="${Historic_siteVO.first_image}">
+     <h5 style="overflow:hidden; width:100%;">${Historic_siteVO.site_name}</h5>
+     </a>
+     </li>
+    </c:forEach>
+    </ul>
     </div>
 </section><!--/#blog-->
 </div>
@@ -1023,7 +1052,7 @@ $.ajax({
 	success:function(data){
 		console.log("+댓글 갯수+"+data.list.length);
 		var str="";
-
+		$("#reply_count").text(data.list.length);
 		printData(data.list,$("#repliesDiv"),$("#template"));
 		printPaging(data.pageMaker,$(".pagination"));
 		$("#modifyModal").modal('hide');

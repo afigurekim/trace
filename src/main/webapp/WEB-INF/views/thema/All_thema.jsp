@@ -124,6 +124,15 @@ $(function(){
 
 	});
 </script>
+    <style>
+		#single-page-slider {
+			background-image: url("../resources/imgs/banner/thema-all-banner.jpg");
+			bakcground-color: #01b29e;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	</style>
 </head><!--/head-->
 <body>
 <%@include file="../Header.jsp" %>

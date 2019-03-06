@@ -73,7 +73,7 @@ public class MypageController {
 		logger.info(jno+"");
 		service.deleteSiteMember(jno);
 	}
-	// /jimadd POST방식 접근 -> 찜목록 항목 추가
+	// /jimadd POST방식 접근 -> 찜목록 항목 추가 (비동기통신)
 	@ResponseBody
 	@RequestMapping(value="/jimadd", method = RequestMethod.POST)
 	public int jimadd(int bno, String user_id){
@@ -159,18 +159,18 @@ public class MypageController {
 		logger.info(lang);
 		return "mypage/myinfo";
 	}
-	// /myinfo POST방식 접근 -> 정보 수정 성공 페이지
-	@RequestMapping(value = "/myinfo", method = RequestMethod.POST)
-	public String myinfopost(MemberVO member) throws Exception {
-		logger.info(member.toString());
+	// /myupdate POST방식 접근 -> 정보 수정 (비동기 통신)
+	@ResponseBody
+	@RequestMapping(value="/myupdate", method = RequestMethod.POST)
+	public void myupdate(String user_id, String user_name, String user_pw, String phone) throws Exception {
+		MemberVO member = new MemberVO();
+		logger.info(user_id+" : "+user_name+" : "+user_pw+" : "+phone);
+		member.setUser_id(user_id);
+		member.setUser_name(user_name);
+		member.setUser_pw(user_pw);
+		member.setPhone(phone);
+		
 		service.updateMember(member);
-		return "mypage/myupdate";
-	}
-	@RequestMapping(value = "/{lang}/myinfo", method = RequestMethod.POST)
-	public String myinfopost(MemberVO member, @PathVariable String lang) throws Exception {
-		logger.info(member.toString()+" : "+lang);
-		service.updateMember(member);
-		return "mypage/myupdate";
 	}
 	
 }

@@ -310,6 +310,27 @@ select * from HISTORIC_SITE_IMAGE WHERE BNO=#{BNO} AND HISTORIC_SITE_IMAGE.SITE_
 	
 ]]>
 </select>
+<select id="religionlist" resultType="com.bit.domain.Historic_siteVO">
+<![CDATA[
+	select
+		*
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and thema like '%종교%' limit #{pageStart},#{perPageNum}
+	
+]]>
+</select>
+
+<select id="religioncount" resultType="int">
+<![CDATA[
+	select
+		count(*)
+	from
+		HISTORIC_SITE 
+	where FIRST_IMAGE != "" and thema like '%종교%' 
+	
+]]>
+</select>
 
 <!-- 지역별  -->
 

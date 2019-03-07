@@ -100,6 +100,9 @@ public interface BoardService {
 	
 	public int familycount() throws Exception;
 	
+	public List<Historic_siteVO> religionlist(Criteria cri)throws Exception;
+	
+	public int religioncount() throws Exception;
 	
 	
 	//지역별

@@ -102,6 +102,11 @@ public interface BoardDAO {
 	
 	public int familycount() throws Exception;
 	
+	public List<Historic_siteVO> religionlist(Criteria cri)throws Exception;
+	
+	public int religioncount() throws Exception;
+	
+	
 	//지역별
 	
 	public List<Historic_siteVO> regionlistAll(Criteria cri)throws Exception;

@@ -122,6 +122,17 @@ $(function(){
 			}
 	});
 
+	$("#Religion").click(function(){
+
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/thema/religion";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/thema/religion";
+		}else{
+			window.location.href="/thema/religion";
+		}
+	
+	});
 	});
 </script>
 </head><!--/head-->
@@ -159,7 +170,7 @@ $(function(){
             <div class="container">
                     
                     <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary active" id="all_thema" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary" id="all_thema" href="#" data-filter="*">
 	                        <script type="text/javascript">
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("View All"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全体"); }
@@ -173,7 +184,7 @@ $(function(){
 				        		else { document.write("교육"); }
 			        		</script>
 		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="family" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary active" id="family" href="#" data-filter="*">
 	                        <script type="text/javascript">
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Family"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("约会"); }
@@ -185,6 +196,13 @@ $(function(){
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Date"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("家庭"); }
 				        		else { document.write("데이트"); }
+			        		</script>
+		        		</a></li>
+		        		 		<li><a class="btn btn-outlined btn-primary"  id="Religion" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Religion"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("宗教"); }
+				        		else { document.write("종교"); }
 			        		</script>
 		        		</a></li>
                     </ul><!--/#portfolio-filter-->

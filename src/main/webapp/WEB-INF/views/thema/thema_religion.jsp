@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>지역별 인천</title>
+    <title>테마별 종교</title>
     <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="../../../resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="../../../resources/css/pe-icons.css" rel="stylesheet">
@@ -36,10 +36,10 @@
     </script>
 <style>
 #img_size{
- background-image: url("../../../resources/imgs/cloud.png");
+ background-image: url("../resources/imgs/cloud.png");
 }
 		#single-page-slider {
-			background-image: url("../../../resources/imgs/banner/region-kyunggi-banner.jpg");
+			background-image: url("../../../resources/imgs/banner/thema-study-banner.jpg");
 			bakcground-color: #01b29e;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -78,100 +78,64 @@ $(function(){
 	console.log(width);
 	console.log(height+"높이");
 	//alert($(".item-inner>a>img").eq(1).height(272));
-	$("#all_region").click(function(){
+	$("#all_thema").click(function(){
 		
 		if(window.location.href.indexOf("eng")!=-1){
-			window.location.href="/eng/region/all";
+			window.location.href="/eng/thema";
 		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/china/region/all";
+			window.location.href="/china/thema";
 		}else{
-			window.location.href="/region/all";
+			window.location.href="/thema";
 		}
-	});		
-	$("#seoul").click(function(){
-		
-		if(window.location.href.indexOf("eng")!=-1){
-			window.location.href="/eng/region/seoul";
-		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/china/region/seoul";
-		}else{
-			window.location.href="/region/seoul";
-		}	
-		
-	});
-	$("#incheon").click(function(){
-		if(window.location.href.indexOf("eng")!=-1){
-			window.location.href="/eng/region/incheon";
-		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/china/region/incheon";
-		}else{
-			window.location.href="/region/incheon";
-		}	
-		
-	});	
-	$("#kyunggi").click(function(){
-		if(window.location.href.indexOf("eng")!=-1){
-			window.location.href="/eng/region/kyunggi";
-		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/china/region/kyunggi";
-		}else{
-			window.location.href="/region/kyunggi";
-		}	
-		
 	});
 	
-	$("#kangwon").click(function(){
-		if(window.location.href.indexOf("eng")!=-1){
-			window.location.href="/eng/region/kangwon";
-		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/china/region/kangwon";
-		}else{
-			window.location.href="/region/kangwon";
-		}	
+	$("#study").click(function(){
 		
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/thema/study";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/thema/study";
+		}else{
+			window.location.href="/thema/study";
+		}
 	});
-	$("#chungchung").click(function(){
+	
+	$("#date").click(function(){
 		
 		if(window.location.href.indexOf("eng")!=-1){
-			window.location.href="/eng/region/chungchung";
+			window.location.href="/eng/thema/date";
 		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/china/region/chungchung";
+			window.location.href="/china/thema/date";
 		}else{
-			window.location.href="/region/chungchung";
+			window.location.href="/thema/date";
 		}
-		
-	});	
-	$("#kyungsang").click(function(){
+	});
+	
+	$("#family").click(function(){
+			
+			if(window.location.href.indexOf("eng")!=-1){
+				window.location.href="/eng/thema/family";
+			}else if(window.location.href.indexOf("china")!=-1){
+				window.location.href="/china/thema/family";
+			}else{
+				window.location.href="/thema/family";
+			}
+	});
+	
+
+	$("#Religion").click(function(){
 
 		if(window.location.href.indexOf("eng")!=-1){
-			window.location.href="/eng/region/kyungsang";
+			window.location.href="/eng/thema/religion";
 		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/china/region/kyungsang";
+			window.location.href="/china/thema/religion";
 		}else{
-			window.location.href="/region/kyungsang";
+			window.location.href="/thema/religion";
 		}
-	});	
-	$("#junla").click(function(){
+	
+	});
 
-		if(window.location.href.indexOf("eng")!=-1){
-			window.location.href="/eng/region/junla";
-		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/china/region/junla";
-		}else{
-			window.location.href="/region/junla";
-		}
-	});	
-	$("#jeju").click(function(){
-
-		if(window.location.href.indexOf("eng")!=-1){
-			window.location.href="/eng/region/jeju";
-		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/china/region/jeju";
-		}else{
-			window.location.href="/region/jeju";
-		}
-	});			
-});
+	});
 </script>
 </head><!--/head-->
 <body>
@@ -187,11 +151,11 @@ $(function(){
                                 <div class="center gap fade-down section-heading">
 	                                <script type="text/javascript">
 					        		if(window.location.href.indexOf("eng")!=-1){
-					        			document.write("<h2 class=\"main-title\">Region</h2><hr><p>Seoul · Incheon · Gyeonggi · Gangwon · Chungcheong · Gyeongsang · Jeolla · Jeju</p>");
+					        			document.write("<h2 class=\"main-title\">Theme</h2><hr><p>Learning · Family · Date</p>");
 					        		}else if(window.location.href.indexOf("china")!=-1){
-					        			document.write("<h2 class=\"main-title\">地域</h2><hr><p>首尔 · 仁川 · 京畿 · 江原 · 忠清 · 庆尚 · 全罗 · 济州</p>");
+					        			document.write("<h2 class=\"main-title\">主题</h2><hr><p>教育 · 家庭 · 约会</p>");
 					        		}else{
-					        			document.write("<h2 class=\"main-title\">지역별</h2><hr><p>서울 · 인천 · 경기 · 강원 · 충청 · 경상 · 전라 · 제주</p>");
+					        			document.write("<h2 class=\"main-title\">테마별</h2><hr><p>교육 · 가족 · 데이트</p>");
 					        		}
 					        		</script>
                                 </div>
@@ -208,67 +172,39 @@ $(function(){
             <div class="container">
                     
                     <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary" id="all_region" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary" id="all_thema" href="#" data-filter="*">
 	                        <script type="text/javascript">
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("View All"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全体"); }
 				        		else { document.write("전체보기"); }
 			        		</script>
 		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="seoul" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary" id="study" data-filter="*">
 	                        <script type="text/javascript">
-				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Seoul"); }
-				        		else if (window.location.href.indexOf("china")!=-1) { document.write("首尔"); }
-				        		else { document.write("서울"); }
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Learning"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("教育"); }
+				        		else { document.write("교육"); }
 			        		</script>
 		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary"  id="incheon" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary" id="family" href="#" data-filter="*">
 	                        <script type="text/javascript">
-				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Incheon"); }
-				        		else if (window.location.href.indexOf("china")!=-1) { document.write("仁川"); }
-				        		else { document.write("인천"); }
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Family"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("约会"); }
+				        		else { document.write("가족"); }
 			        		</script>
 		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary active" id="kyunggi" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary"  id="date" href="#" data-filter="*">
 	                        <script type="text/javascript">
-				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Gyeonggi"); }
-				        		else if (window.location.href.indexOf("china")!=-1) { document.write("京畿道"); }
-				        		else { document.write("경기도"); }
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Date"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("家庭"); }
+				        		else { document.write("데이트"); }
 			        		</script>
 		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="kangwon" href="#" data-filter="*">
+		        			<li><a class="btn btn-outlined btn-primary active"  id="Religion" href="#" data-filter="*">
 	                        <script type="text/javascript">
-				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Gangwon"); }
-				        		else if (window.location.href.indexOf("china")!=-1) { document.write("江原道"); }
-				        		else { document.write("강원도"); }
-			        		</script>
-		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="chungchung" href="#" data-filter="*">
-	                        <script type="text/javascript">
-				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Chungcheong"); }
-				        		else if (window.location.href.indexOf("china")!=-1) { document.write("忠清道"); }
-				        		else { document.write("충청도"); }
-			        		</script>
-		        		</a></li>
-                    	<li><a class="btn btn-outlined btn-primary" id="kyungsang" href="#" data-filter="*">
-	                        <script type="text/javascript">
-				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Gyeongsang"); }
-				        		else if (window.location.href.indexOf("china")!=-1) { document.write("庆尚道"); }
-				        		else { document.write("경상도"); }
-			        		</script>
-		        		</a></li>
-         				<li><a class="btn btn-outlined btn-primary" id="junla" href="#" data-filter="*">
-	                        <script type="text/javascript">
-				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Jeolla"); }
-				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全罗道"); }
-				        		else { document.write("전라도"); }
-			        		</script>
-		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="jeju" href="#" data-filter="*">
-	                        <script type="text/javascript">
-				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Jeju"); }
-				        		else if (window.location.href.indexOf("china")!=-1) { document.write("济州道"); }
-				        		else { document.write("제주도"); }
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Religion"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("宗教"); }
+				        		else { document.write("종교"); }
 			        		</script>
 		        		</a></li>
                     </ul><!--/#portfolio-filter-->
@@ -298,21 +234,22 @@ $(function(){
                			document.write("</div>");
                			document.write("</li>");
                			</script>  -->
-           				<li class='portfolio-item app isotope-item'>
+           				 <li class='portfolio-item apps seoul isotope-item'>
                			
                           <div class="item-inner">
-						<script type="text/javascript">
+                          <script type="text/javascript">
                           if(window.location.href.indexOf("eng")!=-1){
-                            document.write("<a href='/eng/region/read?bno=${Historic_siteVO.bno}'>");
+                            document.write("<a href='/eng/thema/read?bno=${Historic_siteVO.bno}'>");
 
                           }else if(window.location.href.indexOf("china")!=-1){
-                              document.write("<a href='/china/region/read?bno=${Historic_siteVO.bno}'>");
+                              document.write("<a href='/china/thema/read?bno=${Historic_siteVO.bno}'>");
 
                           }else{
-                            document.write("<a href='/region/read?bno=${Historic_siteVO.bno}'>");
+                            document.write("<a href='/thema/read?bno=${Historic_siteVO.bno}'>");
                         	  
                           }
-                          </script>								
+                          </script>
+								
                                 <img class="img-responsive img-blog" src="${Historic_siteVO.first_image}">
 								
 								
@@ -320,9 +257,10 @@ $(function(){
 								
 				            	</a>		
 						</div>
-						</li> 
+						</li>  
 					  </c:forEach>
-                        <!-- <li class="portfolio-item apps isotope-item">
+					  <!-- 
+                         <li class="portfolio-item apps isotope-item">
                             <div class="item-inner">
                                 <img src="http://placehold.it/800x600" alt="">
                                 <h5>Lorem ipsum11 dolor sit amet</h5>
@@ -408,12 +346,12 @@ $(function(){
 							<c:if test="${pageMaker.prev}">
 							<script type="text/javascript">
 							 if(window.location.href.indexOf("eng")!=-1){
-		                            document.write("<li><a href=/eng/region/kyunggi?page=${pageMaker.startPage-1}&laquo;</a></li>");
+		                            document.write("<li><a href=/eng/thema/religion?page=${pageMaker.startPage-1}&laquo;</a></li>");
 		                          }else if(window.location.href.indexOf("china")!=-1){
-			                            document.write("<li><a href=/china/region/kyunggi?page=${pageMaker.startPage-1}&laquo;</a></li>");
+			                            document.write("<li><a href=/china/thema/religion?page=${pageMaker.startPage-1}&laquo;</a></li>");
 
 		                          }else{
-			                            document.write("<li><a href=/region/kyunggi?page=${pageMaker.startPage-1}&laquo;</a></li>");
+			                            document.write("<li><a href=/thema/religion?page=${pageMaker.startPage-1}&laquo;</a></li>");
 		                        	  
 		                          }
 							</script>
@@ -424,12 +362,12 @@ $(function(){
 									<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
 								<script type="text/javascript">
 								if(window.location.href.indexOf("eng")!=-1){
-		                            document.write("<a href='/eng/region/kyunggi?page=${idx}'>${idx}</a>");
+		                            document.write("<a href='/eng/thema/religion?page=${idx}'>${idx}</a>");
 		                          }else if(window.location.href.indexOf("china")!=-1){
-			                       document.write("<a href='/china/region/kyunggi?page=${idx}'>${idx}</a>");
+			                       document.write("<a href='/china/thema/religion?page=${idx}'>${idx}</a>");
 
 		                          }else{
-				                       document.write("<a href='/region/kyunggi?page=${idx}'>${idx}</a>");
+				                       document.write("<a href='/thema/religion?page=${idx}'>${idx}</a>");
 		                        	  
 		                          }
 								</script>
@@ -440,12 +378,12 @@ $(function(){
 							<c:if test="${pageMaker.next && pageMaker.endPage>0 }">
 							<script type="text/javascript">
 								if(window.location.href.indexOf("eng")!=-1){
-		                            document.write("<li><a href='/eng/region/kyunggi?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+		                            document.write("<li><a href='/eng/thema/religion?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
 		                          }else if(window.location.href.indexOf("china")!=-1){
-			                            document.write("<li><a href='/china/region/kyunggi?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+			                            document.write("<li><a href='/china/thema/religion?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
 
 		                          }else{
-			                            document.write("<li><a href='/region/kyunggi?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+			                            document.write("<li><a href='/thema/religion?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
 		                        	  
 		                          }
 								</script>
@@ -457,8 +395,7 @@ $(function(){
                 </div>
             </section>
     </div>
-
-  <%@include file="../Footer.jsp" %>
+<%@include file="../Footer.jsp" %>
 
 </body>
 </html>

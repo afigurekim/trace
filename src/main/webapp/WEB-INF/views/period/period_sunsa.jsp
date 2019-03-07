@@ -176,14 +176,14 @@ $(function(){
             <div class="container">
                     
                     <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary active" id="all_period" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary" id="all_period" href="#" data-filter="*">
 	                        <script type="text/javascript">
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("View All"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全体"); }
 				        		else { document.write("전체보기"); }
 			        		</script>
 		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="sunsa" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary active" id="sunsa" data-filter="*">
 	                        <script type="text/javascript">
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Prehistoric"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("史前时代"); }

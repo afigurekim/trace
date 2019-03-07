@@ -506,6 +506,20 @@ public class BoardDAOImpl implements BoardDAO {
 	}
 
 
+	@Override
+	public List<Historic_siteVO> religionlist(Criteria cri) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".religionlist",cri);
+	}
+
+
+	@Override
+	public int religioncount() throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".religioncount");
+	}
+
+
 
 
 

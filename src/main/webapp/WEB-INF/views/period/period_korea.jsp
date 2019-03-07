@@ -176,7 +176,7 @@ $(function(){
             <div class="container">
                     
                     <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary active" id="all_period" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary" id="all_period" href="#" data-filter="*">
 	                        <script type="text/javascript">
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("View All"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全体"); }
@@ -197,7 +197,7 @@ $(function(){
 				        		else { document.write("삼국시대"); }
 			        		</script>
 		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="korea" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary active" id="korea" href="#" data-filter="*">
 	                        <script type="text/javascript">
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Koryo"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("高丽时代"); }

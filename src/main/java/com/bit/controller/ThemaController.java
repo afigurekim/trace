@@ -320,4 +320,42 @@ public class ThemaController {
 		}
 		return "/thema/thema_family";
 	}
+	
+	@RequestMapping(value = "/thema/religion", method = RequestMethod.GET)
+	public String default_religion(Criteria cri,Locale locale, Model model) {
+		System.out.println("테마별 가족");
+		try {
+			model.addAttribute("list",service.religionlist(cri));
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(service.religioncount());
+			model.addAttribute("pageMaker",pageMaker);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "/thema/thema_religion";
+	}
+	
+	@RequestMapping(value = "/{lang}/thema/religion", method = RequestMethod.GET)
+	public String religion(Criteria cri,Locale locale, Model model,@PathVariable String lang) {
+		try {
+			
+			List<Historic_siteVO> list=service.religionlist(cri);
+			if(lang!="kor") {
+				for(int i=0;i<list.size();i++) {
+					list.get(i).setSite_name(tr.translate(lang, list.get(i).getSite_name(),"region"));
+				}
+			}
+			model.addAttribute("list",list);
+			PageMaker pageMaker = new PageMaker();
+			pageMaker.setCri(cri);
+			pageMaker.setTotalCount(service.religioncount());
+			model.addAttribute("pageMaker",pageMaker);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "/thema/thema_religion";
+	}
 }

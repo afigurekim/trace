@@ -122,7 +122,19 @@ $(function(){
 			}
 	});
 
+
+	$("#Religion").click(function(){
+
+		if(window.location.href.indexOf("eng")!=-1){
+			window.location.href="/eng/thema/religion";
+		}else if(window.location.href.indexOf("china")!=-1){
+			window.location.href="/china/thema/religion";
+		}else{
+			window.location.href="/thema/religion";
+		}
+	
 	});
+});
 </script>
 </head><!--/head-->
 <body>
@@ -138,11 +150,11 @@ $(function(){
                                 <div class="center gap fade-down section-heading">
 	                                <script type="text/javascript">
 					        		if(window.location.href.indexOf("eng")!=-1){
-					        			document.write("<h2 class=\"main-title\">Theme</h2><hr><p>Learning · Family · Date</p>");
+					        			document.write("<h2 class=\"main-title\">Theme</h2><hr><p>Learning · Family · Date · Religion</p>");
 					        		}else if(window.location.href.indexOf("china")!=-1){
-					        			document.write("<h2 class=\"main-title\">主题</h2><hr><p>教育 · 家庭 · 约会</p>");
+					        			document.write("<h2 class=\"main-title\">主题</h2><hr><p>教育 · 家庭 · 约会  · 宗教</p>");
 					        		}else{
-					        			document.write("<h2 class=\"main-title\">테마별</h2><hr><p>교육 · 가족 · 데이트</p>");
+					        			document.write("<h2 class=\"main-title\">테마별</h2><hr><p>교육 · 가족 · 데이트 · 종교</p>");
 					        		}
 					        		</script>
                                 </div>
@@ -185,6 +197,13 @@ $(function(){
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Date"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("家庭"); }
 				        		else { document.write("데이트"); }
+			        		</script>
+		        		</a></li>
+		        		<li><a class="btn btn-outlined btn-primary"  id="Religion" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Religion"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("宗教"); }
+				        		else { document.write("종교"); }
 			        		</script>
 		        		</a></li>
                     </ul><!--/#portfolio-filter-->

@@ -208,7 +208,7 @@ $(function(){
             <div class="container">
                     
                     <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary active" id="all_region" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary" id="all_region" href="#" data-filter="*">
 	                        <script type="text/javascript">
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("View All"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全体"); }
@@ -243,7 +243,7 @@ $(function(){
 				        		else { document.write("강원도"); }
 			        		</script>
 		        		</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="chungchung" href="#" data-filter="*">
+                        <li><a class="btn btn-outlined btn-primary active" id="chungchung" href="#" data-filter="*">
 	                        <script type="text/javascript">
 				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Chungcheong"); }
 				        		else if (window.location.href.indexOf("china")!=-1) { document.write("忠清道"); }

@@ -122,7 +122,7 @@
                         	<thead>
                         		<tr>
                         			<th class="col-md-1 hidden-xs"></th>
-                        			<th class="col-md-2" style="white-space: nowrap;">
+                        			<th class="col-md-2" style="overflow: hidden; white-space: nowrap;">
 										<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){
 						        			document.write("Place");
@@ -133,7 +133,7 @@
 						        		}
 						        		</script>
 									</th>
-                        			<th class="col-md-4 hidden-sm hidden-xs" style="white-space: nowrap;">
+                        			<th class="col-md-4 hidden-sm hidden-xs" style="overflow: hidden; white-space: nowrap;">
 										<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){
 						        			document.write("Address");
@@ -144,7 +144,7 @@
 						        		}
 						        		</script>
 									</th>
-                        			<th class="col-md-1 hidden-md hidden-sm hidden-xs" style="white-space: nowrap;">
+                        			<th class="col-md-1 hidden-md hidden-sm hidden-xs" style="overflow: hidden; white-space: nowrap;">
 										<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){
 						        			document.write("Period");
@@ -155,7 +155,7 @@
 						        		}
 						        		</script>
 									</th>
-                        			<th class="col-md-2 hidden-md hidden-sm hidden-xs" style="white-space: nowrap;">
+                        			<th class="col-md-2 hidden-md hidden-sm hidden-xs" style="overflow: hidden; white-space: nowrap;">
 										<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){
 						        			document.write("Activity");
@@ -182,10 +182,10 @@
 					        		}
 				        		</script>
 									<td class="col-md-1 hidden-xs" style="vertical-align: middle;"><img class="thumb" src="${MemberSiteVO.first_image}"></td>
-                        			<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.site_name}</td>
-                        			<td class="col-md-4 hidden-sm hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.address}</td>
-                        			<td class="col-md-1 hidden-md hidden-sm hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.period}</td>
-                        			<td class="col-md-2 hidden-md hidden-sm hidden-xs" style="vertical-align: middle; white-space: nowrap;">${MemberSiteVO.thema}</td>
+                        			<td class="col-md-2" style="vertical-align: middle; overflow: hidden; white-space: pre-wrap;">${MemberSiteVO.site_name}</td>
+                        			<td class="col-md-4 hidden-sm hidden-xs" style="vertical-align: middle; overflow: hidden; white-space: pre-wrap;">${MemberSiteVO.address}</td>
+                        			<td class="col-md-1 hidden-md hidden-sm hidden-xs" style="vertical-align: middle; overflow: hidden; white-space: pre-wrap;">${MemberSiteVO.period}</td>
+                        			<td class="col-md-2 hidden-md hidden-sm hidden-xs" style="vertical-align: middle; overflow: hidden; white-space: pre-wrap;">${MemberSiteVO.thema}</td>
                         			<td class="col-md-1" style="vertical-align: middle">
                        					<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){

@@ -168,7 +168,13 @@ $(function(){
 	   }else if("${login_id2}"!=""){
 		   user_id="${login_id2}";
 	   }else{
-		   alert("로그인 후 이용이 가능합니다");
+	   		if(window.location.href.indexOf("eng")!=-1){
+				alert("Please sign in.");
+			}else if(window.location.href.indexOf("china")!=-1){
+				alert("登录后可使用。");
+			}else{
+				alert("로그인 후 이용이 가능합니다.");
+			}
 		   return;
 	   }
 	    $.ajax({
@@ -181,14 +187,26 @@ $(function(){
 	    	},
 	    	success:function(data){
 	    		if(data==0){
-	    			alert("등록되었습니다");
+	    	   		if(window.location.href.indexOf("eng")!=-1){
+	    				alert("Your rating has been registered.");
+	    			}else if(window.location.href.indexOf("china")!=-1){
+	    				alert("您的等级已登记。");
+	    			}else{
+	    				alert("등록되었습니다.");
+	    			}
 	    		}else{
-	    			alert("이미 등록하셨습니다");
+	    	   		if(window.location.href.indexOf("eng")!=-1){
+	    				alert("This place has already been rated.");
+	    			}else if(window.location.href.indexOf("china")!=-1){
+	    				alert("这地方已经被评定为。");
+	    			}else{
+	    				alert("이미 등록하셨습니다.");
+	    			}
 	    		}
 	    	}
-	    	
 	    });
 	  });
+	  
 	 var dataset=new Array();
 	 var data1=0;
 	 var data2=0;
@@ -201,19 +219,21 @@ $(function(){
 	    	async:false,
 	    	data:{},
 	    	success:function(data){
-	    		for(var i=0;i<data.list.length;i++){
-	    			if(data.list[i].star==1){
-	    				data1++;
-	    			}else if(data.list[i].star==2){
-	    				data2++;
-	    			}else if(data.list[i].star==3){
-	    				data3++;
-	    			}else if(data.list[i].star==4){
-	    				data4++;
-	    			}else if(data.list[i].star==5){
-	    				data5++;
-	    			}
-	    		}
+	    		if(data.list.length>=1){
+		    		for(var i=0;i<data.list.length;i++){
+		    			if(data.list[i].star==1){
+		    				data1++;
+		    			}else if(data.list[i].star==2){
+		    				data2++;
+		    			}else if(data.list[i].star==3){
+		    				data3++;
+		    			}else if(data.list[i].star==4){
+		    				data4++;
+		    			}else if(data.list[i].star==5){
+		    				data5++;
+		    			}
+		    		}
+		    	}
 	    	}
 	    	
 	    });
@@ -222,7 +242,7 @@ $(function(){
 	var myChart = new Chart(ctx, {
 	  type: 'bar',
 	  data: {
-	    labels: ["1점","2점","3점","4점","5점"],
+	    labels: ["1","2","3","4","5"],
 	    datasets: [{
 	      label: '',
 	      data: [data1,data2,data3,data4,data5],
@@ -279,6 +299,7 @@ $(function(){
 	    }
 	  }
 	});
+
 	$("#first_image").height($(".overlay").width()/1.5);
 
 	$("img[name=full_image]").height($(".overlay").width()/1.5);
@@ -293,7 +314,9 @@ $(function(){
 		$("#food_image_modal").height(372);
 
 	}
-	
+	$("img[name=near_image]").height(150);
+	$("#li_near>li").width(250);
+
 	$(window).resize(function(){
 		 windowWidth = $( window ).width();
 	
@@ -309,6 +332,22 @@ $(function(){
 
 		}
 	});
+
+/*for(var i=0;i<$("img[name=full_image]").length;i++){
+
+	$("img[name=full_image]").height($(".overlay").width()/1.5);
+}
+*/var windowWidth = $( window ).width();
+	$(window).resize(function(){
+	 windowWidth = $( window ).width();
+	console.log("윈도우 크기"+windowWidth);
+	if(windowWidth<=620){
+		//$("img[name=modal_food]").width(windowWidth-50);
+	}
+	});
+	if(windowWidth<=620){
+		//$("img[name=modal_food]").width(windowWidth-50);
+	}
 	
 	// 찜목록 추가버튼 ajax 코드 - 도형
 	$("#jimbtn").click(function(e){
@@ -321,7 +360,13 @@ $(function(){
 		}else if("${login_id2}"!=""){
 			user_id="${login_id2}";
 		}else{
-			alert("로그인 후 이용이 가능합니다");
+    		if(window.location.href.indexOf("eng")!=-1){
+    			alert("Please sign in.");
+    		}else if(window.location.href.indexOf("china")!=-1){
+    			alert("登录后可使用。");
+    		}else{
+    			alert("로그인 후 이용이 가능합니다.");
+    		}
 			return;
 		}
 		
@@ -333,11 +378,23 @@ $(function(){
 		  	bno:bno,
 		  },
 		  success:function(data){
-		  	if(data==0){
-		  		alert("찜목록에 추가되었습니다");
-		  	}else{
-		  		alert("이 장소는 이미 추가하셨습니다");
-		  	}
+			  	if(data==0){
+		    		if(window.location.href.indexOf("eng")!=-1){
+		    			alert("The place has been added to My Places.");
+		    		}else if(window.location.href.indexOf("china")!=-1){
+		    			alert("这个场所加在我的地点。");
+		    		}else{
+		    			alert("찜목록에 추가되었습니다.");
+		    		}
+			  	}else{
+		    		if(window.location.href.indexOf("eng")!=-1){
+		    			alert("This place is already in My Places.");
+		    		}else if(window.location.href.indexOf("china")!=-1){
+		    			alert("这个地方已经在我的地点上。");
+		    		}else{
+		    			alert("이 장소는 이미 추가하셨습니다.");
+		    		}
+			  	}
 		  }	
 		});
 	});
@@ -356,7 +413,17 @@ $(function(){
                     <aside class="col-sm-4 col-sm-push-8"> 
 
                         <div class="widget categories">
-                            <h3 class="widget-title">유적지 정보</h3>
+                            <h3 class="widget-title">
+                                <script type="text/javascript">
+				        		if(window.location.href.indexOf("eng")!=-1){
+				        			document.write("Site Information");
+				        		}else if(window.location.href.indexOf("china")!=-1){
+				        			document.write("遗址信息");
+				        		}else{
+				        			document.write("유적지 정보");
+				        		}
+				        		</script>
+							</h3>
                             <div class="row">
                                 
                                 <div class="col-sm-6">
@@ -370,9 +437,19 @@ $(function(){
                             </div>                     
                         </div><!--/.categories-->
                         <div class="widget tags">
-                            <h3 class="widget-title">사용자 별점</h3>
+                            <h3 class="widget-title">
+                                <script type="text/javascript">
+				        		if(window.location.href.indexOf("eng")!=-1){
+				        			document.write("User Rating");
+				        		}else if(window.location.href.indexOf("china")!=-1){
+				        			document.write("用户分数");
+				        		}else{
+				        			document.write("사용자 별점");
+				        		}
+				        		</script>
+                            </h3>
                             <div id="canvas" style="width:1280px; margin:auto;">
-								<canvas id="myChart"style="float:left; margin-top:10px;margin-left:21px; width:400px;height:200px;"></canvas>
+								<canvas id="myChart"style="float:left; margin-top:10px;margin-right:10px; width:400px;height:200px;"></canvas>
 							</div>
                         </div><!--/.tags-->
 						<section class='rating-widget'>
@@ -395,7 +472,17 @@ $(function(){
 							      </li>
 							    </ul>
 							    <form>
-								    <button id="jimbtn" type="button" class="btn btn-primary" style="margin-bottom:18px;">찜하기</button>
+								    <button id="jimbtn" type="button" class="btn btn-primary" style="margin-bottom:18px;">
+		                                <script type="text/javascript">
+						        		if(window.location.href.indexOf("eng")!=-1){
+						        			document.write("Add to My Places");
+						        		}else if(window.location.href.indexOf("china")!=-1){
+						        			document.write("添加到我的地点");
+						        		}else{
+						        			document.write("찜하기");
+						        		}
+						        		</script>
+		                            </button>
 							    </form>
 							  </div>
 						</section>
@@ -457,33 +544,86 @@ $(function(){
 
                      <script type="text/javascript">
 					 if("${read_detail.info_center}"!=""){
-						document.write("<p>문의 및 안내 : <br> ${read_detail.info_center} </p>");				
-					            }
+			        		if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("<p>Information : <br> ${read_detail.info_center} </p>");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("<p>咨询及介绍 : <br> ${read_detail.info_center} </p>");
+			        		}else{
+			        			document.write("<p>문의 및 안내 : <br> ${read_detail.info_center} </p>");
+			        		}
+			          }
 					if("${read_detail.exp_guide}"!=""){
-						document.write("<p>체험 안내 : <br> ${read_detail.exp_guide} </p>");
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<p>Guide information : <br> ${read_detail.exp_guide} </p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<p>体验指南 : <br> ${read_detail.exp_guide} </p>");
+		        		}else{
+		        			document.write("<p>체험 안내 : <br> ${read_detail.exp_guide} </p>");
+		        		}
 					}
 					if("${read_detail.expage_range}"!=""){
-						document.write("<p>체험 연령 : ${read_detail.expage_range} </p>");
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<p>Recommended age : ${read_detail.expage_range} </p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<p>体验年龄 : ${read_detail.expage_range} </p>");
+		        		}else{
+		        			document.write("<p>체험 연령 : ${read_detail.expage_range} </p>");
+		        		}
 					}
 					if("${read_detail.rest_day}"!=""){
-						document.write("<p>쉬는 날 : ${read_detail.rest_day} </p>");
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<p>Closed days : ${read_detail.rest_day} </p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<p>闭合日 : ${read_detail.rest_day} </p>");
+		        		}else{
+		        			document.write("<p>쉬는 날 : ${read_detail.rest_day} </p>");
+		        		}
 					}
 					if("${read_detail.use_time}"!=""){
-						document.write("<p>이용시간 : <br> ${read_detail.use_time} </p>");
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<p>Open hours : <br> ${read_detail.use_time} </p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<p>利用时间 : <br> ${read_detail.use_time} </p>");
+		        		}else{
+		        			document.write("<p>이용시간 : <br> ${read_detail.use_time} </p>");
+		        		}
 					}
 					if("${read_detail.park}"!=""){
-						document.write("<p>주차 시설 : ${read_detail.park} </p>");
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<p>Parking : ${read_detail.park} </p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<p>停车设施 : ${read_detail.park} </p>");
+		        		}else{
+		        			document.write("<p>주차 시설 : ${read_detail.park} </p>");
+		        		}
 					}
 					if("${read_detail.carriage}"!=""){
-						document.write("<p>유모차 대여 여부 : ${read_detail.carriage} </p>");
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<p>Stroller rental : ${read_detail.carriage} </p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<p>婴儿车是否出租 : ${read_detail.carriage} </p>");
+		        		}else{
+		        			document.write("<p>유모차 대여 여부 : ${read_detail.carriage} </p>");
+		        		}
 					}
 					if("${read_detail.pet}"!=""){
-						document.write("<p>애완동물 동반 가능 여부 : ${read_detail.pet} </p>");
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<p>Entry with pets : ${read_detail.pet} </p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<p>宠物是否可以陪伴 : ${read_detail.pet} </p>");
+		        		}else{
+		        			document.write("<p>애완동물 동반 가능 여부 : ${read_detail.pet} </p>");
+		        		}
 					}
 					if("${read_detail.credit_card}"!=""){
-						document.write("<p>신용카드 가능 여부 : ${read_detail.credit_card} </p>");
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("<p>Credit card acceptance : ${read_detail.credit_card} </p>");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("<p>信用卡是否可行 : ${read_detail.credit_card} </p>");
+		        		}else{
+		        			document.write("<p>신용카드 가능 여부 : ${read_detail.credit_card} </p>");
+		        		}
 					}
-	
     				</script>
 
    <hr>
@@ -496,13 +636,29 @@ $(function(){
            <li id="coffeeMenu" onclick="changeMarker('coffee')">
            <img src="../../../resources/imgs/음식.png" style="width:50px;height:25px;">
                <span class="ico_comm ico_coffee"></span>
-               음식점
+                   <script type="text/javascript">
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("Food");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("食堂");
+		        		}else{
+		        			document.write("음식점");
+		        		}
+	        		</script>
            </li>
            <li id="storeMenu" onclick="changeMarker('store')">
             <img src="../../../resources/imgs/숙소.png" style="width:50px;height:25px;">
             
                 <span class="ico_comm ico_store"></span>
-          숙박
+                   <script type="text/javascript">
+		        		if(window.location.href.indexOf("eng")!=-1){
+		        			document.write("Lodging");
+		        		}else if(window.location.href.indexOf("china")!=-1){
+		        			document.write("住宿");
+		        		}else{
+		        			document.write("숙박");
+		        		}
+	        		</script>
             </li>
             
         </ul>
@@ -514,9 +670,18 @@ $(function(){
 <div id="comments">
   <div id="comments-list">
    <ul class="timeline" style="margin-top:10px;">
-		<li class="time-label" id="repliesDiv" style="margin-bottom:30px;list-style-type:none; margin-left:-39px; font-size:20px; font-weight:700; height:30px;"><span class="bg-green">
+		<li class="time-label" id="repliesDiv" style="margin-bottom:30px;list-style-type:none; margin-left:-39px; font-size:20px; font-weight:700; height:30px;"><span class="bg-green" style="float:left">
 		<i class="fa fa-comments bg-blue"></i>
-		댓글</span>${reply_count}</li>
+		<script type="text/javascript">
+       		if(window.location.href.indexOf("eng")!=-1){
+       			document.write("Comments");
+       		}else if(window.location.href.indexOf("china")!=-1){
+       			document.write("留言");
+       		}else{
+       			document.write("댓글");
+       		}
+    	 </script>
+	     </span><p id="reply_count" style="margin-left:10px;"></p></li>
 	</ul>
 	<div class="text-center">
 		<ul id="pagination" class="pagination pagination-sm no-margin">
@@ -527,28 +692,71 @@ $(function(){
 		
 		<div class="box box-success">
 			<div class="box-header">
-				<h3 class="box-title">댓글 등록</h3>
+				<h3 class="box-title">
+				<script type="text/javascript">
+		       		if(window.location.href.indexOf("eng")!=-1){
+		       			document.write("Leave Comments");
+		       		}else if(window.location.href.indexOf("china")!=-1){
+		       			document.write("留言注册");
+		       		}else{
+		       			document.write("댓글 등록");
+		       		}
+		    	 </script>
+		    	 </h3>
 			</div>
 			<div class="box-body">
-	
 					<script type="text/javascript">
-					
 					if("${login_id}"!=""){
-						document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' value=${login_id} readonly>");
+			       		if(window.location.href.indexOf("eng")!=-1){
+			       			document.write("<input class='form-control' type='text' placeholder='Writer' id='newReplyWriter' value=${login_id} readonly>");
+			       		}else if(window.location.href.indexOf("china")!=-1){
+			       			document.write("<input class='form-control' type='text' placeholder='写手' id='newReplyWriter' value=${login_id} readonly>");
+			       		}else{
+			       			document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' value=${login_id} readonly>");
+			       		}
 					}else if("${login_id2}"!=""){
-						document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' value=${login_id2} readonly>");
-	
+			       		if(window.location.href.indexOf("eng")!=-1){
+			       			document.write("<input class='form-control' type='text' placeholder='Writer' id='newReplyWriter' value=${login_id2} readonly>");
+			       		}else if(window.location.href.indexOf("china")!=-1){
+			       			document.write("<input class='form-control' type='text' placeholder='写手' id='newReplyWriter' value=${login_id2} readonly>");
+			       		}else{
+			       			document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' value=${login_id2} readonly>");
+			       		}
 					}else{
-						document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' readonly>");
+			       		if(window.location.href.indexOf("eng")!=-1){
+			       			document.write("<input class='form-control' type='text' placeholder='Writer' id='newReplyWriter' readonly>");
+			       		}else if(window.location.href.indexOf("china")!=-1){
+			       			document.write("<input class='form-control' type='text' placeholder='写手' id='newReplyWriter' readonly>");
+			       		}else{
+			       			document.write("<input class='form-control' type='text' placeholder='글쓴이' id='newReplyWriter' readonly>");
+			       		}
 					}
 					</script> 
 					<div style="margin-top:15px; margin-bottom:15px;">
-					<textarea rows="8"  id="newReplyText" class="form-control" placeholder="내용"></textarea> 
+					<script type="text/javascript">
+			       		if(window.location.href.indexOf("eng")!=-1){
+			       			document.write("<textarea rows=\"8\"  id=\"newReplyText\" class=\"form-control\" placeholder=\"Comments\"></textarea>");
+			       		}else if(window.location.href.indexOf("china")!=-1){
+			       			document.write("<textarea rows=\"8\"  id=\"newReplyText\" class=\"form-control\" placeholder=\"内容\"></textarea>");
+			       		}else{
+			       			document.write("<textarea rows=\"8\"  id=\"newReplyText\" class=\"form-control\" placeholder=\"내용\"></textarea>");
+			       		}
+			    	 </script>
 					</div>
 			</div>
 			
 		<div class="box-footer">
-			<button type="submit" class="btn btn-primary btn-outlined" id="replyAddBtn">등록</button>
+			<button type="submit" class="btn btn-primary btn-outlined" id="replyAddBtn">
+				<script type="text/javascript">
+		       		if(window.location.href.indexOf("eng")!=-1){
+		       			document.write("Submit");
+		       		}else if(window.location.href.indexOf("china")!=-1){
+		       			document.write("注册");
+		       		}else{
+		       			document.write("등록");
+		       		}
+		    	 </script>
+	    	 </button>
 		</div>
 		</div>
 		
@@ -561,6 +769,32 @@ $(function(){
         </div>
     </div><!--/.col-md-8-->
 </div><!--/.row-->
+    </div>
+        <div>
+    	<h3>근처 유적지</h3>
+
+      <ul class="portfolio-items col-3 isotope fade-up" id="li_near">
+    <c:forEach items="${near_historic}" var="Historic_siteVO">
+          <li class='portfolio-item apps seoul isotope-item'  style="margin-right:10px;">
+
+	 <script type="text/javascript">
+	 if(window.location.href.indexOf("eng")!=-1){
+	   document.write("<a href='/eng/period/read?bno=${Historic_siteVO.bno}'>");
+	
+	 }else if(window.location.href.indexOf("china")!=-1){
+	     document.write("<a href='/china/period/read?bno=${Historic_siteVO.bno}'>");
+	
+	 }else{
+	   document.write("<a href='/period/read?bno=${Historic_siteVO.bno}'>");
+	  
+	 }
+	 </script>
+     <img class="img-responsive img-blog" name="near_image" style="" src="${Historic_siteVO.first_image}">
+     <h5 style="overflow:hidden; width:100%;">${Historic_siteVO.site_name}</h5>
+     </a>
+     </li>
+    </c:forEach>
+    </ul>
     </div>
 </section><!--/#blog-->
 </div>
@@ -579,9 +813,39 @@ $(function(){
 			</div>
 			<div class="modal-footer">
 			
-				<button type="button" class="btn btn-info" id="replyModBtn">수정</button>
-				<button type="button" class="btn btn-danger" id="replyDelBtn">삭제</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-info" id="replyModBtn">
+					<script type="text/javascript">
+			       		if(window.location.href.indexOf("eng")!=-1){
+			       			document.write("Edit");
+			       		}else if(window.location.href.indexOf("china")!=-1){
+			       			document.write("编辑");
+			       		}else{
+			       			document.write("수정");
+			       		}
+			    	 </script>
+		    	</button>
+				<button type="button" class="btn btn-danger" id="replyDelBtn">
+					<script type="text/javascript">
+			       		if(window.location.href.indexOf("eng")!=-1){
+			       			document.write("Delete");
+			       		}else if(window.location.href.indexOf("china")!=-1){
+			       			document.write("删除");
+			       		}else{
+			       			document.write("삭제");
+			       		}
+			    	 </script>
+		    	</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					<script type="text/javascript">
+			       		if(window.location.href.indexOf("eng")!=-1){
+			       			document.write("Close");
+			       		}else if(window.location.href.indexOf("china")!=-1){
+			       			document.write("关闭");
+			       		}else{
+			       			document.write("닫기");
+			       		}
+			    	 </script>
+		    	</button>
 			</div>
 		</div>
 	</div>
@@ -605,7 +869,17 @@ $(function(){
 				
 				</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">
+					<script type="text/javascript">
+			       		if(window.location.href.indexOf("eng")!=-1){
+			       			document.write("Close");
+			       		}else if(window.location.href.indexOf("china")!=-1){
+			       			document.write("关闭");
+			       		}else{
+			       			document.write("닫기");
+			       		}
+			    	 </script>
+		    	</button>
 			</div>
 		</div>
 	</div>
@@ -844,8 +1118,7 @@ function makeClickListener(map, marker, content2) {
     	        		$("#food_address").text(data.read_attraction.address);
     	        		$("#food_contact").text(data.read_attraction.tel);
     	        		$("#food_detail_modal").text(data.read_attraction.attraction_detail);
-     					console.log(data.read_attraction.attraction_detail);
-    	        		$("#modifyModal2").modal();  
+     					$("#modifyModal2").modal();  
     	        		 
             	}
             });
@@ -1001,7 +1274,7 @@ $.ajax({
 	success:function(data){
 		console.log("+댓글 갯수+"+data.list.length);
 		var str="";
-
+		$("#reply_count").text(data.list.length);
 		printData(data.list,$("#repliesDiv"),$("#template"));
 		printPaging(data.pageMaker,$(".pagination"));
 		$("#modifyModal").modal('hide');
@@ -1093,11 +1366,23 @@ $("#replyAddBtn").on("click",function(){
 	var replyer = replyerObj.val();
 	var replytext= replytextObj.val();
 	if(replyer==""){
-		alert("로그인 후 이용이 가능합니다");
+		if(window.location.href.indexOf("eng")!=-1){
+			alert("Please sign in.");
+		}else if(window.location.href.indexOf("china")!=-1){
+			alert("登录后可使用。");
+		}else{
+			alert("로그인 후 이용이 가능합니다.");
+		}
 		return;
 	}
 	if(replytext==""){
-		alert("댓글을 입력해주세요");
+		if(window.location.href.indexOf("eng")!=-1){
+			alert("Please write a comment.");
+		}else if(window.location.href.indexOf("china")!=-1){
+			alert("请输入回帖。");
+		}else{
+			alert("댓글을 입력해주세요.");
+		}
 		return;
 	}
 	$.ajax({
@@ -1112,7 +1397,13 @@ $("#replyAddBtn").on("click",function(){
 		success:function(result){
 			console.log("result: "+result);
 			if(result == 'SUCCESS'){
-				alert("등록 되었습니다.");
+				if(window.location.href.indexOf("eng")!=-1){
+					alert("Your comment has been submitted.");
+				}else if(window.location.href.indexOf("china")!=-1){
+					alert("已登记。");
+				}else{
+					alert("등록 되었습니다.");
+				}
 				replyPage=1;
 				getPage("/replies/"+bno+"/"+replyPage);
 				replyerObj.val("");
@@ -1139,7 +1430,13 @@ $("#replyModBtn").on("click",function(){
 		success:function(result){
 			console.log("result: "+result);
 			if(result == 'SUCCESS'){
-				alert("수정 되었습니다.");
+				if(window.location.href.indexOf("eng")!=-1){
+					alert("Your comment has been edited.");
+				}else if(window.location.href.indexOf("china")!=-1){
+					alert("修改好了。");
+				}else{
+					alert("수정 되었습니다.");
+				}
 				getPage("/replies/"+bno+"/"+replyPage);
 				
 			}
@@ -1164,7 +1461,13 @@ $("#replyDelBtn").on("click",function(){
 		success:function(result){
 			console.log("result: "+result);
 			if(result == 'SUCCESS'){
-				alert("삭제 되었습니다.");
+				if(window.location.href.indexOf("eng")!=-1){
+					alert("Your comment has been deleted.");
+				}else if(window.location.href.indexOf("china")!=-1){
+					alert("已删除。");
+				}else{
+					alert("삭제 되었습니다.");
+				}
 				getPage("/replies/"+bno+"/"+replyPage);
 				
 			}

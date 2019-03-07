@@ -39,7 +39,7 @@
  background-image: url("../resources/imgs/cloud.png");
 }
 		#single-page-slider {
-			background-image: url("../resources/imgs/banner/thema-study-banner.jpg");
+			background-image: url("../../../resources/imgs/banner/thema-study-banner.jpg");
 			bakcground-color: #01b29e;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -136,9 +136,15 @@ $(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">테마별</h2>
-                                    <hr>
-                                    <p>교육 · 가족 · 데이트 </p>
+	                                <script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("<h2 class=\"main-title\">Theme</h2><hr><p>Learning · Family · Date</p>");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("<h2 class=\"main-title\">主题</h2><hr><p>教育 · 家庭 · 约会</p>");
+					        		}else{
+					        			document.write("<h2 class=\"main-title\">테마별</h2><hr><p>교육 · 가족 · 데이트</p>");
+					        		}
+					        		</script>
                                 </div>
                             </div>   
                         </div>
@@ -153,11 +159,34 @@ $(function(){
             <div class="container">
                     
                     <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary" id="all_thema" href="#" data-filter="*">전체보기</a></li>
-                        <li><a class="btn btn-outlined btn-primary  active" id="study" data-filter="*">교육</a></li>
-                        <li><a class="btn btn-outlined btn-primary "  id="date" href="#" data-filter="*">데이트</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="family" href="#" data-filter="*">가족</a></li>
-                    
+                        <li><a class="btn btn-outlined btn-primary active" id="all_thema" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("View All"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全体"); }
+				        		else { document.write("전체보기"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="study" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Learning"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("教育"); }
+				        		else { document.write("교육"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="family" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Family"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("约会"); }
+				        		else { document.write("가족"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary"  id="date" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Date"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("家庭"); }
+				        		else { document.write("데이트"); }
+			        		</script>
+		        		</a></li>
                     </ul><!--/#portfolio-filter-->
 						
                     <ul class="portfolio-items col-3 isotope fade-up">

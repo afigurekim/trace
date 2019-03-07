@@ -303,7 +303,7 @@
 					        		}else if(window.location.href.indexOf("china")!=-1){
 					        			document.write("* 电子邮件无法修改。");
 					        		}else{
-					        			document.write("* 이베일 변경이 불가합니다.");
+					        			document.write("* 이메일 변경이 불가합니다.");
 					        		}
 					        		</script>
 								</b></small></span>

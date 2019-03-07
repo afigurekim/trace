@@ -39,7 +39,7 @@
  background-image: url("../resources/imgs/cloud.png");
 }
 		#single-page-slider {
-			background-image: url("../resources/imgs/banner/region-kangwon-banner.jpg");
+			background-image: url("../../../resources/imgs/banner/region-kangwon-banner.jpg");
 			bakcground-color: #01b29e;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -142,7 +142,7 @@ $(function(){
 		if(window.location.href.indexOf("eng")!=-1){
 			window.location.href="/eng/region/chungchung";
 		}else if(window.location.href.indexOf("china")!=-1){
-			window.location.href="/ch/region/chungchung";
+			window.location.href="/china/region/chungchung";
 		}else{
 			window.location.href="/region/chungchung";
 		}
@@ -192,9 +192,15 @@ $(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">지역별</h2>
-                                    <hr>
-                                    <p>서울 · 인천 · 경기 · 강원 · 충청 · 경상 · 전라 · 제주</p>
+	                                <script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("<h2 class=\"main-title\">Region</h2><hr><p>Seoul · Incheon · Gyeonggi · Gangwon · Chungcheong · Gyeongsang · Jeolla · Jeju</p>");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("<h2 class=\"main-title\">地域</h2><hr><p>首尔 · 仁川 · 京畿 · 江原 · 忠清 · 庆尚 · 全罗 · 济州</p>");
+					        		}else{
+					        			document.write("<h2 class=\"main-title\">지역별</h2><hr><p>서울 · 인천 · 경기 · 강원 · 충청 · 경상 · 전라 · 제주</p>");
+					        		}
+					        		</script>
                                 </div>
                             </div>   
                         </div>
@@ -209,16 +215,69 @@ $(function(){
             <div class="container">
                     
                     <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary" id="all_region" href="#" data-filter="*">전체보기</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="seoul" href="/region/seoul" data-filter="*">서울</a></li>
-                        <li><a class="btn btn-outlined btn-primary"  id="incheon" href="#" data-filter="*">인천</a></li>
-                        <li><a class="btn btn-outlined btn-primary "  id="kyunggi" href="#" data-filter="*">경기도</a></li>
-                        <li><a class="btn btn-outlined btn-primary active" id="kangwon" href="#" data-filter="*">강원도</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="chungchung" href="#" data-filter="*">충청도</a></li>
-                    	<li><a class="btn btn-outlined btn-primary" id="kyungsang" href="#" data-filter="*">경상도</a></li>
-         				<li><a class="btn btn-outlined btn-primary" id="junla" href="#" data-filter="*">전라도</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="jeju" href="#" data-filter="*">제주도</a></li>
-                    	
+                        <li><a class="btn btn-outlined btn-primary active" id="all_region" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("View All"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全体"); }
+				        		else { document.write("전체보기"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="seoul" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Seoul"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("首尔"); }
+				        		else { document.write("서울"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary"  id="incheon" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Incheon"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("仁川"); }
+				        		else { document.write("인천"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="kyunggi" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Gyeonggi"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("京畿道"); }
+				        		else { document.write("경기도"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="kangwon" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Gangwon"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("江原道"); }
+				        		else { document.write("강원도"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="chungchung" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Chungcheong"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("忠清道"); }
+				        		else { document.write("충청도"); }
+			        		</script>
+		        		</a></li>
+                    	<li><a class="btn btn-outlined btn-primary" id="kyungsang" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Gyeongsang"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("庆尚道"); }
+				        		else { document.write("경상도"); }
+			        		</script>
+		        		</a></li>
+         				<li><a class="btn btn-outlined btn-primary" id="junla" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Jeolla"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全罗道"); }
+				        		else { document.write("전라도"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="jeju" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Jeju"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("济州道"); }
+				        		else { document.write("제주도"); }
+			        		</script>
+		        		</a></li>
                     </ul><!--/#portfolio-filter-->
 						
                     <ul class="portfolio-items col-3 isotope fade-up">

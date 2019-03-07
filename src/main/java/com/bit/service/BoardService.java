@@ -17,6 +17,10 @@ public interface BoardService {
 	
 	public void remove(Integer bno)throws Exception;
 	
+	//근처 유적지
+	public List<Historic_siteVO> nearHistoric(Double latlng,int bno) throws Exception;
+
+
 	//별점 주기
 	public void star_insert(Historic_site_starVO vo) throws Exception;
 	

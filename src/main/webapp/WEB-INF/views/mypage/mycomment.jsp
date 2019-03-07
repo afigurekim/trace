@@ -111,7 +111,7 @@
                         <table class="table">
 				        	<thead>
 				        		<tr>
-				        			<th class="col-md-1" style="white-space: nowrap;">
+				        			<th class="col-md-1 hidden-xs" style="white-space: nowrap;">
 										<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){
 						        			document.write("No.");
@@ -133,7 +133,7 @@
 						        		}
 						        		</script>
 						        	</th>
-				        			<th class="col-xs-1 hidden-xs" style="white-space: nowrap;">
+				        			<th class="" style="white-space: nowrap;">
 										<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){
 						        			document.write("Comment");
@@ -144,7 +144,7 @@
 						        		}
 						        		</script>
 						        	</th>
-				        			<th class="col-md-2" style="white-space: nowrap;">
+				        			<th class="col-md-2 hidden-xs" style="white-space: nowrap;">
 										<script type="text/javascript">
 						        		if(window.location.href.indexOf("eng")!=-1){
 						        			document.write("Date");
@@ -169,10 +169,10 @@
 					        			document.write("<tr class=\"clickable-row\" data-href=\"/period/read?bno=${ReplyVO.bno}\">");
 					        		}
 				        		</script>
-									<td class="col-md-1" style="vertical-align: middle">${status.index+1}</td><!-- 글번호는 프론트에서 처리 -->
-									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;">${ReplyVO.site_name}</td>
-									<td class="col-xs-1 hidden-xs" style="vertical-align: middle; white-space: nowrap;">${ReplyVO.reply_text}</td>
-									<td class="col-md-2" style="vertical-align: middle; white-space: nowrap;"><fmt:formatDate value="${ReplyVO.update_date}" pattern="yyyy/MM/dd"/></td>
+									<td class="col-md-1 hidden-xs" style="vertical-align: middle">${status.index+1}</td><!-- 글번호는 프론트에서 처리 -->
+									<td class="col-md-2" style="vertical-align: middle; white-space: pre-wrap;">${ReplyVO.site_name}</td>
+									<td class="" style="vertical-align: middle; white-space: pre-wrap;">${ReplyVO.reply_text}</td>
+									<td class="col-md-2 hidden-xs" style="vertical-align: middle; white-space: nowrap;"><fmt:formatDate value="${ReplyVO.update_date}" pattern="yyyy/MM/dd"/></td>
 									<!-- 댓글이 작성된 페이지로 이동하는 이동 버튼 (시대 페이지 기준 주소) -->
 									<td class="col-md-1" style="vertical-align: middle">
 		               					<script type="text/javascript">

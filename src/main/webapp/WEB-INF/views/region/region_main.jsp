@@ -308,19 +308,21 @@ $(function(){
 		       
 		       	var img_href;
 		       	if(resp.weather[0].main=="Haze"){
-		       		img_href="../../resources/imgs/haze.png";
+		       		img_href="../../../resources/imgs/haze.png";
 		       	}else if(resp.weather[0].main=="Clouds"){
-		       		img_href="../../resources/imgs/cloud.png";
+		       		img_href="../../../resources/imgs/cloud.png";
 		       	}else if(resp.weather[0].main=="Mist"){
-		       		img_href="../../resources/imgs/haze.png";
+		       		img_href="../../../resources/imgs/haze.png";
 		       	}else if(resp.weather[0].main=="Clear"){
-		       		img_href="../../resources/imgs/sun.png";
+		       		img_href="../../../resources/imgs/sun.png";
 		       	}else if(resp.weather[0].main=="Rain"){
-		       		img_href="../../resources/imgs/rain.png";
+		       		img_href="../../../resources/imgs/rain.png";
 		       	}else if(resp.weather[0].main=="Snow"){
-		       		img_href="../../resources/imgs/snow.png";
+		       		img_href="../../../resources/imgs/snow.png";
 		       	}else if(resp.weather[0].main=="Fog"){
-		       		img_href="../../resources/imgs/cloud.png";
+		       		img_href="../../../resources/imgs/cloud.png";
+		       	}else if(resp.weather[0].main=="Thunderstorm"){
+		       		img_href="../../../resources/imgs/thunder.png";
 		       	}
 			     if(resp.name=="Seoul"){
 					$("#seoul").text(Math.floor(resp.main.temp- 273.15)+"º");
@@ -361,6 +363,63 @@ $(function(){
 		});
 	}
 	$(function(){
+		if(window.location.href.indexOf("eng")!=-1){
+			$("#label-0").text("Jeju");
+			$("#label-1").text("Kyungsang-Namdo");
+			$("#label-2").text("Kyungsang-Bookdo");
+			$("#label-3").text("Jeolla-Namdo");
+			$("#label-4").text("Jeolla-Bookdo");
+			$("#label-5").text("Chungcheong-Namdo");
+			$("#label-6").text("Chungcheong-Bookdo");
+			$("#label-7").text("Kangwondo");
+			$("#label-8").text("Kyunggido");
+			$("#label-9").text("Ulsan");
+			$("#label-10").text("Daejeon");
+			$("#label-11").text("Gwangju");
+			$("#label-12").text("Incheon");
+			$("#label-13").text("Daegu");
+			$("#label-14").text("Busan");
+			$("#label-15").text("Seoul");
+			$("#weather-seoul").text("Seoul");
+			$("#weather-chuncheon").text("Chuncheon");
+			$("#weather-kangleung").text("Gangneoung");
+			$("#weather-daejeon").text("Daejeon");
+			$("#weather-chungju").text("Cheongju");
+			$("#weather-daegu").text("Daegu");
+			$("#weather-gwangju").text("Gwangju");
+			$("#weather-jeonju").text("Jeonju");
+			$("#weather-busan").text("Busan");
+			$("#weather-jeju").text("Jeju");
+		}else if(window.location.href.indexOf("china")!=-1){
+			$("#label-0").text("济州");
+			$("#label-1").text("庆尚南道");
+			$("#label-2").text("庆尚北道");
+			$("#label-3").text("全罗南道");
+			$("#label-4").text("全罗北道");
+			$("#label-5").text("忠清南道");
+			$("#label-6").text("忠清北道");
+			$("#label-7").text("江原道");
+			$("#label-8").text("京畿道");
+			$("#label-9").text("蔚山");
+			$("#label-10").text("大殿");
+			$("#label-11").text("矿主");
+			$("#label-12").text("仁川");
+			$("#label-13").text("鳕鱼");
+			$("#label-14").text("釜山");
+			$("#label-15").text("首尔");
+			$("#weather-seoul").text("首尔");
+			$("#weather-chuncheon").text("春川");
+			$("#weather-kangleung").text("江陵");
+			$("#weather-daejeon").text("大殿");
+			$("#weather-chungju").text("清酒");
+			$("#weather-daegu").text("鳕鱼");
+			$("#weather-gwangju").text("矿主");
+			$("#weather-jeonju").text("前奏");
+			$("#weather-busan").text("釜山");
+			$("#weather-jeju").text("济州");
+		}else{
+			
+		}
 		$("#label-0").click(function(){
 			if(window.location.href.indexOf("eng")!=-1){
 				window.location.href="/eng/region/main/jeju";
@@ -709,12 +768,12 @@ $(function(){
 		    <div class="weather-card">
 		    	<img id="seoul_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="seoul"></h4>
-		        <p>서울</p>
+		        <p id="weather-seoul">서울</p>
 		    </div>
 		    <div class="weather-card">
 		    	<img id="chuncheon_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="chuncheon"></h4>
-		        <p>춘천</p>
+		        <p id="weather-chuncheon">춘천</p>
 		    </div>
 		</div>
 		
@@ -722,12 +781,12 @@ $(function(){
 		    <div class="weather-card">
 		    	<img id="kangneung_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="kangneung"></h4>
-		        <p>강릉</p>
+		        <p id="weather-kangleung">강릉</p>
 		    </div>
 		    <div class="weather-card">
 		    	<img id="daejeon_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="daejeon"></h4>
-		        <p>대전</p>
+		        <p id="weather-daejeon">대전</p>
 		    </div>
 		</div>
 		
@@ -735,12 +794,12 @@ $(function(){
 		    <div class="weather-card">
 		    	<img id="cheongju_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="cheongju"></h4>
-		        <p>청주</p>
+		        <p id="weather-chungju">청주</p>
 		    </div>
 		    <div class="weather-card">
 		    	<img id="daegu_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="daegu"></h4>
-		        <p>대구</p>
+		        <p id="weather-daegu">대구</p>
 		    </div>
 		</div>
 		
@@ -748,12 +807,12 @@ $(function(){
 		    <div class="weather-card">
 		    	<img id="gwangju_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="gwangju"></h4>
-		        <p>광주</p>
+		        <p id="weather-gwangju">광주</p>
 		    </div>
 		    <div class="weather-card">
 		    	<img id="jeonju_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="jeonju"></h4>
-		        <p>전주</p>
+		        <p id="weather-jeonju">전주</p>
 		    </div>
 		</div>
 	
@@ -761,12 +820,12 @@ $(function(){
 		    <div class="weather-card">
 		    	<img id="busan_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="busan"></h4>
-		        <p>부산</p>
+		        <p id="weather-busan">부산</p>
 		    </div>
 		    <div class="weather-card">
 		    	<img id="jeju_img"style="width:80px; height:80px; margin-left:55px;">
 		        <h4 id="jeju"></h4>
-		        <p>제주</p>
+		        <p id="weather-jeju">제주</p>
 		    </div>
 		</div>
 	</div> 

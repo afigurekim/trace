@@ -39,7 +39,7 @@
  background-image: url("../resources/imgs/cloud.png");
 }
 		#single-page-slider {
-			background-image: url("../resources/imgs/banner/period-all-banner.jpg");
+			background-image: url("../../../resources/imgs/banner/period-all-banner.jpg");
 			bakcground-color: #01b29e;
 			background-size: cover;
 			background-repeat: no-repeat;
@@ -153,9 +153,15 @@ $(function(){
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="center gap fade-down section-heading">
-                                    <h2 class="main-title">시대별</h2>
-                                    <hr>
-                                    <p>선사 · 삼국 · 고려 · 조선 · 근현대 </p>
+	                                <script type="text/javascript">
+					        		if(window.location.href.indexOf("eng")!=-1){
+					        			document.write("<h2 class=\"main-title\">Period</h2><hr><p>Prehistoric · Three Kingdoms · Koryo · Joseon · Modern Times</p>");
+					        		}else if(window.location.href.indexOf("china")!=-1){
+					        			document.write("<h2 class=\"main-title\">时代</h2><hr><p>史前 · 三国 · 高丽 · 朝鲜 · 近现代</p>");
+					        		}else{
+					        			document.write("<h2 class=\"main-title\">시대별</h2><hr><p>선사 · 삼국 · 고려 · 조선 · 근현대</p>");
+					        		}
+					        		</script>
                                 </div>
                             </div>   
                         </div>
@@ -170,13 +176,48 @@ $(function(){
             <div class="container">
                     
                     <ul class="portfolio-filter fade-down center">
-                        <li><a class="btn btn-outlined btn-primary active" id="all_period" href="#" data-filter="*">전체보기</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="sunsa" data-filter="*">선사시대</a></li>
-                        <li><a class="btn btn-outlined btn-primary"  id="samgook" href="#" data-filter="*">삼국시대</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="korea" href="#" data-filter="*">고려시대</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="josun" href="#" data-filter="*">조선시대</a></li>
-                        <li><a class="btn btn-outlined btn-primary" id="hyundae" href="#" data-filter="*">근현대</a></li>
-                    
+                        <li><a class="btn btn-outlined btn-primary active" id="all_period" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("View All"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("全体"); }
+				        		else { document.write("전체보기"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="sunsa" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Prehistoric"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("史前时代"); }
+				        		else { document.write("선사시대"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary"  id="samgook" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Three Kingdoms"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("三国时代"); }
+				        		else { document.write("삼국시대"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="korea" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Koryo"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("高丽时代"); }
+				        		else { document.write("고려시대"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="josun" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Joseon"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("朝鲜时代"); }
+				        		else { document.write("조선시대"); }
+			        		</script>
+		        		</a></li>
+                        <li><a class="btn btn-outlined btn-primary" id="hyundae" href="#" data-filter="*">
+	                        <script type="text/javascript">
+				        		if (window.location.href.indexOf("eng")!=-1) { document.write("Modern Times"); }
+				        		else if (window.location.href.indexOf("china")!=-1) { document.write("近现代"); }
+				        		else { document.write("근현대"); }
+			        		</script>
+		        		</a></li>
                     </ul><!--/#portfolio-filter-->
 						
                     <ul class="portfolio-items col-3 isotope fade-up">

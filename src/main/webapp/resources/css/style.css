@@ -36,7 +36,7 @@
 
 body {
     color: #222;
-    background: #f5f5f5;
+    background: white;
     font-family: Lato, sans-serif;
     font-weight: 300;
     line-height: 1.6;
@@ -1504,6 +1504,7 @@ img.author-box-image {
 #content-wrapper section {
   padding-top: 30px;
   padding-bottom: 60px;
+  background-color:white;
 }
 
 /*-----------------------------------------------------------------------------------*/
@@ -2209,7 +2210,9 @@ img.author-box-image {
 
 #content-wrapper {
   box-shadow: none;
+
 }
+
 
 .navbar-inverse .navbar-nav .dropdown-menu > li > a {
     padding: 15px 15px 15px;

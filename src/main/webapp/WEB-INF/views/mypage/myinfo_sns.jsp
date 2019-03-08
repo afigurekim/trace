@@ -37,6 +37,40 @@
 			background-position: center;
 		}
 	</style>
+	<script>
+	$(function(){
+		 $("#myinfo").click(function(){
+	        	if(window.location.href.indexOf("eng")!=-1){
+	        		window.location.href="/eng/myinfo";
+	        	}else if(window.location.href.indexOf("china")!=-1){
+	        		window.location.href="/china/myinfo";
+	        	}else{
+	        		window.location.href="/myinfo";
+	        	}
+	        });
+	        
+	        $("#mypage_jim").click(function(){
+	        
+				if(window.location.href.indexOf("eng")!=-1){
+	        		window.location.href="/eng/mypage";
+	        	}else if(window.location.href.indexOf("china")!=-1){
+	        		window.location.href="/china/mypage";
+	        	}else{
+	        		window.location.href="/mypage";
+	        	}
+	        });
+	        
+	        $("#mycomment").click(function(){
+				if(window.location.href.indexOf("eng")!=-1){
+	        		window.location.href="/eng/mycomment";
+	        	}else if(window.location.href.indexOf("china")!=-1){
+	        		window.location.href="/china/mycomment";
+	        	}else{
+	        		window.location.href="/mycomment";
+	        	}
+	        });
+	});
+	</script>
 </head><!--/head-->
 <body>
 <%@include file="../Header.jsp" %>
@@ -68,34 +102,51 @@
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
     <div id="content-wrapper" class="no-margin">
-        <section id="contact" class="white">
+        <section id="portfolio" class="white" style="margin-bottom:60px;">
             <div class="container">
                 <div class="gap"></div>
                 <div id="join_responsive" class="row">
-                    <div class="col-md-2 fade-up">
-                        <script type="text/javascript">
-		        		if(window.location.href.indexOf("eng")!=-1){
-		        			document.write("<h3>My Page</h3><p><a href=\"/eng/mypage\">My Places</a><br/><a href=\"/eng/mycomment\">My Comments</a><br/><a href=\"/eng/myinfo\">Account</a><br/></p>");
-		        		}else if(window.location.href.indexOf("china")!=-1){
-		        			document.write("<h3>我的页面</h3><p><a href=\"/china/mypage\">我的地点</a><br/><a href=\"/china/mycomment\">我的评论</a><br/><a href=\"/china/myinfo\">帐户</a><br/></p>");
-		        		}else{
-		        			document.write("<h3>마이페이지</h3><p><a href=\"/mypage\">찜 목록</a><br/><a href=\"/mycomment\">내 댓글</a><br/><a href=\"/myinfo\">정보수정</a><br/></p>");
-		        		}
-		        		</script>
-                    </div><!-- col -->
+                   
                 
-                    <div class="col-md-10 fade-up">
-		        		<h3>
-                        	<script type="text/javascript">
-			        		if(window.location.href.indexOf("eng")!=-1){
+                    <div class="col-md-10 fade-up" style="width:100%;margin:auto;">
+		        		<ul class="portfolio-filter fade-down center">
+                        
+                        <li><a class="btn btn-outlined btn-primary" id="mypage_jim" href="#" data-filter="*">
+                        <script>
+	                        if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("My Places");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("我的地点");
+			        		}else{
+			        			document.write("찜 목록");
+			        		}
+                        </script>
+                        </a></li>
+                        <li><a class="btn btn-outlined btn-primary" id='mycomment' href="#" data-filter="*">
+                        <script>
+	                        if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("My Comments");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("我的评论");
+			        		}else{
+			        			document.write("내 댓글");
+			        		}
+                        </script>
+                        </a></li>
+                           <li><a class="btn btn-outlined btn-primary active" id='myinfo' href="#" data-filter="*">
+                        <script>
+	                        if(window.location.href.indexOf("eng")!=-1){
 			        			document.write("Account");
 			        		}else if(window.location.href.indexOf("china")!=-1){
 			        			document.write("帐户");
 			        		}else{
-			        			document.write("정보수정");
+			        			document.write("정보 수정");
 			        		}
-			        		</script>
-						</h3>
+                        </script>
+                        </a></li>
+                        
+                    	</ul>
+                    
 		                <form role="joinform" id="joinform">
 		                	<br>
 		                	<h4>
@@ -127,9 +178,10 @@
                 <div class="gap"></div>
             </div>
             </div>
+            
         </section><!-- section -->
+        
     </div>
-
 <%@include file="../Footer.jsp" %>
 
 

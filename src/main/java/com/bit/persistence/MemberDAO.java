@@ -39,10 +39,14 @@ public interface MemberDAO {
 //	public int countReplyMember(String user_id) throws Exception;
 	
 	// 내 댓글 select DAO
-	public List<ReplyVO> selectReplyMember(String user_id) throws Exception;
+	public List<ReplyVO> selectReplyMember(String user_id,Criteria cri) throws Exception;
+	
+	public int selectMycommentCount(String user_id)throws Exception;
 	
 	// 내 찜 목록 select DAO
-	public List<MemberSiteVO> selectSiteMember(String user_id) throws Exception;
+	public List<MemberSiteVO> selectSiteMember(String user_id,Criteria cri) throws Exception;
+	
+	public int selectSiteCount(String user_id)throws Exception;
 	
 	// 내 찜 아이템 delete DAO
 	public void deleteSiteMember(int jno) throws Exception;

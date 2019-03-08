@@ -42,7 +42,7 @@ update MEMBER set email_check=#{auth} where email=#{email}
 <!-- 회원 정보 select 쿼리문  by 도형-->
 <select id="selectMember" resultType="com.bit.domain.MemberVO">
 <![CDATA[
-select * from MEMBER where user_id=#{user_id}
+select * from MEMBER where user_id=#{user_id} 
 ]]>
 </select>
 
@@ -56,10 +56,16 @@ update MEMBER set user_name=#{user_name}, user_pw=#{user_pw}, phone=#{phone} whe
 <!-- 내 댓글 select 쿼리문 by 도형 -->
 <select id="selectReplyMember" resultType="com.bit.domain.ReplyVO">
 <![CDATA[
-select HISTORIC_SITE.bno, HISTORIC_SITE.site_name, HISTORIC_SITE_REPLY.reply_text, HISTORIC_SITE_REPLY.update_date from HISTORIC_SITE_REPLY, HISTORIC_SITE where HISTORIC_SITE.bno=HISTORIC_SITE_REPLY.bno and HISTORIC_SITE_REPLY.replyer=#{user_id}
+select HISTORIC_SITE.bno, HISTORIC_SITE.site_name, HISTORIC_SITE_REPLY.reply_text, HISTORIC_SITE_REPLY.update_date,HISTORIC_SITE_REPLY.rno from HISTORIC_SITE_REPLY, HISTORIC_SITE where HISTORIC_SITE.bno=HISTORIC_SITE_REPLY.bno and HISTORIC_SITE_REPLY.replyer=#{user_id} limit #{cri.pageStart},#{cri.perPageNum}
 ]]>
 </select>
 <!-- limit #{cri.pageStart}, #{cri.perPageNum} -->
+
+<select id="selectMycommentCount" resultType="int">
+<![CDATA[
+select count(*) from HISTORIC_SITE_REPLY where replyer=#{user_id}
+]]>
+</select>
 
 <!-- 안 쓰는 코드 -->
 <select id="countReplyMember" resultType="int">
@@ -71,10 +77,15 @@ select count(rno) from HISTORIC_SITE_REPLY where replyer=#{user_id}
 <!-- 찜 목록 select 쿼리문 by 도형 -->
 <select id="selectSiteMember" resultType="com.bit.domain.MemberSiteVO">
 <![CDATA[
-select * from MEMBER_SITE where user_id=#{user_id}
+select * from MEMBER_SITE where user_id=#{user_id} limit #{cri.pageStart},#{cri.perPageNum}
 ]]>
 </select>
 
+<select id="selectSiteCount" resultType="int">
+<![CDATA[
+select count(*) from MEMBER_SITE where user_id=#{user_id} 
+]]>
+</select>
 <!-- 찜 아이템 delete 쿼리문 by 도형 -->
 <delete id="deleteSiteMember">
 delete from MEMBER_SITE where jno=#{jno}

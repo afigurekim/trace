@@ -35,7 +35,7 @@ public class MypageController {
 	private MemberService service;
 	// /mypage GET방식 접근 -> 찜목록 페이지
 	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
-	public String mypage(Model model, HttpSession session) throws Exception {
+	public String mypage(Criteria cri,Model model, HttpSession session) throws Exception {
 //		String temp = "mrhong1234";
 //		session.setAttribute("login_id2", temp);
 		Object session_id = session.getAttribute("login_id");
@@ -45,13 +45,21 @@ public class MypageController {
 		}
 		String user_id = session_id.toString();
 		logger.info("user_id : "+user_id);
-		List<MemberSiteVO> mysiteList = service.selectSiteMember(user_id);
+		cri.setPerPageNum(10);
+		
+		PageMaker pageMaker=new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.selectSiteCount(user_id));
+	
+		List<MemberSiteVO> mysiteList = service.selectSiteMember(user_id,cri);
 		logger.info(mysiteList.toString());
 		model.addAttribute("mysiteList", mysiteList);
+		model.addAttribute("pageMaker",pageMaker);
+
 		return "mypage/mypage";
 	}
 	@RequestMapping(value = "/{lang}/mypage", method = RequestMethod.GET)
-	public String mypage(Model model, HttpSession session, @PathVariable String lang) throws Exception {
+	public String mypage(Criteria cri ,Model model, HttpSession session, @PathVariable String lang) throws Exception {
 //		String temp = "mrhong1234";
 //		session.setAttribute("login_id2", temp);
 		Object session_id = session.getAttribute("login_id");
@@ -61,9 +69,15 @@ public class MypageController {
 		}
 		String user_id = session_id.toString();
 		logger.info("user_id : "+user_id);
-		List<MemberSiteVO> mysiteList = service.selectSiteMember(user_id);
+		cri.setPerPageNum(10);
+		PageMaker pageMaker=new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.selectSiteCount(user_id));
+		List<MemberSiteVO> mysiteList = service.selectSiteMember(user_id,cri);
 		logger.info(mysiteList.toString());
 		model.addAttribute("mysiteList", mysiteList);
+		model.addAttribute("pageMaker",pageMaker);
+
 		return "mypage/mypage";
 	}
 	// /jimdel POST방식 접근 -> 찜목록 항목 삭제 (비동기통신)
@@ -94,7 +108,7 @@ public class MypageController {
 	}
 	// /mycomment GET방식 접근 -> 내 댓글 페이지
 	@RequestMapping(value = "/mycomment", method = RequestMethod.GET)
-	public String mycomment(Model model, HttpSession session) throws Exception {
+	public String mycomment(Criteria cri,Model model, HttpSession session) throws Exception {
 		Object session_id = session.getAttribute("login_id");
 		if(session_id==null || session_id=="") { 
 			session_id = session.getAttribute("login_id2");
@@ -102,13 +116,23 @@ public class MypageController {
 		}
 		String user_id = session_id.toString();
 		logger.info("user_id : "+user_id);
-		List<ReplyVO> mycommentList = service.selectReplyMember(user_id);
-		logger.info(mycommentList.toString());
+		
+		cri.setPerPageNum(10);
+		
+		PageMaker pageMaker=new PageMaker();
+		pageMaker.setCri(cri);
+		int count=service.selectMycommentCount(user_id);
+		pageMaker.setTotalCount(count);
+		System.out.println("카운트에요"+count);
+		List<ReplyVO> mycommentList = service.selectReplyMember(user_id,cri);
+		
 		model.addAttribute("mycommentList", mycommentList);
+		model.addAttribute("pageMaker",pageMaker);
+
 		return "mypage/mycomment";
 	}
 	@RequestMapping(value = "/{lang}/mycomment", method = RequestMethod.GET)
-	public String mycomment(Model model, HttpSession session, @PathVariable String lang) throws Exception {
+	public String mycomment(Criteria cri,Model model, HttpSession session, @PathVariable String lang) throws Exception {
 		Object session_id = session.getAttribute("login_id");
 		if(session_id==null || session_id=="") { 
 			session_id = session.getAttribute("login_id2");
@@ -116,9 +140,16 @@ public class MypageController {
 		}
 		String user_id = session_id.toString();
 		logger.info("user_id : "+user_id);
-		List<ReplyVO> mycommentList = service.selectReplyMember(user_id);
-		logger.info(mycommentList.toString());
+		cri.setPerPageNum(10);
+		
+		PageMaker pageMaker=new PageMaker();
+		pageMaker.setCri(cri);
+		pageMaker.setTotalCount(service.selectMycommentCount(user_id));
+
+		List<ReplyVO> mycommentList = service.selectReplyMember(user_id,cri);
+
 		model.addAttribute("mycommentList", mycommentList);
+		model.addAttribute("pageMaker",pageMaker);
 		return "mypage/mycomment";
 	}
 	// /myinfo GET방식 접근 -> 내 정보 수정 페이지

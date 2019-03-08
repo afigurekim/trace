@@ -53,7 +53,7 @@
 					 		document.write("<li><a href='/logout' onclick='logout()'>로그아웃</a></li>");
 		                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
 					 	}
-	                    document.write("<li><a href='/write'>공지사항</a></li>");
+	                    document.write("<li><a href='/notice'>공지사항</a></li>");
                     }
                     else if(window.location.href.indexOf("eng")!=-1){
                     	document.write("<li><a href='/eng/intro'>INTRO</a></li>");
@@ -74,7 +74,7 @@
 		                    document.write("<li><a href='/logout' onclick='logout()'>LOGOUT</a></li>");
 		                    document.write("<li><a id='mypage' href='/eng/mypage'>MYPAGE</a></li>"); 
 					 	}
-	                    document.write("<li><a href='/eng/write'>NOTICE</a></li>");
+	                    document.write("<li><a href='/eng/notice'>NOTICE</a></li>");
                     }
                     else if(window.location.href.indexOf("china")!=-1){
                     	document.write("<li><a href='/china/intro'>贴士</a></li>");
@@ -97,7 +97,7 @@
 
 					 	}
 	                    document.write("<li><a id='mypage' href='/china/mypage'>我的页面</a></li>"); 
-	                    document.write("<li><a href='/china/write'>公知事項</a></li>");
+	                    document.write("<li><a href='/china/notice'>公知事項</a></li>");
                     }else{
                     	document.write("<li><a href='/intro'>소개</a></li>");
                     	document.write("<li class='dropdown active'>");
@@ -120,7 +120,7 @@
 		                    document.write("<li><a id='mypage' href='/mypage'>마이페이지</a></li>"); 
 
 					 	}
-	                    document.write("<li><a href='/write'>공지사항</a></li>");
+	                    document.write("<li><a href='/notice'>공지사항</a></li>");
                     }
                     </script>
                     

@@ -586,7 +586,16 @@ $(function(){
 				  <!-- Modal Content -->
 				    <div class="modal-content">
 				      <div class="modal-header">
-				        <h3 class="modal-title" id="exampleModalLongTitle" style="font-weight: bold; position: relative; top: 10px; left: 10px;">비밀번호 찾기</h3>
+				      	<script>
+				      	
+				      		if(window.location.href.indexOf("eng")!=-1){
+								document.write("<h3 class='modal-title' id='exampleModalLongTitle' style='font-weight: bold; position: relative; top: 10px; left: 10px;'>FIND PASSWORD</h3>");
+				      		}else if(window.location.href.indexOf("china")!=-1){
+								document.write("<h3 class='modal-title' id='exampleModalLongTitle' style='font-weight: bold; position: relative; top: 10px; left: 10px;'>寻找密码</h3>");
+				      		}else{
+								document.write("<h3 class='modal-title' id='exampleModalLongTitle' style='font-weight: bold; position: relative; top: 10px; left: 10px;'>비밀번호 찾기</h3>");
+				      		}
+				      		</script>
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				          <span aria-hidden="true">&times;</span>
 				        </button>
@@ -594,46 +603,91 @@ $(function(){
 				   <!-- body -->
 				      <div class="modal-body">
 				      	<div style="border-bottom: 1.5px solid gray"">
-				      		<img alt="" id="modal-find2" src="../resources/imgs/lock.png" style="width:128px; height:128px; margin-left:215px; margin-bottom:10px;">
-				      		<p style="text-align:center; font-size: 13px;">이름과 이메일을 입력하여 아이디를 찾아보세요</p>
+				      		<img alt="" id="modal-find2" src="../resources/imgs/lock.png" style="width:128px; height:128px; margin-left:225px; margin-bottom:10px;">
+				      		<script>
+				     			if(window.location.href.indexOf("eng")!=-1){
+				     				document.write("<p style='text-align:center; font-size: 13px;'>Fill in the box below to find the password.</p>");
+				     			}else if(window.location.href.indexOf("china")!=-1){
+				     				document.write("<p style='text-align:center; font-size: 13px;'>请填满下面的栏寻找密码</p>");
+				     			}else{
+				     				document.write("<p style='text-align:center; font-size: 13px;'>아래 칸을 채워 비밀번호를 찾아보세요</p>");
+
+				     			}
+				      		</script>	
+				      		
 				      	</div>
 				      	<form class="form-horizontal" method="post">
 						  <div class="form-group" style="margin-top: 60px;">
-						    <label for="id" id="modal_name2" class="col-sm-2" style="font-weight: bold; font-size: 16px; position: relative; left: 100px; top:-30px;">이름</label>
-						    <div class="col-sm-8">
-						     <input type="text" class="form-control" id="find_name1" placeholder="Name" style="position: relative; ">
-						     </div>
+						    <div class="row" style="margin: auto;">
+							   <script>
+								  if(window.location.href.indexOf("eng")!=-1){
+									    document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>Name</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='Name' style='position: relative;'>");
+							  		}else if(window.location.href.indexOf("china")!=-1){
+							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>名</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='名' style='position: relative;'>");
+							  		}else{
+							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>이름</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='이름' style='position: relative;'>");
+							  		}
+							  </script>
+							  </div>
 						  </div>
+						  </div>
+						  
+						  <div class="form-group">
+						    <div class="row" style="margin: auto;">
+							   <script>
+								  if(window.location.href.indexOf("eng")!=-1){
+									    document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='bb'>Email</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='Email' style='position: relative;'>");
+							  		}else if(window.location.href.indexOf("china")!=-1){
+							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='bb'>电邮</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='电邮' style='position: relative;'>");
+							  		}else{
+							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='bb'>이메일</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='이메일' style='position: relative;'>");
+							  		}
+							  </script>
+							  </div>
+						  </div>
+						  </div>
+						  
 						   <div class="form-group">
-						    <label for="inputEmail3" id="modal_email2" class="col-sm-2 " style="font-weight: bold; font-size: 14px; position: relative; left: 100px;">이메일</label><br>
-						    <div class="col-sm-8">
-						      <input type="email" class="form-control" id="find_email1" placeholder="Email" >
-						       
-						    </div>
+						    <div class="row" style="margin: auto;">
+							   <script>
+								  if(window.location.href.indexOf("eng")!=-1){
+									    document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='cc'>ID</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='ID' style='position: relative;'>");
+							  		}else if(window.location.href.indexOf("china")!=-1){
+							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='cc'>用户名</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='用户名' style='position: relative;'>");
+							  		}else{
+							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='cc'>아이디</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='아이디' style='position: relative;'>");
+							  		}
+							  </script>
+							  </div>
 						  </div>
-						  <div class="form-group" >
-						    <label for="ID" id="modal_Id2" class="col-sm-2 " style="font-weight: bold; font-size: 14px; position: relative; left:100px; ">아이디</label><br>
-						    <div class="col-sm-8">
-						      <input type="text" class="form-control" id="find_id1" placeholder="ID" >
-						        
-						    </div>
 						  </div>
-						  <div class="form-group" style="">
-						    <label for="phone" id="modal_Phone2" class="col-sm-2 " style="font-weight: bold; font-size: 14px; position: relative; left: 100px;">폰</label><br>
-						    <div class="col-sm-8" >
-						     	 <input type="text" class="form-control" id="find_phone" placeholder="Phone">
-						        <br>
-						    </div>
+						  
+						  <div class="form-group">
+						    <div class="row" style="margin: auto;">
+							   <script>
+								  if(window.location.href.indexOf("eng")!=-1){
+									    document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='dd'>Phone</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='Phone' style='position: relative;'>");
+							  		}else if(window.location.href.indexOf("china")!=-1){
+							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='dd'>手机</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='手机' style='position: relative;'>");
+							  		}else{
+							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='dd'>휴대폰</div>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='휴대폰' style='position: relative;'>");
+							  		}
+							  </script>
+							  </div>
 						  </div>
-					  </div>
-				      <div class="modal-footer">
-				        <button type="button" class="btn btn-primary" id="findBtn1" data-toggle="modal" data-target="#exampleModal1">Find</button>
-				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				        </form>
-				      </div>
-				    </div>
-				  </div>
-				</div>
+						  </div>
 				<!-- Modal안에 모달 -->
 					<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">

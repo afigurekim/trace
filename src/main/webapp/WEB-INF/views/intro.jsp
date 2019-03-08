@@ -169,8 +169,8 @@ $(function(){
       </span>
     </div>
   </div>
-
-<%@include file="intro-footer.jsp" %> 
+<div style="margin-top:-100px;"></div>
+<%@include file="Footer.jsp" %> 
 
 </body>
 </html>

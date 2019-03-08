@@ -41,6 +41,37 @@
 	        	alert("로그인 후 이용해주세요");
 	        	window.location.href="/login";
 	        }
+	        
+	        $("#myinfo").click(function(){
+	        	if(window.location.href.indexOf("eng")!=-1){
+	        		window.location.href="/eng/myinfo";
+	        	}else if(window.location.href.indexOf("china")!=-1){
+	        		window.location.href="/china/myinfo";
+	        	}else{
+	        		window.location.href="/myinfo";
+	        	}
+	        });
+	        
+	        $("#mypage_jim").click(function(){
+	        
+				if(window.location.href.indexOf("eng")!=-1){
+	        		window.location.href="/eng/mypage";
+	        	}else if(window.location.href.indexOf("china")!=-1){
+	        		window.location.href="/china/mypage";
+	        	}else{
+	        		window.location.href="/mypage";
+	        	}
+	        });
+	        
+	        $("#mycomment").click(function(){
+				if(window.location.href.indexOf("eng")!=-1){
+	        		window.location.href="/eng/mycomment";
+	        	}else if(window.location.href.indexOf("china")!=-1){
+	        		window.location.href="/china/mycomment";
+	        	}else{
+	        		window.location.href="/mycomment";
+	        	}
+	        });
 	    });
     </script>
     <style>
@@ -88,34 +119,62 @@
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
     <div id="content-wrapper" class="no-margin">
-        <section id="contact" class="white">
+        <section id="portfolio" class="white" style="margin-bottom:20px;">
             <div class="container">
                 <div class="gap"></div>
                 <div class="row">
-                    <div class="col-md-2 fade-up">
-                        <script type="text/javascript">
+                       
+                    	
+                        <!-- <script type="text/javascript">
 		        		if(window.location.href.indexOf("eng")!=-1){
-		        			document.write("<h3>My Page</h3><p><a href=\"/eng/mypage\">My Places</a><br/><a href=\"/eng/mycomment\">My Comments</a><br/><a href=\"/eng/myinfo\">Account</a><br/></p>");
+		        			document.write("<h3 style='text-align:center;'>My Page</h3><p style='text-align:center;'><a href=\"/eng/mypage\">My Places</a><br/><a href=\"/eng/mycomment\">My Comments</a><br/><a href=\"/eng/myinfo\">Account</a><br/></p>");
 		        		}else if(window.location.href.indexOf("china")!=-1){
-		        			document.write("<h3>我的页面</h3><p><a href=\"/china/mypage\">我的地点</a><br/><a href=\"/china/mycomment\">我的评论</a><br/><a href=\"/china/myinfo\">帐户</a><br/></p>");
+		        			document.write("<h3 style='text-align:center;'>我的页面</h3><p style='text-align:center;'><a href=\"/china/mypage\">我的地点</a><br/><a href=\"/china/mycomment\">我的评论</a><br/><a href=\"/china/myinfo\">帐户</a><br/></p>");
 		        		}else{
-		        			document.write("<h3>마이페이지</h3><p><a href=\"/mypage\">찜 목록</a><br/><a href=\"/mycomment\">내 댓글</a><br/><a href=\"/myinfo\">정보수정</a><br/></p>");
+		        			document.write("<h3 style='text-align:center;'>마이페이지</h3><p style='text-align:center;'><a href=\"/mypage\">찜 목록</a><br/><a href=\"/mycomment\">내 댓글</a><br/><a href=\"/myinfo\">정보수정</a><br/></p>");
 		        		}
-		        		</script>
-                    </div><!-- col -->
+		        		</script> -->
+                   <!-- col -->
                 
-                    <div class="col-md-10 fade-up">
-                        <h3>
-                        	<script type="text/javascript">
-			        		if(window.location.href.indexOf("eng")!=-1){
+                    <div class="col-md-10 fade-up" style="width:100%; margin:auto;">
+                     <ul class="portfolio-filter fade-down center">
+                        
+                        <li><a class="btn btn-outlined btn-primary active" id="mypage_jim" href="#" data-filter="*">
+                        <script>
+	                        if(window.location.href.indexOf("eng")!=-1){
 			        			document.write("My Places");
 			        		}else if(window.location.href.indexOf("china")!=-1){
 			        			document.write("我的地点");
 			        		}else{
 			        			document.write("찜 목록");
 			        		}
-			        		</script>
-						</h3>
+                        </script>
+                        </a></li>
+                        <li><a class="btn btn-outlined btn-primary" id='mycomment' href="#" data-filter="*">
+                        <script>
+	                        if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("My Comments");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("我的评论");
+			        		}else{
+			        			document.write("내 댓글");
+			        		}
+                        </script>
+                        </a></li>
+                           <li><a class="btn btn-outlined btn-primary" id='myinfo' href="#" data-filter="*">
+                        <script>
+	                        if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("Account");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("帐户");
+			        		}else{
+			        			document.write("정보 수정");
+			        		}
+                        </script>
+                        </a></li>
+                        
+                    	</ul>
+                    
                         <br>
                         <div>
                         <table class="table">
@@ -181,7 +240,7 @@
 					        			document.write("<tr class=\"clickable-row\" data-href=\"/period/read?bno=${MemberSiteVO.bno}\">");
 					        		}
 				        		</script>
-									<td class="col-md-1 hidden-xs" style="vertical-align: middle;"><img class="thumb" src="${MemberSiteVO.first_image}"></td>
+									<td class="col-md-1 hidden-xs" style="vertical-align: middle;"><img class="thumb" style="width:110px; height:85.56px;" src="${MemberSiteVO.first_image}"></td>
                         			<td class="col-md-2" style="vertical-align: middle; overflow: hidden; white-space: pre-wrap;">${MemberSiteVO.site_name}</td>
                         			<td class="col-md-4 hidden-sm hidden-xs" style="vertical-align: middle; overflow: hidden; white-space: pre-wrap;">${MemberSiteVO.address}</td>
                         			<td class="col-md-1 hidden-md hidden-sm hidden-xs" style="vertical-align: middle; overflow: hidden; white-space: pre-wrap;">${MemberSiteVO.period}</td>
@@ -250,6 +309,57 @@
                 </div><!-- row -->  
                 <div class="gap"></div> 
             </div>
+            <div class="text-center">
+						<ul class="pagination">
+							<c:if test="${pageMaker.prev}">
+							<script type="text/javascript">
+							 if(window.location.href.indexOf("eng")!=-1){
+		                            document.write("<li><a href=/eng/mypage?page=${pageMaker.startPage-1}&laquo;</a></li>");
+		                          }else if(window.location.href.indexOf("china")!=-1){
+			                            document.write("<li><a href=/china/mypage?page=${pageMaker.startPage-1}&laquo;</a></li>");
+
+		                          }else{
+			                            document.write("<li><a href=/mypage?page=${pageMaker.startPage-1}&laquo;</a></li>");
+		                        	  
+		                          }
+							</script>
+							</c:if>
+							
+							<c:forEach begin="${pageMaker.startPage}" end="${pageMaker.endPage}" var="idx">
+								<li 
+									<c:out value="${pageMaker.cri.page == idx?'class=active':''}"/>>
+								<script type="text/javascript">
+								if(window.location.href.indexOf("eng")!=-1){
+		                            document.write("<a href='/eng/mypage?page=${idx}'>${idx}</a>");
+		                          }else if(window.location.href.indexOf("china")!=-1){
+			                       document.write("<a href='/china/mypage?page=${idx}'>${idx}</a>");
+
+		                          }else{
+				                       document.write("<a href='/mypage?page=${idx}'>${idx}</a>");
+		                        	  
+		                          }
+								</script>
+								
+								</li>
+							</c:forEach>
+							
+							<c:if test="${pageMaker.next && pageMaker.endPage>0 }">
+							<script type="text/javascript">
+								if(window.location.href.indexOf("eng")!=-1){
+		                            document.write("<li><a href='/eng/mypage?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+		                          }else if(window.location.href.indexOf("china")!=-1){
+			                            document.write("<li><a href='/china/mypage?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+
+		                          }else{
+			                            document.write("<li><a href='/mypage?page=${pageMaker.endPage +1}'>&raquo;</a></li>");
+		                        	  
+		                          }
+								</script>
+							
+							</c:if>
+							
+						</ul>
+					</div>
         </section><!-- section -->
     </div>
 

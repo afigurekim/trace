@@ -30,6 +30,38 @@
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
     <script type="text/javascript">
+    $(function(){
+    	 $("#myinfo").click(function(){
+	        	if(window.location.href.indexOf("eng")!=-1){
+	        		window.location.href="/eng/myinfo";
+	        	}else if(window.location.href.indexOf("china")!=-1){
+	        		window.location.href="/china/myinfo";
+	        	}else{
+	        		window.location.href="/myinfo";
+	        	}
+	        });
+	        
+	        $("#mypage_jim").click(function(){
+	        
+				if(window.location.href.indexOf("eng")!=-1){
+	        		window.location.href="/eng/mypage";
+	        	}else if(window.location.href.indexOf("china")!=-1){
+	        		window.location.href="/china/mypage";
+	        	}else{
+	        		window.location.href="/mypage";
+	        	}
+	        });
+	        
+	        $("#mycomment").click(function(){
+				if(window.location.href.indexOf("eng")!=-1){
+	        		window.location.href="/eng/mycomment";
+	        	}else if(window.location.href.indexOf("china")!=-1){
+	        		window.location.href="/china/mycomment";
+	        	}else{
+	        		window.location.href="/mycomment";
+	        	}
+	        });
+    });
 	function checkPwd(){
 		var passReg=/[a-z0-9]{10,15}$/g;
 		var password=$("#passwd").val();
@@ -110,21 +142,23 @@
 	$(function(){
 		var windowWidth = $( window ).width();
 		var joinWidth=$("#joinform").width();
-		 $("#join_responsive").css("width","909.98px");
-		 $("#join_responsive").css("margin","auto");
-		 $("#join_responsive").css("margin-top","0px");
-	
-		 if(windowWidth<=1182){
-			 $("#join_responsive").width(windowWidth*.8333);
+		
+		 if(windowWidth<=626){
+			 $("#joinform").width(windowWidth-30);
+		 }else{
+			 $("#joinform").width(600);
+
 		 }
+		 
 		$(window).resize(function(){
 			 windowWidth = $( window ).width();
 			 joinWidth=$("#joinform").width();
 			
-			 if(windowWidth<=1182){
-				 $("#join_responsive").width(windowWidth*.8333);
+			 if(windowWidth<=626){
+				 $("#joinform").width(windowWidth-30);
 			 }else{
-				 $("#join_responsive").css("width","909.98px");
+				 $("#joinform").width(600);
+
 			 }
 			console.log("폼크기"+joinWidth);
 			console.log("윈도우 크기"+windowWidth);
@@ -172,41 +206,58 @@
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
     <div id="content-wrapper" class="no-margin">
-        <section id="contact" class="white">
+        <section id="portfolio" class="white">
             <div class="container">
                 <div class="gap"></div>
                 <div class="row">
-                    <div id="menu_responsive" class="col-md-2 fade-up">
-                        <script type="text/javascript">
-		        		if(window.location.href.indexOf("eng")!=-1){
-		        			document.write("<h3>My Page</h3><p><a href=\"/eng/mypage\">My Places</a><br/><a href=\"/eng/mycomment\">My Comments</a><br/><a href=\"/eng/myinfo\">Account</a><br/></p>");
-		        		}else if(window.location.href.indexOf("china")!=-1){
-		        			document.write("<h3>我的页面</h3><p><a href=\"/china/mypage\">我的地点</a><br/><a href=\"/china/mycomment\">我的评论</a><br/><a href=\"/china/myinfo\">帐户</a><br/></p>");
-		        		}else{
-		        			document.write("<h3>마이페이지</h3><p><a href=\"/mypage\">찜 목록</a><br/><a href=\"/mycomment\">내 댓글</a><br/><a href=\"/myinfo\">정보수정</a><br/></p>");
-		        		}
-		        		</script>
-                    </div><!-- col -->
+                    
                 
-                    <div id="join_responsive" class="col-md-10 fade-up">
-		        		<h3>
-                        	<script type="text/javascript">
-			        		if(window.location.href.indexOf("eng")!=-1){
+                    <div id="join_responsive" class="col-md-10 fade-up" style="width:100%;height:100%;">
+                    <ul class="portfolio-filter fade-down center">
+                        
+                        <li><a class="btn btn-outlined btn-primary" id="mypage_jim" href="#" data-filter="*">
+                        <script>
+	                        if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("My Places");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("我的地点");
+			        		}else{
+			        			document.write("찜 목록");
+			        		}
+                        </script>
+                        </a></li>
+                        <li><a class="btn btn-outlined btn-primary" id='mycomment' href="#" data-filter="*">
+                        <script>
+	                        if(window.location.href.indexOf("eng")!=-1){
+			        			document.write("My Comments");
+			        		}else if(window.location.href.indexOf("china")!=-1){
+			        			document.write("我的评论");
+			        		}else{
+			        			document.write("내 댓글");
+			        		}
+                        </script>
+                        </a></li>
+                           <li><a class="btn btn-outlined btn-primary active" id='myinfo' href="#" data-filter="*">
+                        <script>
+	                        if(window.location.href.indexOf("eng")!=-1){
 			        			document.write("Account");
 			        		}else if(window.location.href.indexOf("china")!=-1){
 			        			document.write("帐户");
 			        		}else{
-			        			document.write("정보수정");
+			        			document.write("정보 수정");
 			        		}
-			        		</script>
-						</h3>
+                        </script>
+                        </a></li>
+                        
+                    	</ul>
+		        	
 		                <script type="text/javascript">
 			        		if(window.location.href.indexOf("eng")!=-1){
-			        			document.write("<form role=\"joinform\" id=\"joinform\" method=\"post\">");
+			        			document.write("<form role=\"joinform\" id=\"joinform\" style='width:600px;margin:auto;'  method=\"post\">");
 			        		}else if(window.location.href.indexOf("china")!=-1){
-			        			document.write("<form role=\"joinform\" id=\"joinform\" method=\"post\">");
+			        			document.write("<form role=\"joinform\" id=\"joinform\" style='width:600px;margin:auto;' method=\"post\">");
 			        		}else{
-			        			document.write("<form role=\"joinform\" id=\"joinform\" method=\"post\">");
+			        			document.write("<form role=\"joinform\" id=\"joinform\" style='width:600px;margin:auto;'  method=\"post\">");
 			        		}
 		        		</script>
 		                	<c:forEach items="${memberList}" var="MemberVO" varStatus="status">

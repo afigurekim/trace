@@ -9,6 +9,7 @@ import javax.mail.MessagingException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
+import com.bit.domain.Criteria;
 import com.bit.domain.MemberSiteVO;
 import com.bit.domain.MemberVO;
 import com.bit.domain.ReplyVO;
@@ -101,14 +102,19 @@ public class MemberServiceImpl implements MemberService {
 	
 	// 내 댓글 select 서비스
 	@Override
-	public List<ReplyVO> selectReplyMember(String user_id) throws Exception {
-		return dao.selectReplyMember(user_id);
+	public List<ReplyVO> selectReplyMember(String user_id,Criteria cri) throws Exception {
+		return dao.selectReplyMember(user_id,cri);
+	}
+	@Override 
+	public int selectMycommentCount(String user_id)throws Exception
+	{
+		return dao.selectMycommentCount(user_id);
 	}
 
 	// 찜 목록 select 서비스
 	@Override
-	public List<MemberSiteVO> selectSiteMember(String user_id) throws Exception {
-		return dao.selectSiteMember(user_id);
+	public List<MemberSiteVO> selectSiteMember(String user_id,Criteria cri) throws Exception {
+		return dao.selectSiteMember(user_id,cri);
 	}
 
 	// 찜 아이템 delete 서비스
@@ -188,6 +194,12 @@ public class MemberServiceImpl implements MemberService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public int selectSiteCount(String user_id) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectSiteCount(user_id);
 	}
 
 }

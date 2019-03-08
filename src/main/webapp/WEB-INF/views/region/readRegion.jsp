@@ -906,6 +906,225 @@ $(function(){
 
 
 <script type="text/javascript">
+var clickcount=0;
+var bno=${read.bno};
+var replyPage=1
+$(function(){
+	getPage('/replies/'+bno+"/"+1);
+
+});
+function getPage(pageInfo){
+$.ajax({
+	url:pageInfo,
+	async: false,
+	type:'get',
+	success:function(data){
+		console.log("+댓글 갯수+"+data.list.length);
+		var str="";
+		$("#reply_count").text(data.list.length);
+		printData(data.list,$("#repliesDiv"),$("#template"));
+		printPaging(data.pageMaker,$(".pagination"));
+		$("#modifyModal").modal('hide');
+		$("#replycntSmall").html("[ " +data.pageMaker.totalCount +" ]");
+	}
+});
+}
+Handlebars.registerHelper("prettifyDate",function(timeValue){
+	var dateObj= new Date(timeValue);
+	var year= dateObj.getFullYear();
+	var month = dateObj.getMonth()+1;
+	var date= dateObj.getDate();
+	return year+"/"+month+"/"+date;
+
+});
+
+var printData= function(replyArr,target,templateObject){
+	var template= Handlebars.compile(templateObject.html());
+	var html=template(replyArr);
+	$(".replyLi").remove();
+	target.after(html);
+	for(var i=0;i<replyArr.length;i++){
+		if(replyArr[i].replyer !="${login_id2}" && replyArr[i].replyer !="${login_id}")
+		{
+			$("#modify_modal").hide();
+
+		}
+	}
+}
+var printPaging= function(pageMaker,target){
+	
+	var str="";
+	if(pageMaker.prev){
+		str+= "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
+	}
+	for(var i=pageMaker.startPage,len=pageMaker.endPage;i<=len;i++)
+		{
+		var strClass= pageMaker.cri.page==i?'class=active':'';
+		str+="<li "+strClass+"><a href='"+i+"'>"+i+"</a></li>";
+		}
+	if(pageMaker.next){
+		str+="<li><a href='"+(pageMaker.endPage +1)+"'> >> </a></li>";
+	}
+	target.html(str);
+};
+/*$("#repliesDiv").on("click",function(){
+clickcount+=1;
+alert("hi");
+	if(clickcount==1){
+		if($(".timeline li").size() >1){
+	
+		$(".replyLi").show();
+		$(".pagination").show();
+
+		return;
+		}
+
+	getPage("/replies/"+bno+"/1");
+	
+	}else if(clickcount==2){
+
+		if($(".replyLi").show()){
+			$(".replyLi").hide();
+			$(".pagination").hide();
+		};
+		clickcount=0;
+	}
+});	
+*/
+
+$(".pagination").on("click","li a",function(event){
+	event.preventDefault();
+	replyPage =$(this).attr("href");
+	getPage("/replies/"+bno+"/"+replyPage);
+});
+
+$(".timeline").on("click",".replyLi",function(event){
+	
+	var reply=$(this);
+	
+	$("#replytext").val(reply.find('.timeline-body').text());
+	$(".modal-title").html(reply.attr("data-rno"));
+});
+
+$("#replyAddBtn").on("click",function(){
+	
+	var replyerObj = $("#newReplyWriter");
+	var replytextObj = $("#newReplyText");
+	var replyer = replyerObj.val();
+	var replytext= replytextObj.val();
+	if(replyer==""){
+		if(window.location.href.indexOf("eng")!=-1){
+			alert("Please sign in.");
+		}else if(window.location.href.indexOf("china")!=-1){
+			alert("登录后可使用。");
+		}else{
+			alert("로그인 후 이용이 가능합니다.");
+		}
+		return;
+	}
+	if(replytext==""){
+		if(window.location.href.indexOf("eng")!=-1){
+			alert("Please write a comment.");
+		}else if(window.location.href.indexOf("china")!=-1){
+			alert("请输入回帖。");
+		}else{
+			alert("댓글을 입력해주세요.");
+		}
+		return;
+	}
+	$.ajax({
+		type:'post',
+		url:'/replies/',
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"POST"},
+		dataType:'text',
+		processData:false,
+		data: JSON.stringify({bno:bno,replyer:replyer,reply_text:replytext}),
+		success:function(result){
+			console.log("result: "+result);
+			if(result == 'SUCCESS'){
+				if(window.location.href.indexOf("eng")!=-1){
+					alert("Your comment has been submitted.");
+				}else if(window.location.href.indexOf("china")!=-1){
+					alert("已登记。");
+				}else{
+					alert("등록 되었습니다.");
+				}
+				replyPage=1;
+				getPage("/replies/"+bno+"/"+replyPage);
+				replytextObj.val("");
+			}
+		
+		}});
+});
+
+$("#replyModBtn").on("click",function(){
+	
+	var rno = $(".modal-title").html();
+	var replytext=$("#replytext").val();
+	
+	$.ajax({
+		type:'put',
+		url:'/replies/'+rno,
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"PUT"},
+		dataType:'text',
+		processData:false,
+		data: JSON.stringify({reply_text:replytext}),
+		success:function(result){
+			console.log("result: "+result);
+			if(result == 'SUCCESS'){
+				if(window.location.href.indexOf("eng")!=-1){
+					alert("Your comment has been edited.");
+				}else if(window.location.href.indexOf("china")!=-1){
+					alert("修改好了。");
+				}else{
+					alert("수정 되었습니다.");
+				}
+				getPage("/replies/"+bno+"/"+replyPage);
+				
+			}
+		
+		}});
+});
+
+
+$("#replyDelBtn").on("click",function(){
+	
+	var rno = $(".modal-title").html();
+	var replytext=$("#replytext").val();
+	
+	$.ajax({
+		type:'delete',
+		url:'/replies/'+rno,
+		headers:{
+			"Content-Type":"application/json",
+			"X-HTTP-Method-Override":"DELETE"},
+		dataType:'text',
+		processData:false,
+		success:function(result){
+			console.log("result: "+result);
+			if(result == 'SUCCESS'){
+				if(window.location.href.indexOf("eng")!=-1){
+					alert("Your comment has been deleted.");
+				}else if(window.location.href.indexOf("china")!=-1){
+					alert("已删除。");
+				}else{
+					alert("삭제 되었습니다.");
+				}
+				getPage("/replies/"+bno+"/"+replyPage);
+				
+			}
+		
+		}});
+});
+
+$(function(){
+	$("#first_image").height($(".overlay").width()/1.5);
+	$("#full_image").height($(".overlay").width()/1.5);
+});
 
 var coffeePositions2=new Array();
 var storePositions2=new Array();
@@ -1259,226 +1478,7 @@ function changeMarker(type){
         
     }   
 } 
-var clickcount=0;
-var bno=${read.bno};
-var replyPage=1
-$(function(){
-	getPage('/replies/'+bno+"/"+1);
 
-});
-function getPage(pageInfo){
-$.ajax({
-	url:pageInfo,
-	async: false,
-	type:'get',
-	success:function(data){
-		console.log("+댓글 갯수+"+data.list.length);
-		var str="";
-		$("#reply_count").text(data.list.length);
-		printData(data.list,$("#repliesDiv"),$("#template"));
-		printPaging(data.pageMaker,$(".pagination"));
-		$("#modifyModal").modal('hide');
-		$("#replycntSmall").html("[ " +data.pageMaker.totalCount +" ]");
-	}
-});
-}
-Handlebars.registerHelper("prettifyDate",function(timeValue){
-	var dateObj= new Date(timeValue);
-	var year= dateObj.getFullYear();
-	var month = dateObj.getMonth()+1;
-	var date= dateObj.getDate();
-	return year+"/"+month+"/"+date;
-
-});
-
-var printData= function(replyArr,target,templateObject){
-	var template= Handlebars.compile(templateObject.html());
-	var html=template(replyArr);
-	$(".replyLi").remove();
-	target.after(html);
-	for(var i=0;i<replyArr.length;i++){
-		if(replyArr[i].replyer !="${login_id2}" && replyArr[i].replyer !="${login_id}")
-		{
-			$("#modify_modal").hide();
-
-		}
-	}
-}
-var printPaging= function(pageMaker,target){
-	
-	var str="";
-	if(pageMaker.prev){
-		str+= "<li><a href='"+(pageMaker.startPage-1)+"'> << </a></li>";
-	}
-	for(var i=pageMaker.startPage,len=pageMaker.endPage;i<=len;i++)
-		{
-		var strClass= pageMaker.cri.page==i?'class=active':'';
-		str+="<li "+strClass+"><a href='"+i+"'>"+i+"</a></li>";
-		}
-	if(pageMaker.next){
-		str+="<li><a href='"+(pageMaker.endPage +1)+"'> >> </a></li>";
-	}
-	target.html(str);
-};
-/*$("#repliesDiv").on("click",function(){
-clickcount+=1;
-alert("hi");
-	if(clickcount==1){
-		if($(".timeline li").size() >1){
-	
-		$(".replyLi").show();
-		$(".pagination").show();
-
-		return;
-		}
-
-	getPage("/replies/"+bno+"/1");
-	
-	}else if(clickcount==2){
-
-		if($(".replyLi").show()){
-			$(".replyLi").hide();
-			$(".pagination").hide();
-		};
-		clickcount=0;
-	}
-});	
-*/
-
-$(".pagination").on("click","li a",function(event){
-	event.preventDefault();
-	replyPage =$(this).attr("href");
-	getPage("/replies/"+bno+"/"+replyPage);
-});
-
-$(".timeline").on("click",".replyLi",function(event){
-	
-	var reply=$(this);
-	
-	$("#replytext").val(reply.find('.timeline-body').text());
-	$(".modal-title").html(reply.attr("data-rno"));
-});
-
-$("#replyAddBtn").on("click",function(){
-	
-	var replyerObj = $("#newReplyWriter");
-	var replytextObj = $("#newReplyText");
-	var replyer = replyerObj.val();
-	var replytext= replytextObj.val();
-	if(replyer==""){
-		if(window.location.href.indexOf("eng")!=-1){
-			alert("Please sign in.");
-		}else if(window.location.href.indexOf("china")!=-1){
-			alert("登录后可使用。");
-		}else{
-			alert("로그인 후 이용이 가능합니다.");
-		}
-		return;
-	}
-	if(replytext==""){
-		if(window.location.href.indexOf("eng")!=-1){
-			alert("Please write a comment.");
-		}else if(window.location.href.indexOf("china")!=-1){
-			alert("请输入回帖。");
-		}else{
-			alert("댓글을 입력해주세요.");
-		}
-		return;
-	}
-	$.ajax({
-		type:'post',
-		url:'/replies/',
-		headers:{
-			"Content-Type":"application/json",
-			"X-HTTP-Method-Override":"POST"},
-		dataType:'text',
-		processData:false,
-		data: JSON.stringify({bno:bno,replyer:replyer,reply_text:replytext}),
-		success:function(result){
-			console.log("result: "+result);
-			if(result == 'SUCCESS'){
-				if(window.location.href.indexOf("eng")!=-1){
-					alert("Your comment has been submitted.");
-				}else if(window.location.href.indexOf("china")!=-1){
-					alert("已登记。");
-				}else{
-					alert("등록 되었습니다.");
-				}
-				replyPage=1;
-				getPage("/replies/"+bno+"/"+replyPage);
-				replyerObj.val("");
-				replytextObj.val("");
-			}
-		
-		}});
-});
-
-$("#replyModBtn").on("click",function(){
-	
-	var rno = $(".modal-title").html();
-	var replytext=$("#replytext").val();
-	
-	$.ajax({
-		type:'put',
-		url:'/replies/'+rno,
-		headers:{
-			"Content-Type":"application/json",
-			"X-HTTP-Method-Override":"PUT"},
-		dataType:'text',
-		processData:false,
-		data: JSON.stringify({reply_text:replytext}),
-		success:function(result){
-			console.log("result: "+result);
-			if(result == 'SUCCESS'){
-				if(window.location.href.indexOf("eng")!=-1){
-					alert("Your comment has been edited.");
-				}else if(window.location.href.indexOf("china")!=-1){
-					alert("修改好了。");
-				}else{
-					alert("수정 되었습니다.");
-				}
-				getPage("/replies/"+bno+"/"+replyPage);
-				
-			}
-		
-		}});
-});
-
-
-$("#replyDelBtn").on("click",function(){
-	
-	var rno = $(".modal-title").html();
-	var replytext=$("#replytext").val();
-	
-	$.ajax({
-		type:'delete',
-		url:'/replies/'+rno,
-		headers:{
-			"Content-Type":"application/json",
-			"X-HTTP-Method-Override":"DELETE"},
-		dataType:'text',
-		processData:false,
-		success:function(result){
-			console.log("result: "+result);
-			if(result == 'SUCCESS'){
-				if(window.location.href.indexOf("eng")!=-1){
-					alert("Your comment has been deleted.");
-				}else if(window.location.href.indexOf("china")!=-1){
-					alert("已删除。");
-				}else{
-					alert("삭제 되었습니다.");
-				}
-				getPage("/replies/"+bno+"/"+replyPage);
-				
-			}
-		
-		}});
-});
-
-$(function(){
-	$("#first_image").height($(".overlay").width()/1.5);
-	$("#full_image").height($(".overlay").width()/1.5);
-});
 
 </script>
    

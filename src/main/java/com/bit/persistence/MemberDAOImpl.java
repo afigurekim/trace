@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.bit.domain.Criteria;
 import com.bit.domain.MemberSiteVO;
 import com.bit.domain.MemberVO;
 import com.bit.domain.ReplyVO;
@@ -81,14 +82,25 @@ public class MemberDAOImpl implements MemberDAO {
 	
 	// 내 댓글 select DAO
 	@Override
-	public List<ReplyVO> selectReplyMember(String user_id) throws Exception {
-		return sqlSession.selectList(namespace+".selectReplyMember",user_id);
+	public List<ReplyVO> selectReplyMember(String user_id,Criteria cri) throws Exception {
+		Map <String,Object> map = new HashMap<String,Object>();
+		map.put("user_id", user_id);
+		map.put("cri", cri);
+		return sqlSession.selectList(namespace+".selectReplyMember",map);
 	}
 
+	@Override
+	public int selectMycommentCount(String user_id)throws Exception{
+		
+		return sqlSession.selectOne(namespace+".selectMycommentCount",user_id);
+	}
 	// 내 찜 목록 select DAO
 	@Override
-	public List<MemberSiteVO> selectSiteMember(String user_id) throws Exception {
-		return sqlSession.selectList(namespace+".selectSiteMember",user_id);
+	public List<MemberSiteVO> selectSiteMember(String user_id,Criteria cri) throws Exception {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("user_id", user_id);
+		map.put("cri",cri);
+		return sqlSession.selectList(namespace+".selectSiteMember",map);
 	}
 
 	// 내 찜 아이템 delete DAO
@@ -141,6 +153,12 @@ public class MemberDAOImpl implements MemberDAO {
 		map.put("id",id);
 		map.put("email",email);
 		return sqlSession.selectOne(namespace+".find_pw",map);
+	}
+
+	@Override
+	public int selectSiteCount(String user_id) throws Exception {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".selectSiteCount",user_id);
 	}
 
 ////////////////////////////////////////////////////////////////////////////////////

@@ -37,20 +37,20 @@
     
 $(function(){
 	var windowWidth=$(window).width();
-	
+/*	
 	if(windowWidth<=425){
 		$("tr>#dd").css("width","255px");
 		
 	}else{
 		$("tr>#dd").css("width","570px");
 		}
-	
+	*/
 	$(window).resize(function(){
 		windowWidth=$(window).width();
 		console.log(windowWidth);
 		
 		
-		if(windowWidth<=470 && windowWidth>426){
+		/*if(windowWidth<=470 && windowWidth>426){
 			$("tr>#dd").css("width","300px");
 		}
 		else if(windowWidth<=520 && windowWidth>470){
@@ -71,7 +71,7 @@ $(function(){
 		if(windowWidth<=425){
 			$("tr>#dd").css("width","255px");
 			
-		}
+		}*/
 		
 	});
 		
@@ -178,7 +178,7 @@ $(function(){
 	  <table class="table" cellspacing="0" cellpadding="0">
 	   
 	      <tr style="border-top: 2.3px solid #D8D8D8; border-bottom: 2.3px solid #D8D8D8;" id="subtr">
-		<th class="col-md-1 hidden-xs hidden-sm">No</th>
+		<th class="col-md-1 hidden-xs hidden-sm">번호</th>
 		<th class="col-md-6" id="d">제목</th>
 		<th class="visible-xs visible-sm">
 		날짜
@@ -203,9 +203,6 @@ $(function(){
 	 </c:forEach>  
 	</table>
 </div>
-
-</div>	<!-- 테이블 end -->
-
 <div class="text-center" style="margin: auto; height: 80px; margin-top: 0px;">
 	<ul class="pagination">
 		<c:if test="${pageMaker.prev}">
@@ -224,6 +221,9 @@ $(function(){
 		</c:if>
 	</ul>
 </div>
+</div>	<!-- 테이블 end -->
+
+
 
 	<!-- body end-->
 	<!-- footer -->

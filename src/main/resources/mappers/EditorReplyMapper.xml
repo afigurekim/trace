@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bit.mappers.EditorReplyMapper">
+
+<select id="list" resultType="com.bit.domain.EditorReplyVO">
+	<![CDATA[
+		select * from TBL_EDITOR_REPLY
+		 where bno=#{bno} 
+		 order by rno desc
+	]]>
+</select>
+
+
+<insert id="create">
+	<![CDATA[
+		insert into TBL_EDITOR_REPLY(bno,replytext,replyer)
+		 values(#{bno},#{replytext},#{replyer})
+	]]>
+</insert>
+
+<update id="update">
+	<![CDATA[
+		update TBL_EDITOR_REPLY 
+		set replytext=#{replytext},updatedate=now() where rno =#{rno}
+	]]>
+</update>
+
+<delete id="delete">
+	<![CDATA[
+		delete from TBL_EDITOR_REPLY where rno=#{rno} 
+	]]>
+</delete>
+
+
+<select id="listPage" resultType="com.bit.domain.EditorReplyVO">
+	<![CDATA[
+		select * from TBL_EDITOR_REPLY 
+		where bno =#{bno} limit #{cri.pageStart},#{cri.perPageNum}
+	]]>
+</select>
+
+<select id="count" resultType="int">
+	<![CDATA[
+		select count(bno) from TBL_EDITOR_REPLY where bno =#{bno}
+	]]>
+</select>
+
+</mapper>

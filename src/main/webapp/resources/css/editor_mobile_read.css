@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+#read_table {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+#reply_div {
+	margin-right: auto;
+	margin-left: auto;
+}
+
+@media only screen and (max-width: 990px) {
+	#reply_div {
+		margin-right: 230px;
+		margin-left: 230px;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	#reply_div {
+		margin-right: 100px;
+		margin-left: 100px;
+	}
+}
+
+@media only screen and (max-width: 520px) {
+}
+
+@media only screen and (max-width: 320px) {
+}

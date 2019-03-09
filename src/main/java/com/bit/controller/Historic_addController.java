@@ -81,7 +81,7 @@ public class Historic_addController {
 	    
     	int index;
     	int index2;
-        StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+serviceKey+"&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=30&pageNo="+pagenum); /*URL*/
+        StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+serviceKey+"&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo="+pagenum); /*URL*/
         
         
         URL url = new URL(urlBuilder.toString());
@@ -184,7 +184,7 @@ public class Historic_addController {
 			}
   
         }
-       /*List<Historic_siteVO> list2= dao.history_list();
+       List<Historic_siteVO> list2= dao.history_list();
        System.out.println(start);
        if(start==1) {
     	   System.out.println("유적지 카운트에요!!!"+list2.size());
@@ -281,7 +281,7 @@ public class Historic_addController {
 	   	  for(int i=vocount3;i<list6.size();i++) {
 	    	  room_image(list6.get(i).getContent_id(),list6.get(i).getBno(),list6.get(i).getAttraction_name());
 	      }
-	   }*/
+	   }
 	   System.out.println("룸이미지 끝");
 	   System.out.println("시도 이동");
 	   sido_count++;
@@ -300,6 +300,7 @@ public class Historic_addController {
 	   if(sido_count==9) {
 		   sido_count=31;
 	   }
+	  
 	   if(sido_count==33) {
 		   count++;
 	   }
@@ -308,19 +309,19 @@ public class Historic_addController {
 	   }
 	  
 
-	/*   if(sido_count>39) {
+	   if(sido_count>39) {
 		   sido_count=1;
 		   page_count++;
-	   }*/
+	   }
 
-	   if(count<=6 && sido_count<39)
+	   if(count<=8)
 	   {
 	   System.out.println("기무쓰띠");
 	   historic(sido_count,page_count,2);
 	   }
 	   count=1;
 	   
-       List<Historic_siteVO> list2= dao.history_list();
+    /*   List<Historic_siteVO> list2= dao.history_list();
 
 	   for(int i=0;i<list2.size();i++) {
     	   System.out.println("여기는 history detail  데이터 작업중");
@@ -335,7 +336,7 @@ public class Historic_addController {
     	   System.out.println(list2.get(i).getSite_name());
     	   System.out.println(list2.get(i).getThema());
     	   historydetail(list2.get(i).getContent_id(),list2.get(i).getContent_typeid(),list2.get(i).getBno());
-    	   if(list2.get(i).getBno()%30==0) {
+    	   if(list2.get(i).getBno()%60==0) {
     		   count++;
     	   }
 	   }
@@ -344,14 +345,14 @@ public class Historic_addController {
 	   for(int i=0;i<list2.size();i++) {
 		   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
 		   
-		   if(list2.get(i).getBno()%30==0) {
+		   if(list2.get(i).getBno()%60==0) {
     		   count++;
     	   }
 	   }
 	   count=1;
 	   for(int i=0;i<list2.size();i++) {
 	   		room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
-	   	  if(list2.get(i).getBno()%30==0) {
+	   	  if(list2.get(i).getBno()%60==0) {
    		   count++;
    	   }
   		}
@@ -360,7 +361,7 @@ public class Historic_addController {
 	   for(int i=0;i<list2.size();i++) {
 		   
 		   history_image(list2.get(i).getBno(),list2.get(i).getContent_id(),list2.get(i).getContent_typeid());
-		   if(list2.get(i).getBno()%30==0) {
+		   if(list2.get(i).getBno()%60==0) {
     		   count++;
     	   }
 	   }
@@ -369,7 +370,7 @@ public class Historic_addController {
 	   List<Nearby_attractionVO> list3=dao.food_list();
 	   for(int i=0;i<list3.size();i++) {
 		   food_image(list3.get(i).getContent_id(),list3.get(i).getBno(),list3.get(i).getAttraction_name());
-		   if(list2.get(i).getBno()%30==0) {
+		   if(list2.get(i).getBno()%60==0) {
     		   count++;
     	   }
 	   }
@@ -377,12 +378,12 @@ public class Historic_addController {
 	   for(int i=0;i<list3.size();i++) {
 	    	  System.out.println("룸이미지 작업들어간다");
 	    	  room_image(list3.get(i).getContent_id(),list3.get(i).getBno(),list3.get(i).getAttraction_name());
-	    	  if(list2.get(i).getBno()%30==0) {
+	    	  if(list2.get(i).getBno()%60==0) {
 	    		   count++;
 	    	   }
 	      }
 	   
-	   
+	   */
 	   
 	}
 	String detail;

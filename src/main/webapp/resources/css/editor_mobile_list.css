@@ -1,0 +1,71 @@
+@charset "UTF-8";
+
+#listAll_table {
+	table-layout: fixed;
+}
+
+#tb_title, .tb_title {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 45%;
+}
+@media only screen and (max-width: 920px){
+		#tb_view, .tb_view {
+		width: 70px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+	#tb_writer, .tb_writer {
+		display: none;
+		visibility: hidden;
+	}
+	#tb_view, .tb_view {
+		width: 50px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+@media only screen and (max-width: 520px) {
+	#tb_bno, .tb_bno {
+		display: none;
+		visibility: hidden;
+	}
+	#tb_writer, .tb_writer {
+		display: none;
+		visibility: hidden;
+	}
+	#tb_view, .tb_view {
+		width: 40px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+}
+
+@media only screen and (max-width: 320px) {
+	#tb_bno, .tb_bno {
+		display: none;
+		visibility: hidden;
+	}
+	#tb_writer, .tb_writer {
+		display: none;
+		visibility: hidden;
+	}
+	#tb_view, .tb_view {
+		disply: none;
+		visibility: hidden;
+	}
+	#tb_title, .tb_title {
+		width: 70%;
+	}
+	#tb_regdate, .tb_regdate {
+		width: 30%;
+	}
+}

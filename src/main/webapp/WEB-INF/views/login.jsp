@@ -72,13 +72,12 @@ $(function(){
 	var windowWidth=$(window).width();
 	
 	
-	if(windowWidth<=768){
-		$(".modal-content").css("width","382.99px");
-		$("#modal-find2").css("margin-left","115px");
-		$("#modal-find").css("margin-left","115px");
+	if(windowWidth<=650){
+		$(".modal-content").width(windowWidth-50);
+		//$("#modal-find2").css("margin-left","115px");
+		//$("#modal-find").css("margin-left","115px");
 
 		//$(".modal-content").width(600);
-		$(".modal-content").css("margin-top","120px");
 		$("#modal_name").css("left",0);
 		$("#modal_name").css("top",0);
 		$("#modal_name2").css("left",0);
@@ -86,11 +85,35 @@ $(function(){
 		}else{
 			$(".modal-content").css("width","600px");
 			$(".modal-content").css("margin-top","0px");
-			$("#modal-find2").css("margin-left","215px");
-			$("#modal-find").css("margin-left","215px");
+			//$("#modal-find2").css("margin-left","215px");
+			//$("#modal-find").css("margin-left","215px");
 
 		}
 	
+	if(windowWidth<=398){
+		$("#login_size").width(windowWidth-70);
+		$("#login_form").width(windowWidth-70);
+		$("#row-idfind").width($("#login_form").width()+32);
+		$("#row-idfind").css("margin-left","");
+		$("#row_join").width($("#login_form").width()+32);
+
+		$("#row_join").css("margin-left","");
+		$("#social").width($("#login_form").width()+32);
+		$("#naver_login").width("49%");
+		$("#kakao_login").width("49%");
+	
+	}else{
+		$("#login_size").width(400);
+		$("#login_form").width(350);
+		$("#row-idfind").width($("#login_form").width()+32);
+		$("#row-idfind").css("margin-left","auto");
+		$("#row_join").width($("#login_form").width()+32);
+
+		$("#row_join").css("margin-left","auto");
+		$("#social").width($("#login_form").width()+32);
+		$("#naver_login").width("49%");
+		$("#kakao_login").width("49%");
+	}
 	$(window).resize(function(){
 		windowWidth=$(window).width();
 		console.log(windowWidth);
@@ -102,21 +125,45 @@ $(function(){
 			$(".row").css("width","1170px");
 
 		}*/
-		if(windowWidth<=768){
-		$(".modal-content").css("width","382.99px");
-		$("#modal-find").css("margin-left","115px");
-		$("#modal-find2").css("margin-left","115px");
+	if(windowWidth<=398){
+		$("#login_size").width(windowWidth-70);
+		$("#login_form").width(windowWidth-70);
+		$("#row-idfind").width($("#login_form").width()+32);
+		$("#row-idfind").css("margin-left","");
+		$("#row_join").width($("#login_form").width()+32);
+
+		$("#row_join").css("margin-left","");
+		$("#social").width($("#login_form").width()+32);
+		$("#naver_login").width("49%");
+		$("#kakao_login").width("49%");
+	
+	}else{
+		$("#login_size").width(400);
+		$("#login_form").width(350);
+		$("#row-idfind").width($("#login_form").width()+32);
+		$("#row-idfind").css("margin-left","auto");
+		$("#row_join").width($("#login_form").width()+32);
+
+		$("#row_join").css("margin-left","auto");
+		$("#social").width($("#login_form").width()+32);
+		$("#naver_login").width("49%");
+		$("#kakao_login").width("49%");
+	}
+		if(windowWidth<=650){
+		$(".modal-content").width(windowWidth-50);
+		//$("#modal-find").css("margin-left","60px");
+		//$("#modal-find2").css("margin-left","115px");
 		$(".col-sm-2").css("left",0);
 		$(".col-sm-2").css("top",0);
 		//$(".modal-content").width(600);
-		$(".modal-content").css("margin-top","120px");
+		//$(".modal-content").css("margin-top","120px");
 
 		}else{
 			$(".modal-content").css("width","600px");
 			$(".modal-content").css("margin-top","0px");
-			$("#modal-find").css("margin-left","215px");
+			//$("#modal-find").css("margin-left","215px");
 
-			$("#modal-find2").css("margin-left","215px");
+			//$("#modal-find2").css("margin-left","215px");
 			$("#modal_name").css("left","100px");
 			$("#modal_name").css("top","-30px");
 			$("#modal_email").css("left","100px");
@@ -285,7 +332,9 @@ $(function(){
             </div><!--/.carousel-inner-->
         </div><!--/.carousel-->
     </section><!--/#main-slider-->
-<form method="post" style="width:350px; margin:auto;">  
+<div id="login_outer">
+<div id="login_size" style="width:400px; margin:auto;">
+<form method="post" id='login_form' style="width:350px; margin:auto;">  
   <div class="big-gap"></div>
   <div class="row">
      <div class="">
@@ -343,7 +392,7 @@ $(function(){
 </div>
 </form>
 
-<div class="row" style="margin-bottom: 9px; width: 380px;  margin-left: auto; margin-right: auto;">
+<div class="row"  id='row-idfind' style="margin-bottom: 9px; width: 380px;  margin-left: auto; margin-right: auto;">
     <div class=""><!-- 
    	<button type="button" class="btn btn-default btn-lg" id="btbtn" style="width:60%; font-weight:bolder;">Sign up</button> -->
    	<script>
@@ -367,7 +416,7 @@ $(function(){
     --></div>
 </div>
 
-	<div class="row" style="margin-bottom: 0px; width: 380px;  margin-left: auto; margin-right: auto; margin-top: 10px; border-top: 1.3px solid gray; padding-top: 15px;" >
+	<div class="row" id='row_join' style="margin-bottom: 0px; width: 380px;  margin-left: auto; margin-right: auto; margin-top: 10px; border-top: 1.3px solid gray; padding-top: 15px;" >
     <div class="">
     <script>
     	if(window.location.href.indexOf("eng")!=-1){
@@ -381,12 +430,12 @@ $(function(){
     </script>
    </div>
 </div>
- <div class="row">
-	 <div class="" style="width: 380px; margin: auto; padding-top: 2px;" >
+ <div class="row" >
+	 <div class="" style="width: 380px; margin: auto; padding-top: 2px;" id='social'>
 	 	
-	     <span><a href="${url} "><img src="../resources/imgs/loginbtn-naver.png" style="width: 188px; height: 39px; position: relative; margin-left: 0px;"></a></span>  
+	     <span><a href="${url} "><img src="../../../resources/imgs/loginbtn-naver.png" id='naver_login' style="width: 188px; height: 39px; position: relative; margin-left: 0px;"></a></span>  
 		 <span><a id="custom-login-btn" href="javascript:loginWithKakao()">
-			<img src="../resources/imgs/loginbtn-kakao.png" style="width: 188px; height: 39px; position: relative; margin-left: 0px;">
+			<img src="../../../resources/imgs/loginbtn-kakao.png" id='kakao_login'style="width: 188px; height: 39px; position: relative; margin-left: 0px;">
 			   </a>
 		 </span>
 			  <script type="text/javascript">
@@ -437,7 +486,7 @@ $(function(){
 
 
 </div>
-
+</div>
     <%@include file="Footer.jsp" %>
     
     
@@ -463,8 +512,10 @@ $(function(){
 				      </div>
 				   <!-- body -->
 				      <div class="modal-body">
-				      	<div style="border-bottom: 1.5px solid gray">
-				      		<img alt="" id="modal-find" src="../resources/imgs/find.png" style="width:128px; height:128px; margin-left:215px; margin-bottom:10px;">
+				      	<div style="border-bottom: 1.5px solid gray; width:100%;">
+				      		<div style="width:120px;margin:auto">
+				      		<img alt="" id="modal-find" src="../resources/imgs/find.png" style="margin-bottom:10px;">
+				      		</div>
 				      		<script>
 				     			if(window.location.href.indexOf("eng")!=-1){
 				     				document.write("<p style='text-align:center; font-size: 13px;'>Enter your name and email to find your ID.</p>");
@@ -602,8 +653,10 @@ $(function(){
 				      </div>
 				   <!-- body -->
 				      <div class="modal-body">
-				      	<div style="border-bottom: 1.5px solid gray"">
-				      		<img alt="" id="modal-find2" src="../resources/imgs/lock.png" style="width:128px; height:128px; margin-left:225px; margin-bottom:10px;">
+				      	<div style="border-bottom: 1.5px solid gray; width:100%;">
+				      		<div style="width:120px; margin:auto;">
+				      		<img alt="" id="modal-find2" src="../resources/imgs/lock.png" style="margin-bottom:10px;">
+				      		</div>
 				      		<script>
 				     			if(window.location.href.indexOf("eng")!=-1){
 				     				document.write("<p style='text-align:center; font-size: 13px;'>Fill in the box below to find the password.</p>");
@@ -622,53 +675,52 @@ $(function(){
 							   <script>
 								  if(window.location.href.indexOf("eng")!=-1){
 									    document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>Name</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='Name' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='Name' style='position: relative;'></div>");
 							  		}else if(window.location.href.indexOf("china")!=-1){
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>名</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='名' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='名' style='position: relative;'></div>");
 							  		}else{
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>이름</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='이름' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='이름' style='position: relative;'></div>");
 							  		}
 							  </script>
 							  </div>
 						  </div>
-						  </div>
+					
 						  
 						  <div class="form-group">
 						    <div class="row" style="margin: auto;">
 							   <script>
 								  if(window.location.href.indexOf("eng")!=-1){
 									    document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='bb'>Email</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='Email' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='Email' style='position: relative;'></div>");
 							  		}else if(window.location.href.indexOf("china")!=-1){
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='bb'>电邮</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='电邮' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='电邮' style='position: relative;'></div>");
 							  		}else{
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='bb'>이메일</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='이메일' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='이메일' style='position: relative;'></div>");
 							  		}
 							  </script>
 							  </div>
 						  </div>
-						  </div>
+						
 						  
 						   <div class="form-group">
 						    <div class="row" style="margin: auto;">
 							   <script>
 								  if(window.location.href.indexOf("eng")!=-1){
 									    document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='cc'>ID</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='ID' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='ID' style='position: relative;'></div>");
 							  		}else if(window.location.href.indexOf("china")!=-1){
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='cc'>用户名</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='用户名' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='用户名' style='position: relative;'></div>");
 							  		}else{
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='cc'>아이디</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='아이디' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='아이디' style='position: relative;'></div>");
 							  		}
 							  </script>
 							  </div>
-						  </div>
 						  </div>
 						  
 						  <div class="form-group">
@@ -676,18 +728,42 @@ $(function(){
 							   <script>
 								  if(window.location.href.indexOf("eng")!=-1){
 									    document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='dd'>Phone</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='Phone' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='Phone' style='position: relative;'></div>");
 							  		}else if(window.location.href.indexOf("china")!=-1){
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='dd'>手机</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='手机' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='手机' style='position: relative;'></div>");
 							  		}else{
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='dd'>휴대폰</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='휴대폰' style='position: relative;'>");
+							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='휴대폰' style='position: relative;'></div>");
 							  		}
 							  </script>
 							  </div>
 						  </div>
-						  </div>
+						  
+						  <div class="modal-footer">
+				      
+				      <script>
+				      		if(window.location.href.indexOf("eng")!=-1){
+				      			document.write("<button type='button' class='btn btn-primary' id='findBtn1' data-toggle='modal' data-target='#exampleModal1'>Find</button>");
+				      			document.write("<button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>");
+				      		}else if(window.location.href.indexOf("china")!=-1){	
+				      			document.write("<button type='button' class='btn btn-primary' id='findBtn1' data-toggle='modal' data-target='#exampleModal1'>寻找</button>");
+				      			document.write("<button type='button' class='btn btn-secondary' data-dismiss='modal'>关闭</button>");
+				      		}else{
+				      			document.write("<button type='button' class='btn btn-primary' id='findBtn1' data-toggle='modal' data-target='#exampleModal1'>찾기</button>");
+				      			document.write("<button type='button' class='btn btn-secondary' data-dismiss='modal'>닫기</button>");
+				      		}
+				      </script>
+				      
+				        </form>
+				        
+				      </div>
+				      
+				      
+				   </div>
+				 </div>
+				</div>
+					  
 				<!-- Modal안에 모달 -->
 					<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 					  <div class="modal-dialog" role="document">

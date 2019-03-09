@@ -35,28 +35,47 @@
 	$(function(){
 	var windowWidth=$(window).width();
 	
-	if(windowWidth<991){
-		$("#dd").css("left","0px");
-		$("#goList").css("left","20px");
+	if(windowWidth<=832){
+		$("#notice_size").width(windowWidth-50);
 	}else{
-		$("#dd").css("left","85px");
-
+		$("#notice_size").width(800);
+	}
+	if(windowWidth<=711){
+		$("#subject").css("width","23%");
+		$("#subject_detail").css("width","69%");
+		$("#writer").css("width","23%");
+		$("#writer_detail").css("width","69%");
+	}else{
+		$("#subject").css("width","10%");
+		$("#subject_detail").css("width","89%");
+		$("#writer").css("width","10%");
+		$("#writer_detail").css("width","89%");
 	}
 
-	
+
 	
 	$(window).resize(function(){
 		windowWidth=$(window).width();
 		console.log(windowWidth);
-		
-		
-		if(windowWidth<991){
-			$("#dd").css("left","0px");
+		if(windowWidth<=832){
+			$("#notice_size").width(windowWidth-50);
 		}else{
-			$("#dd").css("left","85px");
+			$("#notice_size").width(800);
 
 		}
-	
+		if(windowWidth<=711){
+			$("#subject").css("width","23%");
+			$("#subject_detail").css("width","69%");
+			$("#writer").css("width","23%");
+			$("#writer_detail").css("width","69%");
+		}else{
+			$("#subject").css("width","10%");
+			$("#subject_detail").css("width","89%");
+			$("#writer").css("width","10%");
+			$("#writer_detail").css("width","89%");
+		}
+		
+		
 	});
 		
 	});
@@ -167,42 +186,7 @@ div {
 		background-repeat: no-repeat;
 		background-position: center;
 	}
-	
-	@media screen and (max-width:540px){
-		#li{
-			
-			position:relative;
-			left:10px;
-			top:50px;
-		}
-	}
-	
-	@media screen and (min-width:541px) and (max-width:992px){
-		#li{
-			
-			position:relative;
-			left:20px;
-			top:50px;
-		}
-	}
-	
-	@media screen and (min-width:993px) and (max-width :1180px){
-		#li{
-			
-			position:relative;
-			left:-150px;
-		}
-	}
-	
-	
-	@media screen and (min-width:1181px){
-		#li{
-			
-			position:relative;
-			left:-170px;
-		}
-	}
-	
+
 
 	
 	
@@ -241,44 +225,45 @@ div {
     </section><!--/#main-slider-->
   
     <!-- body -->
-	 <div class="container" style="height: 730px; position: relative; left: -310px;"  id="dd" >
-	
+	 <div class="container" style="width:100%; position: relative;"  id="dd" >
+<div style="width:800px; margin:auto;" id="notice_size">
    	<div class="row" style="margin-top: 10px;  position: relative; top: 15px; left:-5px; padding-bottom: 5px;">
-   	 <div  class="col-md-10" style="margin:auto; margin-top:10px;  padding-bottom: 5px; position: relative; left: 5px;" id="spanss">
-   	 	<span class="hidden-xs "  style="float: left; position: relative; left: -10px;"><h5>발자취의 공지사항을 확인하세요.</h5></span>	
-   	 	<span class="hidden-xs "  style="float: right; " ><h6>수정날짜 <fmt:formatDate pattern="yy-MM-dd" value="${read.update_date}"/></h6></span>
-   	 	<span class="hidden-xs "  style="float: right;  "><h6>조회수 <c:out value="${read.view_cnt}"/> &emsp;</h6></span>
+   	 <div  class="col-md-10" style="width:100%; margin:auto; margin-top:10px;  padding-bottom: 5px; position: relative; left: 5px;" id="spanss">
+   	 	<span  style="float: right; " ><h6>수정날짜 <fmt:formatDate pattern="yy-MM-dd" value="${read.update_date}"/></h6></span>
+   	 	<span  style="float: right;  "><h6>조회수 <c:out value="${read.view_cnt}"/> &emsp;</h6></span>
    	 </div>
+  	 
    	</div>
-   	 
-   	 
-   	 
    	 <div class="row" style=" margin-top: 10px; position: relative;" >
-   	 	<div class="col-xs-2 col-md-1" style=" margin: auto; background-color: #F0F0F0; height: 63px; border-bottom: 1.6px solid #BDBDBD; border-top:2.5px solid #08298A; ">
+   	 	<div class="col-xs-2 col-md-1" id="subject" style="width:10%; margin: auto; background-color: #F0F0F0; height: 63px; border-bottom: 1.6px solid #BDBDBD; border-top:2.5px solid #08298A; ">
    	 		<p style="margin-top: 20px; font-weight: bold; font-size: 13px;">제목</p>
    	 	</div>
-		 <div class="col-xs-10 col-md-9" style=" margin: auto; height: 63px; border-bottom: 1.6px solid #BDBDBD; border-top:2.5px solid #08298A;" >
-	  		<input type="text"  id="title" name="title" value='&emsp;<c:out value="${read.title }"/>' readonly="readonly" style="width: 70%; height:42px; background-color:white; position: relative; left: -25px; top:-32px; ">
+		 <div class="col-xs-10 col-md-9" id="subject_detail" style="width:89%; margin: auto; height: 63px; border-bottom: 1.6px solid #BDBDBD; border-top:2.5px solid #08298A;" >
+	  		<input type="text"  id="title" name="title" value='&emsp;<c:out value="${read.title }"/>' readonly="readonly" style="height:42px; background-color:white; position: relative; left: -25px; top:-32px; ">
 		</div>
 	</div>
+   	 
+   	 
+  
 	<div class="row" style=" padding-left: 0px;">
-   	 	<div class="col-xs-2 col-md-1" style=" margin: auto; background-color: #F0F0F0; height: 63px; border-bottom: 1.6px solid #BDBDBD; ">
+   	 	<div class="col-xs-2 col-md-1" id="writer" style="width:10%; margin: auto; background-color: #F0F0F0; height: 63px; border-bottom: 1.6px solid #BDBDBD; ">
    	 		<p style="margin-top: 19px; font-weight: bold; font-size: 13px;">작성자</p>
    	 	</div>
-		 <div class="col-xs-10 col-md-9" style=" margin: auto; height: 63px; border-bottom: 1.6px solid #BDBDBD;" >
-	  		<input type="text"  id="title" name="title" value='&emsp;<c:out value="${read.writer}"/>' readonly="readonly" style="width: 30%; height:42px; background-color:white; position: relative; left: -25px; top:-32px;">
+		 <div class="col-xs-10 col-md-9" id="writer_detail" style="width:89%; margin: auto; height: 63px; border-bottom: 1.6px solid #BDBDBD;" >
+	  		<input type="text"  id="title" name="title" value='&emsp;<c:out value="${read.writer}"/>' readonly="readonly" style="height:42px; background-color:white; position: relative; left: -25px; top:-32px;">
 		</div>
 	</div>
   <div class="row" style="border: margin-top: 10px; padding-left: 0px; position: relative; top: 0px;"> 	  
-	 <div class="col-xs-12 col-md-10" style=" padding-top: 7px; position: relative; left: -13px; " id="textareahr" >
+	 <div class="col-xs-12 col-md-10" style="width:100%; padding-top: 7px; position: relative; left: -13px; " id="textareahr" >
    		<textarea rows="13" id="content" name="content" wrap="VIRTUAL"   readonly="readonly" style="background-color: white; border-bottom:1; border-top:0; border-left:0; border-right:0; overflow-y:hidden; resize:none; background:clear; width: 103%; height:80%; position: relative; top: 10px;">&ensp;<c:out value="${read.content}"/></textarea><hr>
    	</div>
    </div>
    
 	<div style="width: 100px; margin: auto; padding-bottom: 12px; float: right; top: 15px;" id="li">
-		<button type="reset" class="btn btn-default" id="goList" style="width: 90px; "><a href="/notice" style="font-weight: bold; "> 목록</a></button>
+		<a href="/notice" class="btn btn-primary btn-outlined" style="font-weight: bold;width:100%; "> 목록</a>
 	</div>
-    </div>
+    </div> 
+   </div>
 <!-- body end-->
 	<!-- footer -->
 <%@include file="../Footer.jsp" %>

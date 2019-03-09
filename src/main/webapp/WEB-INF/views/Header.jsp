@@ -42,7 +42,7 @@
                     	document.write("<li><a href='/period'>시대별</a></li>");
                     	document.write("<li><a href='/thema'>테마별</a></li>");
                     	document.write("<li><a href='/region/main'>지역별</a></li>");
-                    	document.write("<li><a href='#'>에디터 추천코스</a></li>");
+                    	document.write("<li><a href='/editor/listAll'>에디터 추천코스</a></li>");
                     	document.write("</ul>");
                     	document.write("</li>");
 					 	if(("${login_id2}"=="" || "${login_id2}"==null) && ("${login_id}"=="" || "${login_id}"==null)){
@@ -63,7 +63,7 @@
                     	document.write("<li><a href='/eng/period'>PERIOD</a></li>");
                     	document.write("<li><a href='/eng/thema'>THEME</a></li>");
                     	document.write("<li><a href='/eng/region/main'>REGION</a></li>");
-                    	document.write("<li><a href='#'>EDITOR RECOMMEND</a></li>");
+                    	document.write("<li><a href='/eng/editor/listAll'>EDITOR RECOMMEND</a></li>");
                     	document.write("</ul>");
                     	document.write("</li>");
 					 	if(("${login_id2}"=="" || "${login_id2}"==null) && ("${login_id}"=="" || "${login_id}"==null)){
@@ -84,7 +84,7 @@
                     	document.write("<li><a href='/china/period'>時代</a></li>");
                     	document.write("<li><a href='/china/thema'>题目</a></li>");
                     	document.write("<li><a href='/china/region/main'>地域</a></li>");
-                    	document.write("<li><a href='#'>编辑推荐路线</a></li>");
+                    	document.write("<li><a href='/china/editor/listAll'>编辑推荐路线</a></li>");
                     	document.write("</ul>");
                     	document.write("</li>");
 					 	if(("${login_id2}"=="" || "${login_id2}"==null) && ("${login_id}"=="" || "${login_id}"==null)){
@@ -106,7 +106,7 @@
                     	document.write("<li><a href='/period'>시대별</a></li>");
                     	document.write("<li><a href='/thema'>테마별</a></li>");
                     	document.write("<li><a href='/region/main'>지역별</a></li>");
-                    	document.write("<li><a href='#'>에디터 추천코스</a></li>");
+                    	document.write("<li><a href='/editor/listAll'>에디터 추천코스</a></li>");
                     	document.write("</ul>");
                     	document.write("</li>");
 					 	if(("${login_id2}"=="" || "${login_id2}"==null) && ("${login_id}"=="" || "${login_id}"==null)){

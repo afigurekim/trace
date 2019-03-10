@@ -32,6 +32,24 @@ public class Historic_addController {
 	//kls8RufZ%2B2idSOYWC4H8j0pnW996K49NjZAS3m1%2BWnbCkfTG1Y26B8bc5LPYd5mWMsZFMGBpR8dz8wVG%2BzuQ4Q%3D%3D
 	//5JRCxIV3VwzyC2aFzOWF4l3jJGwfkHM2w8JwHa5wIlVjgnWcrHr7%2FyCa8YLO5YLsM9xG2rw9kcUxl%2BZoeEGLvQ%3D%3D
 	//CphYLaAO5pr0%2FXpqoKEH58zlgZNnkkrYpNJWhl19kMQkb6c5e%2Fn8Sd1AyivmSrmOvEGJgd7iUV%2BmZtFLm5aJ6A%3D%3D
+	
+	//Mon2ryJy5xyZgQFQ0QVh1OWwC4e1S7mQijJOl4CwBUvT%2Bejeh3YCFE60ic%2B13R6e%2FpkNLRgnUTSURk9u4yfa%2Bg%3D%3D
+	//n9PoavkGfMryraKdOhqfh0qgsje2%2FkYxMd2fJRkx5zt82S0ddOb45daaMdEaN6x9dMc2yjRHoJOKuM%2Bou8Srbg%3D%3D
+	//m5GM34w1LXtXVVTXWFrzB%2FPVkRs4FueOST9dNqM7wkkvysUEsCfBQDVBXRQ0bv7v5M9GcwQuhrgPqYt3CuVeTg%3D%3D
+	//tcuh1WM%2FHPNGY8hsT3J0igKdJXm0naXf35SItJ4CCnw8flQ2Hf1SU19vGDTJJ1fOLpkj5GDr%2BDOrc0NG6BHW0A%3D%3D
+	//6velz643pS5%2B23WJwGJBheKyRFjDt4REXw%2FMq0HHy72TdMu5MSwGe5fkwTSGMQsl4MpqkEIpzfpKhviuV8xJYg%3D%3D
+
+	//uFwfkh0HvI09KOXwX%2BUG3R2ajG7Mxd9ao03V4TNZXxqcCgVLlISTJDuFl%2FTVpC%2BXYnFUSQ%2FBQscS1pg4q43Aqg%3D%3D
+	//9zQyjlvgFSQFhs6mHoHiRBzMSRXw9Q%2Fq9egHnc9a22JHoCkHxdk8EAM31%2BXWowf32SIK3%2B70IPUPIM11zyxwAA%3D%3D
+	
+	
+	//upkyYOcTEEZSrUS2c5iXFwG%2BPzLi7knurdKUJm%2Fpfwnd1inOl0fUqy3jjcWmaXvDzSnCcHfdbvHr7qa4eYbHZg%3D%3D
+	//QjnH6eKLQKm5SzSOjLdzWVDzN0d7sy75C30srVFRFI%2FWruG21X%2FnEtoa1l9SpFzKamKXF1HZ17LksD4vVoFNjw%3D%3D
+	//gXe1BjBuuxW0g7I57%2FJaFjguxugbakYiOtWUQ3nuyi5UzXeCi7TfjPuWLOuWFJzDZUnJ2ZkDxNruNwNMgLbSKA%3D%3D
+	//PAnVRClqlWT7dhkL6qsPU0jBiAwxd053tVCl8rAblwk5EHmvMkBtWD1N8R3JaoWhAunyHqsXUBP1cP%2FjajyF3w%3D%3D
+	//CCXHzCnPe2%2B8MLpQizjPYWDGx5m5ikMtq0sJVkl%2F0zT7HHG1a7SjHVpK%2B%2FM5mGs4mAo01nuikymHj21xqlSNWA%3D%3D
+	//mfhpMCPoAlzKjTz38EIViPzyYBTYC%2FO6DXImuwErdYq2YGw6%2BHTBsQAs55LIYGf5nQ0X9D9Gg%2Ftji2zNQejxcg%3D%3D
+	
 	@Inject
 	private Historic_siteDAO dao;
 	private int count=0;
@@ -63,7 +81,34 @@ public class Historic_addController {
 			serviceKey="o8hqR6%2FKeUTPdvwLF0gzcR%2FJhkHYk%2FR9FagVCUivrAP3plEVY2i7HKzSngfBnnwI3kPktRal5nW%2BLFF37N%2BXNA%3D%3D";
 		}else if(count==8) {
 			serviceKey="EeCFhukHh79xQCHczQD0n4rnAP8u8VEZBk9Ptn%2FBL8EHoQhHhZi4nEjrPryhc8Wlnz8AXj2oXfwKGlcLY37a6A%3D%3D";
+		}else if(count==9) {
+			serviceKey="Mon2ryJy5xyZgQFQ0QVh1OWwC4e1S7mQijJOl4CwBUvT%2Bejeh3YCFE60ic%2B13R6e%2FpkNLRgnUTSURk9u4yfa%2Bg%3D%3D";
+		}else if(count==10) {
+			serviceKey="n9PoavkGfMryraKdOhqfh0qgsje2%2FkYxMd2fJRkx5zt82S0ddOb45daaMdEaN6x9dMc2yjRHoJOKuM%2Bou8Srbg%3D%3D";
+		}else if(count==11) {
+			serviceKey="m5GM34w1LXtXVVTXWFrzB%2FPVkRs4FueOST9dNqM7wkkvysUEsCfBQDVBXRQ0bv7v5M9GcwQuhrgPqYt3CuVeTg%3D%3D";
+		}else if(count==12) {
+			serviceKey="tcuh1WM%2FHPNGY8hsT3J0igKdJXm0naXf35SItJ4CCnw8flQ2Hf1SU19vGDTJJ1fOLpkj5GDr%2BDOrc0NG6BHW0A%3D%3D";
+		}else if(count==13) {
+			serviceKey="6velz643pS5%2B23WJwGJBheKyRFjDt4REXw%2FMq0HHy72TdMu5MSwGe5fkwTSGMQsl4MpqkEIpzfpKhviuV8xJYg%3D%3D";
+		}else if(count==14) {
+			serviceKey="uFwfkh0HvI09KOXwX%2BUG3R2ajG7Mxd9ao03V4TNZXxqcCgVLlISTJDuFl%2FTVpC%2BXYnFUSQ%2FBQscS1pg4q43Aqg%3D%3D";
+		}else if(count==15) {
+			serviceKey="9zQyjlvgFSQFhs6mHoHiRBzMSRXw9Q%2Fq9egHnc9a22JHoCkHxdk8EAM31%2BXWowf32SIK3%2B70IPUPIM11zyxwAA%3D%3D";
+		}else if(count==16) {
+			serviceKey="upkyYOcTEEZSrUS2c5iXFwG%2BPzLi7knurdKUJm%2Fpfwnd1inOl0fUqy3jjcWmaXvDzSnCcHfdbvHr7qa4eYbHZg%3D%3D";
+		}else if(count==17) {
+			serviceKey="QjnH6eKLQKm5SzSOjLdzWVDzN0d7sy75C30srVFRFI%2FWruG21X%2FnEtoa1l9SpFzKamKXF1HZ17LksD4vVoFNjw%3D%3D";
+		}else if(count==18) {
+			serviceKey="gXe1BjBuuxW0g7I57%2FJaFjguxugbakYiOtWUQ3nuyi5UzXeCi7TfjPuWLOuWFJzDZUnJ2ZkDxNruNwNMgLbSKA%3D%3D";
+		}else if(count==19) {
+			serviceKey="PAnVRClqlWT7dhkL6qsPU0jBiAwxd053tVCl8rAblwk5EHmvMkBtWD1N8R3JaoWhAunyHqsXUBP1cP%2FjajyF3w%3D%3D";
+		}else if(count==20) {
+			serviceKey="CCXHzCnPe2%2B8MLpQizjPYWDGx5m5ikMtq0sJVkl%2F0zT7HHG1a7SjHVpK%2B%2FM5mGs4mAo01nuikymHj21xqlSNWA%3D%3D";
+		}else if(count==21) {
+			serviceKey="mfhpMCPoAlzKjTz38EIViPzyYBTYC%2FO6DXImuwErdYq2YGw6%2BHTBsQAs55LIYGf5nQ0X9D9Gg%2Ftji2zNQejxcg%3D%3D";
 		}
+		
 		System.out.println("count들어갑니다"+count);
 		System.out.println("sido 들어갑니다"+sido);
 		System.out.println("pagenum 들어갑니다"+pagenum);
@@ -285,7 +330,8 @@ public class Historic_addController {
 	   System.out.println("룸이미지 끝");
 	   System.out.println("시도 이동");
 	   sido_count++;
-	   if(sido_count==2) {
+	   count++;
+	  /* if(sido_count==2) {
 		   count++;
 	   }
 	   if(sido_count==4) {
@@ -296,17 +342,12 @@ public class Historic_addController {
 	   }
 	   if(sido_count==8) {
 		   count++;
-	   }
+	   }*/
 	   if(sido_count==9) {
 		   sido_count=31;
 	   }
 	  
-	   if(sido_count==33) {
-		   count++;
-	   }
-	   if(sido_count==35) {
-		   count++;
-	   }
+	
 	  
 
 	   if(sido_count>39) {
@@ -314,12 +355,12 @@ public class Historic_addController {
 		   page_count++;
 	   }
 
-	   if(count<=8)
+	   if(count<=21)
 	   {
 	   System.out.println("기무쓰띠");
 	   historic(sido_count,page_count,2);
 	   }
-	   count=1;
+	  //count=1;
 	   
     /*   List<Historic_siteVO> list2= dao.history_list();
 

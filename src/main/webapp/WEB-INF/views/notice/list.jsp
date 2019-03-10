@@ -175,31 +175,73 @@ $(function(){
      
 <div class="container" style="margin-top: 40px; margin-bottom:230px;">
 	<div class="table-responsive">
-	  <table class="table" cellspacing="0" cellpadding="0">
-	   
-	      <tr style="border-top: 2.3px solid #D8D8D8; border-bottom: 2.3px solid #D8D8D8;" id="subtr">
-		<th class="col-md-1 hidden-xs hidden-sm">번호</th>
-		<th class="col-md-6" id="d">제목</th>
-		<th class="visible-xs visible-sm">
-		날짜
-		</th>
-		<th class="col-md-2 hidden-xs hidden-sm">작성자</th>
-		<th class="col-md-2 hidden-xs hidden-sm">날짜</th>
-		<th class="col-md-1 hidden-xs hidden-sm">조회수</th>
-		 </tr>
-	   
+	  		<script>
+				document.write("<table class='table' cellspacing='0' cellpadding='0'>");
+				document.write("<tr style='border-top:2.3px solid #D8D8D8; border-bottom:2.3px solid #D8D8D8;' id='subtr'>");
+	   			if(window.location.href.indexOf("eng")!=-1){
+	   				document.write("<th class='col-md-1 hidden-xs hidden-sm'>Number</th>");
+	   				document.write("<th class='col-md-6' id='d'>Title</th>");
+	   				document.write("<th class='visible-xs visible-sm'>Date</th>");
+	   				document.write("<th class='col-md-2 hidden-xs hidden-sm'>Writer</th>");
+	   				document.write("<th class='col-md-2 hidden-xs hidden-sm'>Date</th>");
+	   				document.write("<th class='col-md-1 hidden-xs hidden-sm'>Number of views</th>");
+	   			}else if(window.location.href.indexOf("china")!=-1){
+	   				document.write("<th class='col-md-1 hidden-xs hidden-sm'>号码</th>");
+	   				document.write("<th class='col-md-6' id='d'>题目</th>");
+	   				document.write("<th class='visible-xs visible-sm'>日期</th>");
+	   				document.write("<th class='col-md-2 hidden-xs hidden-sm'>写手</th>");
+	   				document.write("<th class='col-md-2 hidden-xs hidden-sm'>日期</th>");
+	   				document.write("<th class='col-md-1 hidden-xs hidden-sm'>查询数</th>");
+	   			}else{
+	   				document.write("<th class='col-md-1 hidden-xs hidden-sm'>번호</th>");
+	   				document.write("<th class='col-md-6' id='d'>제목</th>");
+	   				document.write("<th class='visible-xs visible-sm'>날짜</th>");
+	   				document.write("<th class='col-md-2 hidden-xs hidden-sm'>작성자</th>");
+	   				document.write("<th class='col-md-2 hidden-xs hidden-sm'>날짜</th>");
+	   				document.write("<th class='col-md-1 hidden-xs hidden-sm'>조회수</th>");
+	   			}
+	   			document.write("</tr>");
+	   		</script>
+
+	
+	
+	
+	
 	   
 	<c:forEach items="${list }" var="vo">
-	   <tr style="border-top: 1px solid #D8D8D8;" id="contr">
-			<td class="col-md-1 hidden-xs hidden-sm"><a href="/notice/read?bno=${vo.bno }"><c:out value="${vo.bno}"/></a></td>
-			<td class="col-md-6" id="dd"><a href="/notice/read?bno=${vo.bno }" ><c:out value="${vo.title }"/></a></td> 
-			<td class="visible-xs visible-sm">
-				<div><span><a href="/notice/read?bno=${vo.bno }" ><fmt:formatDate pattern="yy-MM-dd" value="${vo.reg_date }"/></a></span></div>
-			</td>
-			<td class="col-md-2 hidden-xs hidden-sm"><a href="/notice/read?bno=${vo.bno }" >${vo.writer }</a></td>
-			<td class="col-md-2 hidden-xs hidden-sm"><a href="/notice/read?bno=${vo.bno }" ><fmt:formatDate pattern="yy-MM-dd" value="${vo.reg_date }"/></a></td>
-			<td class="col-md-1 hidden-xs hidden-sm"><c:out value="${vo.view_cnt }"/></td>
-	   </tr> 
+		<script>
+		document.write("<tr style='border-top:1px solid #D8D8D8;' id='contr'>");
+	   	if(window.location.href.indexOf("eng")!=-1){
+	   		document.write("<td class='col-md-1 hidden-xs hidden-sm'><a href='/eng/notice/read?bno=${vo.bno }'><c:out value='${vo.bno}'/></a></td>");
+	   		document.write("<td class='col-md-6' id='dd'><a href='/eng/notice/read?bno=${vo.bno }'><c:out value='${vo.title }'/></a></td>");
+	   		document.write("<td class='visible-xs visible-sm'>");
+	   		document.write("<div><span><a href='/eng/notice/read?bno=${vo.bno }' ><fmt:formatDate pattern='yy-MM-dd' value='${vo.reg_date }'/></a></span></div>");
+	   		document.write("</td>");
+	   		document.write("<td class='col-md-2 hidden-xs hidden-sm'><a href='/eng/notice/read?bno=${vo.bno }'>${vo.writer }</a></td>");
+			document.write("<td class='col-md-2 hidden-xs hidden-sm'><a href='/eng/notice/read?bno=${vo.bno }' ><fmt:formatDate pattern='yy-MM-dd' value='${vo.reg_date }'/></a></td>");
+	   		document.write("<td class='col-md-1 hidden-xs hidden-sm'><c:out value='${vo.view_cnt }'/></td>");
+	   	}else if(window.location.href.indexOf("china")!=-1){
+	   		document.write("<td class='col-md-1 hidden-xs hidden-sm'><a href='/china/notice/read?bno=${vo.bno }'><c:out value='${vo.bno}'/></a></td>");
+	   		document.write("<td class='col-md-6' id='dd'><a href='/china/notice/read?bno=${vo.bno }'><c:out value='${vo.title }'/></a></td>");
+	   		document.write("<td class='visible-xs visible-sm'>");
+	   		document.write("<div><span><a href='/china/notice/read?bno=${vo.bno }' ><fmt:formatDate pattern='yy-MM-dd' value='${vo.reg_date }'/></a></span></div>");
+	   		document.write("</td>");
+	   		document.write("<td class='col-md-2 hidden-xs hidden-sm'><a href='/china/notice/read?bno=${vo.bno }'>${vo.writer }</a></td>");
+			document.write("<td class='col-md-2 hidden-xs hidden-sm'><a href='/china/notice/read?bno=${vo.bno }' ><fmt:formatDate pattern='yy-MM-dd' value='${vo.reg_date }'/></a></td>");
+	   		document.write("<td class='col-md-1 hidden-xs hidden-sm'><c:out value='${vo.view_cnt }'/></td>");
+	   	}else{
+	   		document.write("<td class='col-md-1 hidden-xs hidden-sm'><a href='/notice/read?bno=${vo.bno }'><c:out value='${vo.bno}'/></a></td>");
+	   		document.write("<td class='col-md-6' id='dd'><a href='/notice/read?bno=${vo.bno }'><c:out value='${vo.title }'/></a></td>");
+	   		document.write("<td class='visible-xs visible-sm'>");
+	   		document.write("<div><span><a href='/notice/read?bno=${vo.bno }' ><fmt:formatDate pattern='yy-MM-dd' value='${vo.reg_date }'/></a></span></div>");
+	   		document.write("</td>");
+	   		document.write("<td class='col-md-2 hidden-xs hidden-sm'><a href='/notice/read?bno=${vo.bno }'>${vo.writer }</a></td>");
+			document.write("<td class='col-md-2 hidden-xs hidden-sm'><a href='/notice/read?bno=${vo.bno }' ><fmt:formatDate pattern='yy-MM-dd' value='${vo.reg_date }'/></a></td>");
+	   		document.write("<td class='col-md-1 hidden-xs hidden-sm'><c:out value='${vo.view_cnt }'/></td>");
+	   	}
+	   	document.write("</tr>");
+	   	</script>
+	
 	 </c:forEach>  
 	</table>
 </div>

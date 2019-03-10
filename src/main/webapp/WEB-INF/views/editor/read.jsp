@@ -85,6 +85,7 @@
 
 			}
 		});
+		
 	});
 </script>
 
@@ -200,7 +201,7 @@
 					<table class="table" id = "read_table">
 						<thead>
 							<tr>
-								<th font-size=" 10px" scope="col">${editorVO.title }</th>
+								<th font-size=" 10px" scope="col">${read.title }</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -217,7 +218,7 @@
 									  document.write("작성 날짜");
 								  }
 								  </script> &nbsp;:&nbsp; <fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss"
-										value="${editorVO.regdate }" />&nbsp;&nbsp; <script>
+										value="${read.regdate }" />&nbsp;&nbsp; <script>
 								if(window.location.href.indexOf("kor")!=-1){
 									  document.write("조회수");
 								  }else if(window.location.href.indexOf("eng")!=-1){
@@ -227,11 +228,11 @@
 								  }else{
 									  document.write("조회수");
 								  }
-								  </script> &nbsp;:&nbsp;${editorVO.viewcnt }&nbsp;&nbsp;</td>
+								  </script> &nbsp;:&nbsp;${read.viewcnt }&nbsp;&nbsp;</td>
 							</tr>
 							<tr>
 								<td><textarea class="form-control " id="summernote"
-										name="content" placeholder="content">${editorVO.content }</textarea></td>
+										name="content" placeholder="content">${read.content }</textarea></td>
 							</tr>
 
 						</tbody>
@@ -449,7 +450,7 @@
 			}
 		}
 		
-		var bno = ${editorVO.bno};
+		var bno = ${read.bno};
 		var replyPage = 1;
 		var str = "";
 	

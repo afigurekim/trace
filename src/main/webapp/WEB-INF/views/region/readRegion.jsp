@@ -448,13 +448,13 @@ $(function(){
 				        		}
 				        		</script>
                             </h3>
-                            <div id="canvas" style="width:1280px; margin:auto;">
-								<canvas id="myChart"style="float:left; margin-top:10px;margin-right:10px; width:400px;height:200px;"></canvas>
+                            <div id="canvas" style="margin:auto;">
+								<canvas id="myChart"style=" margin-top:10px;margin-right:10px; width:400px;height:200px;"></canvas>
 							</div>
                         </div><!--/.tags-->
 						<section class='rating-widget'>
 							<div class='rating-stars text-center' >
-							    <ul id='stars' style="margin-top:60px;"> 
+							    <ul id='stars' style=""> 
 							      <li class='star' title='Poor' data-value='1'>
 							        <i class='fa fa-star fa-fw'></i>
 							      </li>

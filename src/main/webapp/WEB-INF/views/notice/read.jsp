@@ -1,85 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+       <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
     <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
     
+<!DOCTYPE html>
+
 <html>
 <head>
 <meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>공지사항</title>
-    <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/css/font-awesome.min.css" rel="stylesheet">
-    <link href="../resources/css/pe-icons.css" rel="stylesheet">
-    <link href="../resources/css/prettyPhoto.css" rel="stylesheet">
-    <link href="../resources/css/animate.css" rel="stylesheet">
-    <link href="../resources/css/style.css" rel="stylesheet">
+    <link href="../../../resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../resources/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../resources/css/pe-icons.css" rel="stylesheet">
+    <link href="../../../resources/css/prettyPhoto.css" rel="stylesheet">
+    <link href="../../../resources/css/animate.css" rel="stylesheet">
+    <link href="../../../resources/css/style.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->       
-    <script src="../resources/js/jquery.js"></script>
-    <link rel="shortcut icon" href="../resources/imgs/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../resources/imgs/ico/apple-touch-icon-144x144.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../resources/imgs/ico/apple-touch-icon-114x114.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon-precomposed" href="../resources/imgs/ico/apple-touch-icon-57x57.png">
-    <script src="../resources/js/bootstrap.min.js"></script>
-    <script src="../resources/js/jquery.prettyPhoto.js"></script>
-    <script src="../resources/js/plugins.js"></script>
-    <script src="../resources/js/init.js"></script>
-    
-    <script type="text/javascript">
-	
-	$(function(){
-	var windowWidth=$(window).width();
-	
-	if(windowWidth<=832){
-		$("#notice_size").width(windowWidth-50);
-	}else{
-		$("#notice_size").width(800);
-	}
-	if(windowWidth<=711){
-		$("#subject").css("width","23%");
-		$("#subject_detail").css("width","69%");
-		$("#writer").css("width","23%");
-		$("#writer_detail").css("width","69%");
-	}else{
-		$("#subject").css("width","10%");
-		$("#subject_detail").css("width","89%");
-		$("#writer").css("width","10%");
-		$("#writer_detail").css("width","89%");
-	}
-
-
-	
-	$(window).resize(function(){
-		windowWidth=$(window).width();
-		console.log(windowWidth);
-		if(windowWidth<=832){
-			$("#notice_size").width(windowWidth-50);
-		}else{
-			$("#notice_size").width(800);
-
-		}
-		if(windowWidth<=711){
-			$("#subject").css("width","23%");
-			$("#subject_detail").css("width","69%");
-			$("#writer").css("width","23%");
-			$("#writer_detail").css("width","69%");
-		}else{
-			$("#subject").css("width","10%");
-			$("#subject_detail").css("width","89%");
-			$("#writer").css("width","10%");
-			$("#writer_detail").css("width","89%");
-		}
-		
-		
-	});
-		
-	});
-	</script>
+    <script src="../../../resources/js/jquery.js"></script>
+    <link rel="shortcut icon" href="../../../resources/imgs/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../../../resources/imgs/ico/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../../../resources/imgs/ico/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../../../resources/imgs/ico/images/ico/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon-precomposed" href="../../../resources/imgs/ico/apple-touch-icon-57x57.png">
+    <script src="../../../resources/js/bootstrap.min.js"></script>
+    <script src="../../../resources/js/jquery.prettyPhoto.js"></script>
+    <script src="../../../resources/js/plugins.js"></script>
+    <script src="../../../resources/js/init.js"></script>
 	<style type="text/css">
 	
 	body{
@@ -192,7 +144,55 @@ div {
 	
 
 </style>
+	 <script>
+	$(function(){
+	var windowWidth=$(window).width();
 	
+	if(windowWidth<=832){
+		$("#notice_size").width(windowWidth-50);
+	}else{
+		$("#notice_size").width(800);
+	}
+	if(windowWidth<=711){
+		$("#subject").css("width","23%");
+		$("#subject_detail").css("width","69%");
+		$("#writer").css("width","23%");
+		$("#writer_detail").css("width","69%");
+	}else{
+		$("#subject").css("width","10%");
+		$("#subject_detail").css("width","89%");
+		$("#writer").css("width","10%");
+		$("#writer_detail").css("width","89%");
+	}
+
+
+	
+	$(window).resize(function(){
+		windowWidth=$(window).width();
+		console.log(windowWidth);
+		if(windowWidth<=832){
+			$("#notice_size").width(windowWidth-50);
+		}else{
+			$("#notice_size").width(800);
+
+		}
+		if(windowWidth<=711){
+			$("#subject").css("width","23%");
+			$("#subject_detail").css("width","69%");
+			$("#writer").css("width","23%");
+			$("#writer_detail").css("width","69%");
+		}else{
+			$("#subject").css("width","10%");
+			$("#subject_detail").css("width","89%");
+			$("#writer").css("width","10%");
+			$("#writer_detail").css("width","89%");
+		}
+		
+		
+	});
+		
+	});
+	</script>
 </head>
 <body>
 <%@include file="../Header.jsp" %>
@@ -229,14 +229,37 @@ div {
 <div style="width:800px; margin:auto;" id="notice_size">
    	<div class="row" style="margin-top: 10px;  position: relative; top: 15px; left:-5px; padding-bottom: 5px;">
    	 <div  class="col-md-10" style="width:100%; margin:auto; margin-top:10px;  padding-bottom: 5px; position: relative; left: 5px;" id="spanss">
-   	 	<span  style="float: right; " ><h6>수정날짜 <fmt:formatDate pattern="yy-MM-dd" value="${read.update_date}"/></h6></span>
-   	 	<span  style="float: right;  "><h6>조회수 <c:out value="${read.view_cnt}"/> &emsp;</h6></span>
+   	 	<script>
+   	 	if(window.location.href.indexOf("eng")!=-1){
+   	 		document.write("<span  style='float: right;' ><h6>Modification date <fmt:formatDate pattern='yy-MM-dd' value='${read.update_date}'/></h6></span>");
+   	 		document.write("<span  style='float: right;'><h6>Number of views <c:out value='${read.view_cnt}'/> &emsp;</h6></span>");
+   	 	}else if(window.location.href.indexOf("china")!=-1){
+   	 		document.write("<span  style='float: right;' ><h6>修订日期<fmt:formatDate pattern='yy-MM-dd' value='${read.update_date}'/></h6></span>");
+	 		document.write("<span  style='float: right;'><h6>查询数<c:out value='${read.view_cnt}'/> &emsp;</h6></span>");
+   	 	}else{
+   	 	document.write("<span  style='float: right;' ><h6>수정날짜<fmt:formatDate pattern='yy-MM-dd' value='${read.update_date}'/></h6></span>");
+	 	document.write("<span  style='float: right;'><h6>조회수<c:out value='${read.view_cnt}'/> &emsp;</h6></span>");
+   	 	}
+   	 	</script>
+ 
    	 </div>
-  	 
+  	
    	</div>
    	 <div class="row" style=" margin-top: 10px; position: relative;" >
    	 	<div class="col-xs-2 col-md-1" id="subject" style="width:10%; margin: auto; background-color: #F0F0F0; height: 63px; border-bottom: 1.6px solid #BDBDBD; border-top:2.5px solid #08298A; ">
-   	 		<p style="margin-top: 20px; font-weight: bold; font-size: 13px;">제목</p>
+   	 		<script>
+   	 		if(window.location.href.indexOf("eng")!=-1){
+   	 			document.write("<p style='margin-top: 20px; font-weight: bold; font-size: 13px;'>Title</p>");
+   	 		}else if(window.location.href.indexOf("china")!=-1){
+   	 			document.write("<p style='margin-top: 20px; font-weight: bold; font-size: 13px;'>题目</p>");
+
+   	 		}else{
+   	 			document.write("<p style='margin-top: 20px; font-weight: bold; font-size: 13px;'>제목</p>");
+
+   	 		}
+   	 		</script>
+   	 		
+   	 		
    	 	</div>
 		 <div class="col-xs-10 col-md-9" id="subject_detail" style="width:89%; margin: auto; height: 63px; border-bottom: 1.6px solid #BDBDBD; border-top:2.5px solid #08298A;" >
 	  		<input type="text"  id="title" name="title" value='&emsp;<c:out value="${read.title }"/>' readonly="readonly" style="height:42px; background-color:white; position: relative; left: -25px; top:-32px; ">
@@ -247,7 +270,20 @@ div {
   
 	<div class="row" style=" padding-left: 0px;">
    	 	<div class="col-xs-2 col-md-1" id="writer" style="width:10%; margin: auto; background-color: #F0F0F0; height: 63px; border-bottom: 1.6px solid #BDBDBD; ">
-   	 		<p style="margin-top: 19px; font-weight: bold; font-size: 13px;">작성자</p>
+   	 		<script>
+   	 		if(window.location.href.indexOf("eng")!=-1){
+   	   	 		document.write("<p style='margin-top:19px; font-weight:bold; font-size:13px;'>Writer</p>");
+   	 		}else if(window.location.href.indexOf("china")!=-1){
+   	   	 		document.write("<p style='margin-top:19px; font-weight:bold; font-size:13px;'>写手</p>");
+
+   	 		}else{
+   	   	 		document.write("<p style='margin-top:19px; font-weight:bold; font-size:13px;'>작성자</p>");
+
+   	 		}
+   	 			
+   	 		</script>
+   	 		
+   	 	
    	 	</div>
 		 <div class="col-xs-10 col-md-9" id="writer_detail" style="width:89%; margin: auto; height: 63px; border-bottom: 1.6px solid #BDBDBD;" >
 	  		<input type="text"  id="title" name="title" value='&emsp;<c:out value="${read.writer}"/>' readonly="readonly" style="height:42px; background-color:white; position: relative; left: -25px; top:-32px;">
@@ -260,7 +296,16 @@ div {
    </div>
    
 	<div style="width: 100px; margin: auto; padding-bottom: 12px; float: right; top: 15px;" id="li">
-		<a href="/notice" class="btn btn-primary btn-outlined" style="font-weight: bold;width:100%; "> 목록</a>
+	<script>
+	if(window.location.href.indexOf("eng")!=-1){
+		document.write("<a href='/eng/notice' class='btn btn-info btn-outlined' style='font-weight: bold;width:100%;' >LIST</a>");
+	}else if(window.location.href.indexOf("china")!=-1){
+		document.write("<a href='/china/notice' class='btn btn-info btn-outlined' style='font-weight: bold;width:100%;' >目录</a>");
+
+	}else{
+		document.write("<a href='/notice' class='btn btn-info btn-outlined' style='font-weight: bold;width:100%;' >목록</a>");
+	}
+	</script>
 	</div>
     </div> 
    </div>

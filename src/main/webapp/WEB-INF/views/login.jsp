@@ -174,6 +174,20 @@ $(function(){
 			$("#modal_Phone2").css("left","100px");
 			
 		}
+		if(windowWidth>=998){
+			$("#modal_pw_name").css("left",100);
+			$("#modal_pw_email").css("left",100);
+			$("#modal_pw_id").css("left",100);
+			$("#modal_pw_phone").css("left",100);
+
+
+		}else{
+			$("#modal_pw_name").css("left",0);
+			$("#modal_pw_email").css("left",0);
+			$("#modal_pw_id").css("left",0);
+			$("#modal_pw_phone").css("left",0);
+
+		}
 		
 
 	});
@@ -196,7 +210,7 @@ $(function(){
 			},
 			success:function(data){
 				 if(data==2){
-					window.location.href="http://localhost:8181/";
+					window.location.href="/";
 				 }else if(data==0){
 					 alert("아이디/비밀번호를 확인해주세요");
 				 }else if(data==1){
@@ -291,9 +305,22 @@ $(function(){
 		 			    var fpw= data;
 		 			  //  alert("kkkkkk"+fpw);
 		 			  if(fpw!=""){
-		 			    $("#tpw").html("귀하의 이메일로 비밀번호를 발송하였습니다");
+		 				  if(window.location.href.indexOf("eng")!=-1){
+		 					  
+		 				  }else if(window.location.href.indexOf("china")!=-1){
+		 					  
+		 				  }else{
+				 			    $("#tpw").html("귀하의 이메일로 비밀번호를 발송하였습니다");
+
+		 				  }
 		 			  }else{
-			 			    $("#tpw").html("일치하는 회원이 없습니다");
+		 				  if(window.location.href.indexOf("eng")!=-1){
+		 					  
+		 				  }else if(window.location.href.indexOf("china")!=-1){
+		 					  
+		 				  }else{
+				 			    $("#tpw").html("일치하는 회원이 없습니다");
+		 				  }
 
 		 			  }
 		 			    });  
@@ -671,17 +698,21 @@ $(function(){
 				      	</div>
 				      	<form class="form-horizontal" method="post">
 						  <div class="form-group" style="margin-top: 60px;">
-						    <div class="row" style="margin: auto;">
+						    <div class="row" style="margin: auto; margin-top:-40px;">
 							   <script>
 								  if(window.location.href.indexOf("eng")!=-1){
+									  
 									    document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>Name</div>");
 							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='Name' style='position: relative;'></div>");
 							  		}else if(window.location.href.indexOf("china")!=-1){
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>名</div>");
 							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='名' style='position: relative;'></div>");
 							  		}else{
-							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>이름</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_name1' placeholder='이름' style='position: relative;'></div>");
+							  			
+							   			document.write("<label for='Name' id='modal_pw_name' class='col-sm-2' style='font-weight: bold; font-size: 14px; position: relative; left: 100px;'>이름</label><br>");
+
+							  			//document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='aa'>이름</div>");
+							  			document.write("<div class='col-xs-12 col-md-8'><input type='text' class='form-control' id='find_name1' placeholder='이름' style='position: relative;'></div>");
 							  		}
 							  </script>
 							  </div>
@@ -698,8 +729,10 @@ $(function(){
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='bb'>电邮</div>");
 							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='电邮' style='position: relative;'></div>");
 							  		}else{
-							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='bb'>이메일</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_email1' placeholder='이메일' style='position: relative;'></div>");
+							  			//document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='bb'>이메일</div>");
+							   			document.write("<label for='email' id='modal_pw_email' class='col-sm-2' style='font-weight: bold; font-size: 14px; position: relative; left: 100px;'>이메일</label><br>");
+
+							  			document.write("<div class='col-xs-12 col-md-8'><input type='text' class='form-control' id='find_email1' placeholder='이메일' style='position: relative;'></div>");
 							  		}
 							  </script>
 							  </div>
@@ -716,8 +749,10 @@ $(function(){
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='cc'>用户名</div>");
 							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='用户名' style='position: relative;'></div>");
 							  		}else{
-							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='cc'>아이디</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_id1' placeholder='아이디' style='position: relative;'></div>");
+							  			///document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='cc'>아이디</div>");
+							   			document.write("<label for='id' id='modal_pw_id' class='col-sm-2' style='font-weight: bold; font-size: 14px; position: relative; left: 100px;'>아이디</label><br>");
+
+							  			document.write("<div class='col-xs-12 col-md-8'><input type='text' class='form-control' id='find_id1' placeholder='아이디' style='position: relative;'></div>");
 							  		}
 							  </script>
 							  </div>
@@ -733,8 +768,10 @@ $(function(){
 							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='dd'>手机</div>");
 							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='手机' style='position: relative;'></div>");
 							  		}else{
-							  			document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='dd'>휴대폰</div>");
-							  			document.write("<div class='col-xs-12 col-md-7'><input type='text' class='form-control' id='find_phone' placeholder='휴대폰' style='position: relative;'></div>");
+							  			//document.write("<div class='col-xs-3 col-md-2 col-md-offset-1' style='font-weight: bold; text-align: right;' id='dd'>휴대폰</div>");
+							   			document.write("<label for='phone' id='modal_pw_phone' class='col-sm-2' style='font-weight: bold; font-size: 14px; position: relative; left: 100px;'>핸드폰</label><br>");
+
+							  			document.write("<div class='col-xs-12 col-md-8'><input type='text' class='form-control' id='find_phone' placeholder='휴대폰' style='position: relative;'></div>");
 							  		}
 							  </script>
 							  </div>

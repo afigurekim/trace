@@ -54,7 +54,7 @@ public class MemberServiceImpl implements MemberService {
 			
 			sendMail.setText(
 			new StringBuffer().append("<h1>발자취 투어 메일인증</h1>")
-			.append("<a href='http://www.ktrace.tk:8080/emailauth/"+email)
+			.append("<a href='http://www.ktrace.tk/emailauth/"+email)
 			.append("' target='_blenk'>이메일 인증 확인</a>").toString());
 			sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 			sendMail.setTo(email);

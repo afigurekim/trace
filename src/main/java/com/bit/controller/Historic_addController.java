@@ -355,7 +355,7 @@ public class Historic_addController {
 		   page_count++;
 	   }
 
-	   if(count<=21)
+	   if(count<=13)
 	   {
 	   System.out.println("기무쓰띠");
 	   historic(sido_count,page_count,2);
@@ -618,6 +618,7 @@ public class Historic_addController {
 	       while((line3=rd3.readLine())!=null) {
 	       	sb3.append(line3);
 	       }
+	       System.out.println(sb3.toString());
 	       rd3.close();
 	       conn3.disconnect();
 	       
@@ -753,6 +754,7 @@ public class Historic_addController {
 	        while((line8=rd8.readLine())!=null) {
 	        	sb8.append(line8);
 	        }
+	        System.out.println(sb8.toString());
 	        
 	       
 	        
@@ -779,7 +781,7 @@ public class Historic_addController {
     	
 		String contentid="";
         System.out.println("-------------------------------------------------------------------------------음식점");
-        StringBuilder urlBuilder5= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey="+serviceKey+"&contentTypeId=39&mapX="+latitude+"&mapY="+longitude+"&radius=3000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1\n");
+        StringBuilder urlBuilder5= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey="+serviceKey+"&contentTypeId=39&mapX="+latitude+"&mapY="+longitude+"&radius=2000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1\n");
         URL url5= new URL(urlBuilder5.toString());
         BufferedReader rd5;
 
@@ -831,7 +833,7 @@ public class Historic_addController {
        }
 	@Transactional
     public void room_list(String latitude,String longitude,Integer bno) throws Exception{
-    	StringBuilder urlBuilder9= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey="+serviceKey+"&contentTypeId=32&mapX="+latitude+"&mapY="+longitude+"&radius=3000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1");
+    	StringBuilder urlBuilder9= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList?ServiceKey="+serviceKey+"&contentTypeId=32&mapX="+latitude+"&mapY="+longitude+"&radius=2000&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=20&pageNo=1");
         URL url9= new URL(urlBuilder9.toString());
         BufferedReader rd9;
 
@@ -851,6 +853,7 @@ public class Historic_addController {
         while((line9=rd9.readLine())!=null) {
         	sb9.append(line9);
         }
+        System.out.println(sb9.toString());
     	String arr6[]=sb9.toString().split("<item>");
     	int index;
     	int index2;
@@ -917,6 +920,7 @@ public class Historic_addController {
         while((line8=rd8.readLine())!=null) {
         	sb8.append(line8);
         }
+        System.out.println(sb8.toString());
         
 
         

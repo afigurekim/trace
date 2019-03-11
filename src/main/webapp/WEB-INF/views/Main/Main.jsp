@@ -48,6 +48,8 @@ $(function(){
 	//$("#background").css("background-size",windowWidth 100%);
 		
 	});
+	
+
 });
 </script>
 </head><!--/head-->
@@ -85,7 +87,7 @@ $(function(){
 				
 			}
 		});
-		var table = [
+		/*var table = [
 			"001", 1, 1, 
 			"002", 1, 2, 
 			"003", 1, 3, 
@@ -227,18 +229,20 @@ $(function(){
 					var element = document.createElement( 'div' );
 					element.className = 'element';
 					element.style.backgroundColor = 'rgb(255,255,255)';
+				
 					var symbol = document.createElement( 'div' );
 					symbol.className = 'symbol';
+
 					if(i==0){
 						console.log(i);
 
-						symbol.innerHTML = "<a href='/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
+						//symbol.innerHTML = "<a href='/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
 						if(window.location.href.indexOf("eng")!=-1){
 							symbol.innerHTML = "<a href='/eng/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
 						}else if(window.location.href.indexOf("china")!=-1){
 							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
 						}else{
-							symbol.innerHTML = "<a href='/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
+							symbol.innerHTML = "<a href='/period/read?bno="+i+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
 						}
 					}else{
 							
@@ -247,10 +251,182 @@ $(function(){
 						}else if(window.location.href.indexOf("china")!=-1){
 							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'/></a>";
 						}else{
-							symbol.innerHTML = "<a href='/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'/></a>";
+							symbol.innerHTML = "<a href='/period/read?bno="+i/3+"'><img src="+i/3+" style='width:480px;height:320px;'/></a>";
 						}
 					}
+					
+					element.appendChild( symbol );*/
+					var table = [
+						"001", 1, 1, 
+						"002", 1, 2, 
+						"003", 1, 3, 
+						"004", 1, 4, 
+						"005", 1, 5, 
+						"006", 1, 6, 
+						"007", 1, 7, 
+						"008", 1, 8, 
+						"009", 1, 9, 
+						"010", 2, 1, 
+						"011", 2, 2, 
+						"012", 2, 3, 
+						"013", 2, 4, 
+						"014", 2, 5, 
+						"015", 2, 6, 
+						"016", 2, 7, 
+						"017", 2, 8, 
+						"018", 2, 9, 
+						"019", 3, 1, 
+						"020", 3, 2, 
+						"021", 3, 3, 
+						"022", 3, 4, 
+						"023", 3, 5, 
+						"024", 3, 6, 
+						"025", 3, 7, 
+						"026", 3, 8, 
+						"027", 3, 9, 
+						"028", 4, 1, 
+						"029", 4, 2, 
+						"030", 4, 3, 
+						"031", 4, 4, 
+						"032", 4, 5, 
+						"033", 4, 6, 
+						"034", 4, 7, 
+						"035", 4, 8, 
+						"036", 4, 9, 
+						"037", 5, 1, 
+						"038", 5, 2, 
+						"039", 5, 3, 
+						"040", 5, 4, 
+						"041", 5, 5, 
+						"042", 5, 6, 
+						"043", 5, 7, 
+						"044", 5, 8, 
+						"045", 5, 9, 
+						"046", 6, 1, 
+						"047", 6, 2, 
+						"048", 6, 3, 
+						"049", 6, 4, 
+						"050", 6, 5, 
+						"051", 6, 6, 
+						"052", 6, 7, 
+						"053", 6, 8, 
+						"054", 6, 9, 
+						"055", 7, 1, 
+						"056", 7, 2, 
+						"057", 7, 3, 
+						"058", 7, 4, 
+						"059", 7, 5, 
+						"060", 7, 6, 
+						"061", 7, 7, 
+						"062", 7, 8, 
+						"063", 7, 9, 
+						"064", 8, 1, 
+						"065", 8, 2, 
+						"066", 8, 3, 
+						"067", 8, 4, 
+						"068", 8, 5, 
+						"069", 8, 6, 
+						"070", 8, 7, 
+						"071", 8, 8, 
+						"072", 8, 9, 
+						"073", 9, 1, 
+						"074", 9, 2, 
+						"075", 9, 3, 
+						"076", 9, 4, 
+						"077", 9, 5, 
+						"078", 9, 6, 
+						"079", 9, 7, 
+						"080", 9, 8, 
+						"081", 9, 9, 
+						"082", 10, 1, 
+						"083", 10, 2, 
+						"084", 10, 3, 
+						"085", 10, 4, 
+						"086", 10, 5, 
+						"087", 10, 6, 
+						"088", 10, 7, 
+						"089", 10, 8, 
+						"090", 10, 9, 
+						"091", 11, 1, 
+						"092", 11, 2, 
+						"093", 11, 3, 
+						"094", 11, 4, 
+						"095", 11, 5, 
+						"096", 11, 6, 
+						"097", 11, 7, 
+						"098", 11, 8, 
+						"099", 11, 9, 
+						"100", 12, 1, 
+						"101", 12, 2, 
+						"102", 12, 3, 
+						"103", 12, 4, 
+						"104", 12, 5, 
+						"105", 12, 6, 
+						"106", 12, 7, 
+						"107", 12, 8, 
+						"108", 12, 9, 
+						"109", 13, 1, 
+						"110", 13, 2, 
+						"111", 13, 3, 
+						"112", 13, 4, 
+						"113", 13, 5, 
+						"114", 13, 6, 
+						"115", 13, 7, 
+						"116", 13, 8, 
+						"117", 13, 9, 
+						"118", 14, 1, 
+						"119", 14, 2, 
+						"120", 14, 3, 
+						"121", 14, 4, 
+						"122", 14, 5, 
+						"123", 14, 6, 
+						"124", 14, 7, 
+						"125", 14, 8
+					];
+					var camera, scene, renderer;
+					var controls;
+					var objects = [];
+					var targets = { table: [], sphere: [], helix: [], grid: [] };
+					init();
+					animate();
+					function init() {
+						camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
+						camera.position.z = 6000;
+						scene = new THREE.Scene();
+						// table
+						for ( var i = 0; i < table.length; i += 3 ) {
+					var element = document.createElement( 'div' );
+					element.className = 'element';
+					element.style.backgroundColor = 'rgb(255,255,255)';
+				
+					var symbol = document.createElement( 'div' );
+					symbol.className = 'symbol';
+
+					if(i==0){
+						console.log(i);
+
+						//symbol.innerHTML = "<a href='/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
+						if(window.location.href.indexOf("eng")!=-1){
+							symbol.innerHTML = "<a href='/eng/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'></a>";
+						}else if(window.location.href.indexOf("china")!=-1){
+							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'></a>";
+						}else{
+							symbol.innerHTML = "<img src="+main_image[i]+" style='width:480px;height:320px;' value="+i/3+">";
+						}
+					}else{
+							
+						if(window.location.href.indexOf("eng")!=-1){
+							symbol.innerHTML = "<a href='/eng/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'></a>";
+						}else if(window.location.href.indexOf("china")!=-1){
+							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'></a>";
+						}else{
+							symbol.innerHTML = "<img src="+i/3+" style='width:480px;height:320px;'value="+i/3+">";
+						}
+					}
+					
 					element.appendChild( symbol );
+					
+					
 					var object = new THREE.CSS3DObject( element );
 					object.position.x = Math.random() * 4000 - 2000;
 					object.position.y = Math.random() * 4000 - 2000;
@@ -307,10 +483,9 @@ $(function(){
 				controls.addEventListener( 'change', render );
 				
 				$(function(){
-					/*$(".symbol").click(function(){
-						alert($(this).html);
-					
-					});*/
+					$(".symbol").click(function(){
+			
+				});
 					var count=1;
 					setInterval(function(){
 						if(count==1){
@@ -325,7 +500,7 @@ $(function(){
 							count=1;
 						}
 					},10000);
-				})
+				});
 				
 				
 				

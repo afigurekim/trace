@@ -14,9 +14,13 @@ THREE.TrackballControls = function ( object, domElement ) {
 	this.domElement = ( domElement !== undefined ) ? domElement : document;
 
 	// API
+	var value=new Array();
 
+	var arr=new Array();
+	var starttime;
+	var endtime;
 	this.enabled = true;
-
+	var times= new Array();
 	this.screen = { left: 0, top: 0, width: 0, height: 0 };
 
 	this.rotateSpeed = 1.0;
@@ -492,9 +496,12 @@ THREE.TrackballControls = function ( object, domElement ) {
 	function touchstart( event ) {
 
 		if ( _this.enabled === false ) return;
+		//console.log(event.path[1]);
+		//console.log(event.path[1].subString(event.path[1].indexOf("<a href")));
 		
+		
+		event.preventDefault();
 	
-
 		switch ( event.touches.length ) {
 
 			case 1:
@@ -516,8 +523,31 @@ THREE.TrackballControls = function ( object, domElement ) {
 				break;
 
 		}
-
+		/*arr.push(event.path[1]);
+		
+		console.log("touchstart");
+		nowtime= new Date();
+		var hours=nowtime.getHours()/3600;
+		var minutes=nowtime.getMinutes()/60;
+		var seconds=nowtime.getSeconds();
+		nowtime=hours+minutes+seconds;
+		times.push(nowtime);
+		if(arr[0]==arr[1]){
+			if(times[1]-times[0]<1){
+				console.log(event.path[1].getAttribute("href"));
+				window.location.href=event.path[1].getAttribute("href");
+			}
+		}
+		if(times.length>=2){
+			times=[];
+		}
+		if(arr.length>=2){
+			arr=[];
+		}
+*/
 		_this.dispatchEvent( startEvent );
+		
+		
 
 	}
 
@@ -526,6 +556,8 @@ THREE.TrackballControls = function ( object, domElement ) {
 		if ( _this.enabled === false ) return;
 
 		event.preventDefault();
+		
+		
 		event.stopPropagation();
 
 		switch ( event.touches.length ) {
@@ -549,7 +581,39 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 	}
 
-	function touchend( event ) {
+	function touchend(event) {
+		console.log("touchend");
+		//console.log(event.target);
+		arr.push(event.target);
+
+		value.push(event.target.getAttribute("value"));
+	
+		console.log("touchstart");
+		console.log(event.target);
+		nowtime= new Date();
+		var hours=nowtime.getHours()/3600;
+		var minutes=nowtime.getMinutes()/60;
+		var seconds=nowtime.getSeconds();
+		nowtime=hours+minutes+seconds;
+		times.push(nowtime);
+		console.log(value[0]+""+value[1]);
+		if(value[0]!=null && value[1]!=null){
+			if(value[0]==value[1]){
+				if(times[1]-times[0]<1){
+					
+					window.location.href="/period/read?bno="+value[0];
+				}
+			}
+		}
+		if(times.length>=2){
+			times=[];
+		}
+		if(arr.length>=2){
+			arr=[];
+		}
+		if(value.length>=2){
+			value=[];
+		}
 
 		if ( _this.enabled === false ) return;
 
@@ -557,7 +621,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 			case 0:
 				_state = STATE.NONE;
-				break;
+				break;		
 
 			case 1:
 				_state = STATE.TOUCH_ROTATE;

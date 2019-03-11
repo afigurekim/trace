@@ -29,6 +29,9 @@ padding:0;
     min-height: 100%;
 }
 </style>
+<script>
+
+</script>
 </head>
 <body>
 <script>
@@ -41,7 +44,8 @@ if(window.location.href.indexOf("eng")!=-1){
 }
 
 if(state=="seoul"){
-document.write("<div class='videoContainer'><video src='../../../resources/video/seoul.mp4' width='100%' height='100%' autoplay muted></video></div>");
+document.write("<video autoplay  muted  playsinline><source src='http://localhost:8181/resources/video/seoul.mp4' type='video/mp4'></video>");
+		//<div class='videoContainer'><video id='vv' webkit-playsinline muted controls width='100%' height='100%'  ><source src='http://localhost:8181/resources/video/seoul.mp4' type='video/mp4' ><source src='http://localhost:8181/resources/video/seoul.ogv' type='video/ogv'><source src='http://localhost:8181/resources/video/seoul.webm' type='video/webm' ><source src='http://localhost:8181/resources/video/seoul.m4v' type='video/m4v' ></video></div>");
 
 }else if(state=="incheon")
 {
@@ -89,7 +93,8 @@ document.write("<div class='videoContainer'><video src='../../../resources/video
 	document.write("<div class='videoContainer'><video src='../../../resources/video/jeju.mp4' width='100%' height='100%' autoplay muted></video></div>");
 }
 
-$(function(){
+
+/*$(function(){
 	$("body").hide();
 	$("body").fadeIn(3000);
 	setTimeout(function(){$("body").fadeOut(6000);},6000);
@@ -99,7 +104,7 @@ $(function(){
 		setTimeout(function(){location.href="/region/"+state},9000);
 
 	}
-});
+});*/
 </script>
 
 </body>

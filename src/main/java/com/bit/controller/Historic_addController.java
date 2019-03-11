@@ -56,6 +56,7 @@ public class Historic_addController {
 	String serviceKey="";
     int sido_count=1;
     int page_count=1;
+    int set=0;
 	@RequestMapping("/historic/{sido}/{pagenum}/{start}")
 	@Transactional
 	public void Main_historic(@PathVariable int sido,@PathVariable int pagenum,@PathVariable int start)throws Exception{
@@ -126,7 +127,7 @@ public class Historic_addController {
 	    
     	int index;
     	int index2;
-        StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+serviceKey+"&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo="+pagenum); /*URL*/
+      StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+serviceKey+"&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo="+pagenum); 
         
         
         URL url = new URL(urlBuilder.toString());
@@ -224,12 +225,33 @@ public class Historic_addController {
 	    	        
 	    			
 			} catch (Exception e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
   
         }
-       List<Historic_siteVO> list2= dao.history_list();
+        count++;
+        sido_count++;
+        if(sido_count==9) {
+ 		   sido_count=31;
+ 	   }
+ 	  
+ 	
+ 	  
+
+ 	   if(sido_count>39) {
+ 		   sido_count=1;
+ 		   page_count++;
+ 		   count=0;
+ 		   set++;
+ 	   }
+
+ 	   if(set<2)
+ 	   {
+ 	   System.out.println("기무쓰띠");
+ 	   historic(sido_count,page_count,2);
+ 	   }
+ 	   
+     /*  List<Historic_siteVO> list2= dao.history_list();
        System.out.println(start);
        if(start==1) {
     	   System.out.println("유적지 카운트에요!!!"+list2.size());
@@ -343,26 +365,10 @@ public class Historic_addController {
 	   if(sido_count==8) {
 		   count++;
 	   }*/
-	   if(sido_count==9) {
-		   sido_count=31;
-	   }
-	  
-	
-	  
-
-	   if(sido_count>39) {
-		   sido_count=1;
-		   page_count++;
-	   }
-
-	   if(count<=13)
-	   {
-	   System.out.println("기무쓰띠");
-	   historic(sido_count,page_count,2);
-	   }
+	 
 	  //count=1;
-	   
-    /*   List<Historic_siteVO> list2= dao.history_list();
+	/*   
+      List<Historic_siteVO> list2= dao.history_list();
 
 	   for(int i=0;i<list2.size();i++) {
     	   System.out.println("여기는 history detail  데이터 작업중");
@@ -376,20 +382,20 @@ public class Historic_addController {
     	   System.out.println(list2.get(i).getAddress());
     	   System.out.println(list2.get(i).getSite_name());
     	   System.out.println(list2.get(i).getThema());
-    	   historydetail(list2.get(i).getContent_id(),list2.get(i).getContent_typeid(),list2.get(i).getBno());
-    	   if(list2.get(i).getBno()%60==0) {
-    		   count++;
-    	   }
+    	   historydetail(list2.get(i).getContent_id(),list2.get(i).getBno());
+    	   if(list2.get(i).getBno()%12==0) {
+       		   count++;
+       	   }
 	   }
-    
-	   count=1;
+    	/*List<Historic_siteVO> list2= dao.history_list();
+	
 	   for(int i=0;i<list2.size();i++) {
 		   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
 		   
-		   if(list2.get(i).getBno()%60==0) {
+		   if(list2.get(i).getBno()%12==0) {
     		   count++;
     	   }
-	   }
+	   }/*
 	   count=1;
 	   for(int i=0;i<list2.size();i++) {
 	   		room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
@@ -427,22 +433,22 @@ public class Historic_addController {
 	   */
 	   
 	}
-	String detail;
-	String latitude;
-	String longitude;
-	String carriage;
-	String infocenter;
+	String detail="";
+	String latitude="";
+	String longitude="";
+	String carriage="";
+	String infocenter="";
 	String restday ="";
-	String creditcard;
-	String pet;
-	String expguide;
+	String creditcard="";
+	String pet="";
+	String expguide="";
 	String expagerange = "";
-	String park;
-	String usetime;
-	String homepage;
-	String firstmenu;
-	String infocenterfood;
-	String kidsfacility;
+	String park="";
+	String usetime="";
+	String homepage="";
+	String firstmenu="";
+	String infocenterfood="";
+	String kidsfacility="";
 	String opentimefood;
 	String parkingfood;
 	String reservationfood;
@@ -455,13 +461,13 @@ public class Historic_addController {
 	int index2;
 
 	@Transactional
-	public void historydetail(String contentid,String contenttypeid,Integer bno) throws Exception{
+	public void historydetail(String contentid,Integer bno) throws Exception{
    
       
         System.out.println("--------------------------------------공통정보---------------------------------------디테일");
         
-        StringBuilder urlBuilder2= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+serviceKey+"&contentTypeId="+contenttypeid+"&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y");
-        StringBuilder urlBuilder4= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey="+serviceKey+"&contentTypeId="+contenttypeid+"&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&listYN=Y");
+        StringBuilder urlBuilder2= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailCommon?ServiceKey="+serviceKey+"&contentTypeId=12&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&defaultYN=Y&firstImageYN=Y&areacodeYN=Y&catcodeYN=Y&addrinfoYN=Y&mapinfoYN=Y&overviewYN=Y&transGuideYN=Y");
+        StringBuilder urlBuilder4= new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/detailIntro?ServiceKey="+serviceKey+"&contentTypeId=12&contentId="+contentid+"&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&introYN=Y&listYN=Y");
        
         URL url2= new URL(urlBuilder2.toString());
         URL url4= new URL(urlBuilder4.toString());
@@ -512,60 +518,68 @@ public class Historic_addController {
   
         rd4.close();
         conn4.disconnect();
-      
-        index=sb2.indexOf("<overview>");
-        
-        index2=sb2.indexOf("</overview>");
-        detail=sb2.substring(index+10,index2);
-        detail.replaceAll("<br>", "\n");
-        detail.replaceAll("<br /><br /><br />", "\n");
-
-        detail.replaceAll("<br />", "\n");
-
-        index=sb4.indexOf("<chkbabycarriage>");
-        index2=sb4.indexOf("</chkbabycarriage>");
-        carriage=sb4.substring(index+17,index2);
-       
+        if(sb2.indexOf("<overview>")!=-1) {
+	        index=sb2.indexOf("<overview>");
+	        
+	        index2=sb2.indexOf("</overview>");
+	        detail=sb2.substring(index+10,index2);
+	        detail.replaceAll("<br>", "\n");
+	        detail.replaceAll("<br /><br /><br />", "\n");
+	
+	        detail.replaceAll("<br />", "\n");
+        }
+        if(sb4.indexOf("<chkbabycarriage>")!=-1) {
+        	index=sb4.indexOf("<chkbabycarriage>");
+        	index2=sb4.indexOf("</chkbabycarriage>");
+        	carriage=sb4.substring(index+17,index2);
+        }
         if(sb4.indexOf("<infocenter>")!=-1) {
 	        index=sb4.indexOf("<infocenter>");
 	        index2=sb4.indexOf("</infocenter>");
 	        infocenter=sb4.substring(index+12, index2);
+	        infocenter.replaceAll("<br />","\n");
+
         }
-        infocenter.replaceAll("<br />","\n");
+        if(sb4.indexOf("<chkpet>")!=-1) {
         index=sb4.indexOf("<chkpet>");
         index2=sb4.indexOf("</chkpet>");
         pet=sb4.substring(index+8, index2);
+        }
         
         if(sb4.indexOf("<restdate>")!=-1) {
 	        index=sb4.indexOf("<restdate>");
 	        index2=sb4.indexOf("</restdate>");
 	        restday=sb4.substring(index+10, index2);
+	        restday.replaceAll("<br>","\n");
+
         }
-        restday.replaceAll("<br>","\n");
+        if(sb4.indexOf("<chkcreditcard>")!=-1) {
         index=sb4.indexOf("<chkcreditcard>");
         index2=sb4.indexOf("</chkcreditcard>");
         creditcard=sb4.substring(index+15, index2);
-       
+        }
         if(sb4.indexOf("<expagerange>")!=-1) {
 	        index=sb4.indexOf("<expagerange>");
 	        index2=sb4.indexOf("</expagerange>");
 	        expagerange=sb4.substring(index+13,index2);
         }
+        if(sb4.indexOf("<expguide>")!=-1) {
         index=sb4.indexOf("<expguide>");
         index2=sb4.indexOf("</expguide>");
         expguide=sb4.substring(index+10,index2);
         expguide.replaceAll("<br>;","\n");
         expguide.replaceAll("<br />;","\n");
-
+        }
         index=sb4.indexOf("<parking>");
         index2=sb4.indexOf("</parking>");
         park=sb4.substring(index+9, index2);
-        
+        if(sb4.indexOf("<usetime>")!=-1) {
         index=sb4.indexOf("<usetime>");
         index2=sb4.indexOf("</usetime>");
         usetime=sb4.substring(index+9, index2);
         usetime.replaceAll("<br>", "\n");
         usetime.replaceAll("<br />", "\n");
+        }
         System.out.println(detail);
         System.out.println(expagerange);
         System.out.println(expguide);

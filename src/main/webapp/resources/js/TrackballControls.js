@@ -496,6 +496,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 	function touchstart( event ) {
 
 		if ( _this.enabled === false ) return;
+		console.log(event);
 		//console.log(event.path[1]);
 		//console.log(event.path[1].subString(event.path[1].indexOf("<a href")));
 		
@@ -584,6 +585,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 	function touchend(event) {
 		console.log("touchend");
 		//console.log(event.target);
+		console.log(event.target);
 		arr.push(event.target);
 
 		value.push(event.target.getAttribute("value"));

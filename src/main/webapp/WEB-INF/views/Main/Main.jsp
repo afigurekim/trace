@@ -411,7 +411,7 @@ $(function(){
 						}else if(window.location.href.indexOf("china")!=-1){
 							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'></a>";
 						}else{
-							symbol.innerHTML = "<img src="+main_image[i]+" style='width:480px;height:320px;' value="+i/3+">";
+							symbol.innerHTML = "<img src="+main_image[i]+" style='width:480px;height:320px;' value="+i+">";
 						}
 					}else{
 							
@@ -420,7 +420,7 @@ $(function(){
 						}else if(window.location.href.indexOf("china")!=-1){
 							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'></a>";
 						}else{
-							symbol.innerHTML = "<img src="+i/3+" style='width:480px;height:320px;'value="+i/3+">";
+							symbol.innerHTML = "<img src="+main_image[i/3]+" style='width:480px;height:320px;'value="+i/3+">";
 						}
 					}
 					

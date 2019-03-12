@@ -95,7 +95,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		*
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%선사%' limit #{pageStart},#{perPageNum}
+	where FIRST_IMAGE != "" and period like '%선사%' limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -106,7 +106,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		count(*)
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%선사%'
+	where FIRST_IMAGE != "" and period like '%선사%'
 	
 ]]>
 </select>
@@ -116,7 +116,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		*
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%삼국%' limit #{pageStart},#{perPageNum}
+	where FIRST_IMAGE != "" and period like '%삼국%' limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -127,7 +127,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		count(*)
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%삼국%'
+	where FIRST_IMAGE != "" and period like '%삼국%'
 	
 ]]>
 </select>
@@ -138,7 +138,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		*
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%고려%' limit #{pageStart},#{perPageNum}
+	where FIRST_IMAGE != "" and period like '%고려%'  limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -149,7 +149,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		count(*)
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%고려%'
+	where FIRST_IMAGE != "" and period like '%고려%'
 	
 ]]>
 </select>
@@ -161,7 +161,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		*
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%조선%' limit #{pageStart},#{perPageNum}
+	where FIRST_IMAGE != "" and period like '%조선%' limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -172,7 +172,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		count(*)
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%조선%'
+	where FIRST_IMAGE != "" and period like '%조선%'
 	
 ]]>
 </select>
@@ -183,7 +183,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		*
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%근현대%' limit #{pageStart},#{perPageNum}
+	where FIRST_IMAGE != "" and period like '%근현대%' limit #{pageStart},#{perPageNum}
 	
 ]]>
 </select>
@@ -194,7 +194,7 @@ select fullName from tbl_attach where attach_num=1 order by regdate
 		count(*)
 	from
 		HISTORIC_SITE 
-	where FIRST_IMAGE != "" and period='%근현대%'
+	where FIRST_IMAGE != "" and period like '%근현대%'
 	
 ]]>
 </select>

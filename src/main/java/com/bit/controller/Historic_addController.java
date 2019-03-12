@@ -127,7 +127,7 @@ public class Historic_addController {
 	    
     	int index;
     	int index2;
-      StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+serviceKey+"&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo="+pagenum); 
+      /*StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+serviceKey+"&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo="+pagenum); 
         
         
         URL url = new URL(urlBuilder.toString());
@@ -241,17 +241,19 @@ public class Historic_addController {
  	   if(sido_count>39) {
  		   sido_count=1;
  		   page_count++;
- 		   count=0;
+ 		 
  		   set++;
  	   }
-
- 	   if(set<2)
+ 	   if(count>21) {
+ 		   count=0;
+ 	   }
+ 	   if(set<3)
  	   {
  	   System.out.println("기무쓰띠");
  	   historic(sido_count,page_count,2);
- 	   }
+ 	   }*/
  	   
-     /*  List<Historic_siteVO> list2= dao.history_list();
+     /* List<Historic_siteVO> list2= dao.history_list();
        System.out.println(start);
        if(start==1) {
     	   System.out.println("유적지 카운트에요!!!"+list2.size());
@@ -367,8 +369,8 @@ public class Historic_addController {
 	   }*/
 	 
 	  //count=1;
-	/*   
-      List<Historic_siteVO> list2= dao.history_list();
+	 
+     /* List<Historic_siteVO> list2= dao.history_list();
 
 	   for(int i=0;i<list2.size();i++) {
     	   System.out.println("여기는 history detail  데이터 작업중");
@@ -383,19 +385,20 @@ public class Historic_addController {
     	   System.out.println(list2.get(i).getSite_name());
     	   System.out.println(list2.get(i).getThema());
     	   historydetail(list2.get(i).getContent_id(),list2.get(i).getBno());
-    	   if(list2.get(i).getBno()%12==0) {
+    	   if(list2.get(i).getBno()%17==0) {
        		   count++;
        	   }
-	   }
-    	/*List<Historic_siteVO> list2= dao.history_list();
+	   }*/
+    	List<Historic_siteVO> list2= dao.history_list();
 	
 	   for(int i=0;i<list2.size();i++) {
 		   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
 		   
-		   if(list2.get(i).getBno()%12==0) {
+		   if(list2.get(i).getBno()%17==0) {
     		   count++;
     	   }
-	   }/*
+	   }
+	   /*
 	   count=1;
 	   for(int i=0;i<list2.size();i++) {
 	   		room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());

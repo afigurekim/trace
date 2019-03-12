@@ -347,6 +347,7 @@ public class PeriodController {
 	@RequestMapping(value = "/period/korea", method = RequestMethod.GET)
 	public String default_korea(Criteria cri,Locale locale, Model model) {
 		try {
+			
 			model.addAttribute("list",service.korealist(cri));
 			PageMaker pageMaker = new PageMaker();
 			pageMaker.setCri(cri);

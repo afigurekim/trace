@@ -44,7 +44,7 @@ private static final Logger logger = LoggerFactory.getLogger(JoinController.clas
 		logger.info(member.toString());
 		System.out.println(member.toString());
 		System.out.println("회원가입좀하자");
-		service.emailAuth(member.getEmail());
+		service.emailAuth(member.getEmail(),"kor");
 		service.insertMember(member);
 		
 		return "joinsuccess";
@@ -55,7 +55,8 @@ private static final Logger logger = LoggerFactory.getLogger(JoinController.clas
 		logger.info(member.toString());
 		System.out.println(member.toString());
 		System.out.println("회원가입좀하자");
-		service.emailAuth(member.getEmail());
+		System.out.println(lang+"언어입니다");
+		service.emailAuth(member.getEmail(),lang);
 		service.insertMember(member);
 		
 		return "joinsuccess";

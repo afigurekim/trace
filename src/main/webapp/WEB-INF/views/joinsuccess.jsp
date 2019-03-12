@@ -40,8 +40,19 @@ h3 {
 <body>
 	<div
 		style="background-color: #15a181; width: 100%; height: 50px; text-align: center; color: white;">
-		<h3>발자취 투어 회원가입 성공 </h3>
-		이메일 인증 후 로그인 해주세요
+		<script>
+			if(window.location.href.indexOf("eng")!=-1){
+				document.write("<h3>Success as a member of the Footprint Tour</h3>");
+				document.write("Please sign in after your email");
+			}else if(window.location.href.indexOf("china")!=-1){
+				document.write("<h3>足迹之旅会员成功</h3>");
+				document.write("请确认邮件后登录");
+			}else{
+				document.write("<h3>발자취 투어 회원가입 성공</h3>");
+				document.write("이메일 인증 후 로그인 해주세요");
+			}
+		</script>
+
 	</div>
 	<br>
 	<h2 style="text-align: center" id="name"></h2>

@@ -157,14 +157,14 @@ public class LoginController {
 	
 	//비밀번호 찾기
 	@ResponseBody
-	@RequestMapping(value="/find_pw",method=RequestMethod.POST)
-	public String find_pw(String tname,String tid,String tphone,String temail) {
+	@RequestMapping(value="/find_pw/{state}",method=RequestMethod.POST)
+	public String find_pw(String tname,String tid,String tphone,String temail,@PathVariable String state) {
 		System.out.println(tname);
 		System.out.println(tid);
 		System.out.println(tphone);
 
 		System.out.println(temail);
-		
+		System.out.println(state+"언어어어어어");
 		String fpw=service.find_pw(tid,tname, tphone, temail);
 		System.out.println(fpw);
 		if(fpw==null) {
@@ -173,7 +173,7 @@ public class LoginController {
 		}
 		if(fpw!=null) {
 			try {
-				service.find_pw_email(fpw,temail);
+				service.find_pw_email(fpw,temail,state);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

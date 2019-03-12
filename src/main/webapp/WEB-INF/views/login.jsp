@@ -99,8 +99,8 @@ $(function(){
 
 		$("#row_join").css("margin-left","");
 		$("#social").width($("#login_form").width()+32);
-		$("#naver_login").width("49%");
-		$("#kakao_login").width("49%");
+		$("#naver_login").width("49.3%");
+		$("#kakao_login").width("49.3%");
 	
 	}else{
 		$("#login_size").width(400);
@@ -111,8 +111,8 @@ $(function(){
 
 		$("#row_join").css("margin-left","auto");
 		$("#social").width($("#login_form").width()+32);
-		$("#naver_login").width("49%");
-		$("#kakao_login").width("49%");
+		$("#naver_login").width("49.5%");
+		$("#kakao_login").width("49.5%");
 	}
 	$(window).resize(function(){
 		windowWidth=$(window).width();
@@ -134,8 +134,8 @@ $(function(){
 
 		$("#row_join").css("margin-left","");
 		$("#social").width($("#login_form").width()+32);
-		$("#naver_login").width("49%");
-		$("#kakao_login").width("49%");
+		$("#naver_login").width("49.3%");
+		$("#kakao_login").width("49.3%");
 	
 	}else{
 		$("#login_size").width(400);
@@ -146,8 +146,8 @@ $(function(){
 
 		$("#row_join").css("margin-left","auto");
 		$("#social").width($("#login_form").width()+32);
-		$("#naver_login").width("49%");
-		$("#kakao_login").width("49%");
+		$("#naver_login").width("49.5%");
+		$("#kakao_login").width("49.5%");
 	}
 		if(windowWidth<=650){
 		$(".modal-content").width(windowWidth-50);
@@ -289,9 +289,16 @@ $(function(){
 		 alert(phone2);
 		 alert(phone3);
 		 alert(email); */
-		 
+		 var state;
+		 if(window.location.href.indexOf("eng")!=-1){
+			 state="eng";
+		 }else if(window.location.href.indexOf("china")!=-1){
+			 state="china";
+		 }else{
+			 state="kor";
+		 }
 		 $.ajax({
-			 url:"/find_pw",
+			 url:"/find_pw/"+state,
 		 	 type:'post',
 		 	 async:false,
 		 	 data:{
@@ -306,18 +313,18 @@ $(function(){
 		 			  //  alert("kkkkkk"+fpw);
 		 			  if(fpw!=""){
 		 				  if(window.location.href.indexOf("eng")!=-1){
-		 					  
+		 					  $("#tpw").html("I sent you a password via your email.");
 		 				  }else if(window.location.href.indexOf("china")!=-1){
-		 					  
+		 					  $("#tpw").html("用您的邮箱发送了密码。");
 		 				  }else{
 				 			    $("#tpw").html("귀하의 이메일로 비밀번호를 발송하였습니다");
 
 		 				  }
 		 			  }else{
 		 				  if(window.location.href.indexOf("eng")!=-1){
-		 					  
+		 					  $("#tpw").html("There are no matching members.");
 		 				  }else if(window.location.href.indexOf("china")!=-1){
-		 					  
+		 					  $("#tpw").html("没有一致的会员。");
 		 				  }else{
 				 			    $("#tpw").html("일치하는 회원이 없습니다");
 		 				  }
@@ -359,7 +366,7 @@ $(function(){
             </div><!--/.carousel-inner-->
         </div><!--/.carousel-->
     </section><!--/#main-slider-->
-<div id="login_outer">
+<div id="login_outer" style="margin-bottom:40px;">
 <div id="login_size" style="width:400px; margin:auto;">
 <form method="post" id='login_form' style="width:350px; margin:auto;">  
   <div class="big-gap"></div>

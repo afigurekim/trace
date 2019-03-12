@@ -12,10 +12,14 @@ THREE.TrackballControls = function ( object, domElement ) {
 
 	this.object = object;
 	this.domElement = ( domElement !== undefined ) ? domElement : document;
-
+	var state= new Array();
+	var phonestate=new Array();
 	// API
+	var mousevalue=new Array();
+	var mousearr= new Array();
 	var value=new Array();
-
+	var mousestart;
+	var mousetimes=new Array();
 	var arr=new Array();
 	var starttime;
 	var endtime;
@@ -347,7 +351,6 @@ THREE.TrackballControls = function ( object, domElement ) {
 	// listeners
 
 	function keydown( event ) {
-
 		if ( _this.enabled === false ) return;
 
 		window.removeEventListener( 'keydown', keydown );
@@ -385,9 +388,54 @@ THREE.TrackballControls = function ( object, domElement ) {
 	}
 
 	function mousedown( event ) {
+		console.log(event.path[1]);
+		mousearr.push(event.path[1]);
+		
+		mousevalue.push(event.target.getAttribute("value"));
+		if(mousevalue[0]!=null){
+		state=mousevalue[0].split('/');
+		console.log(state[0]);
+		console.log(state[1]);
+		}
+		mousestart= new Date();
+		var hours=mousestart.getHours()/3600;
+		var minutes=mousestart.getMinutes()/60;
+		var seconds=mousestart.getSeconds();
+		mousestart=hours+minutes+seconds;
+		mousetimes.push(mousestart);
+		console.log(mousevalue[0]+""+mousevalue[1]);
+		if(mousevalue[0]!=null && mousevalue[1]!=null){
+			if(mousevalue[0]==mousevalue[1]){
+				if(mousetimes[1]-mousetimes[0]<1){
+						
+					if(state[1]=="eng"){
+						window.location.href="/eng/period/read?bno="+state[0];
 
+					}else if(state[1]=="china"){
+						window.location.href="/china/period/read?bno="+state[0];
+
+					}else{
+						window.location.href="/period/read?bno="+state[0];
+
+					}
+
+					
+				}
+			}
+		}
+		if(mousetimes.length>=2){
+			mousetimes=[];
+		}
+		if(mousearr.length>=2){
+			mousearr=[];
+		}
+		if(mousevalue.length>=2){
+			mousevalue=[];
+		}
+		if(state>=2){
+			state=[];
+		}
 		if ( _this.enabled === false ) return;
-
 		event.preventDefault();
 		event.stopPropagation();
 
@@ -589,7 +637,12 @@ THREE.TrackballControls = function ( object, domElement ) {
 		arr.push(event.target);
 
 		value.push(event.target.getAttribute("value"));
-	
+		
+		if(value[0]!=null){
+			phonestate=value[0].split('/');
+			console.log(phonestate[0]);
+			console.log(phonestate[1]);
+			}
 		console.log("touchstart");
 		console.log(event.target);
 		nowtime= new Date();
@@ -602,8 +655,16 @@ THREE.TrackballControls = function ( object, domElement ) {
 		if(value[0]!=null && value[1]!=null){
 			if(value[0]==value[1]){
 				if(times[1]-times[0]<1){
-					
-					window.location.href="/period/read?bno="+value[0];
+					if(phonestate[1]=="eng"){
+						window.location.href="/eng/period/read?bno="+phonestate[0];
+
+					}else if(phonestate[1]=="china"){
+						window.location.href="/china/period/read?bno="+phonestate[0];
+
+					}else{
+						window.location.href="/period/read?bno="+phonestate[0];
+
+					}
 				}
 			}
 		}

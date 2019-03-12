@@ -37,28 +37,67 @@ public class MemberServiceImpl implements MemberService {
 	}
 	
 	@Override
-	public void emailAuth(String email) {
-		
+	public void emailAuth(String email,String lang) {
+
 		try {
+			System.out.println(lang+"이메일인증 언어");
 			MailHandler sendMail = new MailHandler(mailSender);
+			if(lang.indexOf("eng")!=-1) {
+				sendMail.setSubject("[Footprint Tour Service Email Authentication]");
 
-			sendMail.setSubject("[발자취 투어 서비스 이메일 인증]");
+				/*sendMail.setText(
+						new StringBuffer().append("<h1>메일인증</h1>")
+						.append("<a href='http://localhost:8181/emailcheck/1")
+						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+						sendMail.setTo(email);
+						sendMail.send();*/
+				
+				sendMail.setText(
+				new StringBuffer().append("<h1>Footprint Tour Mail Certification</h1>")
+				.append("<a href='http://www.ktrace.tk/emailauth/"+email)
+				.append("' target='_blenk'>Confirm Email Authentication</a>").toString());
+				sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+				sendMail.setTo(email);
+				sendMail.send();
+			}else if(lang.indexOf("china")!=-1) {
+				sendMail.setSubject("[足迹之旅服务邮箱认证]");
 
-			/*sendMail.setText(
-					new StringBuffer().append("<h1>메일인증</h1>")
-					.append("<a href='http://localhost:8181/emailcheck/1")
-					.append("' target='_blenk'>이메일 인증 확인</a>").toString());
-					sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
-					sendMail.setTo(email);
-					sendMail.send();*/
+				/*sendMail.setText(
+						new StringBuffer().append("<h1>메일인증</h1>")
+						.append("<a href='http://localhost:8181/emailcheck/1")
+						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+						sendMail.setTo(email);
+						sendMail.send();*/
+				
+				sendMail.setText(
+				new StringBuffer().append("<h1>足迹旅行邮件认证</h1>")
+				.append("<a href='http://www.ktrace.tk/emailauth/"+email)
+				.append("' target='_blenk'>电子邮件认证确认</a>").toString());
+				sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+				sendMail.setTo(email);
+				sendMail.send();
+			}else {
+				sendMail.setSubject("[발자취 투어 서비스 이메일 인증]");
+
+				/*sendMail.setText(
+						new StringBuffer().append("<h1>메일인증</h1>")
+						.append("<a href='http://localhost:8181/emailcheck/1")
+						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+						sendMail.setTo(email);
+						sendMail.send();*/
+				
+				sendMail.setText(
+				new StringBuffer().append("<h>발자취 이메일 인증</h1>")
+				.append("<a href='http://www.ktrace.tk/emailauth/"+email)
+				.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+				sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+				sendMail.setTo(email);
+				sendMail.send();
+			}
 			
-			sendMail.setText(
-			new StringBuffer().append("<h1>발자취 투어 메일인증</h1>")
-			.append("<a href='http://www.ktrace.tk/emailauth/"+email)
-			.append("' target='_blenk'>이메일 인증 확인</a>").toString());
-			sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
-			sendMail.setTo(email);
-			sendMail.send();
 	
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block
@@ -164,28 +203,67 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void find_pw_email(String fpw, String email) throws Exception {
+	public void find_pw_email(String fpw, String email,String state) throws Exception {
 		// TODO Auto-generated method stub
 		try {
 			MailHandler sendMail = new MailHandler(mailSender);
 
-			sendMail.setSubject("[발자취 비밀번호 찾기]");
+			if(state.indexOf("eng")!=-1) {
+				sendMail.setSubject("[Find your footprint password]");
 
-			/*sendMail.setText(
-					new StringBuffer().append("<h1>메일인증</h1>")
-					.append("<a href='http://localhost:8181/emailcheck/1")
-					.append("' target='_blenk'>이메일 인증 확인</a>").toString());
-					sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
-					sendMail.setTo(email);
-					sendMail.send();*/
+				/*sendMail.setText(
+						new StringBuffer().append("<h1>메일인증</h1>")
+						.append("<a href='http://localhost:8181/emailcheck/1")
+						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+						sendMail.setTo(email);
+						sendMail.send();*/
+				
+				sendMail.setText(
+				new StringBuffer().append("<h1>Find your footprint password</h1>")
+				.append("Your password is  "+fpw).toString());
+				
+				sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+				sendMail.setTo(email);
+				sendMail.send();
+			}else if(state.indexOf("china")!=-1) {
+				sendMail.setSubject("[寻找足迹密码]");
+
+				/*sendMail.setText(
+						new StringBuffer().append("<h1>메일인증</h1>")
+						.append("<a href='http://localhost:8181/emailcheck/1")
+						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+						sendMail.setTo(email);
+						sendMail.send();*/
+				
+				sendMail.setText(
+				new StringBuffer().append("<h1>寻找足迹密码</h1>")
+				.append("您的密码是 "+fpw).toString());
+				
+				sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+				sendMail.setTo(email);
+				sendMail.send();
+			}else {
+				sendMail.setSubject("[발자취 비밀번호 찾기]");
+
+				/*sendMail.setText(
+						new StringBuffer().append("<h1>메일인증</h1>")
+						.append("<a href='http://localhost:8181/emailcheck/1")
+						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+						sendMail.setTo(email);
+						sendMail.send();*/
+				
+				sendMail.setText(
+				new StringBuffer().append("<h1>발자취 비밀번호 찾기</h1>")
+				.append("귀하의 비밀번호는 "+fpw+"입니다").toString());
+				
+				sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
+				sendMail.setTo(email);
+				sendMail.send();
+			}
 			
-			sendMail.setText(
-			new StringBuffer().append("<h1>발자취 비밀번호 찾기</h1>")
-			.append("귀하의 비밀번호는 "+fpw+"입니다").toString());
-			
-			sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
-			sendMail.setTo(email);
-			sendMail.send();
 	
 		} catch (MessagingException e) {
 			// TODO Auto-generated catch block

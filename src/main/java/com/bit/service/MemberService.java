@@ -17,7 +17,7 @@ public interface MemberService {
 	
 	public String find_pw(String id,String name,String phone,String email);
 	
-	public void find_pw_email(String fpw,String email)throws Exception;
+	public void find_pw_email(String fpw,String email,String state)throws Exception;
 
 	
 	
@@ -25,7 +25,7 @@ public interface MemberService {
 	
 	public int checkId(String id);
 	
-	public void emailAuth(String email);
+	public void emailAuth(String email,String lang);
 	
 	public int emailCheck(String email);
 	

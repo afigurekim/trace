@@ -407,21 +407,29 @@ $(function(){
 
 						//symbol.innerHTML = "<a href='/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'/></a>";
 						if(window.location.href.indexOf("eng")!=-1){
-							symbol.innerHTML = "<a href='/eng/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'></a>";
+							symbol.innerHTML = "<img src="+main_image[i]+" style='width:480px;height:320px;' value="+main_bno[i]+'/eng'+">";
+
 						}else if(window.location.href.indexOf("china")!=-1){
-							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i]+"'><img src="+main_image[i]+" style='width:480px;height:320px;'></a>";
+							symbol.innerHTML = "<img src="+main_image[i]+" style='width:480px;height:320px;' value="+main_bno[i]+'/china'+">";
+
 						}else{
-							symbol.innerHTML = "<img src="+main_image[i]+" style='width:480px;height:320px;' value="+i+">";
+							symbol.innerHTML = "<img src="+main_image[i]+" style='width:480px;height:320px;' value="+main_bno[i]+'/'+">";
+
 						}
+						
 					}else{
-							
 						if(window.location.href.indexOf("eng")!=-1){
-							symbol.innerHTML = "<a href='/eng/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'></a>";
+							symbol.innerHTML = "<img src="+main_image[i/3]+" style='width:480px;height:320px;'value="+main_bno[i/3]+'/eng'+">";
+
 						}else if(window.location.href.indexOf("china")!=-1){
-							symbol.innerHTML = "<a href='/china/period/read?bno="+main_bno[i/3]+"'><img src="+main_image[i/3]+" style='width:480px;height:320px;'></a>";
+							symbol.innerHTML = "<img src="+main_image[i/3]+" style='width:480px;height:320px;'value="+main_bno[i/3]+'/china'+">";
+
 						}else{
-							symbol.innerHTML = "<img src="+main_image[i/3]+" style='width:480px;height:320px;'value="+i/3+">";
+							symbol.innerHTML = "<img src="+main_image[i/3]+" style='width:480px;height:320px;'value="+main_bno[i/3]+'/'+">";
+
 						}
+						
+						
 					}
 					
 					element.appendChild( symbol );

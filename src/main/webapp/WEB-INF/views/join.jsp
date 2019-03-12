@@ -276,7 +276,18 @@ $(function(){
         			document.write("<h3>회원가입</h3>");
         		}
         		</script>
-                <form role="joinform" id="joinform" action="/join" method="post">
+        		<script>
+        		if(window.location.href.indexOf("eng")!=-1){
+            		document.write("<form role='joinform' id='joinform' action='/eng/join' method='post'>");
+
+        		}else if(window.location.href.indexOf("china")!=-1){
+            		document.write("<form role='joinform' id='joinform' action='/china/join' method='post'>");
+
+        		}else{
+            		document.write("<form role='joinform' id='joinform' action='/join' method='post'>");
+
+        		}
+        		</script>
                     <div class="form-group">
                     <script>
                 	if(window.location.href.indexOf("eng")!=-1){

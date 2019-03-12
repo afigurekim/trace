@@ -1,30 +1,41 @@
 package com.bit.controller;
 
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.annotation.Resource;
 import javax.inject.Inject;
 
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.bit.domain.Criteria;
 import com.bit.domain.EditorVO;
 import com.bit.domain.PageMaker;
 import com.bit.service.EditorService;
+import com.bit.util.MediaUtils;
 import com.bit.util.Translate;
 
 @Controller
 public class EditorController {
 	
-
+	@Resource(name = "uploadPath")
+	private String uploadPath;
 		private static final Logger logger = LoggerFactory.getLogger(EditorController.class);
 
 		@Inject
@@ -273,6 +284,41 @@ public class EditorController {
 			
 			model.addAttribute("pageMaker",pageMaker);
 			return "/editor/theme_religion";
+		}
+		
+		
+		@ResponseBody
+		@RequestMapping(value = "/editor/displayFile")
+		public ResponseEntity<byte[]> displayFile(String filename) throws Exception {
+			System.out.println("?붿뒪?뚮젅???뚯씪");
+			InputStream in = null;
+			ResponseEntity<byte[]> entity = null;
+
+			System.out.println("filename :" + filename);
+			try {
+				String formatName = filename.substring(filename.lastIndexOf(".") + 1);
+				MediaType mType = MediaUtils.getMediaType(formatName);
+
+				HttpHeaders headers = new HttpHeaders();
+
+				in = new FileInputStream(uploadPath + filename);
+
+				if (mType != null) {
+					headers.setContentType(mType);
+				} else {
+					filename = filename.substring(filename.indexOf("_") + 1);
+					headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+					headers.add("Content-Disposition",
+							"attachment; filename\"" + new String(filename.getBytes("UTF-8"), "ISO-8859-1") + "\"");
+				}
+				entity = new ResponseEntity<byte[]>(IOUtils.toByteArray(in), headers, HttpStatus.CREATED);
+			} catch (Exception e) {
+				e.printStackTrace();
+				entity = new ResponseEntity<byte[]>(HttpStatus.BAD_REQUEST);
+			} finally {
+				in.close();
+			}
+			return entity;
 		}
 		
 }

@@ -193,6 +193,7 @@ $(function(){
 	    				alert("您的等级已登记。");
 	    			}else{
 	    				alert("등록되었습니다.");
+	    				chart();
 	    			}
 	    		}else{
 	    	   		if(window.location.href.indexOf("eng")!=-1){
@@ -206,7 +207,7 @@ $(function(){
 	    	}
 	    });
 	  });
-	  
+function chart(){	  
 	 var dataset=new Array();
 	 var data1=0;
 	 var data2=0;
@@ -299,7 +300,7 @@ $(function(){
 	    }
 	  }
 	});
-
+}
 	$("#first_image").height($(".overlay").width()/1.5);
 
 	$("img[name=full_image]").height($(".overlay").width()/1.5);

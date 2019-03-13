@@ -200,7 +200,7 @@ $(function(){
 	});
 });
 
-// 로그인 validation 후 성공시 recaptcha 발동
+// 로그인 validation 실패시 recaptcha 발동
 $(function(){
 	$("#btnbn").click(function(e){
 		e.preventDefault();
@@ -217,7 +217,7 @@ $(function(){
 			},
 			success:function(data){
 				 if(data==2){
-					 grecaptcha.execute();
+					 window.location.href="/";
 				 }else if(data==0){
 		 			 if(window.location.href.indexOf("eng")!=-1){
 		 				alert("Please check your ID/Password.");
@@ -226,6 +226,7 @@ $(function(){
 		 			 }else{
 		 				alert("아이디/비밀번호를 확인해주세요.");
 		 			 }
+		 			 grecaptcha.execute();
 				 }else if(data==1){
 		 			 if(window.location.href.indexOf("eng")!=-1){
 			 				alert("Please complete e-mail verification.");
@@ -234,15 +235,16 @@ $(function(){
 			 			 }else{
 			 				alert("이메일 인증을 해주세요.");
 			 			 }
+		 			grecaptcha.execute();
 				 }
 			}
 		});
 	});
 });
 
-// recaptcha 성공시 홈으로 이동
+// recaptcha 후 다시 login 페이지 이동
 function onSubmit(token) {
-	window.location.href="/";
+	window.location.href="/login";
 }
 
 //ID찾기

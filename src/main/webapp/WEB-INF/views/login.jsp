@@ -242,9 +242,9 @@ $(function(){
 	});
 });
 
-// recaptcha 후 다시 login 페이지 이동
+// recaptcha 성공시 recaptcha 값 리셋
 function onSubmit(token) {
-	window.location.href="/login";
+	grecaptcha.reset();
 }
 
 //ID찾기

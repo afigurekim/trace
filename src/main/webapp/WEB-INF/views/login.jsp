@@ -30,7 +30,16 @@
     <script src="../resources/js/init.js"></script>
     <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
-  
+	<script type="text/javascript">
+		 if(window.location.href.indexOf("eng")!=-1){
+			 document.write("<script src=\"https://www.google.com/recaptcha/api.js?hl=en\" async defer>");
+		 }else if(window.location.href.indexOf("china")!=-1){
+			 document.write("<script src=\"https://www.google.com/recaptcha/api.js?hl=zh-CN\" async defer>");
+		 }else{
+			 document.write("<script src=\"https://www.google.com/recaptcha/api.js?hl=ko\" async defer>");
+		 }
+		</script>
+	</script>
     
  <style type="text/css">
     
@@ -188,18 +197,16 @@ $(function(){
 			$("#modal_pw_phone").css("left",0);
 
 		}
-		
-
 	});
+});
 
+// 로그인 validation 후 성공시 recaptcha 발동
+$(function(){
 	$("#btnbn").click(function(e){
-		
 		e.preventDefault();
-		
 		
 		var id=$("#member_idid").val();
 		var pw=$("#member_pw").val();
-	
 		
 		$.ajax({
 			url:"/login",
@@ -210,16 +217,33 @@ $(function(){
 			},
 			success:function(data){
 				 if(data==2){
-					window.location.href="/";
+					 grecaptcha.execute();
 				 }else if(data==0){
-					 alert("아이디/비밀번호를 확인해주세요");
+		 			 if(window.location.href.indexOf("eng")!=-1){
+		 				alert("Please check your ID/Password.");
+		 			 }else if(window.location.href.indexOf("china")!=-1){
+		 				alert("请确认ID/密码。");
+		 			 }else{
+		 				alert("아이디/비밀번호를 확인해주세요.");
+		 			 }
 				 }else if(data==1){
-					 alert("이메일 인증을 해주세요");
+		 			 if(window.location.href.indexOf("eng")!=-1){
+			 				alert("Please complete e-mail verification.");
+			 			 }else if(window.location.href.indexOf("china")!=-1){
+			 				alert("请进行邮件认证。");
+			 			 }else{
+			 				alert("이메일 인증을 해주세요.");
+			 			 }
 				 }
 			}
 		});
 	});
 });
+
+// recaptcha 성공시 홈으로 이동
+function onSubmit(token) {
+	window.location.href="/";
+}
 
 //ID찾기
   	
@@ -410,18 +434,16 @@ $(function(){
 	            
 <div class="row" >
     <div class="">
+    <div id='recaptcha' class="g-recaptcha" data-sitekey="6Le6KpcUAAAAABsy8dLJizLIFWh5HUA0qttfeGcD" data-callback="onSubmit" data-size="invisible"></div>
     <script>
     	if(window.location.href.indexOf("eng")!=-1){
     		document.write("<button type='button' class='btn btn-default btn-lg' id='btnbn' style='width:100%; font-weight:bolder;'>LOGIN</button>");
     	}else if(window.location.href.indexOf("china")!=-1){
     		document.write("<button type='button' class='btn btn-default btn-lg' id='btnbn' style='width:100%; font-weight:bolder;'>登录</button>");
-
     	}else{
     		document.write("<button type='button' class='btn btn-default btn-lg' id='btnbn' style='width:100%; font-weight:bolder;'>로그인</button>");
-
     	}
     </script>
-   		
    </div>
 </div>
 </form>

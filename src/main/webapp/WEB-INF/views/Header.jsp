@@ -26,7 +26,18 @@
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="/"><img src="../../../resources/imgs/메인로고.png" style="width:150px;height:70px; margin-top:-25px"></a>
+                <script>
+                	if(window.location.href.indexOf("eng")!=-1){
+                		document.write("<a class='navbar-brand' href='/eng'>");
+                	}else if(window.location.href.indexOf("china")!=-1){
+                		document.write("<a class='navbar-brand' href='/china'>");
+
+                	}else{
+                		document.write("<a class='navbar-brand' href='/'>");
+
+                	}
+                </script>
+               <img src="../../../resources/imgs/메인로고.png" style="width:150px;height:70px; margin-top:-25px"></a>
             </div>
              <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">

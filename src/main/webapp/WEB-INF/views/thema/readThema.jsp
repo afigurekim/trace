@@ -124,7 +124,7 @@
    </style>
 <script>
 $(function(){
-
+chart();
 	/* 1. Visualizing things on Hover - See next part for action on click */
 	  $('#stars li').on('mouseover', function(){
 	    var onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
@@ -189,24 +189,49 @@ $(function(){
 	    		if(data==0){
 	    	   		if(window.location.href.indexOf("eng")!=-1){
 	    				alert("Your rating has been registered.");
+	    				chart();
+	    				 for (i = 0; i < stars.length; i++) {
+	    				      $(stars[i]).removeClass('selected');
+	    				    }
 	    			}else if(window.location.href.indexOf("china")!=-1){
 	    				alert("您的等级已登记。");
+	    				chart();
+	    				 for (i = 0; i < stars.length; i++) {
+	    				      $(stars[i]).removeClass('selected');
+	    				    }
 	    			}else{
 	    				alert("등록되었습니다.");
+	    				chart();
+	    				 for (i = 0; i < stars.length; i++) {
+	    				      $(stars[i]).removeClass('selected');
+	    				    }
 	    			}
 	    		}else{
 	    	   		if(window.location.href.indexOf("eng")!=-1){
 	    				alert("This place has already been rated.");
+	    				for (i = 0; i < stars.length; i++) {
+	    				      $(stars[i]).removeClass('selected');
+	    				    }
 	    			}else if(window.location.href.indexOf("china")!=-1){
 	    				alert("这地方已经被评定为。");
+	    				for (i = 0; i < stars.length; i++) {
+	    				      $(stars[i]).removeClass('selected');
+	    				    }
 	    			}else{
 	    				alert("이미 등록하셨습니다.");
+	    				for (i = 0; i < stars.length; i++) {
+	    				      $(stars[i]).removeClass('selected');
+	    				    }
 	    			}
 	    		}
 	    	}
 	    });
 	  });
+
 	  
+function chart(){
+	
+
 	 var dataset=new Array();
 	 var data1=0;
 	 var data2=0;
@@ -299,7 +324,7 @@ $(function(){
 	    }
 	  }
 	});
-
+}
 	$("#first_image").height($(".overlay").width()/1.5);
 
 	$("img[name=full_image]").height($(".overlay").width()/1.5);

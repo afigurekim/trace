@@ -173,8 +173,8 @@ $(function(){
     </section><!--/#main-slider-->
     
      
-<div class="container" style="margin-top: 40px; margin-bottom:230px;">
-	<div class="table-responsive">
+<div class="container" style="margin-top: 120px; margin-bottom:100px;">
+	<div class="table-responsive" style="overflow:hidden;">
 	  		<script>
 				document.write("<table class='table' cellspacing='0' cellpadding='0'>");
 				document.write("<tr style='border-top:2.3px solid #D8D8D8; border-bottom:2.3px solid #D8D8D8;' id='subtr'>");

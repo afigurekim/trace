@@ -25,7 +25,7 @@
 			bno,title,content,writer,regdate,viewcnt,theme 
 			from 
 			TBL_EDITOR 
-			where bno>0 
+			where bno>0
 			order by bno desc,regdate desc
 		]]>
 	</select>
@@ -42,9 +42,9 @@
 	<select id="listCriteria" resultType="com.bit.domain.EditorVO">
 		<![CDATA[
 		select * from TBL_EDITOR 
-		where bno >0 
+		where bno >0   and state=#{state}
 		order by bno desc, regdate desc
-		limit #{pageStart},#{perPageNum}
+		limit #{cri.pageStart},#{cri.perPageNum}
 		]]>
 	</select>
 
@@ -52,36 +52,36 @@
 		resultType="com.bit.domain.EditorVO">
 		<![CDATA[
 		select * from TBL_EDITOR 
-		where theme=1 
+		where theme=1 and  state=#{state}
 		order by bno desc, regdate desc
-		limit #{pageStart},#{perPageNum}
+		limit #{cri.pageStart},#{cri.perPageNum}
 		]]>
 	</select>
 	<select id="listCriteriaCouple"
 		resultType="com.bit.domain.EditorVO">
 		<![CDATA[
 		select * from TBL_EDITOR 
-		where theme=2 
+		where theme=2 and  state=#{state}
 		order by bno desc, regdate desc
-		limit #{pageStart},#{perPageNum}
+		limit #{cri.pageStart},#{cri.perPageNum}
 		]]>
 	</select>
 	<select id="listCriteriaEdu"
 		resultType="com.bit.domain.EditorVO">
 		<![CDATA[
 		select * from TBL_EDITOR 
-		where theme=3 
+		where theme=3 and state=#{state}
 		order by bno desc, regdate desc
-		limit #{pageStart},#{perPageNum}
+		limit #{cri.pageStart},#{cri.perPageNum}
 		]]>
 	</select>
 	<select id="listCriteriaReligion"
 		resultType="com.bit.domain.EditorVO">
 		<![CDATA[
 		select * from TBL_EDITOR 
-		where theme=4 
+		where theme=4 and  state=#{state}
 		order by bno desc, regdate desc
-		limit #{pageStart},#{perPageNum}
+		limit #{cri.pageStart},#{cri.perPageNum}
 		]]>
 	</select>
 
@@ -89,32 +89,32 @@
 	<select id="countPaging" resultType="int">
 	<![CDATA[
 		select count(bno) from TBL_EDITOR
-		where bno>0
+		where bno>0  and state=#{state}
 	]]>
 	</select>
 
 	<select id="countPagingFamily" resultType="int">
 		<![CDATA[
 			select count(bno) from TBL_EDITOR
-			where theme=1
+			where theme=1 and  state=#{state}
 		]]>
 	</select>
 	<select id="countPagingCouple" resultType="int">
 		<![CDATA[
 			select count(bno) from TBL_EDITOR
-			where theme=2
+			where theme=2 and  state=#{state}
 		]]>
 	</select>
 	<select id="countPagingEdu" resultType="int">
 		<![CDATA[
 			select count(bno) from TBL_EDITOR
-			where theme=3
+			where theme=3 and  state=#{state}
 		]]>
 	</select>
 	<select id = "countPagingReligion" resultType="int">
 		<![CDATA[
 			select count(bno) from TBL_EDITOR
-			where theme=4
+			where theme=4 and  state=#{state}
 		]]>
 	</select>
 

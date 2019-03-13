@@ -35,14 +35,14 @@ public class EditorServiceImpl implements EditorService {
 
 
 	@Override
-	public List<EditorVO> listCriteria(Criteria cri, int theme) throws Exception {
-		return dao.listCriteria(cri,theme);
+	public List<EditorVO> listCriteria(Criteria cri, int theme,String state) throws Exception {
+		return dao.listCriteria(cri,theme,state);
 	}
 
 	@Override
-	public int listCountCriteria(Criteria cri, int theme) throws Exception {
+	public int listCountCriteria(Criteria cri, int theme,String state) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.countPaging(cri, theme);
+		return dao.countPaging(cri, theme,state);
 	}
 
 

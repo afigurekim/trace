@@ -11,8 +11,8 @@ public interface EditorService {
 	
 	public List<EditorVO> listAll() throws Exception;
 	
-	public List<EditorVO> listCriteria(Criteria cri,int theme) throws Exception;
+	public List<EditorVO> listCriteria(Criteria cri,int theme,String state) throws Exception;
 	
-	public int listCountCriteria(Criteria cri,int theme) throws Exception;
+	public int listCountCriteria(Criteria cri,int theme,String state) throws Exception;
 
 }

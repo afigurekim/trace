@@ -20,7 +20,7 @@ public interface EditorDAO {
 	public void update(Integer bno) throws Exception;
 	//페이징
 	public List<EditorVO> listPage(int page) throws Exception;
-	public List<EditorVO> listCriteria(Criteria cri,int theme) throws Exception;
-	public int countPaging(Criteria cri, int theme) throws Exception;
+	public List<EditorVO> listCriteria(Criteria cri,int theme,String state) throws Exception;
+	public int countPaging(Criteria cri, int theme,String state) throws Exception;
 
 }

@@ -491,9 +491,27 @@ function onSubmit(token) {
  <div class="row" >
 	 <div class="" style="width: 380px; margin: auto; padding-top: 2px;" id='social'>
 	 	
-	     <span><a href="${url} "><img src="../../../resources/imgs/loginbtn-naver.png" id='naver_login' style="width: 188px; height: 39px; position: relative; margin-left: 0px;"></a></span>  
+	     <span><a href="${url} ">
+		 	<script>
+		    	if(window.location.href.indexOf("eng")!=-1){
+		    		document.write("<img src='../../../resources/imgs/loginbtn-eng-naver.jpg' id='naver_login' style='width: 188px; height: 39px; position: relative; margin-left: 0px;'>");
+		    	}else if(window.location.href.indexOf("china")!=-1){
+		    		document.write("<img src='../../../resources/imgs/loginbtn-china-naver.jpg' id='naver_login' style='width: 188px; height: 39px; position: relative; margin-left: 0px;'>");
+		    	}else{
+		    		document.write("<img src='../../../resources/imgs/loginbtn-naver.png' id='naver_login' style='width: 188px; height: 39px; position: relative; margin-left: 0px;'>");
+		    	}
+		    </script>
+	     </a></span>  
 		 <span><a id="custom-login-btn" href="javascript:loginWithKakao()">
-			<img src="../../../resources/imgs/loginbtn-kakao.png" id='kakao_login'style="width: 188px; height: 39px; position: relative; margin-left: 0px;">
+		 	<script>
+		    	if(window.location.href.indexOf("eng")!=-1){
+		    		document.write("<img src='../../../resources/imgs/loginbtn-eng-kakao.jpg' id='kakao_login'style='width: 188px; height: 39px; position: relative; margin-left: 0px;'>");
+		    	}else if(window.location.href.indexOf("china")!=-1){
+		    		document.write("<img src='../../../resources/imgs/loginbtn-china-kakao.jpg' id='kakao_login'style='width: 188px; height: 39px; position: relative; margin-left: 0px;'>");
+		    	}else{
+		    		document.write("<img src='../../../resources/imgs/loginbtn-kakao.png' id='kakao_login'style='width: 188px; height: 39px; position: relative; margin-left: 0px;'>");
+		    	}
+		    </script>
 			   </a>
 		 </span>
 			  <script type="text/javascript">

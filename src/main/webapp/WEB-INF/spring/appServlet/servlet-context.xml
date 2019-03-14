@@ -29,12 +29,12 @@
 			
 			<beans:property name="maxUploadSize" value="10485760"></beans:property>			
 	</beans:bean>
-	
+	 
 	<beans:bean id="uploadPath" class="java.lang.String">
-		<beans:constructor-arg value="C:\\zzz\\">
+		<beans:constructor-arg value="/opt/imgs">
 		</beans:constructor-arg>
 	</beans:bean>
-	
+	 
 	<interceptors> <beans:bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"> <beans:property name="paramName" value="lang" /> </beans:bean> </interceptors>
 
 	<context:component-scan base-package="com.bit.controller" />

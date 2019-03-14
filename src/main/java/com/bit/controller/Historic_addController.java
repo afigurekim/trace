@@ -50,6 +50,54 @@ public class Historic_addController {
 	//CCXHzCnPe2%2B8MLpQizjPYWDGx5m5ikMtq0sJVkl%2F0zT7HHG1a7SjHVpK%2B%2FM5mGs4mAo01nuikymHj21xqlSNWA%3D%3D
 	//mfhpMCPoAlzKjTz38EIViPzyYBTYC%2FO6DXImuwErdYq2YGw6%2BHTBsQAs55LIYGf5nQ0X9D9Gg%2Ftji2zNQejxcg%3D%3D
 	
+	//3-14
+	//jGJJnyf3RsXj5uENvt9hjr5TZChzZXlvhhDHY5223P5Q3JmGpeYL2R2oydcTNc66%2FG36eMLXT7u%2B7nfEbS6Nsw%3D%3D
+	//rZexvv4jJiY9s%2Fa7Oy16pDj7ukVN9ObIkVMkfNc5mNfZMX%2B8egsfzfZGMXao75PAVANHxc7e6GfclRHAZDOd5w%3D%3D
+	//Jrv70YNEAlcLVEk4a56ti18FjknCSTJ2AVFzbg%2B32cLwLjUFIfRGT5y7EdrAfOIlTEIRR2M6dkX68JYRxhkO7g%3D%3D
+	//DS5yjDDNL8MJtScspUjrsrWe5%2FI1hqZPFGpq4na1Dn5H34EJbgXgH8AZYEcBcD3dsJGOViHPxXgIuIE0wDx4Pg%3D%3D
+	//HhJudA9hIUo0flj%2Bt5K%2FLioVX5Inszi2cgChfiUATPlBOhJE65TdbtaMAuH3qOkGGyl1mkhbQsmhYeLwVL38xA%3D%3D
+	//SnQSwAXFyBZ%2F2dcg7E4AJvT%2Fo1i1ksVGy0D2Iy5vZkvr6Eyf8Ph9%2FBzXkdfHw9gpa9g%2BxjSU7ZwBizys5zbFMQ%3D%3D
+	//hheg%2BMfMln2D5n6G7Dr0Y%2BoMxAL17pKDCakmSIypUAfqBEgEDi816fz%2FFF7mmXND8C4Be2LDZglFEAvK2EL9EA%3D%3D
+	//juavrHhSBRvER8KAxMhbXFWecBdjP5jGsuK67GVuha5x%2B7gsJ4LqRJErtbV%2BOI1wJoJQj3MnAYEnx69DwFIdcQ%3D%3D
+	//oVbZAFzpjVE1%2FGHfjhW3isBITbbsA%2B21bjT7xEBSinOE06y%2FxOYswrcXQBjkJJ67kxawMWV9FbapL9U64n8UKA%3D%3D
+	//VAhJmsWjBzzd2t9YW%2FKWus1CnNEOI6shMLro5%2FwG3727EXavqhbuOoyiwa7OTbHd%2BQXwI2%2Fvasw2Eu60s73NcQ%3D%3D
+	
+
+	//of2f31FtrGtim8DADCiY4egLnHjBb2qc0sEt%2FYMASA%2Buj4OkbdModQZTsWAEpkZtW2zJLjqBiwkZkTkYRrkuyw%3D%3D
+	//%2BczzH00Ep622SrKBonoSY3Dg1diTTY%2FHWb92wtPntLsZ9XDU%2Bud9PMF0PNUaulk3cgr%2FJPIGIvGTYsE9tmHR5w%3D%3D
+	//MBEC9TCle87Bi1WfcqdcGNs%2FtILE1wC4lnZbnLnc7n%2F%2B4bJg8F7v2C3U1Pdjc5mZkOL%2Fdm7BYyBL50RqCWelcg%3D%3D
+	//cP977EnB%2FxBZCsNnir5GaBOjRVsCxdL6ByQvEkipaIE6dojc%2BhgH0k6Rf7EbkbcDM3WM5UNinenZe5lsqcN%2Fxg%3D%3D
+	//mfXCzKzCfetNhJhs%2BFkAAsL0GHHRsz5tmWs3MH%2BsaYwWT0D%2BlmyWwPJnAVSLqJ2Piw5JedNgrX4UYVLE432xSg%3D%3D
+	//aTyvuYfq5GGx2LnitHgzei8DeRZurjpGQOjvMs7PsThuWDNVjy4LErZSFKcRnFUMQLG%2B2NREAnnjBVZ3XDo%2Frg%3D%3D
+	//DomzA7CCqJWhYFux4iNAza80h367isVffmAL7iC2SpwiEWo%2BezpRKH1hOlSI8LpbWuxYh1DocntaAgrkQMtPUA%3D%3D
+	//S1UIBziCpeBEdipT4i%2FgKLbWoWwrXO2Jy4OZPE6JfZHY8TpbbLfSRd0vKSTwsy3S8NMacx7isOdjk9mnFzXx%2Bg%3D%3D
+	//lB5FniXmQhiw6G%2BtconyLgapR2F6EK1nEQtajyUkd69ln6wUVYALIwcHyzDZfXSX%2BGRp0neQAECOdm%2FUUtwXVQ%3D%3D
+	//LJojgq7Fj5xXdVABuGeLqnxjSxZI74%2BFRSxw95hlxUxlwILtA8S15AKfSjZiLRhEkpLfKVSIIhabEtnOzCFKLw%3D%3D
+	
+
+	//VC4nMN%2F3EpG9XNMs4nHdKRuXrpklKvHuXnFR668O1YtYOKtInjv2byMpoBq14rv3ORhDB9IKoh7B0hTnxyXn5Q%3D%3D
+	//EGxIcRucbTslIIJFkNhWnjm3FpxqirEtO56nEoZ%2FRytjgcG6u6VMlScqUJFlLJqeJdclOLiU1DejWT5Uv1jwDA%3D%3D
+	//ulJ2LGQoPv4V93scnugGoanQbgDK0Cz4Xw7AzatDo0cKfU2cHrC71H%2BhwE7HCg1jw70cM%2Fso6hm7eKIObD7IFQ%3D%3D
+	//P6qz%2Fx7l5uYgxAMQRL6FeuCuu6H%2FQOcoatGzGoAfdDLOkdmTgfaGxHMNwf5Wh5TZLTWHtkiJRdyPFtrYrnsHSg%3D%3D
+	//lD4oQSUQLNjUwVHJWXrwZ8hIXn3ulzc6LAirNtlCje5FbV50n9zcqjwBdGZfsYm9aV61YZ7tYixAar1S7FLjpg%3D%3D
+	//Pr%2BaJAK6EGgToiGRME0SL9K9Vy55Z4YKy786%2FeS15KxLSU%2B71tWoaHSe7TehYPDVOtL9stBXiBuBZkwImIfHzQ%3D%3D
+	//jJjdMxntp5oNC%2FcAUSGqwpNeNPil9woU3WAl67bHTjavx8%2BGW69OfS3O8W0iMFh09Qq917Ot0PhOp%2Bcahf2Egw%3D%3D
+	//%2BgoBYIuMJWdY%2Ft5XMdjWDP%2FmlAilX8Q4nHC3N8j26YquR3C%2BhQAGhpwZcNpiEPIXwV0GjHkNPP6N%2FLKmXaxsZg%3D%3D
+	//QGdj%2FqiTHHkX%2BbKgU%2BsIqO%2BGE2LoxEEsLk0s%2B5IHNzaMaSobBq%2BRT39OlqK5S%2B5taYh9Q0t%2BuO54IPMV%2BcrZHQ%3D%3D
+	//ZOv6M9G3Rqwz6uwAHjhyVXFE5S6jcu4BRX97qPkRH28lBEY19g79Fr1OpjeOEHCBPLYGxLXZu1%2FfQqBoFXDt8A%3D%3D
+	
+	//YDYKgWLTfUL%2Fty%2FIytOT5h032jt96g65hqx24td%2Fud2ourg9WMTCWAuzzXg2EpshxfKLBwHun2aBp3dZDyGm2Q%3D%3D
+	//G%2FOdk5bMVB5KCbLaUcYU9LHZkdNfhfAbYE5V8mtp%2Fy68PJ7QkHk%2BRnBROoOVDD3OebHp7QdjYhQUtvTwbOZLOw%3D%3D
+	//5hh76G6EVHMLtZ7nJVAizrQ5DPcGWl%2Fi%2BgMdSJ%2FvezxbSdUyrEBwrJgAb3J5lPHkPzGqo09H6d8MGB3LsQV1Ng%3D%3D
+	//HGFo9i%2BQvtuM51A%2BPnqMyRfVoOEJ2sOpHIs0VABrK7yefza2u9guOe46RJF%2Fku3qnrOMm1y42bPbDL%2B547ZuPg%3D%3D
+	//Cabnwu%2BhHq4aUPcAmNo1YP0VhGZhNnbf8ryMBHwe0DsgpkBbM7aokkhfsuMrpJXUWvn0ZxWkjzYmEQWvjOYIjQ%3D%3D
+	//4j%2FyzAV1yOzy6%2FuiKfQj1ib1eco%2BCasz5QGyJ0yNZx2iiwxWoM2xquEoqVxRl0M6ku4nx59WSige5oM7fqPpdA%3D%3D
+	//uf0uP%2FqNfa4OrzJMzkDpbZV42NhtuKoicQFWL2FIZrIqrXlQT8307FBr5xFxNt8PvZjzmS0xoUxk1oWHjWvFYA%3D%3D
+	//TqU580RcYf3Kwd1saK69l3DHum9N8pjKu05JvX0AnxvTQZAatUomi2wO75RwZWqow4CHKLohVf%2Fp%2FEnc0pJowg%3D%3D
+	
+	//i11e0v3Q2YiXYfR5RULMHWWyb7mocvsZxQbl7nPOXfHMS344O1en2y1%2F4RWIo4Sz9c1hSNJcaMcQbxRR2icjpg%3D%3D
+	//Zb8XhhPk5pGl4D43qgAcgy2%2Fla71%2BwFPzCzWXfjyNik2N2gVwBRrnIsPPKKGhJLO%2F93ua9XUdENz0FEtAI9HpA%3D%3D
+	
 	@Inject
 	private Historic_siteDAO dao;
 	private int count=0;
@@ -108,6 +156,86 @@ public class Historic_addController {
 			serviceKey="CCXHzCnPe2%2B8MLpQizjPYWDGx5m5ikMtq0sJVkl%2F0zT7HHG1a7SjHVpK%2B%2FM5mGs4mAo01nuikymHj21xqlSNWA%3D%3D";
 		}else if(count==21) {
 			serviceKey="mfhpMCPoAlzKjTz38EIViPzyYBTYC%2FO6DXImuwErdYq2YGw6%2BHTBsQAs55LIYGf5nQ0X9D9Gg%2Ftji2zNQejxcg%3D%3D";
+		}else if(count==22) {
+			serviceKey="jGJJnyf3RsXj5uENvt9hjr5TZChzZXlvhhDHY5223P5Q3JmGpeYL2R2oydcTNc66%2FG36eMLXT7u%2B7nfEbS6Nsw%3D%3D";
+		}else if(count==23) {
+			serviceKey="rZexvv4jJiY9s%2Fa7Oy16pDj7ukVN9ObIkVMkfNc5mNfZMX%2B8egsfzfZGMXao75PAVANHxc7e6GfclRHAZDOd5w%3D%3D";
+		}else if(count==24) {
+			serviceKey="Jrv70YNEAlcLVEk4a56ti18FjknCSTJ2AVFzbg%2B32cLwLjUFIfRGT5y7EdrAfOIlTEIRR2M6dkX68JYRxhkO7g%3D%3D";
+		}else if(count==25) {
+			serviceKey="DS5yjDDNL8MJtScspUjrsrWe5%2FI1hqZPFGpq4na1Dn5H34EJbgXgH8AZYEcBcD3dsJGOViHPxXgIuIE0wDx4Pg%3D%3D";
+		}else if(count==26) {
+			serviceKey="HhJudA9hIUo0flj%2Bt5K%2FLioVX5Inszi2cgChfiUATPlBOhJE65TdbtaMAuH3qOkGGyl1mkhbQsmhYeLwVL38xA%3D%3D";
+		}else if(count==27) {
+			serviceKey="SnQSwAXFyBZ%2F2dcg7E4AJvT%2Fo1i1ksVGy0D2Iy5vZkvr6Eyf8Ph9%2FBzXkdfHw9gpa9g%2BxjSU7ZwBizys5zbFMQ%3D%3D";
+		}else if(count==28) {
+			serviceKey="hheg%2BMfMln2D5n6G7Dr0Y%2BoMxAL17pKDCakmSIypUAfqBEgEDi816fz%2FFF7mmXND8C4Be2LDZglFEAvK2EL9EA%3D%3D";
+		}else if(count==29) {
+			serviceKey="juavrHhSBRvER8KAxMhbXFWecBdjP5jGsuK67GVuha5x%2B7gsJ4LqRJErtbV%2BOI1wJoJQj3MnAYEnx69DwFIdcQ%3D%3D";
+		}else if(count==30) {
+			serviceKey="oVbZAFzpjVE1%2FGHfjhW3isBITbbsA%2B21bjT7xEBSinOE06y%2FxOYswrcXQBjkJJ67kxawMWV9FbapL9U64n8UKA%3D%3D";
+		}else if(count==31) {
+			serviceKey="VAhJmsWjBzzd2t9YW%2FKWus1CnNEOI6shMLro5%2FwG3727EXavqhbuOoyiwa7OTbHd%2BQXwI2%2Fvasw2Eu60s73NcQ%3D%3D";
+		}else if(count==32) {
+			serviceKey="of2f31FtrGtim8DADCiY4egLnHjBb2qc0sEt%2FYMASA%2Buj4OkbdModQZTsWAEpkZtW2zJLjqBiwkZkTkYRrkuyw%3D%3D";
+		}else if(count==33) {
+			serviceKey="%2BczzH00Ep622SrKBonoSY3Dg1diTTY%2FHWb92wtPntLsZ9XDU%2Bud9PMF0PNUaulk3cgr%2FJPIGIvGTYsE9tmHR5w%3D%3D";
+		}else if(count==34) {
+			serviceKey="MBEC9TCle87Bi1WfcqdcGNs%2FtILE1wC4lnZbnLnc7n%2F%2B4bJg8F7v2C3U1Pdjc5mZkOL%2Fdm7BYyBL50RqCWelcg%3D%3D";
+		}else if(count==35) {
+			serviceKey="cP977EnB%2FxBZCsNnir5GaBOjRVsCxdL6ByQvEkipaIE6dojc%2BhgH0k6Rf7EbkbcDM3WM5UNinenZe5lsqcN%2Fxg%3D%3D";
+		}else if(count==36) {
+			serviceKey="mfXCzKzCfetNhJhs%2BFkAAsL0GHHRsz5tmWs3MH%2BsaYwWT0D%2BlmyWwPJnAVSLqJ2Piw5JedNgrX4UYVLE432xSg%3D%3D";
+		}else if(count==37) {
+			serviceKey="aTyvuYfq5GGx2LnitHgzei8DeRZurjpGQOjvMs7PsThuWDNVjy4LErZSFKcRnFUMQLG%2B2NREAnnjBVZ3XDo%2Frg%3D%3D";
+		}else if(count==38) {
+			serviceKey="DomzA7CCqJWhYFux4iNAza80h367isVffmAL7iC2SpwiEWo%2BezpRKH1hOlSI8LpbWuxYh1DocntaAgrkQMtPUA%3D%3D";
+		}else if(count==39) {
+			serviceKey="S1UIBziCpeBEdipT4i%2FgKLbWoWwrXO2Jy4OZPE6JfZHY8TpbbLfSRd0vKSTwsy3S8NMacx7isOdjk9mnFzXx%2Bg%3D%3D";
+		}else if(count==40) {
+			serviceKey="lB5FniXmQhiw6G%2BtconyLgapR2F6EK1nEQtajyUkd69ln6wUVYALIwcHyzDZfXSX%2BGRp0neQAECOdm%2FUUtwXVQ%3D%3D";
+		}else if(count==41) {
+			serviceKey="LJojgq7Fj5xXdVABuGeLqnxjSxZI74%2BFRSxw95hlxUxlwILtA8S15AKfSjZiLRhEkpLfKVSIIhabEtnOzCFKLw%3D%3D";
+		}else if(count==42) {
+			serviceKey="VC4nMN%2F3EpG9XNMs4nHdKRuXrpklKvHuXnFR668O1YtYOKtInjv2byMpoBq14rv3ORhDB9IKoh7B0hTnxyXn5Q%3D%3D";
+		}else if(count==43) {
+			serviceKey="EGxIcRucbTslIIJFkNhWnjm3FpxqirEtO56nEoZ%2FRytjgcG6u6VMlScqUJFlLJqeJdclOLiU1DejWT5Uv1jwDA%3D%3D";
+		}else if(count==44) {
+			serviceKey="ulJ2LGQoPv4V93scnugGoanQbgDK0Cz4Xw7AzatDo0cKfU2cHrC71H%2BhwE7HCg1jw70cM%2Fso6hm7eKIObD7IFQ%3D%3D";
+		}else if(count==45) {
+			serviceKey="P6qz%2Fx7l5uYgxAMQRL6FeuCuu6H%2FQOcoatGzGoAfdDLOkdmTgfaGxHMNwf5Wh5TZLTWHtkiJRdyPFtrYrnsHSg%3D%3D";
+		}else if(count==46) {
+			serviceKey="lD4oQSUQLNjUwVHJWXrwZ8hIXn3ulzc6LAirNtlCje5FbV50n9zcqjwBdGZfsYm9aV61YZ7tYixAar1S7FLjpg%3D%3D";
+		}else if(count==47) {
+			serviceKey="Pr%2BaJAK6EGgToiGRME0SL9K9Vy55Z4YKy786%2FeS15KxLSU%2B71tWoaHSe7TehYPDVOtL9stBXiBuBZkwImIfHzQ%3D%3D";
+		}else if(count==48) {
+			serviceKey="jJjdMxntp5oNC%2FcAUSGqwpNeNPil9woU3WAl67bHTjavx8%2BGW69OfS3O8W0iMFh09Qq917Ot0PhOp%2Bcahf2Egw%3D%3D";
+		}else if(count==49) {
+			serviceKey="%2BgoBYIuMJWdY%2Ft5XMdjWDP%2FmlAilX8Q4nHC3N8j26YquR3C%2BhQAGhpwZcNpiEPIXwV0GjHkNPP6N%2FLKmXaxsZg%3D%3D";
+		}else if(count==50) {
+			serviceKey="QGdj%2FqiTHHkX%2BbKgU%2BsIqO%2BGE2LoxEEsLk0s%2B5IHNzaMaSobBq%2BRT39OlqK5S%2B5taYh9Q0t%2BuO54IPMV%2BcrZHQ%3D%3D";
+		}else if(count==51) {
+			serviceKey="ZOv6M9G3Rqwz6uwAHjhyVXFE5S6jcu4BRX97qPkRH28lBEY19g79Fr1OpjeOEHCBPLYGxLXZu1%2FfQqBoFXDt8A%3D%3D";
+		}else if(count==52) {
+			serviceKey="YDYKgWLTfUL%2Fty%2FIytOT5h032jt96g65hqx24td%2Fud2ourg9WMTCWAuzzXg2EpshxfKLBwHun2aBp3dZDyGm2Q%3D%3D";
+		}else if(count==53) {
+			serviceKey="G%2FOdk5bMVB5KCbLaUcYU9LHZkdNfhfAbYE5V8mtp%2Fy68PJ7QkHk%2BRnBROoOVDD3OebHp7QdjYhQUtvTwbOZLOw%3D%3D";
+		}else if(count==54) {
+			serviceKey="5hh76G6EVHMLtZ7nJVAizrQ5DPcGWl%2Fi%2BgMdSJ%2FvezxbSdUyrEBwrJgAb3J5lPHkPzGqo09H6d8MGB3LsQV1Ng%3D%3D";
+		}else if(count==55) {
+			serviceKey="HGFo9i%2BQvtuM51A%2BPnqMyRfVoOEJ2sOpHIs0VABrK7yefza2u9guOe46RJF%2Fku3qnrOMm1y42bPbDL%2B547ZuPg%3D%3D";
+		}else if(count==56) {
+			serviceKey="Cabnwu%2BhHq4aUPcAmNo1YP0VhGZhNnbf8ryMBHwe0DsgpkBbM7aokkhfsuMrpJXUWvn0ZxWkjzYmEQWvjOYIjQ%3D%3D";
+		}else if(count==57) {
+			serviceKey="4j%2FyzAV1yOzy6%2FuiKfQj1ib1eco%2BCasz5QGyJ0yNZx2iiwxWoM2xquEoqVxRl0M6ku4nx59WSige5oM7fqPpdA%3D%3D";
+		}else if(count==58) {
+			serviceKey="uf0uP%2FqNfa4OrzJMzkDpbZV42NhtuKoicQFWL2FIZrIqrXlQT8307FBr5xFxNt8PvZjzmS0xoUxk1oWHjWvFYA%3D%3D";
+		}else if(count==59) {
+			serviceKey="TqU580RcYf3Kwd1saK69l3DHum9N8pjKu05JvX0AnxvTQZAatUomi2wO75RwZWqow4CHKLohVf%2Fp%2FEnc0pJowg%3D%3D";
+		}else if(count==60) {
+			serviceKey="i11e0v3Q2YiXYfR5RULMHWWyb7mocvsZxQbl7nPOXfHMS344O1en2y1%2F4RWIo4Sz9c1hSNJcaMcQbxRR2icjpg%3D%3D";
+		}else if(count==61) {
+			serviceKey="Zb8XhhPk5pGl4D43qgAcgy2%2Fla71%2BwFPzCzWXfjyNik2N2gVwBRrnIsPPKKGhJLO%2F93ua9XUdENz0FEtAI9HpA%3D%3D";
 		}
 		
 		System.out.println("count들어갑니다"+count);

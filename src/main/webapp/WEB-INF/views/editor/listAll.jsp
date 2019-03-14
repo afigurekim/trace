@@ -165,7 +165,7 @@
 	<!--/#main-slider-->
 
 
-	<section id="portfolio"  style="margin-top:0px; margin-bottom:120px;">
+	<section id="portfolio"  style="margin-top:0px; margin-bottom:120px; overflow:hidden;">
 		<div class="container">
 		<script type="text/javascript">
 			document.write("<ul class='portfolio-filter fade-down center'>");

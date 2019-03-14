@@ -168,7 +168,7 @@
 	<!--/#main-slider-->
 
 
-	<section id="portfolio" style="margin-top:0px; margin-bottom:120px;">
+	<section id="portfolio" style="margin-top:0px; margin-bottom:120px; overflow:hidden;">
 		<div class="container">
 		<script type="text/javascript">
 			document.write("<ul class='portfolio-filter fade-down center'>");
@@ -270,8 +270,8 @@
 						<c:forEach items="${list }" var="vo">
 							<!-- 테마별로 제공하기 위한 if문 -->
 								<tr>
-									<td><c:out value="${vo.bno }" /></td>
-									<td width="45%">
+									<td class="tb_bno"><c:out value="${vo.bno }" /></td>
+									<td width="45%" class="tb_title">
 									<script>
 								if(window.location.href.indexOf("kor")!=-1){
 									  document.write("<a href='/editor/read?bno=${vo.bno }'>");
@@ -286,10 +286,10 @@
 										
 										<c:out
 												value="${vo.title }" /></a></td>
-									<td><c:out value="${vo.writer }" /></td>
+									<td class="tb_writer"><c:out value="${vo.writer }" /></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd"
 											value="${vo.regdate }" /></td>
-									<td><c:out value="${vo.viewcnt }" /></td>
+									<td class="tb_view"><c:out value="${vo.viewcnt }" /></td>
 								</tr>
 						</c:forEach>
 					</tbody>

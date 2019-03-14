@@ -1,21 +1,22 @@
 package com.bit.controller;
 
-import java.io.FileInputStream;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
+import javax.servlet.ServletOutputStream;
+import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.commons.codec.binary.Base64;
+import org.omg.CORBA.portable.OutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,14 +29,13 @@ import com.bit.domain.Criteria;
 import com.bit.domain.EditorVO;
 import com.bit.domain.PageMaker;
 import com.bit.service.EditorService;
-import com.bit.util.MediaUtils;
 import com.bit.util.Translate;
 
 @Controller
 public class EditorController {
 	
-	@Resource(name = "uploadPath")
-	private String uploadPath;
+	//@Resource(name = "uploadPath")
+	//private String uploadPath;
 		private static final Logger logger = LoggerFactory.getLogger(EditorController.class);
 
 		@Inject
@@ -330,8 +330,8 @@ public class EditorController {
 		
 		@ResponseBody
 		   @RequestMapping(value = "/editor/uploadImage/{filename:.+}")
-		   public ResponseEntity<byte[]> uploadImage(@PathVariable String filename) throws Exception {
-		      System.out.println(filename+"업로드");
+		   public void uploadImage(@PathVariable String filename,HttpServletResponse res) throws Exception {
+		     /* System.out.println(filename+"업로드");
 		      InputStream in = null;
 		      ResponseEntity<byte[]> entity = null;
 		      
@@ -340,7 +340,7 @@ public class EditorController {
 		         MediaType mType = MediaUtils.getMediaType(formatName);
 		         HttpHeaders headers = new HttpHeaders();
 		         
-		         in = new FileInputStream(uploadPath + filename);
+		         in = new FileInputStream("" + filename);
 
 		         if (mType != null) {
 		            headers.setContentType(mType);
@@ -357,8 +357,27 @@ public class EditorController {
 		      } finally {
 		         in.close();
 		      }
-		      System.out.println(entity);
-		      return entity;
+		      System.out.println(entity);*/
+			String url="http://www.ktraceadmin.tk/editor/uploadImage/"+URLEncoder.encode(filename, "UTF-8");
+			 //= URLEncoder.encode(url, "UTF-8");
+				System.out.println(url);
+				URL temp =new URL(url);
+				URLConnection conn = temp.openConnection();
+				InputStream is = conn.getInputStream();
+				ServletOutputStream out = res.getOutputStream();
+				BufferedInputStream bis=new BufferedInputStream(is);
+				BufferedOutputStream bos=new BufferedOutputStream(out);
+				byte[] buf=new byte[8];
+				int su=0;
+				while((su=bis.read(buf))!=-1) {
+					System.out.print(su);
+					bos.write(buf,0,su);
+				}
+				
+				is.close();
+				out.close();
+				
+		     
 		   }
 		
 }

@@ -42,14 +42,23 @@
 		visibility: hidden;
 	}
 	#tb_view, .tb_view {
-		width: 40px;
+/* 		width: 40px;
 		white-space: nowrap;
 		overflow: hidden;
-		text-overflow: ellipsis;
+		text-overflow: ellipsis; */
+		visibility: hidden;
+		display:none;	
 	}
 }
 
 @media only screen and (max-width: 320px) {
+	#tb_title,.tb_title{
+		width: 40px;
+		white-space: nowrap;
+		overflow: hidden;
+		
+		
+	}
 	#tb_bno, .tb_bno {
 		display: none;
 		visibility: hidden;

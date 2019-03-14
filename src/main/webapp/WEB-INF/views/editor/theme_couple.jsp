@@ -127,7 +127,7 @@
 </head>
 <body>
 	<%@include file="../Header.jsp"%>
-	<section id="single-page-slider" class="no-margin">
+	<section id="single-page-slider" class="no-margin" style="margin-bottom:120px; overflow:hidden;">
 		<div class="carousel slide" data-ride="carousel">
 			<div class="carousel-inner">
 				<div class="item active">
@@ -270,8 +270,8 @@
 						<c:forEach items="${list }" var="vo">
 							<!-- 테마별로 제공하기 위한 if문 -->
 								<tr>
-									<td><c:out value="${vo.bno }" /></td>
-									<td width="45%">
+									<td class="tb_bno"><c:out value="${vo.bno }" /></td>
+									<td width="45%" class="tb_title">
 									<script>
 											if(window.location.href.indexOf("kor")!=-1){
 												  document.write("<a href='/editor/read?bno=${vo.bno }'>");
@@ -285,10 +285,10 @@
 									</script>
 									<c:out
 												value="${vo.title }" /></a></td>
-									<td><c:out value="${vo.writer }" /></td>
+									<td class="tb_writer"><c:out value="${vo.writer }" /></td>
 									<td><fmt:formatDate pattern="yyyy-MM-dd"
 											value="${vo.regdate }" /></td>
-									<td><c:out value="${vo.viewcnt }" /></td>
+									<td class="tb_view"><c:out value="${vo.viewcnt }" /></td>
 								</tr>
 						</c:forEach>
 					</tbody>

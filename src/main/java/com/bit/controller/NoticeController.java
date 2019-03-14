@@ -26,8 +26,11 @@ public class NoticeController {
 	private Translate tr= new Translate();
 	@RequestMapping(value="/notice",method=RequestMethod.GET)
 	public String default_list(NoticeVO vo, Model model,Criteria cri) throws Exception {
+		cri.setPerPageNum(10);
+
 		model.addAttribute("list",service.listAll(cri));
 		PageMaker pageMaker=new PageMaker();
+		
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.noticecount());
 		model.addAttribute("pageMaker",pageMaker);
@@ -36,6 +39,8 @@ public class NoticeController {
 	}
 	@RequestMapping(value="/{lang}/notice",method=RequestMethod.GET)
 	public String list(NoticeVO vo, Model model,Criteria cri,@PathVariable String lang) throws Exception {
+		cri.setPerPageNum(10);
+
 		List<NoticeVO> list= service.listAll(cri);
 		for(int i=0;i<list.size();i++) {
 			list.get(i).setWriter(tr.translate(lang, list.get(i).getWriter(), "historic"));
@@ -43,6 +48,7 @@ public class NoticeController {
 			list.get(i).setTitle(tr.translate(lang, list.get(i).getTitle(), "historic"));
 		}
 		model.addAttribute("list",list);
+
 		PageMaker pageMaker=new PageMaker();
 		pageMaker.setCri(cri);
 		pageMaker.setTotalCount(service.noticecount());

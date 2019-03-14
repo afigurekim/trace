@@ -385,10 +385,22 @@ function chart(){
 		}else{
     		if(window.location.href.indexOf("eng")!=-1){
     			alert("Please sign in.");
+    		    
+    		    for (i = 0; i < stars.length; i++) {
+    		      $(stars[i]).removeClass('selected');
+    		    }
     		}else if(window.location.href.indexOf("china")!=-1){
     			alert("登录后可使用。");
+    		    
+    		    for (i = 0; i < stars.length; i++) {
+    		      $(stars[i]).removeClass('selected');
+    		    }
     		}else{
     			alert("로그인 후 이용이 가능합니다.");
+    		    
+    		    for (i = 0; i < stars.length; i++) {
+    		      $(stars[i]).removeClass('selected');
+    		    }
     		}
 			return;
 		}
@@ -555,7 +567,7 @@ function chart(){
 				    </a>
 				    </div>
                                     
-                  <div class="overlay">
+                  <div class="overlay" style="display:none;">
                          <a class="preview btn btn-outlined btn-primary" href="blog-item.html" rel="prettyPhoto"><i class="fa fa-link"></i></a>
                   </div>
                  </div> 

@@ -1,6 +1,8 @@
 package com.bit.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -43,30 +45,39 @@ public class EditorDAOImpl implements EditorDAO {
 		return session.selectList(namespace + ".listpage",page);
 	}
 	@Override
-	public List<EditorVO> listCriteria(Criteria cri, int theme) throws Exception {
+	public List<EditorVO> listCriteria(Criteria cri, int theme,String state) throws Exception {
+		Map <String,Object> map = new HashMap<String,Object>();
+		map.put("cri", cri);
+		map.put("state", state);
 		if(theme == 1) {
-			return session.selectList(namespace+".listCriteriaFamily",cri);
+			return session.selectList(namespace+".listCriteriaFamily",map);
 		}else if(theme ==2) {
-			return session.selectList(namespace+".listCriteriaCouple",cri);
+			return session.selectList(namespace+".listCriteriaCouple",map);
 		}else if(theme==3) {
-			return session.selectList(namespace+".listCriteriaEdu",cri);
+			return session.selectList(namespace+".listCriteriaEdu",map);
 		}else if(theme==4) {
-			return session.selectList(namespace+".listCriteriaReligion",cri);
+			return session.selectList(namespace+".listCriteriaReligion",map);
 		}
-		return session.selectList(namespace+".listCriteria",cri);
+	
+		return session.selectList(namespace+".listCriteria",map);
 	}
 	@Override
-	public int countPaging(Criteria cri, int theme) throws Exception {
+	public int countPaging(Criteria cri, int theme,String state) throws Exception {
+		Map <String,Object> map = new HashMap<String,Object>();
+		map.put("cri",cri);
+		map.put("state", state);
+		
 		if(theme==1) {
-			return session.selectOne(namespace+".countPagingFamily",cri);
+			return session.selectOne(namespace+".countPagingFamily",map);
 		}else if(theme==2){
-			return session.selectOne(namespace+".countPagingCouple",cri);
+			return session.selectOne(namespace+".countPagingCouple",map);
 		}else if(theme==3) {
-			return session.selectOne(namespace+".countPagingEdu",cri);
+			return session.selectOne(namespace+".countPagingEdu",map);
 		}else if (theme==4) {
-			return session.selectOne(namespace+".countPagingReligion",cri);
+			return session.selectOne(namespace+".countPagingReligion",map);
 		}
-		return session.selectOne(namespace+".countPaging",cri);
+		
+		return session.selectOne(namespace+".countPaging",map);
 	}
 
 	

@@ -262,7 +262,7 @@ div {
    	 		
    	 	</div>
 		 <div class="col-xs-10 col-md-9" id="subject_detail" style="width:89%; margin: auto; height: 63px; border-bottom: 1.6px solid #BDBDBD; border-top:2.5px solid #08298A;" >
-	  		<input type="text"  id="title" name="title" value='&emsp;<c:out value="${read.title }"/>' readonly="readonly" style="height:42px; background-color:white; position: relative; left: -25px; top:-32px; ">
+	  		<input type="text"  id="title" name="title" value='&emsp;<c:out value="${read.title }"/>' readonly="readonly" style="width:100%;height:42px; background-color:white; position: relative; left: -25px; top:-32px; ">
 		</div>
 	</div>
    	 

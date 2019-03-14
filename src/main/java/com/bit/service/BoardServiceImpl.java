@@ -460,9 +460,9 @@ public class BoardServiceImpl implements BoardService {
 
 
 	@Override
-	public List<Historic_siteVO> nearHistoric(Double latlng,int bno) throws Exception {
+	public List<Historic_siteVO> nearHistoric(Double latlng,int bno,String addr) throws Exception {
 		// TODO Auto-generated method stub
-		return dao.nearHistoric(latlng,bno);
+		return dao.nearHistoric(latlng,bno,addr);
 	}
 
 

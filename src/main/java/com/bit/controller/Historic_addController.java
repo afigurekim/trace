@@ -522,7 +522,7 @@ public class Historic_addController {
 	   for(int i=0;i<list2.size();i++) {
 		   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
 		   
-		   if(list2.get(i).getBno()%17==0) {
+		   if(i%6==0) {
     		   count++;
     	   }
 	   }

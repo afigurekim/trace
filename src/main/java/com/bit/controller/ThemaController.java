@@ -110,14 +110,14 @@ public class ThemaController {
 				//double main_latlng=Double.parseDouble(latlng);
 				System.out.println(latlng);
 				String arr[]= read.getAddress().split(" ");
-				List<Historic_siteVO> near = service.nearHistoric(latlng,bno);
-				List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
+				List<Historic_siteVO> near_historic = service.nearHistoric(latlng,bno,arr[0]);
+				/*List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
 				for(int i=0;i<near.size();i++) {
 					if(near.get(i).getAddress().indexOf(arr[0])!=-1) {
 						near_historic.add(near.get(i));
 					}
 				}
-
+*/
 				for(int i=0;i<near_historic.size();i++) {
 					System.out.println(near_historic.get(i).getAddress());
 				}
@@ -143,13 +143,13 @@ public class ThemaController {
 				//double main_latlng=Double.parseDouble(latlng);
 				System.out.println(latlng);
 				String arr[]= read.getAddress().split(" ");
-				List<Historic_siteVO> near = service.nearHistoric(latlng,bno);
-				List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
+				List<Historic_siteVO> near_historic = service.nearHistoric(latlng,bno,arr[0]);
+				/*List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
 				for(int i=0;i<near.size();i++) {
 					if(near.get(i).getAddress().indexOf(arr[0])!=-1) {
 						near_historic.add(near.get(i));
 					}
-				}
+				}*/
 
 				read.setSite_name(tr.translate(lang, read.getSite_name(),"region"));
 				read.setAddress(tr.translate(lang, read.getAddress(), "region"));

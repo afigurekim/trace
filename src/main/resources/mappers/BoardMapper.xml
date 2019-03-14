@@ -24,7 +24,7 @@ where bno=#{bno}
 </delete>
 <select id="nearHistoric" resultType="com.bit.domain.Historic_siteVO">
 <![CDATA[
-select * from HISTORIC_SITE where bno !=#{bno} order by abs(#{latlng}-(latitude+longitude)) asc limit 4
+select * from HISTORIC_SITE where bno !=#{bno} and address like concat('%',#{addr},'%') order by abs(#{latlng}-(latitude+longitude)) asc limit 4
 ]]>
 </select>
 <insert id="star_insert">

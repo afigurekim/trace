@@ -89,6 +89,8 @@ public class PeriodController {
 				detail.setUse_time(detail.getUse_time().replaceAll("&lt;br&gt;","<br>"));
 				detail.setRest_day(detail.getRest_day().replaceAll("&lt;br /&gt;","<br>"));
 				detail.setRest_day(detail.getRest_day().replaceAll("&lt;br&gt;","<br>"));
+				detail.setRest_day(detail.getRest_day().replaceAll("&lt;br&gt;","<br>"));
+
 				
 				model.addAttribute("read_detail",detail);
 				List<Historic_siteVO> imglist=service.readPeriodImage(bno);
@@ -110,16 +112,17 @@ public class PeriodController {
 				//double main_latlng=Double.parseDouble(latlng);
 				System.out.println(latlng);
 				String arr[]= read.getAddress().split(" ");
-				List<Historic_siteVO> near = service.nearHistoric(latlng,bno);
-				List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
+				List<Historic_siteVO> near_historic = service.nearHistoric(latlng,bno,arr[0]);
+				/*List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
 				for(int i=0;i<near.size();i++) {
 					if(near.get(i).getAddress().indexOf(arr[0])!=-1) {
 						near_historic.add(near.get(i));
 					}
-				}
+				}*/
+				// like CONCAT('%',#{keyword},'%')
 
 				for(int i=0;i<near_historic.size();i++) {
-					System.out.println(near_historic.get(i).getAddress());
+					System.out.println(near_historic.get(i).getSite_name());
 				}
 				model.addAttribute("near_historic",near_historic);
 
@@ -143,13 +146,13 @@ public class PeriodController {
 				//double main_latlng=Double.parseDouble(latlng);
 				System.out.println(latlng);
 				String arr[]= read.getAddress().split(" ");
-				List<Historic_siteVO> near = service.nearHistoric(latlng,bno);
-				List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
+				List<Historic_siteVO> near_historic = service.nearHistoric(latlng,bno,arr[0]);
+				/*List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
 				for(int i=0;i<near.size();i++) {
 					if(near.get(i).getAddress().indexOf(arr[0])!=-1) {
 						near_historic.add(near.get(i));
 					}
-				}
+				}*/
 				read.setSite_name(tr.translate(lang, read.getSite_name(),"region"));
 				read.setAddress(tr.translate(lang, read.getAddress(), "region"));
 				read.setPeriod(tr.translate(lang, read.getPeriod(), "region"));
@@ -230,7 +233,9 @@ public class PeriodController {
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;","\n"));
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;lsquo;",""));
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;rsquo;",""));
-
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&quot;",""));
+				System.out.println(read_attraction.getAttraction_detail());
+				
 				map.put("read_attraction", read_attraction);
 				
 			
@@ -271,6 +276,9 @@ public class PeriodController {
 				Nearby_attractionVO read_attraction = service.read_attraction(bno, rno);
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br&gt;","\n"));
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;","\n"));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;lsquo;",""));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;rsquo;",""));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&quot;",""));
 				if(lang!="kor") {
 					read_attraction.setAddress(tr.translate(lang, read_attraction.getAddress(), "region"));
 					read_attraction.setAttraction_name(tr.translate(lang, read_attraction.getAttraction_detail(), "region"));

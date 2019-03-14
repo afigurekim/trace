@@ -497,11 +497,12 @@ public class BoardDAOImpl implements BoardDAO {
 
 
 	@Override
-	public List<Historic_siteVO> nearHistoric(Double latlng,int bno) throws Exception {
+	public List<Historic_siteVO> nearHistoric(Double latlng,int bno,String addr) throws Exception {
 		// TODO Auto-generated method stub
 		Map <String,Object> map = new HashMap<String,Object>();
 		map.put("latlng", latlng);
 		map.put("bno", bno);
+		map.put("addr",addr);
 		return sqlSession.selectList(namespace+".nearHistoric",map);
 	}
 

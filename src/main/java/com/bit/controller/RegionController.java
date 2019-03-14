@@ -219,8 +219,8 @@ public class RegionController {
 				//double main_latlng=Double.parseDouble(latlng);
 				System.out.println(latlng);
 				String arr[]= read.getAddress().split(" ");
-				List<Historic_siteVO> near = service.nearHistoric(latlng,bno);
-				List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
+				List<Historic_siteVO> near_historic= service.nearHistoric(latlng,bno,arr[0]);
+				/*List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
 				for(int i=0;i<near.size();i++) {
 					if(near.get(i).getAddress().indexOf(arr[0])!=-1) {
 						near_historic.add(near.get(i));
@@ -229,7 +229,7 @@ public class RegionController {
 
 				for(int i=0;i<near_historic.size();i++) {
 					System.out.println(near_historic.get(i).getAddress());
-				}
+				}*/
 				model.addAttribute("near_historic",near_historic);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
@@ -251,13 +251,13 @@ public class RegionController {
 				//double main_latlng=Double.parseDouble(latlng);
 				System.out.println(latlng);
 				String arr[]= read.getAddress().split(" ");
-				List<Historic_siteVO> near = service.nearHistoric(latlng,bno);
-				List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
+				List<Historic_siteVO> near_historic = service.nearHistoric(latlng,bno,arr[0]);
+				/*List<Historic_siteVO> near_historic= new ArrayList<Historic_siteVO>();
 				for(int i=0;i<near.size();i++) {
 					if(near.get(i).getAddress().indexOf(arr[0])!=-1) {
 						near_historic.add(near.get(i));
 					}
-				}
+				}*/
 				read.setSite_name(tr.translate(lang, read.getSite_name(),"region"));
 				read.setAddress(tr.translate(lang, read.getAddress(), "region"));
 				read.setPeriod(tr.translate(lang, read.getPeriod(), "region"));
@@ -472,6 +472,7 @@ public class RegionController {
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;",""));
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;lsquo;",""));
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;rsquo;",""));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&quot;",""));
 
 				map.put("read_attraction", read_attraction);
 				
@@ -514,6 +515,10 @@ public class RegionController {
 				Nearby_attractionVO read_attraction = service.read_attraction(bno, rno);
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br&gt;",""));
 				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&lt;br /&gt;",""));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;lsquo;",""));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&amp;rsquo;",""));
+				read_attraction.setAttraction_detail(read_attraction.getAttraction_detail().replaceAll("&quot;",""));
+
 				if(lang!="kor") {
 					read_attraction.setAddress(tr.translate(lang, read_attraction.getAddress(), "region"));
 					read_attraction.setAttraction_name(tr.translate(lang, read_attraction.getAttraction_name(), "region"));

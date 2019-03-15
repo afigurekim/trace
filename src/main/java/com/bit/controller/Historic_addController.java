@@ -98,6 +98,27 @@ public class Historic_addController {
 	//i11e0v3Q2YiXYfR5RULMHWWyb7mocvsZxQbl7nPOXfHMS344O1en2y1%2F4RWIo4Sz9c1hSNJcaMcQbxRR2icjpg%3D%3D
 	//Zb8XhhPk5pGl4D43qgAcgy2%2Fla71%2BwFPzCzWXfjyNik2N2gVwBRrnIsPPKKGhJLO%2F93ua9XUdENz0FEtAI9HpA%3D%3D
 	
+	
+	//souC3IEuWNd%2FzH0fYp1GUQx2qVTIw6eDbPGHhfzv1HeH167ks82%2BMoJcJkAfxYCp4Ef3Cwx0PrxYf4QEor9EUw%3D%3D
+	//N%2FTDPSPV6O5LrCRc3CC6dVSPRo8DHm9%2Fs2o31vVMg7tk054cnuIGt0UMt3L3sxV21lEsObB8wQNMjZpSNzMoHw%3D%3D
+	
+	//Mpeasqxld%2Bhf0yjIZ6XWIGJcW9corrpAGHitGrJP4hSyABvpr%2FbtURYqhdxI16NUSyRmDbFetq9IcPerzBu3jg%3D%3D
+	
+	//COQ5LZqOg89OkinoFZzAthRKrVGnUZlUfPbGgUgY%2FOMKBrA2RMpAzWztioiD8%2B5HqSXG6jQAg%2BgIJqSMbPhZ5Q%3D%3D
+	
+	
+	//2j7S%2F6RqaC6G%2FFwsq6BygikCHONOgD9wE5zUrzLMnXLRoPLrGtsVgbbx7x%2BOsvEnzvH0a1CrhEyKLRlQfJAgSg%3D%3D
+	
+	
+	//WEykEMlzp7HRlFbl6t%2B%2FqtC%2Ff8%2B1H1lWCistI9ofcERu7TWQmIE%2FKw%2BOh1zDv5PVxDpZ7YRBav8Z8VmpcOzzqw%3D%3D
+	
+	
+	
+	//f4ssNKylZfhpqTEXrR9TjahwBtNRQ1%2Bt5Fx860He3S7T1JvkkGr6OUgAcoZbNp04uEedGJdwH936opHUg9GQBw%3D%3D
+	//HMRB9d94VJcVn%2BZsQKPViRzecz96H8ZbrBklzq6zuoEMxopxwLtEc1oKyW3XM7HHcsl1ENQRA3AfNn4Ro0xGyw%3D%3D
+	//47lG3CsimjgC4z0uKoibzR2iBJhhcqe1EfivQl3VfBcznjhAT%2B314To3qbpVo7RI7EMc4dBHK%2F6c2%2BOpPe3yQQ%3D%3D
+	//oYf96ayZG8o%2BfhVuDF4X9rcNBhSrEqjJ%2Fo4KMMZJq%2BfkZjfdls3m79GbF7g9Y5Fc8zCb0znXt5YAIsRh53ld7Q%3D%3D
+	
 	@Inject
 	private Historic_siteDAO dao;
 	private int count=0;
@@ -236,6 +257,26 @@ public class Historic_addController {
 			serviceKey="i11e0v3Q2YiXYfR5RULMHWWyb7mocvsZxQbl7nPOXfHMS344O1en2y1%2F4RWIo4Sz9c1hSNJcaMcQbxRR2icjpg%3D%3D";
 		}else if(count==61) {
 			serviceKey="Zb8XhhPk5pGl4D43qgAcgy2%2Fla71%2BwFPzCzWXfjyNik2N2gVwBRrnIsPPKKGhJLO%2F93ua9XUdENz0FEtAI9HpA%3D%3D";
+		}else if(count==62) {
+			serviceKey="oYf96ayZG8o%2BfhVuDF4X9rcNBhSrEqjJ%2Fo4KMMZJq%2BfkZjfdls3m79GbF7g9Y5Fc8zCb0znXt5YAIsRh53ld7Q%3D%3D";
+		}else if(count==63) {
+			serviceKey="47lG3CsimjgC4z0uKoibzR2iBJhhcqe1EfivQl3VfBcznjhAT%2B314To3qbpVo7RI7EMc4dBHK%2F6c2%2BOpPe3yQQ%3D%3D";
+		}else if(count==64) {
+			serviceKey="HMRB9d94VJcVn%2BZsQKPViRzecz96H8ZbrBklzq6zuoEMxopxwLtEc1oKyW3XM7HHcsl1ENQRA3AfNn4Ro0xGyw%3D%3D";
+		}else if(count==65) {
+			serviceKey="f4ssNKylZfhpqTEXrR9TjahwBtNRQ1%2Bt5Fx860He3S7T1JvkkGr6OUgAcoZbNp04uEedGJdwH936opHUg9GQBw%3D%3D";
+		}else if(count==66) {
+			serviceKey="WEykEMlzp7HRlFbl6t%2B%2FqtC%2Ff8%2B1H1lWCistI9ofcERu7TWQmIE%2FKw%2BOh1zDv5PVxDpZ7YRBav8Z8VmpcOzzqw%3D%3D";
+		}else if(count==67) {
+			serviceKey="2j7S%2F6RqaC6G%2FFwsq6BygikCHONOgD9wE5zUrzLMnXLRoPLrGtsVgbbx7x%2BOsvEnzvH0a1CrhEyKLRlQfJAgSg%3D%3D";
+		}else if(count==68) {
+			serviceKey="COQ5LZqOg89OkinoFZzAthRKrVGnUZlUfPbGgUgY%2FOMKBrA2RMpAzWztioiD8%2B5HqSXG6jQAg%2BgIJqSMbPhZ5Q%3D%3D";
+		}else if(count==69) {
+			serviceKey="Mpeasqxld%2Bhf0yjIZ6XWIGJcW9corrpAGHitGrJP4hSyABvpr%2FbtURYqhdxI16NUSyRmDbFetq9IcPerzBu3jg%3D%3D";
+		}else if(count==70) {
+			serviceKey="N%2FTDPSPV6O5LrCRc3CC6dVSPRo8DHm9%2Fs2o31vVMg7tk054cnuIGt0UMt3L3sxV21lEsObB8wQNMjZpSNzMoHw%3D%3D";
+		}else if(count==71) {
+			serviceKey="souC3IEuWNd%2FzH0fYp1GUQx2qVTIw6eDbPGHhfzv1HeH167ks82%2BMoJcJkAfxYCp4Ef3Cwx0PrxYf4QEor9EUw%3D%3D";
 		}
 		
 		System.out.println("count들어갑니다"+count);
@@ -287,7 +328,7 @@ public class Historic_addController {
         while ((line = rd.readLine()) != null) {
             sb.append(line);
         }
-        System.out.println(sb.toString());
+        System.out.println(sb.toString());d
         rd.close();
         conn.disconnect();
         String arr[]=new String[1000];

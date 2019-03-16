@@ -415,12 +415,12 @@ $(function(){
 							<c:if test="${pageMaker.prev}">
 							<script type="text/javascript">
 							 if(window.location.href.indexOf("eng")!=-1){
-		                            document.write("<li><a href=/eng/region/kangwon?page=${pageMaker.startPage-1}&laquo;</a></li>");
+		                            document.write("<li><a href=/eng/region/kangwon?page=${pageMaker.startPage-1}>&laquo;</a></li>");
 		                          }else if(window.location.href.indexOf("china")!=-1){
-			                            document.write("<li><a href=/china/region/kangwon?page=${pageMaker.startPage-1}&laquo;</a></li>");
+			                            document.write("<li><a href=/china/region/kangwon?page=${pageMaker.startPage-1}>&laquo;</a></li>");
 
 		                          }else{
-			                            document.write("<li><a href=/region/kangwon?page=${pageMaker.startPage-1}&laquo;</a></li>");
+			                            document.write("<li><a href=/region/kangwon?page=${pageMaker.startPage-1}>&laquo;</a></li>");
 		                        	  
 		                          }
 							</script>

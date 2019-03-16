@@ -232,7 +232,7 @@
 							</tr>
 							<tr>
 								<td><textarea class="form-control " id="summernote"
-										name="content" placeholder="content">${read.content }</textarea></td>
+										name="content" placeholder="content" style="background-color:white;">${read.content }</textarea></td>
 							</tr>
 
 						</tbody>

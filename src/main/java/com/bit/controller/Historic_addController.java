@@ -558,7 +558,7 @@ public class Historic_addController {
        		   count++;
        	   }
 	   }*/
-    	List<Historic_siteVO> list2= dao.history_list();
+    	/*List<Historic_siteVO> list2= dao.history_list();
 	
 	   for(int i=0;i<list2.size();i++) {
 		   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
@@ -567,15 +567,16 @@ public class Historic_addController {
     		   count++;
     	   }
 	   }
-	   /*
-	   count=1;
+	   */
+    	List<Historic_siteVO> list2= dao.history_list();
+
 	   for(int i=0;i<list2.size();i++) {
 	   		room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
-	   	  if(list2.get(i).getBno()%60==0) {
+	   	  if(i!=0 && i%6==0) {
    		   count++;
    	   }
   		}
-
+/*
 	   count=1;
 	   for(int i=0;i<list2.size();i++) {
 		   

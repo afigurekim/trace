@@ -102,7 +102,7 @@
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
     <div id="content-wrapper" class="no-margin">
-        <section id="portfolio" class="white" style="margin-bottom:60px;">
+        <section id="portfolio" class="white" style="margin-bottom:100px;">
             <div class="container">
                 <div class="gap"></div>
                 <div id="join_responsive" class="row">

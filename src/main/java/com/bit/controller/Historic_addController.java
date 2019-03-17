@@ -567,7 +567,7 @@ public class Historic_addController {
     		   count++;
     	   }
 	   }
-	   */
+	   
     	List<Historic_siteVO> list2= dao.history_list();
 
 	   for(int i=0;i<list2.size();i++) {
@@ -576,15 +576,16 @@ public class Historic_addController {
    		   count++;
    	   }
   		}
-/*
-	   count=1;
+*/
+    	List<Historic_siteVO> list2= dao.history_list();
+
 	   for(int i=0;i<list2.size();i++) {
 		   
 		   history_image(list2.get(i).getBno(),list2.get(i).getContent_id(),list2.get(i).getContent_typeid());
-		   if(list2.get(i).getBno()%60==0) {
+		   if(i!=0 && i%6==0) {
     		   count++;
     	   }
-	   }
+	   }/*
 	   count=1;
 	   
 	   List<Nearby_attractionVO> list3=dao.food_list();

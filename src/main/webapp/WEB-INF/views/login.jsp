@@ -540,7 +540,7 @@ function onSubmit(token) {
 									success:function(data)
 									{
 										if(data==1){
-										window.location.href="http://localhost:8181/";
+										window.location.href="/";
 										}
 									}
 								});

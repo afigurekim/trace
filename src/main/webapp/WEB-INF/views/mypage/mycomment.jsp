@@ -106,7 +106,7 @@
     </section><!--/#main-slider-->
     <!-- 마이 페이지 좌측 메뉴 -->
     <div id="content-wrapper" class="no-margin">
-        <section id="portfolio" class="white" style="margin-bottom:30px;">
+        <section id="portfolio" class="white" style="margin-bottom:50px;">
             <div class="container">
                 <div class="gap"></div>
                 <div class="row">

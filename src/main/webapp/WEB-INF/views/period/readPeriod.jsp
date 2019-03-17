@@ -930,7 +930,7 @@ function chart(){
 	&nbsp;<small><i class="fa fa-clock-o"></i> {{prettifyDate reg_date}}</small>
 	</div>
 	<div class="timeline-body">{{reply_text}} </div>
-		<a class="pull-right btn btn-primary btn-outlined" id="modify_modal"
+		<a class="pull-right btn btn-primary btn-outlined" name="modify_modal" id="modify_modal"
 		data-toggle="modal" data-target="#modifyModal">Modify</a>
 	
 		
@@ -980,12 +980,13 @@ var printData= function(replyArr,target,templateObject){
 	var html=template(replyArr);
 	$(".replyLi").remove();
 	target.after(html);
-	for(var i=0;i<replyArr.length;i++){
-		if(replyArr[i].replyer !="${login_id2}" && replyArr[i].replyer !="${login_id}")
-		{
-			$("#modify_modal").hide();
 
+	for(var i=0;i<replyArr.length;i++){
+
+		if(replyArr[i].replyer !="${login_id}" && replyArr[i].replyer != "${login_id2}"){
+			$("a[name=modify_modal]").eq(i).hide();
 		}
+		
 	}
 }
 var printPaging= function(pageMaker,target){

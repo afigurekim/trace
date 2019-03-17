@@ -42,7 +42,7 @@
 	<select id="listCriteria" resultType="com.bit.domain.EditorVO">
 		<![CDATA[
 		select * from TBL_EDITOR 
-		where bno >0   and state=#{state}
+		where bno >0  and state=#{state}
 		order by bno desc, regdate desc
 		limit #{cri.pageStart},#{cri.perPageNum}
 		]]>

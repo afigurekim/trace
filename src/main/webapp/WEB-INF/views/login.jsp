@@ -29,7 +29,7 @@
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
     <script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
-	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 	<script type="text/javascript">
 		 if(window.location.href.indexOf("eng")!=-1){
 			 document.write("<script src=\"https://www.google.com/recaptcha/api.js?hl=en\" async defer>");
@@ -43,7 +43,7 @@
     
  <style type="text/css">
     
-		    @import url(//fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+		    @import url(https://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
 		.jh{font-family: 'Jeju Hallasan', cursive;}
 		
 		
@@ -436,7 +436,7 @@ function onSubmit(token) {
 	            
 <div class="row" >
     <div class="">
-    <div id='recaptcha' class="g-recaptcha" data-sitekey="6Le6KpcUAAAAABsy8dLJizLIFWh5HUA0qttfeGcD" data-callback="onSubmit" data-size="invisible"></div>
+    <div id='recaptcha' class="g-recaptcha" data-sitekey="6LdkXZwUAAAAAAKMnkGMhhOiw13KShvPZ4Ih7jjC" data-callback="onSubmit" data-size="invisible"></div>
     <script>
     	if(window.location.href.indexOf("eng")!=-1){
     		document.write("<button type='button' class='btn btn-default btn-lg' id='btnbn' style='width:100%; font-weight:bolder;'>LOGIN</button>");
@@ -516,7 +516,7 @@ function onSubmit(token) {
 		 </span>
 			  <script type="text/javascript">
 				      // 사용할 앱의 JavaScript 키를 설정해 주세요.
-				      Kakao.init('976f456333f18614366222d9de9153d7');
+				      Kakao.init('64f1605a69c9e65280eb0950c812fcd9');
 				      // 카카오 로그인 버튼을 생성합니다.
 				     // Kakao.Auth.createLoginButton({
 				    //   container: '#kakao-login-btn',

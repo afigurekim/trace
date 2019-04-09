@@ -28,7 +28,7 @@
     <script src="../resources/js/jquery.prettyPhoto.js"></script>
     <script src="../resources/js/plugins.js"></script>
     <script src="../resources/js/init.js"></script>
-  <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>	
+  <script src="../resources/js/postcode.v2.js"></script>	
   
     
 <style>

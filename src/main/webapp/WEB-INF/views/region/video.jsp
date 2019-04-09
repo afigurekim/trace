@@ -7,8 +7,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title></title>
-<script type="text/javascript"
-	src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- <script type="text/javascript"
+	src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
+<script type="text/javascript" src="../../../resources/js/jquery.js"></script>
 <style>
 body{
 margin:0;

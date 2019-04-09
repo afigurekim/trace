@@ -34,11 +34,11 @@
             <div class="container">
                 <div class="row">
                     <div class="col-sm-6">
-                        &copy; 2019 <a target="_blank" href="http://www.distinctivethemes.com" title="Premium Themes and Templates">Ktrace Studio</a>. All Rights Reserved.
+                        &copy; 2019 <a target="_blank" href="https://www.afigurekim.dev">Ktrace Studio</a>. All Rights Reserved.
                     </div>
                     <div class="col-sm-6">
                         <ul class="pull-right">
-                        	<li><a href="http://api.visitkorea.or.kr/main.do"><img src="../../resources/imgs/TourAPILogo.png"/></a></li>
+                        	<li><a href="https://api.visitkorea.or.kr/main.do"><img src="../../resources/imgs/TourAPILogo.png"/></a></li>
                             <li><a id="gototop" class="gototop" href="#"><i class="fa fa-chevron-up"></i></a></li><!--#gototop-->
                         </ul>
                     </div>

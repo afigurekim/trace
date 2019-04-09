@@ -296,7 +296,8 @@ public class Historic_addController {
 	    
     	int index;
     	int index2;
-      /*StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+serviceKey+"&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo="+pagenum); 
+    	//1
+      StringBuilder urlBuilder = new StringBuilder("http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList?ServiceKey="+serviceKey+"&contentTypeId=12&areaCode="+sido+"&sigunguCode=&cat1=A02&cat2=A0201&cat3=&listYN=Y&MobileOS=ETC&MobileApp=TourAPI3.0_Guide&arrange=A&numOfRows=12&pageNo="+pagenum); 
         
         
         URL url = new URL(urlBuilder.toString());
@@ -322,13 +323,14 @@ public class Historic_addController {
  	   int vocount3=list5.size();
         vocount=list.size();
       
-        StringBuilder sb = new StringBuilder();
+        /*StringBuilder sb = new StringBuilder();
         String line;
         
         while ((line = rd.readLine()) != null) {
             sb.append(line);
         }
-        System.out.println(sb.toString());d
+        System.out.println(sb.toString());
+        
         rd.close();
         conn.disconnect();
         String arr[]=new String[1000];
@@ -421,8 +423,8 @@ public class Historic_addController {
  	   System.out.println("기무쓰띠");
  	   historic(sido_count,page_count,2);
  	   }*/
- 	   
-     /* List<Historic_siteVO> list2= dao.history_list();
+ 	   //2
+      /*List<Historic_siteVO> list2= dao.history_list();
        System.out.println(start);
        if(start==1) {
     	   System.out.println("유적지 카운트에요!!!"+list2.size());
@@ -524,7 +526,7 @@ public class Historic_addController {
 	   System.out.println("시도 이동");
 	   sido_count++;
 	   count++;
-	  /* if(sido_count==2) {
+	  if(sido_count==2) {
 		   count++;
 	   }
 	   if(sido_count==4) {
@@ -538,8 +540,8 @@ public class Historic_addController {
 	   }*/
 	 
 	  //count=1;
-	 
-     /* List<Historic_siteVO> list2= dao.history_list();
+	 //3
+     /*List<Historic_siteVO> list2= dao.history_list();
 
 	   for(int i=0;i<list2.size();i++) {
     	   System.out.println("여기는 history detail  데이터 작업중");
@@ -558,26 +560,36 @@ public class Historic_addController {
        		   count++;
        	   }
 	   }*/
+ 	   //4
     	/*List<Historic_siteVO> list2= dao.history_list();
 	
 	   for(int i=0;i<list2.size();i++) {
-		   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
+		   if(list2.get(i).getBno() < 254) { 
+			   System.out.println(list2.get(i).getBno()+" SKIP"); 
+		   } else { 
+			   food_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno()); 
+		   }
 		   
 		   if(i%6==0) {
     		   count++;
     	   }
-	   }
+	   }*/
 	   
-    	List<Historic_siteVO> list2= dao.history_list();
+    	/*List<Historic_siteVO> list2= dao.history_list();
 
 	   for(int i=0;i<list2.size();i++) {
-	   		room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
+		   if(list2.get(i).getBno() < 202) { 
+			   System.out.println(list2.get(i).getBno()+" SKIP"); 
+		   } else { 
+			   room_list(list2.get(i).getLatitude(),list2.get(i).getLongitude(),list2.get(i).getBno());
+		   }
+	   		
 	   	  if(i!=0 && i%6==0) {
    		   count++;
    	   }
-  		}
-*/
-    	List<Historic_siteVO> list2= dao.history_list();
+  		}*/
+
+    	/*List<Historic_siteVO> list2= dao.history_list();
 
 	   for(int i=0;i<list2.size();i++) {
 		   
@@ -585,16 +597,24 @@ public class Historic_addController {
 		   if(i!=0 && i%6==0) {
     		   count++;
     	   }
-	   }/*
+	   }*/
+	   //5
+	   /*
 	   count=1;
-	   
+	   */
 	   List<Nearby_attractionVO> list3=dao.food_list();
 	   for(int i=0;i<list3.size();i++) {
-		   food_image(list3.get(i).getContent_id(),list3.get(i).getBno(),list3.get(i).getAttraction_name());
-		   if(list2.get(i).getBno()%60==0) {
+		   if(list3.get(i).getBno() < 12) { 
+			   System.out.println(list3.get(i).getBno()+" SKIP"); 
+		   } else { 
+			   food_image(list3.get(i).getContent_id(),list3.get(i).getBno(),list3.get(i).getAttraction_name());
+		   }
+		   
+		   if(list3.get(i).getBno()%60==0) {
     		   count++;
     	   }
 	   }
+	   /*
 	   count=1;
 	   for(int i=0;i<list3.size();i++) {
 	    	  System.out.println("룸이미지 작업들어간다");

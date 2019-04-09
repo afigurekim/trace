@@ -49,7 +49,7 @@ font-family:'Nanum Gothic';}
 .background{
 fill:#f7fcfd;
 pointer-events:all;}
-@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
+@import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900);
 
 
 #weather-pos{
@@ -288,7 +288,7 @@ $(function(){
 	var name2=name.split(",");
 
 	for(var i=0;i<name2.length;i++){
-		var apiURI = "http://api.openweathermap.org/data/2.5/weather?q="+name2[i].toString()+"&appid="+"b53827702650a064a2e20c25948e67df";
+		var apiURI = "https://api.openweathermap.org/data/2.5/weather?q="+name2[i].toString()+"&appid="+"2a6613c8560f27e82a5fe31234ea9db5";
 		$.ajax({
 		    url: apiURI,
 		    dataType: "json",

@@ -48,7 +48,7 @@ public class MemberServiceImpl implements MemberService {
 				/*sendMail.setText(
 						new StringBuffer().append("<h1>메일인증</h1>")
 						.append("<a href='http://localhost:8181/emailcheck/1")
-						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						.append("' target='_blank'>이메일 인증 확인</a>").toString());
 						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 						sendMail.setTo(email);
 						sendMail.send();*/
@@ -56,7 +56,7 @@ public class MemberServiceImpl implements MemberService {
 				sendMail.setText(
 				new StringBuffer().append("<h1>Footprint Tour Mail Certification</h1>")
 				.append("<a href='http://www.ktrace.tk/emailauth/"+email)
-				.append("' target='_blenk'>Confirm Email Authentication</a>").toString());
+				.append("' target='_blank'>Confirm Email Authentication</a>").toString());
 				sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 				sendMail.setTo(email);
 				sendMail.send();
@@ -66,7 +66,7 @@ public class MemberServiceImpl implements MemberService {
 				/*sendMail.setText(
 						new StringBuffer().append("<h1>메일인증</h1>")
 						.append("<a href='http://localhost:8181/emailcheck/1")
-						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						.append("' target='_blank'>이메일 인증 확인</a>").toString());
 						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 						sendMail.setTo(email);
 						sendMail.send();*/
@@ -74,7 +74,7 @@ public class MemberServiceImpl implements MemberService {
 				sendMail.setText(
 				new StringBuffer().append("<h1>足迹旅行邮件认证</h1>")
 				.append("<a href='http://www.ktrace.tk/emailauth/"+email)
-				.append("' target='_blenk'>电子邮件认证确认</a>").toString());
+				.append("' target='_blank'>电子邮件认证确认</a>").toString());
 				sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 				sendMail.setTo(email);
 				sendMail.send();
@@ -84,7 +84,7 @@ public class MemberServiceImpl implements MemberService {
 				/*sendMail.setText(
 						new StringBuffer().append("<h1>메일인증</h1>")
 						.append("<a href='http://localhost:8181/emailcheck/1")
-						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						.append("' target='_blank'>이메일 인증 확인</a>").toString());
 						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 						sendMail.setTo(email);
 						sendMail.send();*/
@@ -92,7 +92,7 @@ public class MemberServiceImpl implements MemberService {
 				sendMail.setText(
 				new StringBuffer().append("<h>발자취 이메일 인증</h1>")
 				.append("<a href='http://www.ktrace.tk/emailauth/"+email)
-				.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+				.append("' target='_blank'>이메일 인증 확인</a>").toString());
 				sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 				sendMail.setTo(email);
 				sendMail.send();
@@ -214,7 +214,7 @@ public class MemberServiceImpl implements MemberService {
 				/*sendMail.setText(
 						new StringBuffer().append("<h1>메일인증</h1>")
 						.append("<a href='http://localhost:8181/emailcheck/1")
-						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						.append("' target='_blank'>이메일 인증 확인</a>").toString());
 						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 						sendMail.setTo(email);
 						sendMail.send();*/
@@ -232,7 +232,7 @@ public class MemberServiceImpl implements MemberService {
 				/*sendMail.setText(
 						new StringBuffer().append("<h1>메일인증</h1>")
 						.append("<a href='http://localhost:8181/emailcheck/1")
-						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						.append("' target='_blank'>이메일 인증 확인</a>").toString());
 						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 						sendMail.setTo(email);
 						sendMail.send();*/
@@ -250,7 +250,7 @@ public class MemberServiceImpl implements MemberService {
 				/*sendMail.setText(
 						new StringBuffer().append("<h1>메일인증</h1>")
 						.append("<a href='http://localhost:8181/emailcheck/1")
-						.append("' target='_blenk'>이메일 인증 확인</a>").toString());
+						.append("' target='_blank'>이메일 인증 확인</a>").toString());
 						sendMail.setFrom("forteas2003@skuniv.ac.kr", "Developer");
 						sendMail.setTo(email);
 						sendMail.send();*/
